@@ -3,8 +3,11 @@ package controller
 	import flash.net.URLLoader;
 	import flash.utils.Dictionary;
 	
+	import model.gameSpec.BattleItemSpec;
 	import model.gameSpec.ItemSpec;
 	import model.gameSpec.MapItemSpec;
+	import model.gameSpec.SkillItemSpec;
+	import model.gameSpec.SoldierItemSpec;
 	
 	
 	public class SpecController
@@ -81,6 +84,15 @@ package controller
 					break;
 				case "Map":
 					return MapItemSpec;
+					break;
+				case "Soldier":
+					return SoldierItemSpec;
+					break;
+				case "Skill":
+					return SkillItemSpec;
+					break;
+				case "Battle":
+					return 	BattleItemSpec;
 					break;
 				default:
 					return ItemSpec;

@@ -19,6 +19,7 @@ package view.panel
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
 	
+	import model.battle.BattleRule;
 	import model.gameSpec.BattleItemSpec;
 	
 	import starling.display.Image;
@@ -32,9 +33,10 @@ package view.panel
 		private var panelwidth:Number;
 		private var panelheight:Number;
 		private var panelScale:Number;
-		
-		public function BattleInfoPanel(battleItemSpec:BattleItemSpec=null)
+		private var battleSpec:BattleItemSpec;
+		public function BattleInfoPanel(battleItemSpec:BattleItemSpec)
 		{
+			battleSpec = battleItemSpec;
 			this.addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
 		}
 		
@@ -156,6 +158,7 @@ package view.panel
 		
 		private function onTriggerConfirm(e:Event):void
 		{
+			GameController.instance.beginBattle(new BattleRule(battleSpec,String(modeList.selectedItem)));
 			dispose();
 		}
 		private function onTriggerOut(e:Event):void

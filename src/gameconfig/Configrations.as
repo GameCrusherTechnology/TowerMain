@@ -40,9 +40,9 @@ package gameconfig
 		public static const CLICK_EPSILON:int = 50;
 		
 		//battle
-		public static const  Ordinary_type:String = "Ordinary";
-		public static const  Elite_type:String = "Elite";
-		public static const  Battle_Energy_Cost:int = 5;
+		public static const  Battle_Easy:String = "easy";
+		public static const  Battle_Normal:String = "normal";
+		public static const  Battle_Hard:String = "hard";
 		
 		//public AD
 		public static var AD_BANNER:Boolean = false;

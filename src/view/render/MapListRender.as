@@ -5,12 +5,14 @@ package view.render
 	import flash.geom.Point;
 	
 	import controller.DialogController;
+	import controller.SpecController;
 	
 	import feathers.controls.Button;
 	import feathers.controls.renderers.DefaultListItemRenderer;
 	
 	import gameconfig.Configrations;
 	
+	import model.gameSpec.BattleItemSpec;
 	import model.gameSpec.MapItemSpec;
 	
 	import starling.display.Image;
@@ -72,7 +74,7 @@ package view.render
 			for(var p:int = 0 ; p<totalPoint.length; p++){
 				point = totalPoint[p];
 				
-				creatTBut(skinContainer,point,i);
+				creatTBut(p,skinContainer,point,i);
 				
 				if(!shape){
 					shape = new Shape();
@@ -97,13 +99,14 @@ package view.render
 			
 		}
 		
-		private function creatTBut(c:Sprite,pos:Point,s:Number):void
+		private function creatTBut(index:int,c:Sprite,pos:Point,s:Number):void
 		{
 			var but:Button = new Button();
 			var icon:Image = new Image(Game.assets.getTexture("RoadLightIcon"));
 			icon.width = renderwidth*0.05;
 			icon.scaleY = icon.scaleX;
 			but.defaultIcon = icon;
+			but.name = String(20000+ (int(itemSpec.item_id)%1000+1)*100 + index);
 			but.addEventListener(Event.TRIGGERED,onTroggered);
 			c.addChild(but);
 			but.x = pos.x * s;
@@ -111,7 +114,15 @@ package view.render
 		}
 		private function onTroggered(e:Event):void
 		{
-			DialogController.instance.showPanel(new BattleInfoPanel());
+			var target:Button = e.target as Button;
+			if(target)
+			{
+				var battleSpec:BattleItemSpec = SpecController.instance.getItemSpec(target.name) as BattleItemSpec;
+				if(battleSpec)
+				{
+					DialogController.instance.showPanel(new BattleInfoPanel(battleSpec));
+				}
+			}
 		}
 		
 		override public function dispose():void

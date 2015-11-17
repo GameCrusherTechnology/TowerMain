@@ -6,12 +6,14 @@ package controller
 	import gameconfig.LanguageController;
 	import gameconfig.LocalData;
 	
+	import model.battle.BattleRule;
 	import model.player.GameUser;
 	
 	import starling.display.Sprite;
 	
 	import view.panel.MessagePanel;
 	import view.panel.PanelConfirmEvent;
+	import view.screen.BattleScene;
 	import view.screen.WorldScene;
 
 	public class GameController
@@ -89,6 +91,22 @@ package controller
 //			uiLayer.addChild(curUI);
 		}
 		
+		public var curBattleRule:BattleRule;
+		public function beginBattle(rule:BattleRule):void
+		{
+			if(curWorld){
+				curWorld.removeFromParent();
+			}
+			if(!curBattleRule){
+//				curBattleRule
+			}
+			curBattleRule = rule;
+			
+		}
+		public function showBattle(scene:BattleScene):void
+		{
+			gameLayer.addChild(scene);
+		}
 		public function showAD():void
 		{
 			 var rot:Number = 0.5;

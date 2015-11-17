@@ -4,16 +4,14 @@ package controller
 	import flash.desktop.NativeApplication;
 	
 	import gameconfig.LanguageController;
+	import gameconfig.LocalData;
 	
-	import model.player.GamePlayer;
 	import model.player.GameUser;
 	
 	import starling.display.Sprite;
 	
 	import view.panel.MessagePanel;
 	import view.panel.PanelConfirmEvent;
-	import view.screen.BattleScene;
-	import view.screen.UIScreen;
 	import view.screen.WorldScene;
 
 	public class GameController
@@ -59,12 +57,8 @@ package controller
 		public function start():void
 		{
 			VoiceController.instance.init();
-//			new LoginCommand(onLogin);
-		}
-		private var hasLogined:Boolean =false;
-		private function onLogin():void
-		{
-			hasLogined = true;
+			localPlayer = LocalData.instance.localPlayer;
+			showWorldScene();
 		}
 		public function get layer():Sprite
 		{

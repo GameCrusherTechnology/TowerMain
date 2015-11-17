@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:394106b4ba2cf7c358503300372fb1c4$ -->
+<!-- $TexturePacker:SmartUpdate:3432065665e354023b5b0073412afaa8$ -->
 <TextureAtlas imagePath="TTscene.png">
-    <SubTexture name="map00" x="2" y="2" width="800" height="450"/>
-    <SubTexture name="map03" x="2" y="1201" width="1175" height="707"/>
-    <SubTexture name="map04" x="2" y="557" width="1085" height="642"/>
-    <SubTexture name="map05" x="804" y="2" width="1127" height="553"/>
+    <SubTexture name="RoadLightIcon" x="2" y="2" width="74" height="84" frameX="-4" frameY="0" frameWidth="84" frameHeight="84"/>
 </TextureAtlas>

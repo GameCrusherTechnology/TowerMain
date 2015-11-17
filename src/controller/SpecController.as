@@ -4,6 +4,7 @@ package controller
 	import flash.utils.Dictionary;
 	
 	import model.gameSpec.ItemSpec;
+	import model.gameSpec.MapItemSpec;
 	
 	
 	public class SpecController
@@ -77,6 +78,9 @@ package controller
 			switch(name){
 				case "Item":
 					return ItemSpec;
+					break;
+				case "Map":
+					return MapItemSpec;
 					break;
 				default:
 					return ItemSpec;

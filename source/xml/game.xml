@@ -126,8 +126,6 @@
 		<Battle item_id="20909" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="78"		rewardExp="34"		baseMonster="50013:6|50014:7|50016:8|50017:10"		supTime = "3000"		supLevel = "14"		/>
 		<Battle item_id="20910" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="78"		rewardExp="34"		baseMonster="50014:7|50015:8|50016:9|50017:10"		supTime = "3000"		supLevel = "15"		/>
 		<Battle item_id="20911" name="DevilGordon" 			mapId="40000"	level="0"	rewardCoin="80"		rewardExp="40"		baseMonster="50016:8|50017:9|50018:10|50018:10"		supTime = "3000"		supLevel = "20"		/>
-
-	
 	</Group>
 	
 	<Group id="Skill">
@@ -157,10 +155,12 @@
 		
 	</Group>
 	<Group id="Map">
-		<Map item_id="40000" name="AdventrueLittleSkill"   		baseMonster="50019|50020"					pieceType="skill"		pieceCount="2"		attackCost="1"/>
-		<Map item_id="40001" name="AdventrueLittleSoldier"  	baseMonster="50021|50022"					pieceType="soldier"		pieceCount="2"		attackCost="1"/>
-		<Map item_id="40002" name="AdventrueBigSkill"  			baseMonster="50023|50024|50023|50024"		pieceType="skill"		pieceCount="5"		attackCost="2"/>
-		<Map item_id="40003" name="AdventrueBigSoldier"  		baseMonster="50025|50026|50025|50026"		pieceType="soldier"		pieceCount="5"		attackCost="2"/>
+		<Map item_id="40000" 	name="map00"   		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
+		<Map item_id="40001" 	name="map01"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
+		<Map item_id="40002" 	name="map02"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
+		<Map item_id="40003" 	name="map03"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
+		<Map item_id="40004" 	name="map04"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
+		<Map item_id="40005" 	name="map05"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
 	</Group>
 	<Group id="Soldier">
 
@@ -191,65 +191,6 @@
 		<Soldier item_id="50024" name="gulingshou"  	sound="ArmoredMonster"	recycle="120" 	range="135" 	speed="2"	baseLife="150" 	lifeUp="5"	baseAttack="9"	attackUp="5"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30014;5:30008"				runx="116"		runy="175"		attackx="90"	attacky="227"	standx="63"		standy="137"	rectw="251"		recty="210"	/>
 		<Soldier item_id="50025" name="gulingwushi"   	sound="ArmoredWizard"	recycle="150" 	range="400" 	speed="1.6"	baseLife="100" 	lifeUp="4"	baseAttack="10"	attackUp="6"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30015;5:30020"				runx="83"		runy="177"		attackx="73"	attacky="184"	standx="53"		standy="166"	rectw="151"		recty="180"		armCls="fireBullet"/>
 		<Soldier item_id="50026" name="xuesezhanshi"   	sound="ArmoredKnight"	recycle="150" 	range="180" 	speed="1.6"	baseLife="150" 	lifeUp="4"	baseAttack="12"	attackUp="6"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30011;5:30019;7:30002"		runx="82"		runy="197"		attackx="210"	attacky="278"	standx="87"		standy="193"	rectw="286"		recty="200"	/>
-	</Group>
-	
-	<Group id="Castle">
-		<Castle item_id="60000" name="dunzhanshi"   	range="50"	baseLife="50" 	/>
-		<Castle item_id="60001" name="heianwushi"   	range="300"	baseLife="50"/>
-	</Group>
-	<Group id="Piece">
-		 
-		<Piece item_id="70000" name="attackBuff"   		type="skill"	gem="10" coin="1000"	boundItem="30000"/>
-		<Piece item_id="70001" name="baoshe"   			type="skill"	gem="10" coin="1000"	boundItem="30001"/>
-		<Piece item_id="70002" name="xuanfengzhan"   	type="skill"	gem="10" coin="1000"	boundItem="30002"/>
-		<Piece item_id="70003" name="shujiguang"   		type="skill"	gem="10" coin="1000"	boundItem="30003"/>
-		<Piece item_id="70004" name="diyuhuo"  			type="skill"	gem="10" coin="1000"	boundItem="30004"/>
-		<Piece item_id="70005" name="fireball"  		type="skill"	gem="10" coin="1000"	boundItem="30005"/>
-		<Piece item_id="70006" name="liuxingyu"   		type="skill"	gem="10" coin="1000"	boundItem="30006"/>
-		<Piece item_id="70007" name="qiuyan"   			type="skill"	gem="10" coin="1000"	boundItem="30007"/>
-		<Piece item_id="70008" name="purpleball"   		type="skill"	gem="10" coin="1000"	boundItem="30008"/>
-		<Piece item_id="70009" name="guangjian"   		type="skill"	gem="10" coin="1000"	boundItem="30009"/>
-		<Piece item_id="70010" name="healthBuff"   		type="skill"	gem="10" coin="1000"	boundItem="30010"/>
-		<Piece item_id="70011" name="huimielieyan"  	type="skill"	gem="10" coin="1000"	boundItem="30011"/>
-		<Piece item_id="70012" name="huolian"   		type="skill"	gem="10" coin="1000"	boundItem="30012"/>
-		<Piece item_id="70013" name="huoyanjian"   		type="skill"	gem="10" coin="1000"	boundItem="30013"/>
-		<Piece item_id="70014" name="zhiyu"   			type="skill"	gem="10" coin="1000"	boundItem="30014"/>
-		<Piece item_id="70015" name="huoyu"   			type="skill"	gem="10" coin="1000"	boundItem="30015"/>
-		<Piece item_id="70016" name="longjuanfeng"   	type="skill"	gem="10" coin="1000"	boundItem="30016"/>
-		<Piece item_id="70017" name="jiguangjian"   	type="skill"	gem="10" coin="1000"	boundItem="30017"/>
-		<Piece item_id="70018" name="lanyan"   			type="skill"	gem="10" coin="1000"	boundItem="30018"/>
-		<Piece item_id="70019" name="liehuozhan"   		type="skill"	gem="10" coin="1000"	boundItem="30019"/>
-		<Piece item_id="70020" name="zhangxinlei"   	type="skill"	gem="10" coin="1000"	boundItem="30020"/>
-		<Piece item_id="70021" name="lingjiaojian"   	type="skill"	gem="10" coin="1000"	boundItem="30021"/>
-		
-		
-		<Piece item_id="70100" name="Spider"   			type="soldier"	gem="10" coin="1000"	boundItem="50000"/>
-		<Piece item_id="70101" name="DragonWhelp"   	type="soldier"	gem="10" coin="1000"	boundItem="50001"/>
-		<Piece item_id="70102" name="Minotaur"   		type="soldier"	gem="10" coin="1000"	boundItem="50002"/>
-		<Piece item_id="70103" name="PoisonousInsect" 	type="soldier"	gem="10" coin="1000"	boundItem="50003"/>
-		<Piece item_id="70104" name="Hound"   			type="soldier"	gem="10" coin="1000"	boundItem="50004"/>
-		<Piece item_id="70105" name="BlackMinotaur"   	type="soldier"	gem="10" coin="1000"	boundItem="50005"/>
-		<Piece item_id="70106" name="heianwushi"   		type="soldier"	gem="10" coin="1000"	boundItem="50006"/>
-		<Piece item_id="70107" name="Giant"   			type="soldier"	gem="10" coin="1000"	boundItem="50007"/>
-		<Piece item_id="70108" name="Skeleton"   		type="soldier"	gem="10" coin="1000"	boundItem="50008"/>
-		<Piece item_id="70109" name="lanmoguai"   		type="soldier"	gem="10" coin="1000"	boundItem="50009"/>
-		<Piece item_id="70110" name="Assassin"   		type="soldier"	gem="10" coin="1000"	boundItem="50010"/>
-		<Piece item_id="70111" name="Cyclop"   			type="soldier"	gem="10" coin="1000"	boundItem="50011"/>
-		<Piece item_id="70112" name="SkeletonArcher"  	type="soldier"	gem="10" coin="1000"	boundItem="50012"/>
-		<Piece item_id="70113" name="HellHound"   		type="soldier"	gem="10" coin="1000"	boundItem="50013"/>
-		<Piece item_id="70114" name="HellSpider"   		type="soldier"	gem="10" coin="1000"	boundItem="50014"/>
-		<Piece item_id="70115" name="SkeletonWarrior" 	type="soldier"	gem="10" coin="1000"	boundItem="50015"/>
-		<Piece item_id="70116" name="ToxicMinotaur"   	type="soldier"	gem="10" coin="1000"	boundItem="50016"/>
-		<Piece item_id="70117" name="DarkKnight"   		type="soldier"	gem="10" coin="1000"	boundItem="50019"/>
-		<Piece item_id="70118" name="DevilGordon"   	type="soldier"	gem="10" coin="1000"	boundItem="50018"/>
-		<Piece item_id="70119" name="SnowInsect"   		type="soldier"	gem="10" coin="1000"	boundItem="50019"/>
-		<Piece item_id="70120" name="xuerenwang"   		type="soldier"	gem="10" coin="1000"	boundItem="50020"/>
-		<Piece item_id="70121" name="dunzhanshi"   		type="soldier"	gem="10" coin="1000"	boundItem="50021"/>
-		<Piece item_id="70122" name="huangjinsheshou"   type="soldier"	gem="10" coin="1000"	boundItem="50022"/>
-		<Piece item_id="70123" name="gulingzhanshi"  	type="soldier"	gem="10" coin="1000"	boundItem="50023"/>
-		<Piece item_id="70124" name="gulingshou"  		type="soldier"	gem="10" coin="1000"	boundItem="50024"/>
-		<Piece item_id="70125" name="gulingwushi"   	type="soldier"	gem="10" coin="1000"	boundItem="50025"/>
-		<Piece item_id="70126" name="xuesezhanshi"   	type="soldier"	gem="10" coin="1000"	boundItem="50026"/>
 	</Group>
 	<Group id="Item">
 		<Item item_id="80000" name="littleEnergyPotion"   	gem="10" coin="1000"	message="littleEnergyPotionMes"/>

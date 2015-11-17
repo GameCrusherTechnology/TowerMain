@@ -66,6 +66,7 @@ package gameconfig
 			return int(Math.pow(grade,2)*10);
 		}
 		
+		public static const INIT_USER:Object = {};
 		
 		public static function get isLocalTest():Boolean
 		{
@@ -126,6 +127,34 @@ package gameconfig
 			}
 			return _PanelTitleSkinTexture;
 		}
+		
+		[Embed(source="/textures/map00.jpg")]
+		private static var BattleMap00Cls:Class;
+		
+		[Embed(source="/textures/map01.jpg")]
+		private static var BattleMap01Cls:Class;
+		
+		[Embed(source="/textures/map02.jpg")]
+		private static var BattleMap02Cls:Class;
+		
+		[Embed(source="/textures/map03.jpg")]
+		private static var BattleMap03Cls:Class;
+		
+		[Embed(source="/textures/map04.jpg")]
+		private static var BattleMap04Cls:Class;
+		
+		[Embed(source="/textures/map05.jpg")]
+		private static var BattleMap05Cls:Class;
+		
+		
+		public static var MapClsObject :Object = {
+			"map00":BattleMap00Cls,
+			"map01":BattleMap01Cls,
+			"map02":BattleMap02Cls,
+			"map03":BattleMap03Cls,
+			"map04":BattleMap04Cls,
+			"map05":BattleMap05Cls
+		};
 		
 		public static function get  grayscaleFilter():ColorMatrixFilter
 		{

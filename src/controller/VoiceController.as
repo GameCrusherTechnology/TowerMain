@@ -147,10 +147,10 @@ package controller
 						closeRack();
 					}
 					if(m_cSoundRack){
-						backChannel = m_cSoundRack.play();
-						backChannel.soundTransform = new SoundTransform(musicVoice);
-						backChannel.addEventListener(Event.SOUND_COMPLETE,onBackComplete,false,0,true);
-						curRackName = name;
+//						backChannel = m_cSoundRack.play();
+//						backChannel.soundTransform = new SoundTransform(musicVoice);
+//						backChannel.addEventListener(Event.SOUND_COMPLETE,onBackComplete,false,0,true);
+//						curRackName = name;
 					}
 				}
 			}

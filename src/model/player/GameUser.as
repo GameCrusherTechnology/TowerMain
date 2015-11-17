@@ -1,7 +1,5 @@
 package model.player
 {
-	import controller.GameController;
-	
 	import starling.events.EventDispatcher;
 
 	

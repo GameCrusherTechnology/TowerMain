@@ -1,21 +1,17 @@
 package view.screen
 {
-	import flash.geom.Point;
-	
-	import controller.GameController;
+	import controller.SpecController;
 	
 	import feathers.controls.List;
+	import feathers.data.ListCollection;
+	import feathers.layout.TiledRowsLayout;
 	
 	import gameconfig.Configrations;
 	
-	
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import starling.events.Touch;
-	import starling.events.TouchEvent;
-	import starling.events.TouchPhase;
 	
-	import view.compenent.SceneButton;
+	import view.render.MapListRender;
 
 	public class WorldScene extends Sprite
 	{
@@ -23,15 +19,9 @@ package view.screen
 		public var sceneheight:Number;
 		private var sX:Number;
 		private var sY:Number;
-		private var list:List;
-		public var castleButton:SceneButton;
-		public var heroButton:SceneButton;
-		public var battleButton:SceneButton;
-		public var advenButton:SceneButton;
-		public var clanButton:SceneButton;
-		public var bossButton:SceneButton;
-		public var shopButton:SceneButton;
-		public var packageButton:SceneButton;
+		
+		private var uiLayer:Sprite;
+		
 		public function WorldScene()
 		{
 			initializeHandler();
@@ -42,126 +32,60 @@ package view.screen
 		{
 			var sceneBack:Image = new Image(Game.assets.getTexture("SceneMap"));
 			addChild(sceneBack);
+//			
+//			sX = sY = Math.max(Configrations.ViewPortWidth/sceneBack.width,Configrations.ViewPortHeight/sceneBack.height);
+//			sceneBack.scaleX = sX;
+//			sceneBack.scaleY = sY;
 			
-			sX = sY = Math.max(Configrations.ViewPortWidth/sceneBack.width,Configrations.ViewPortHeight/sceneBack.height);
-			sceneBack.scaleX = sX;
-			sceneBack.scaleY = sY;
-			
-			scenewidth = sceneBack.width;
-			sceneheight = sceneBack.height;
+			sceneBack.width = Configrations.ViewPortWidth;
+			sceneBack.height = Configrations.ViewPortHeight;
 			
 			
-			castleButton = creatSceneButton("CastleScene");
-			addChild(castleButton);
+			uiLayer = new Sprite;
+			addChild(uiLayer);
 			
-			heroButton = creatSceneButton("HeroScene");
-			addChild(heroButton);
-			
-			battleButton = creatSceneButton("BattleScene");
-			addChild(battleButton);
-			
-			advenButton = creatSceneButton("AdvenScene");
-			addChild(advenButton);
-			
-			clanButton = creatSceneButton("ClanScene");
-			addChild(clanButton);
-			
-			bossButton = creatSceneButton("BossScene");
-			addChild(bossButton);
-			
-			shopButton = creatSceneButton("ShopScene");
-			addChild(shopButton);
-			
-			packageButton = creatSceneButton("PackageScene");
-			addChild(packageButton);
-			
-			addEventListener(TouchEvent.TOUCH,onTouch);
+			configMapList();
 		}
 		
-		
-		
-		
-		
-		private var curBeginTouch:Touch;
-		private var mouseDownPos:Point;
-		private var _hasDragged:Boolean;
-		
-		protected function get mouseStagePosition():Point{
-			return new Point(stage.pivotX,stage.pivotY);
-		}
-		
-		public function onTouch(evt:TouchEvent):void{
-			var scenePos:Point;
-			var touches:Vector.<Touch> = evt.getTouches(this, TouchPhase.MOVED);
-			if (touches.length >= 1){
-					
-				if(!_hasDragged){
-					if (mouseStagePosition && mouseDownPos && mouseStagePosition.subtract(mouseDownPos).length >= Configrations.CLICK_EPSILON){
-						_hasDragged = true;
-					}
-				}else{
-					var delta:Point = touches[0].getMovement(this.parent);
-					this.dragScreenTo(delta);
-				}
-			}
-			
-			//touch begin
-			var beginTouch:Touch = evt.getTouch(this,TouchPhase.BEGAN);
-			if(beginTouch){
-				mouseDownPos = new Point(beginTouch.globalX, beginTouch.globalY);
-				curBeginTouch = beginTouch;
-			}
-					
-			var touch:Touch = evt.getTouch(this, TouchPhase.ENDED);
-			//click event
-			if(touch){
-				if(curBeginTouch){
-					curBeginTouch = null;
-				}
-				if(_hasDragged){
-					_hasDragged=false;
-				}
-			}
-		}
-		
-		protected function dragScreenTo(delta:Point):void
+		private function configMapList():void
 		{
-			if(x+delta.x >0){
-				x = 0;
-			}else if((x+delta.x)<(Configrations.ViewPortWidth - scenewidth)){
-				x = (Configrations.ViewPortWidth - scenewidth);
-			}else{
-				x+=delta.x;
+			const listLayout1: TiledRowsLayout= new TiledRowsLayout();
+			listLayout1.tileHorizontalAlign = TiledRowsLayout.TILE_HORIZONTAL_ALIGN_CENTER;
+			listLayout1.tileVerticalAlign = TiledRowsLayout.TILE_VERTICAL_ALIGN_TOP;
+			listLayout1.paging = TiledRowsLayout.PAGING_HORIZONTAL;
+			listLayout1.useSquareTiles = true;
+			listLayout1.manageVisibility = true;
+			
+			var mapList:List = new List();
+			mapList.layout = listLayout1;
+			mapList.dataProvider = getMapInfoListData();
+			mapList.width =  Configrations.ViewPortWidth ;
+			mapList.height = Configrations.ViewPortHeight * 0.9;
+			mapList.itemRendererFactory =function tileListItemRendererFactory():MapListRender
+			{
+				
+				var renderer:MapListRender = new MapListRender();
+				renderer.width = Configrations.ViewPortWidth * 0.95;
+				renderer.height =  Configrations.ViewPortHeight * 0.9;
+				return renderer;
 			}
-			if(y+delta.y >0){
-				y = 0;
-			}else if((y+delta.y)<(Configrations.ViewPortHeight - sceneheight)){
-				y = (Configrations.ViewPortHeight - sceneheight);
-			}else{
-				y+=delta.y;
-			}
+			mapList.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_NONE;
+			mapList.horizontalScrollPolicy = List.SCROLL_POLICY_ON;
+			mapList.snapToPages = true;
+			uiLayer.addChild(mapList);
+			mapList.x = 0;
+			mapList.y = Configrations.ViewPortHeight * 0.05;
+			mapList.validate();
+			
 		}
 		
-		private function creatSceneButton(name:String):SceneButton
+		private function getMapInfoListData():ListCollection
 		{
-			var posObj:Object = scenePos[name];
-			var but:SceneButton = new SceneButton(name,posObj["icon"],sX,sY);
-//			but.addEventListener(Event.TRIGGERED,onClick);
-			addChild(but);
-			but.x = posObj["x"]*sX;
-			but.y = posObj["y"]*sX;
-			return but;
+			var arr:Array = SpecController.instance.getGroupArr("Map");
+			return new ListCollection(arr);
 		}
 		
-		private const scenePos:Object = {	
-							"CastleScene":{"x":255,"y":50,icon:"CastleFilter"},
-							"HeroScene":{"x":675,"y":118,icon:"HeroFilter"},
-							"BattleScene":{"x":107,"y":306,icon:"BattleFilter"},
-							"AdvenScene":{"x":809,"y":48,icon:"BossFilter"},
-							"ClanScene":{"x":972,"y":242,icon:"ClanFilter"},
-							"BossScene":{"x":130,"y":431,icon:"PKFilter"},
-							"PackageScene":{"x":515,"y":335,icon:"PackageFilter"},
-							"ShopScene":{"x":434,"y":292,icon:"ShopFilter"}
-		};
+		
+		
 	}
 }

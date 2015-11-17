@@ -1,7 +1,11 @@
 package gameconfig
 {
 	import flash.filesystem.File;
+	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
+	import flash.utils.ByteArray;
+	
+	import model.player.GameUser;
 
 	public class LocalData
 	{
@@ -14,7 +18,6 @@ package gameconfig
 			return _controller;
 		}
 		private var heroFile:File;
-		private var clanFile:File;
 		private var randomItemFile:File;
 		private var messageFile:File;
 		private var fileStream:FileStream;
@@ -22,10 +25,36 @@ package gameconfig
 		{
 			var rootFile:File = File.userDirectory;
 			heroFile =new File(rootFile.nativePath+ "/"  +Configrations.file_path+ "/" + "__h.txt");
-			clanFile =new File(rootFile.nativePath+ "/"  +Configrations.file_path+ "/" + "__c.txt");
 			randomItemFile =new File(rootFile.nativePath+ "/"  +Configrations.file_path+ "/" + "__r.txt");
 			messageFile =new File(rootFile.nativePath+ "/"  +Configrations.file_path+ "/" + "__m.txt");
 			fileStream=new FileStream();
+		}
+		
+		
+		public function get localPlayer():GameUser
+		{
+			var user:GameUser;
+			var info:Object;
+			if(heroFile.exists){
+				fileStream.open(heroFile,FileMode.READ);
+				var readfilebyte:ByteArray=new ByteArray();
+				fileStream.readBytes(readfilebyte);
+				info = readfilebyte.readObject();
+				fileStream.close();
+			}
+			
+			if(!info){
+				info = Configrations.INIT_USER;
+				
+				var filebyte:ByteArray=new ByteArray();
+				filebyte.writeObject(info);
+				fileStream.open(heroFile,FileMode.WRITE);
+				fileStream.writeBytes(filebyte,0,filebyte.length);
+				fileStream.close();
+			}
+			user = new GameUser(info);
+			
+			return user;
 		}
 		
 	

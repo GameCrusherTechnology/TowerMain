@@ -2,6 +2,7 @@ package view.entity
 {
 	import flash.geom.Point;
 	
+	import gameconfig.Configrations;
 	import gameconfig.EntityState;
 	
 	import model.entity.MonsterItem;
@@ -83,10 +84,10 @@ package view.entity
 //				if(!curSkill){
 //					checkSkill();
 //				}
-			rule.addArm(new item.armClass(new Point(x,y - item.itemSpec.recty/2*Configrations.ViewScale),getCurAttackPoint(),1,isLeft));
+			rule.addArm(new item.armClass(new Point(x,y - item.entitySpec.recty/2*Configrations.ViewScale),item.hurtPoint,1,isLeft));
 //			}
 		}
-		public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void
+		override public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void
 		{
 			super.beAttacked(hurt,texture,type);
 			checkSkill();

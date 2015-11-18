@@ -6,7 +6,6 @@ package model.battle
 	import controller.GameController;
 	import controller.SpecController;
 	
-	import model.entity.EntityItem;
 	import model.entity.HeroItem;
 	import model.entity.MonsterItem;
 	import model.gameSpec.BattleItemSpec;
@@ -243,7 +242,8 @@ package model.battle
 			if(armsArr.indexOf(arm) >= 0){
 				armsArr.splice(armsArr.indexOf(arm),1);
 			}
-			arm.removeFromParent(true);
+			arm.removeFromParent();
+			arm = null;
 		}
 		
 		private function clearArms():void

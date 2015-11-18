@@ -1,5 +1,7 @@
 package model.entity
 {
+	import flash.geom.Rectangle;
+	
 	import controller.SpecController;
 	
 	import model.gameSpec.SoldierItemSpec;
@@ -21,7 +23,7 @@ package model.entity
 		}
 		
 		public var id:String;
-		
+		public var level:int;
 		
 		private var _spec:SoldierItemSpec;
 		public function get entitySpec():SoldierItemSpec
@@ -49,6 +51,15 @@ package model.entity
 		
 		public var armClass:Class = Sword;
 		
+		public function getRect():Rectangle
+		{
+			return new Rectangle();
+		}
+		
+		public function get hurtPoint():int
+		{
+			return entitySpec.baseAttack + level * entitySpec.attackUp;
+		}
 		
 	}
 }

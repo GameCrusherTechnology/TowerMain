@@ -2,8 +2,6 @@ package view.bullet
 {
 	import flash.geom.Point;
 	
-	import model.battle.BattleRule;
-	
 	import view.entity.GameEntity;
 	
 	public class Sword extends ArmObject
@@ -31,9 +29,6 @@ package view.bullet
 				targetSoldier = rule.heroEntity;
 			}else{
 				targetSoldier = rule.monsterVec[0];
-			}
-			if(!targetSoldier){
-				targetSoldier = enemyCastle;
 			}
 			if(targetSoldier && inRange(targetSoldier)){
 				playSound();

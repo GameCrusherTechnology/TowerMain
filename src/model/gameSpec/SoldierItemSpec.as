@@ -30,9 +30,14 @@ package model.gameSpec
 		public var standx:Number;
 		public var standy:Number;
 		
+		public var rectw:Number;
+		public var recty:Number;
+		
 		public var sound:String;
 		public var range:int;
 		public var attackCycle:int;
 		public var speed:int;
+		public var baseAttack:int;
+		public var attackUp:int;
 	}
 }

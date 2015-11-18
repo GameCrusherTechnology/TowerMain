@@ -1,5 +1,8 @@
 package view.entity
 {
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
+	
 	import controller.GameController;
 	import controller.VoiceController;
 	
@@ -14,6 +17,7 @@ package view.entity
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.textures.Texture;
 
 	public class GameEntity extends Sprite
 	{
@@ -109,7 +113,15 @@ package view.entity
 		public function validate():void
 		{
 		}
+		public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void
+		{
+			
+		}
 		
+		public function beInRound(posx:Number,posy:Number):Boolean{
+			var rect:Rectangle = item.getRect();
+			return rect.containsPoint(new Point(posx - x,posy - y));
+		}
 		
 		protected function showSound():void
 		{

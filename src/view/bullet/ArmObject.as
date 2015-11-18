@@ -39,14 +39,14 @@ package view.bullet
 		{
 			
 		}
-		protected function get enemyCastle():GameEntity
-		{
-			if(isLeft){
-				return rule.enemyCastleEntity;
-			}else {
-				return rule.homeCastleEntity;
-			}
-		}
+//		protected function get enemyCastle():GameEntity
+//		{
+//			if(isLeft){
+//				return rule.enemyCastleEntity;
+//			}else {
+//				return rule.homeCastleEntity;
+//			}
+//		}
 		protected function playSound():void
 		{
 			VoiceController.instance.playSound(soundName);

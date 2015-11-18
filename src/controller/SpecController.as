@@ -4,6 +4,7 @@ package controller
 	import flash.utils.Dictionary;
 	
 	import model.gameSpec.BattleItemSpec;
+	import model.gameSpec.HeroItemSpec;
 	import model.gameSpec.ItemSpec;
 	import model.gameSpec.MapItemSpec;
 	import model.gameSpec.SkillItemSpec;
@@ -94,6 +95,9 @@ package controller
 				case "Battle":
 					return 	BattleItemSpec;
 					break;
+				case "Hero":
+					return 	HeroItemSpec;
+					break;
 				default:
 					return ItemSpec;
 			}
@@ -132,7 +136,7 @@ package controller
 			var type:int = Math.floor(itemid/10000);
 			switch(type){
 				case 1:
-					group = "Character";
+					group = "Hero";
 					break;
 				case 2:
 					group = "Battle";

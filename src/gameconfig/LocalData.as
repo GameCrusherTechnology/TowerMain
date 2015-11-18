@@ -35,13 +35,13 @@ package gameconfig
 		{
 			var user:GameUser;
 			var info:Object;
-			if(heroFile.exists){
-				fileStream.open(heroFile,FileMode.READ);
-				var readfilebyte:ByteArray=new ByteArray();
-				fileStream.readBytes(readfilebyte);
-				info = readfilebyte.readObject();
-				fileStream.close();
-			}
+//			if(heroFile.exists){
+//				fileStream.open(heroFile,FileMode.READ);
+//				var readfilebyte:ByteArray=new ByteArray();
+//				fileStream.readBytes(readfilebyte);
+//				info = readfilebyte.readObject();
+//				fileStream.close();
+//			}
 			
 			if(!info){
 				info = Configrations.INIT_USER;

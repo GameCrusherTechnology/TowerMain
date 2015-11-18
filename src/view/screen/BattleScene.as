@@ -1,14 +1,10 @@
 package view.screen
 {
-	import flash.filesystem.File;
 	import flash.geom.Point;
-	
-	import controller.SpecController;
 	
 	import gameconfig.Configrations;
 	
 	import model.battle.BattleRule;
-	import model.gameSpec.SkillItemSpec;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -16,20 +12,19 @@ package view.screen
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
-	import starling.utils.AssetManager;
 	
+	import view.bullet.ArmObject;
 	import view.compenent.BattleLoadingScreen;
-	import view.compenent.HeroSkillButton;
-	import view.compenent.HeroSkillTouchEvent;
+	import view.entity.GameEntity;
 
 	public class BattleScene extends Sprite
 	{
-		public var battleRule:BattleRule ;
+		private var battleRule:BattleRule ;
 		private var sceneheight:Number;
 		private var backLayer:Sprite;
 		private var bgLayer:Sprite;
 		private var entityLayer:Sprite;
-		public var armLayer:Sprite;
+		private var armLayer:Sprite;
 		private var superLayer:Sprite;
 		private var uiLayer:Sprite;
 		private var backScale:Number;
@@ -44,6 +39,7 @@ package view.screen
 		private function initialize():void
 		{
 			initializeBack();
+			entityVec = new Vector.<GameEntity>;
 		}
 		
 		private function prepareBattle():void
@@ -62,17 +58,18 @@ package view.screen
 				Configrations.BattleLoadingScene.dispose();
 				initializeHandler();
 				addEventListener(Event.ENTER_FRAME,onEnterFrame);
+				battleRule.beginBattle();
 			}
 		}
 			
 		private function onEnterFrame(e:Event):void
 		{
-			
+			sort();
+			battleRule.validate();
 		}
 		protected function initializeHandler():void
 		{
 			configSkill();
-			
 			bgLayer.addEventListener(TouchEvent.TOUCH,onTouch);
 		}
 		private function initializeBack():void
@@ -103,6 +100,7 @@ package view.screen
 			scenewidth = scenebackSkin.width;
 			sceneheight = Configrations.ViewPortHeight;
 			bottomLine = scenebackSkin.height *0.7;
+			battleRule.cScale = backScale;
 		}
 		private var skillButs:Array = [];
 		private function configSkill():void
@@ -145,7 +143,52 @@ package view.screen
 			if(beginTouch){
 //				mouseDownPos = new Point(beginTouch.globalX, beginTouch.globalY);
 			}
-			
+		}
+		private var entityVec:Vector.<GameEntity>;
+		public function addEntity(entity:GameEntity ,hN:Number, isLeft:Boolean = false):void
+		{
+			if(entityVec.indexOf(entity)<=-1){
+				if(isLeft ){
+					entity.x = scenewidth * 0.1;
+				}else{
+					entity.x = scenewidth * 0.8;
+				}
+				entity.y = bottomLine + (hN - 0.5) * bottomLine /2;
+				
+				entityVec.push(entity);
+				entityLayer.addChild(entity);
+			}
+		}
+		
+		public function addArm(arm:ArmObject):void
+		{
+			armLayer.addChild(arm);
+		}
+		
+		private function sort():void
+		{
+			entityVec.sort(sortY);
+			var entity:GameEntity;
+			var i:int = 0;
+			var l:int = entityVec.length ;
+			for(i;i<l;i++){
+				entityLayer.addChildAt(entityVec[i],i);
+			}
+		}
+		private function sortY(arg1:GameEntity,arg2:GameEntity):Number
+		{
+			if (arg1.y < arg2.y)
+			{
+				return -1;
+			}
+			else if (arg1.y > arg2.y)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
 		}
 	}
 }

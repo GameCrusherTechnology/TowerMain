@@ -27,7 +27,7 @@ package gameconfig
 		public static const GATEWAY:String = "http://192.241.208.85/TowerServer/data/gateway.php";
 		
 		//
-		public static var file_path:String ="COH";
+		public static var file_path:String ="TT_GG";
 		//ad
 		public static var AD_ids:Object={};
 		//宠物 给予等级
@@ -66,7 +66,13 @@ package gameconfig
 			return int(Math.pow(grade,2)*10);
 		}
 		
-		public static const INIT_USER:Object = {};
+		public static const INIT_USER:Object = {
+			"coin" : 1000,
+			"localHero":{
+				
+			}
+			
+		};
 		
 		public static function get isLocalTest():Boolean
 		{

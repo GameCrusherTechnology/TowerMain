@@ -22,5 +22,17 @@ package model.gameSpec
 			}
 			return arr;
 		}
+		
+		public var runx:Number;
+		public var runy:Number;
+		public var attackx:Number;
+		public var attacky:Number;
+		public var standx:Number;
+		public var standy:Number;
+		
+		public var sound:String;
+		public var range:int;
+		public var attackCycle:int;
+		public var speed:int;
 	}
 }

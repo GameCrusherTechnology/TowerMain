@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <database>
-	<Group id="Character">
-		<Character item_id="10000" name="zhanshi"  	range="78" 	speed="1.4"	baseLife="120" 	lifeUp="6"	baseAttack="15"	attackUp="2"	attackCycle="30"	armCls="Sword"	runx="60"		runy="123"		attackx="108"	attacky="116"	standx="31"		standy="100"	rectw="138"		recty="142"	/>
-		<Character item_id="10001" name="sheshou"   range="500"	speed="1"	baseLife="80"	lifeUp="3"	baseAttack="8"	attackUp="1.5"	attackCycle="50"	armCls="arrow"	runx="49"		runy="114"		attackx="43"	attacky="118"	standx="27"		standy="111"	rectw="133"		recty="128"	/>
-		<Character item_id="10002" name="fashi"    	range="450"	speed="1.2"	baseLife="90"	lifeUp="4"	baseAttack="20"	attackUp="1.5"	attackCycle="50"	armCls="fireBullet"	runx="65"		runy="111"		attackx="59"	attacky="154"	standx="60"		standy="105"	rectw="130"		recty="120"	/>
+	<Group id="Hero">
+		<Hero item_id="10000" name="zhanshi"  	range="78" 	speed="1.4"	baseLife="120" 	lifeUp="6"	baseAttack="15"	attackUp="2"	attackCycle="30"	armCls="Sword"	runx="60"		runy="123"		attackx="108"	attacky="116"	standx="31"		standy="100"	rectw="138"		recty="142"	/>
+		<Hero item_id="10001" name="sheshou"   range="500"	speed="1"	baseLife="80"	lifeUp="3"	baseAttack="8"	attackUp="1.5"	attackCycle="50"	armCls="arrow"	runx="49"		runy="114"		attackx="43"	attacky="118"	standx="27"		standy="111"	rectw="133"		recty="128"	/>
+		<Hero item_id="10002" name="fashi"    	range="450"	speed="1.2"	baseLife="90"	lifeUp="4"	baseAttack="20"	attackUp="1.5"	attackCycle="50"	armCls="fireBullet"	runx="65"		runy="111"		attackx="59"	attacky="154"	standx="60"		standy="105"	rectw="130"		recty="120"	/>
 	</Group>
 	
 	<!-- 精英  120000 +100000  3600maxtime-->
 	<Group id="Battle">
-		<Battle item_id="20100" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5;50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5;50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5"	/>
+		<Battle item_id="20100" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50000:1:0.1|50000:1:0.2|50000:1:0.3|50000:1:0.4|50000:1:0.5;50000:1:1|50000:1:0.9|50000:1:0.8|50000:1:0.7|50000:1:0.6;50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5"	/>
 		<Battle item_id="20101" name="DragonWhelp" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50001:1"								supTime = "5000"		supLevel = "3"		/>
 		<Battle item_id="20102" name="Minotaur" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50002:1"								supTime = "5000"		supLevel = "3"		/>
 		<Battle item_id="20103" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50000:1|50001:1"						supTime = "5000"		supLevel = "5"		/>

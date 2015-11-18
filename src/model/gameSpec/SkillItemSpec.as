@@ -7,6 +7,6 @@ package model.gameSpec
 			super(data);
 		}
 		
-		
+		public var buffName:String;
 	}
 }

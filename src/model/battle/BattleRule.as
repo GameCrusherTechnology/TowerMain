@@ -6,6 +6,8 @@ package model.battle
 	import controller.GameController;
 	import controller.SpecController;
 	
+	import gameconfig.Configrations;
+	
 	import model.entity.HeroItem;
 	import model.entity.MonsterItem;
 	import model.gameSpec.BattleItemSpec;
@@ -16,6 +18,8 @@ package model.battle
 	import model.item.SkillData;
 	import model.player.GameUser;
 	
+	import starling.animation.Tween;
+	import starling.core.Starling;
 	import starling.utils.AssetManager;
 	
 	import view.bullet.ArmObject;
@@ -34,6 +38,7 @@ package model.battle
 			battleSpec = battle;
 			curMode = mode;
 			monsterVec = new Vector.<MonsterEntity>;
+			armsArr = new Vector.<ArmObject>;
 			curScene = new BattleScene(this);
 			GameController.instance.showBattle(curScene);
 			prepareBattle();
@@ -186,13 +191,19 @@ package model.battle
 				entity.validate();
 			}
 			valiEntity();
+			
+			var armObject:ArmObject;
+			for each(armObject in armsArr)
+			{
+				armObject.refresh();
+			}
 		}
 		
 		private var roundEntities:Array = [] ;
 		private var curRound:Array = [];
 		
-		private var entityCD:int = 20;
-		private var roundCD:int = 50;
+		private var entityCD:int = 50;
+		private var roundCD:int = 100;
 		private function valiEntity():void
 		{
 			if(curRound.length >0){
@@ -201,14 +212,14 @@ package model.battle
 				}else{
 					var mdata:MonsterData = curRound.shift();
 					creatMonster(mdata);
-					entityCD = 20;
+					entityCD = 50;
 				}
 			}else if(roundEntities.length>0){
 				if(roundCD > 0){
 					roundCD --;
 				}else{
 					curRound = roundEntities.shift();
-					roundCD = 50;
+					roundCD = 90;
 				}
 			}else{
 			//win	
@@ -221,12 +232,33 @@ package model.battle
 			curScene.addEntity(entity,data.pos);
 			monsterVec.push(entity);
 		}
+		public function removeMonster(entity:MonsterEntity):void
+		{
+			removeEntityFromList(entity);
+			
+			entity.filter = Configrations.grayscaleFilter;
+			var t:Tween = new Tween(entity,1);
+			t.fadeTo(0.2);
+			t.onComplete = function():void{
+				Starling.juggler.remove(t);
+				curScene.removeEntity(entity);
+			};
+			Starling.juggler.add(t);
+			
+		}
+		
+		public function removeEntityFromList(entity:MonsterEntity):void
+		{
+			if(monsterVec.indexOf(entity) > -1 ){
+				monsterVec.splice(monsterVec.indexOf(entity),1);
+			}
+		}
 		
 		public var heroEntity:HeroEntity;
 		public var monsterVec:Vector.<MonsterEntity>;
 		
 		//arm
-		private var armsArr:Array = [];
+		private var armsArr:Vector.<ArmObject>;
 		public function initArms():void
 		{
 			clearArms();
@@ -252,7 +284,7 @@ package model.battle
 			for each(arm in armsArr){
 				arm.removeFromParent(true);
 			}
-			armsArr = [];
+			armsArr = new Vector.<ArmObject>;
 		}
 		
 		public function get player():GameUser

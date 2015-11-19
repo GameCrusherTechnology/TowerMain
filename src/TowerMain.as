@@ -23,7 +23,7 @@ package
 	import starling.utils.ScaleMode;
 	import starling.utils.formatString;
 	
-	//		[SWF(width="1680", height="1050", frameRate="30", backgroundColor="#000000")]
+//			[SWF(width="1680", height="1050", frameRate="30", backgroundColor="#000000")]
 	[SWF(width="1024", height="768", frameRate="30", backgroundColor="#000000")]
 	public class TowerMain extends Sprite
 	{
@@ -134,7 +134,7 @@ package
 			mStarling.stage.stageHeight = stageHeight; // <- same size on all devices!
 			mStarling.simulateMultitouch  = false;
 			mStarling.enableErrorChecking = false;
-			mStarling.showStats = false;
+			mStarling.showStats = true;
 			mStarling.simulateMultitouch = true;
 			mStarling.addEventListener(starling.events.Event.ROOT_CREATED, function():void
 			{

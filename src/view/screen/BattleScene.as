@@ -1,5 +1,7 @@
 package view.screen
 {
+	import flash.display.BitmapData;
+	import flash.display.Shape;
 	import flash.geom.Point;
 	
 	import gameconfig.Configrations;
@@ -12,6 +14,7 @@ package view.screen
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
+	import starling.textures.Texture;
 	
 	import view.bullet.ArmObject;
 	import view.compenent.BattleLoadingScreen;
@@ -99,7 +102,7 @@ package view.screen
 			scenebackSkin.y = scenebackSkin.height - Configrations.ViewPortHeight;
 			scenewidth = scenebackSkin.width;
 			sceneheight = Configrations.ViewPortHeight;
-			bottomLine = scenebackSkin.height *0.7;
+			bottomLine = scenebackSkin.height *0.6;
 			battleRule.cScale = backScale;
 		}
 		private var skillButs:Array = [];
@@ -131,33 +134,60 @@ package view.screen
 //			container.x = Configrations.ViewPortWidth/2 - container.width/2;
 //			container.y = bottom;
 		}
+		
+		
 		public function onTouch(evt:TouchEvent):void{
-			var scenePos:Point;
-			var touches:Vector.<Touch> = evt.getTouches(this, TouchPhase.MOVED);
-			if (touches.length >= 1){
-				var movetouch:Touch = touches[0] as Touch;
-			}
 			
-			//touch begin
 			var beginTouch:Touch = evt.getTouch(this,TouchPhase.BEGAN);
 			if(beginTouch){
-//				mouseDownPos = new Point(beginTouch.globalX, beginTouch.globalY);
+				var p:Point = beginTouch.getLocation(bgLayer);
+				battleRule.heroEntity.setDirection(beginTouch.getLocation(bgLayer));
+				
+			}else{
+				var touches:Vector.<Touch> = evt.getTouches(this, TouchPhase.HOVER);
+				if (touches.length >= 1){
+					var hovertouch:Touch = touches[0] as Touch;
+					battleRule.heroEntity.setDirection(hovertouch.getLocation(bgLayer));
+				}else{
+					touches = evt.getTouches(this, TouchPhase.MOVED);
+					if (touches.length >= 1){
+						var movetouch:Touch = touches[0] as Touch;
+						battleRule.heroEntity.setDirection(movetouch.getLocation(bgLayer));
+					}
+				}
 			}
+			
+			
 		}
 		private var entityVec:Vector.<GameEntity>;
 		public function addEntity(entity:GameEntity ,hN:Number, isLeft:Boolean = false):void
 		{
 			if(entityVec.indexOf(entity)<=-1){
 				if(isLeft ){
-					entity.x = scenewidth * 0.1;
+					entity.x = heroPoint.x;
 				}else{
 					entity.x = scenewidth * 0.8;
 				}
 				entity.y = bottomLine + (hN - 0.5) * bottomLine /2;
-				
 				entityVec.push(entity);
 				entityLayer.addChild(entity);
 			}
+		}
+		public function removeEntity(entity:GameEntity):void
+		{
+			if(entityVec.indexOf(entity)>=0){
+				entityVec.splice(entityVec.indexOf(entity),1);
+			}
+			entity.removeFromParent(true);
+		}
+		
+		private var _heroPoint:Point;
+		private function get heroPoint():Point
+		{
+			if(!_heroPoint){
+				_heroPoint = new Point(scenewidth * 0.1,bottomLine);
+			}
+			return _heroPoint;
 		}
 		
 		public function addArm(arm:ArmObject):void

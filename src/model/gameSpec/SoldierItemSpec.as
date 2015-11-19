@@ -1,6 +1,8 @@
 package model.gameSpec
 {
 	import model.item.SkillData;
+	
+	import starling.textures.Texture;
 
 	public class SoldierItemSpec extends ItemSpec
 	{
@@ -39,5 +41,17 @@ package model.gameSpec
 		public var speed:int;
 		public var baseAttack:int;
 		public var attackUp:int;
+		public var baseLife:int;
+		public var lifeUp:int;
+		
+		override public function get iconTexture():Texture
+		{
+			return Game.assets.getTexture("soldierIcon/" + name);
+		}
+		
+		public function get standTexture():Texture
+		{
+			return Game.assets.getTexture("standIcon/" + name+"_stand");
+		}
 	}
 }

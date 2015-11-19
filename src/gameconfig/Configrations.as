@@ -8,6 +8,7 @@ package gameconfig
 	import feathers.textures.Scale9Textures;
 	
 	import starling.filters.ColorMatrixFilter;
+	import starling.textures.Texture;
 	
 	import view.compenent.BattleLoadingScreen;
 	
@@ -153,14 +154,59 @@ package gameconfig
 		private static var BattleMap05Cls:Class;
 		
 		
-		public static var MapClsObject :Object = {
-			"map00":BattleMap00Cls,
-			"map01":BattleMap01Cls,
-			"map02":BattleMap02Cls,
-			"map03":BattleMap03Cls,
-			"map04":BattleMap04Cls,
-			"map05":BattleMap05Cls
-		};
+		
+		private static var _BattleMap00Texture:Texture;
+		public static function get BattleMap00Texture():Texture
+		{
+			if(!_BattleMap00Texture){
+				_BattleMap00Texture = Texture.fromEmbeddedAsset(BattleMap00Cls);
+			}
+			return _BattleMap00Texture;
+		}
+		private static var _BattleMap01Texture:Texture;
+		public static function get BattleMap01Texture():Texture
+		{
+			if(!_BattleMap01Texture){
+				_BattleMap01Texture = Texture.fromEmbeddedAsset(BattleMap01Cls);
+			}
+			return _BattleMap01Texture;
+		}
+		
+		private static var _BattleMap02Texture:Texture;
+		public static function get BattleMap02Texture():Texture
+		{
+			if(!_BattleMap02Texture){
+				_BattleMap02Texture = Texture.fromEmbeddedAsset(BattleMap02Cls);
+			}
+			return _BattleMap02Texture;
+		}
+		private static var _BattleMap03Texture:Texture;
+		public static function get BattleMap03Texture():Texture
+		{
+			if(!_BattleMap03Texture){
+				_BattleMap03Texture = Texture.fromEmbeddedAsset(BattleMap03Cls);
+			}
+			return _BattleMap03Texture;
+		}
+		
+		private static var _BattleMap04Texture:Texture;
+		public static function get BattleMap04Texture():Texture
+		{
+			if(!_BattleMap04Texture){
+				_BattleMap04Texture = Texture.fromEmbeddedAsset(BattleMap04Cls);
+			}
+			return _BattleMap04Texture;
+		}
+		
+		private static var _BattleMap05Texture:Texture;
+		public static function get BattleMap05Texture():Texture
+		{
+			if(!_BattleMap05Texture){
+				_BattleMap05Texture = Texture.fromEmbeddedAsset(BattleMap05Cls);
+			}
+			return _BattleMap05Texture;
+		}
+		
 		
 		public static function get  grayscaleFilter():ColorMatrixFilter
 		{

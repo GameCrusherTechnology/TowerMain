@@ -20,6 +20,13 @@ package model.entity
 				}
 			}
 			
+			init();
+			
+		}
+		
+		private function init():void
+		{
+			curLife = totalLife;
 		}
 		
 		public var id:String;
@@ -32,6 +39,12 @@ package model.entity
 				_spec = SpecController.instance.getItemSpec(id) as SoldierItemSpec;
 			}
 			return _spec;
+		}
+		
+		public var curLife:int;
+		public function get totalLife():int
+		{
+			return entitySpec.baseLife + level * entitySpec.lifeUp;
 		}
 		
 		public function get texturecls():String
@@ -51,15 +64,31 @@ package model.entity
 		
 		public var armClass:Class = Sword;
 		
+		private var _runRect:Rectangle;
 		public function getRect():Rectangle
 		{
-			return new Rectangle();
+			if(!_runRect){
+				_runRect = new Rectangle(-entitySpec.rectw/2,-entitySpec.recty,entitySpec.rectw,entitySpec.recty);
+			}
+			return _runRect;
 		}
 		
 		public function get hurtPoint():int
 		{
 			return entitySpec.baseAttack + level * entitySpec.attackUp;
 		}
+		
+		public function beAttack(p:int):void
+		{
+			curLife -=p;
+		}
+			
+		
+		public function get isDead():Boolean
+		{
+			return curLife <=0;
+		}
+			
 		
 	}
 }

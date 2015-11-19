@@ -216,3 +216,5 @@ pip-log.txt
 .mr.developer.cfg
 bin-debug
 .actionScriptProperties
+src/TowerMain-app.xml
+src/TowerMain-app.xml

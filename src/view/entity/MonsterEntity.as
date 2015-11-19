@@ -18,6 +18,7 @@ package view.entity
 			super(soItem);
 			curTarget = rule.heroEntity;
 			targetPoint = new Point(curTarget.x,curTarget.y); 
+			scaleY = scaleX = 0.8*rule.cScale;
 		}
 		override protected function check():void
 		{
@@ -128,6 +129,12 @@ package view.entity
 		private function get soldierItem():MonsterItem
 		{
 			return item as MonsterItem;
+		}
+		
+		override protected function beDead():void
+		{
+			super.beDead();
+			rule.removeMonster(this);
 		}
 	}
 }

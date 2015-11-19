@@ -1,4 +1,4 @@
-package view.render
+package view.panel
 {
 	import flash.display.BitmapData;
 	import flash.display.Shape;
@@ -10,8 +10,9 @@ package view.render
 	import controller.SpecController;
 	
 	import feathers.controls.Button;
-	import feathers.controls.renderers.DefaultListItemRenderer;
+	import feathers.controls.PanelScreen;
 	import feathers.display.Scale9Image;
+	import feathers.events.FeathersEventType;
 	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
@@ -22,47 +23,51 @@ package view.render
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
 	import starling.textures.Texture;
-	
-	import view.panel.BattleInfoPanel;
 
-	public class MapListRender extends DefaultListItemRenderer
+	public class MapPanel extends PanelScreen
 	{
-		private var scale:Number;
-		private var renderwidth:Number;
-		private var renderHeight:Number;
-		public function MapListRender()
+		private var panelwidth:Number;
+		private var panelheight:Number;
+		private var panelScale:Number;
+		private var itemSpec:MapItemSpec
+		public function MapPanel(spec:MapItemSpec)
 		{
-			super();
-			scale = Configrations.ViewScale;
+			itemSpec = spec;
+			this.addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
 		}
 		
-		private var container:Sprite;
-		private var itemSpec:MapItemSpec;
-		
-		override public function set data(value:Object):void
+		protected function initializeHandler(event:Event):void
 		{
-			renderwidth = width;
-			renderHeight = height;
-			super.data = itemSpec = value as MapItemSpec ;
-			if(itemSpec){
-				if(container){
-					container.removeFromParent(true);
-				}
-				configContainer();
+			panelwidth = Configrations.ViewPortWidth;
+			panelheight = Configrations.ViewPortHeight;
+			panelScale = Configrations.ViewScale;
+			
+			var blackSkin:Scale9Image = new Scale9Image(new Scale9Textures(Game.assets.getTexture("BlackSkin"),new Rectangle(2,2,60,60)));
+			addChild(blackSkin);
+			blackSkin.alpha = 0;
+			blackSkin.width = panelwidth;
+			blackSkin.height = panelheight;
+			blackSkin.addEventListener(TouchEvent.TOUCH,onTouched);
+			
+			configContainer();
+		}
+		
+		private function onTouched(e:TouchEvent):void
+		{
+			var beginTouch:Touch = e.getTouch(this,TouchPhase.BEGAN);
+			if(beginTouch){
+				dispose();
 			}
 		}
-		
 		private var bgTexture:Texture;
 		private function configContainer():void
 		{
-			container = new Sprite;
-			addChild(container);
-			
-			
-			
 			switch(itemSpec.name)
 			{
 				case "map00":
@@ -103,14 +108,14 @@ package view.render
 			}
 			
 			var skinContainer:Sprite = new Sprite;
-			container.addChild(skinContainer);
+			addChild(skinContainer);
 			
 			
 			
 			var mapImage:Image = new Image(bgTexture);
-			var i:Number = Math.min(renderHeight*0.95 /mapImage.height,renderwidth*0.95 /mapImage.width);
+			var i:Number = Math.min(panelheight*0.95 /mapImage.height,panelwidth*0.95 /mapImage.width);
 			skinContainer.addChild(mapImage);
-
+			
 			var shape:Shape ;
 			var totalPoint:Array = itemSpec.totalT;
 			var point:Point;
@@ -138,13 +143,13 @@ package view.render
 			skinContainer.addChildAt(roadImage,1);
 			
 			skinContainer.scaleX = skinContainer.scaleY = i;
-			skinContainer.x = renderwidth/2 - skinContainer.width/2;
-			skinContainer.y = renderHeight/2 - skinContainer.height/2;
+			skinContainer.x = panelwidth/2 - skinContainer.width/2;
+			skinContainer.y = panelheight/2 - skinContainer.height/2;
 			
-			var title:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.1,itemSpec.cname,0xffffff,0,true);
+			var title:TextField = FieldController.createNoFontField(panelwidth,panelheight*0.1,itemSpec.cname,0xffffff,0,true);
 			title.autoSize = TextFieldAutoSize.HORIZONTAL;
-			container.addChild(title);
-			title.x = skinContainer.x + renderwidth *0.05;
+			addChild(title);
+			title.x = skinContainer.x + panelwidth *0.05;
 			title.y = skinContainer.y;
 			
 		}
@@ -153,7 +158,7 @@ package view.render
 		{
 			var but:Button = new Button();
 			var icon:Image = new Image(Game.assets.getTexture("RoadLightIcon"));
-			icon.width = renderwidth*0.05;
+			icon.width = panelwidth*0.05;
 			icon.scaleY = icon.scaleX;
 			but.defaultIcon = icon;
 			but.name = String(20000+ (int(itemSpec.item_id)%1000+1)*100 + index);
@@ -177,16 +182,8 @@ package view.render
 		
 		override public function dispose():void
 		{
-			if(container){
-				container.removeFromParent(true);
-				container = null;
-			}
-			if(bgTexture){
-				bgTexture.dispose();
-			}
+			removeFromParent();
 			super.dispose();
 		}
 	}
 }
-
-

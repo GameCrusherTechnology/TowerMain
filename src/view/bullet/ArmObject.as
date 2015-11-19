@@ -9,8 +9,6 @@ package view.bullet
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
-	
-	import view.entity.GameEntity;
 
 	public class ArmObject extends Sprite
 	{

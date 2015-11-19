@@ -44,7 +44,7 @@ package view.compenent
 			icon.width = icon.height = tHeight;
 			container.addChild(icon);
 			
-			var text:TextField = FieldController.createNoFontField(200,tHeight,"x"+hurt,color);
+			var text:TextField = FieldController.createNoFontField(300,tHeight,"x"+hurt,color);
 			text.autoSize = TextFieldAutoSize.HORIZONTAL;
 			container.addChild(text);
 			text.x = icon.width + 5*Configrations.ViewScale;

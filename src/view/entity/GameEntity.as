@@ -14,10 +14,14 @@ package view.entity
 	
 	import starling.core.Starling;
 	import starling.display.DisplayObject;
+	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.textures.Texture;
+	
+	import view.compenent.HurtTip;
+	import view.compenent.SoldierLifeProgressBar;
 
 	public class GameEntity extends Sprite
 	{
@@ -37,13 +41,20 @@ package view.entity
 			rule = GameController.instance.curBattleRule;
 			initFace();
 			this.touchable = false;
-			scaleY = scaleX = 0.7*rule.cScale;
 			addEventListener(Event.ADDED_TO_STAGE,onADDToStage);
 		}
 		private function onADDToStage(e:Event):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE,onADDToStage);
 			check();
+//			
+//			var image:Image = new Image(Game.assets.getTexture("WhiteSkin"));
+//			addChildAt(image,0);
+//			var rect:Rectangle =  item.getRect();
+//			image.width = rect.width;
+//			image.height = rect.height;
+//			image.x = - rect.width/2;
+//			image.y = - rect.height;
 		}
 		protected function check():void
 		{
@@ -115,12 +126,40 @@ package view.entity
 		}
 		public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void
 		{
-			
+			if(!isDead){
+				
+				item.beAttack(hurt);
+				showLife();
+				showHurtBar(texture,hurt,type);
+				if(item.isDead){
+					beDead();
+				}
+			}
+		}
+		
+		private var lifeBar:SoldierLifeProgressBar;
+		protected function showLife():void
+		{
+			if(!lifeBar){
+				lifeBar = new SoldierLifeProgressBar(item.entitySpec,isLeft);
+				addChild(lifeBar);
+				lifeBar.x = -lifeBar.width/2;
+				lifeBar.y = -item.entitySpec.recty +(item.entitySpec.recty- item.entitySpec.runy) - lifeBar.height ;
+			}
+			lifeBar.showProgress(item.curLife,item.totalLife);
+		}
+		
+		public function showHurtBar(texture:Texture,hurt:int,type:String="skill"):void
+		{
+			var bar:HurtTip = new HurtTip(texture,hurt,isLeft,type);
+			addChild(bar);
+			bar.x = 0;
+			bar.y = -item.entitySpec.recty +(item.entitySpec.recty- item.entitySpec.runy) - bar.height - 10;
 		}
 		
 		public function beInRound(posx:Number,posy:Number):Boolean{
 			var rect:Rectangle = item.getRect();
-			return rect.containsPoint(new Point(posx - x,posy - y));
+			return rect.containsPoint(new Point((posx - x)/rule.cScale,(posy - y)/rule.cScale));
 		}
 		
 		protected function showSound():void

@@ -9,22 +9,32 @@ package view.bullet
 
 	public class HeroArrow extends ArmObject
 	{
-		private var arrowSpeed:int = 20*rule.cScale;
+		private var arrowSpeed:int;
 		private var range:int =600;
+		private var showFrame:int = 20;
 		private var rotate:Number;
 		private var sx:Number;
 		private var sy:Number;
-		public function HeroArrow(_fromPoint:Point,_hurtV:int,_level:int,_rotate:Number)
+		public function HeroArrow(_fromPoint:Point,_hurtV:int,_rotate:Number = 0)
 		{
 			rotate = _rotate;
+			super(_fromPoint,_hurtV,1,true);
+			
 			armSurface = new Image(Game.assets.getTexture("SimpleArrow"));
 			armSurface.scaleX = rule.cScale*0.5;
 			armSurface.scaleY = rule.cScale;
-			armSurface.rotation = _rotate;
-			super(_fromPoint,_hurtV,_level,true);
-			addChild(armSurface);
-			armSurface.x = -armSurface.width/2;
 			
+			armSurface.rotation = _rotate;
+			
+			if(_rotate > 0){
+				armSurface.y =  -armSurface.height;
+			}else{
+				armSurface.y =  armSurface.height;
+			}
+			armSurface.x = - armSurface.width;
+			
+			
+			arrowSpeed = 20 *rule.cScale;
 			sx = arrowSpeed * Math.cos(rotate);
 			sy = arrowSpeed * Math.sin(rotate);
 			
@@ -33,19 +43,27 @@ package view.bullet
 		private var curTarget:GameEntity;
 		override public function refresh():void
 		{
-			move();
-			if(range > 0 ){
-				var vec:Vector.<MonsterEntity> = rule.monsterVec;
-				var entity:MonsterEntity;
-				for each(entity in vec){
-					if(!entity.isDead && entity.beInRound(x,y)){
-						curTarget = entity;
-						attack();
-						break;
+			if(showFrame ==0){
+				addChild(armSurface);
+				showFrame -- ;
+			}
+			else if(showFrame<0){
+				move();
+				if(range > 0 ){
+					var vec:Vector.<MonsterEntity> = rule.monsterVec;
+					var entity:MonsterEntity;
+					for each(entity in vec){
+						if(!entity.isDead && entity.beInRound(x,y)){
+							curTarget = entity;
+							attack();
+							break;
+						}
 					}
+				}else{
+					dispose();
 				}
 			}else{
-				dispose();
+				showFrame -- ;
 			}
 		}
 		

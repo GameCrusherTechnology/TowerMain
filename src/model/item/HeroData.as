@@ -21,5 +21,13 @@ package model.item
 			return [];
 		}
 		
+		//property
+		public var healthLevel:int = 0;
+		public var powerLevel:int = 0;
+		public var agilityLevel:int = 0;
+		public var wisdomLevel:int = 0;
+		public var critLevel:int = 0;
+		public var moneyLevel:int = 0;
+		
 	}
 }

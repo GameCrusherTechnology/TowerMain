@@ -2,8 +2,6 @@ package view.bullet
 {
 	import flash.geom.Point;
 	
-	import model.battle.BattleRule;
-	
 	import starling.display.Image;
 	
 	import view.entity.GameEntity;

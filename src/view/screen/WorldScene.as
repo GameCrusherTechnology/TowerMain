@@ -8,13 +8,10 @@ package view.screen
 	import controller.SpecController;
 	
 	import feathers.controls.Button;
-	import feathers.controls.List;
 	import feathers.data.ListCollection;
-	import feathers.layout.TiledRowsLayout;
 	
 	import gameconfig.Configrations;
 	
-	import model.gameSpec.BattleItemSpec;
 	import model.gameSpec.MapItemSpec;
 	
 	import starling.display.Image;
@@ -27,9 +24,7 @@ package view.screen
 	
 	import view.compenent.HeroButton;
 	import view.compenent.SkillButton;
-	import view.panel.BattleInfoPanel;
 	import view.panel.MapPanel;
-	import view.render.MapListRender;
 
 	public class WorldScene extends Sprite
 	{

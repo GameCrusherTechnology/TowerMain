@@ -14,7 +14,6 @@ package view.entity
 	
 	import starling.core.Starling;
 	import starling.display.DisplayObject;
-	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -47,14 +46,6 @@ package view.entity
 		{
 			removeEventListener(Event.ADDED_TO_STAGE,onADDToStage);
 			check();
-//			
-//			var image:Image = new Image(Game.assets.getTexture("WhiteSkin"));
-//			addChildAt(image,0);
-//			var rect:Rectangle =  item.getRect();
-//			image.width = rect.width;
-//			image.height = rect.height;
-//			image.x = - rect.width/2;
-//			image.y = - rect.height;
 		}
 		protected function check():void
 		{

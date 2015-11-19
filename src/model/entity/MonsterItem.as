@@ -15,5 +15,6 @@ package model.entity
 		{
 			return entitySpec.speed;
 		}
+		
 	}
 }

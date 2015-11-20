@@ -23,11 +23,34 @@ package model.item
 		
 		//property
 		public var healthLevel:int = 0;
-		public var powerLevel:int = 0;
-		public var agilityLevel:int = 0;
-		public var wisdomLevel:int = 0;
-		public var critLevel:int = 0;
-		public var moneyLevel:int = 0;
+		public var healthBase:int = 200;
+		public var healthUp:int = 20;
 		
+		
+		public var powerLevel:int = 0;
+		public var powerBase:int = 40;
+		public var powerUp:int = 2;
+		
+		public var agilityLevel:int = 0;
+		public var agilityBase:int = 100;
+		public var agilityUp:int = 5;
+		public var rangeBase:int = 100;
+		public var rangeUp:int = 10;
+		
+		public var wisdomLevel:int = 0;
+		public var wisdomBase:int = 0;
+		public var wisdomUp:int = 2;
+		
+		
+		public var critLevel:int = 0;
+		public var critBase:int = 15;
+		public var critUp:int = 1;
+		public var critHurtBase:int = 200;
+		public var critHurtUp:int = 10;
+		
+		
+		public var moneyLevel:int = 0;
+		public var moneyBase:int = 100;
+		public var moneyUp:int = 5;
 	}
 }

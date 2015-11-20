@@ -2,6 +2,7 @@ package view.panel
 {
 	import flash.geom.Rectangle;
 	
+	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
 	
@@ -18,9 +19,13 @@ package view.panel
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
 	
+	import model.item.HeroData;
+	import model.player.GameUser;
+	
 	import starling.display.Image;
 	import starling.events.Event;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	
 	import view.render.PropertyRender;
 	
@@ -29,8 +34,15 @@ package view.panel
 		private var panelwidth:Number;
 		private var panelheight:Number;
 		private var panelScale:Number;
+		private var oldCoin:int;
+		private var oldData:HeroData;
+		private var coinText:TextField;
+		
+		private var coinBut:Button;
 		public function HeroPropertyPanel()
 		{
+			oldCoin = player.coin;
+			oldData = player.heroData;
 			this.addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
 		}
 		
@@ -66,17 +78,24 @@ package view.panel
 			
 			configModeContainer();
 			
-			var cancleBut:Button = new Button();
-			cancleBut.defaultSkin = new Image(Game.assets.getTexture("R_button"));
-			cancleBut.label = LanguageController.getInstance().getString("cancel");
-			cancleBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, panelheight*0.04, 0x000000);
-			cancleBut.paddingLeft = cancleBut.paddingRight = 20*panelScale;
-			cancleBut.height = panelheight*0.08;
-			addChild(cancleBut);
-			cancleBut.validate();
-			cancleBut.addEventListener(Event.TRIGGERED,onTriggerConfirm);
-			cancleBut.x = panelwidth/2 - cancleBut.width - panelwidth*0.05;
-			cancleBut.y = panelheight*0.9;
+			coinBut = new Button;
+			var iconSkin:Scale9Image = new Scale9Image(new Scale9Textures(Game.assets.getTexture("simplePanelSkin"),new Rectangle(10,10,30,30)));
+			coinBut.defaultSkin = iconSkin;
+			coinBut.label = String(player.coin);
+			coinBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, panelheight*0.07, 0x000000);
+			var icon:Image = new Image(Game.assets.getTexture("shopIcon"));
+			icon.height = panelheight*0.1;
+			icon.scaleX = icon.scaleY;
+			coinBut.defaultIcon = icon;
+			coinBut.paddingLeft = coinBut.paddingRight = panelwidth*0.03;
+			coinBut.paddingBottom = coinBut.paddingTop = panelheight*0.01;
+			addChild(coinBut);
+			coinBut.validate();
+			coinBut.addEventListener(Event.TRIGGERED,onTriggerShop);
+			coinBut.x = 0;
+			coinBut.y = panelheight - coinBut.height;
+			
+			
 			
 			var confirmBut:Button = new Button();
 			confirmBut.defaultSkin = new Image(Game.assets.getTexture("Y_button"));
@@ -87,7 +106,7 @@ package view.panel
 			addChild(confirmBut);
 			confirmBut.validate();
 			confirmBut.addEventListener(Event.TRIGGERED,onTriggerConfirm);
-			confirmBut.x = panelwidth/2 + panelwidth*0.05;
+			confirmBut.x = panelwidth/2 - confirmBut.width/2;
 			confirmBut.y = panelheight*0.9;
 			
 			var backBut:Button = new Button();
@@ -101,29 +120,35 @@ package view.panel
 		}
 		private function configModeContainer():void
 		{
+			if(modeList){
+				modeList.removeFromParent(true);
+				modeList = null;
+			}
 			const listLayout1: TiledRowsLayout= new TiledRowsLayout();
 			listLayout1.tileHorizontalAlign = TiledRowsLayout.HORIZONTAL_ALIGN_CENTER;
 			listLayout1.tileVerticalAlign = TiledRowsLayout.VERTICAL_ALIGN_TOP;
-			listLayout1.verticalGap = panelheight *0.05;
-			listLayout1.horizontalGap = panelwidth * 0.05;
+			listLayout1.verticalGap = panelheight *0.02;
+			listLayout1.horizontalGap = panelwidth * 0.04;
 			listLayout1.paging = TiledRowsLayout.PAGING_NONE;
 			listLayout1.useSquareTiles = false;
 			
 			modeList = new List();
 			modeList.layout = listLayout1;
-			modeList.dataProvider = new ListCollection(["health","power","agility","wisdom","crit","money"]);
+			modeList.dataProvider = new ListCollection(["health","power","crit","agility","wisdom","money"]);
 			modeList.itemRendererFactory =function tileListItemRendererFactory():PropertyRender
 			{
 				var renderer:PropertyRender = new PropertyRender();
-				renderer.defaultSkin = new Image(Game.assets.getTexture("SelectRenderSkin"));
-				renderer.width =  panelwidth *0.35;
-				renderer.height =  panelheight *0.2;
+				var skin:Scale9Image = new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelBackSkin"),new Rectangle(12,12,40,40)));
+				renderer.defaultSkin = skin;
+				renderer.width =  panelwidth *0.38;
+				renderer.height =  panelheight *0.22;
 				return renderer;
 			}
 			
 			modeList.width =  panelwidth*0.8;
 			modeList.height =  panelheight*0.7;
 			modeList.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_NONE;
+			modeList.verticalScrollPolicy = List.SCROLL_POLICY_OFF;
 			addChild(modeList);
 			modeList.x = panelwidth/2 - modeList.width/2;
 			modeList.y = panelheight*0.15;
@@ -133,10 +158,28 @@ package view.panel
 		private var modeList:List;
 		private function onModeChange(e:Event):void
 		{
-			
+			var type:String = String(modeList.selectedItem);
+			if(type){
+				var curLevel:int = player.heroData[type+"Level"];
+				if(curLevel < 10){
+					var coinCost:int = Configrations.heroPropertyCoin(curLevel+1);
+					if(player.coin >= coinCost){
+						player.coin -= coinCost;
+						player.heroData[type+"Level"] +=1;
+						
+						configModeContainer();
+						coinBut.label = String(player.coin);
+					}
+				}
+			}
 		}
 		
 		
+		private function onTriggerShop(e:Event):void
+		{
+			DialogController.instance.showPanel(new TreasurePanel());
+			dispose();
+		}
 		
 		private function onTriggerConfirm(e:Event):void
 		{
@@ -146,9 +189,12 @@ package view.panel
 		{
 			dispose();
 		}
+		private function get player():GameUser
+		{
+			return GameController.instance.localPlayer;
+		}
 		override public function dispose():void
 		{
-			GameController.instance.showWorldScene();
 			removeFromParent();
 			super.dispose();
 		}

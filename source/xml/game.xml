@@ -149,9 +149,8 @@
 		<Skill item_id="30019" name="liehuozhan"   	type="zhanshi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="450"	range="100"/>
 		<Skill item_id="30020" name="zhangxinlei"   type="fashi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="300"	range="400"/>
 		<Skill item_id="30021" name="lingjiaojian"  type="sheshou" 		upCount="10,20,30,40,50,60,70,80,90"	recycle="600"	range="500"/>
-		
-		
 	</Group>
+	
 	<Group id="Map">
 		<Map item_id="40000" 	name="map00"   		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
 		<Map item_id="40001" 	name="map01"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>

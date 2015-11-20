@@ -26,7 +26,7 @@ package view.panel
 	
 	import view.render.TreasureItemRender;
 	
-	public class TreasurePanel extends PanelScreen
+	public class SkillPanel extends PanelScreen
 	{
 		private var panelwidth:Number;
 		private var panelheight:Number;
@@ -34,7 +34,7 @@ package view.panel
 		private var panelScale:Number;
 		private var backBut:Button;
 		private var itemList:List;
-		public function TreasurePanel()
+		public function SkillPanel()
 		{
 			addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
 		}
@@ -140,4 +140,3 @@ package view.panel
 		}
 	}
 }
-

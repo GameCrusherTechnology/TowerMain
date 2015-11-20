@@ -7,6 +7,8 @@ package gameconfig
 	import feathers.core.ITextEditor;
 	import feathers.textures.Scale9Textures;
 	
+	import model.item.TreasureItem;
+	
 	import starling.filters.ColorMatrixFilter;
 	import starling.textures.Texture;
 	
@@ -216,19 +218,17 @@ package gameconfig
 		}
 		
 		
-		public static var HeroMaxSkillLength:int = 4;
-		public static var HeroMaxSoldierLength:int =4;
 		
-		public static var ClansData:Array;
+		public static function heroPropertyCoin(level:int):int
+		{
+			return 1000*level;
+		}
 		
-		
-		public static var HeroCost:Array = [
-			{"gem":5,"coin":100},
-			{"gem":10,"coin":2000},
-			{"gem":50,"coin":10000},
-			{"gem":100,"coin":50000},
-			{"gem":200,"coin":100000}
-		];
+		public static const treasures:Object ={
+			"littleCoin":new TreasureItem({name:"littleCoin",number:20000,price:4.99,isGem:false,index:1}),
+			"middleCoin":new TreasureItem({name:"middleCoin",number:60000,price:14.99,isGem:false,index:2}),
+			"largeCoin":new TreasureItem({name:"largeCoin",number:100000,price:25.99,isGem:false,index:3})
+		};
 		
 		
 		public static var UpdateSkillCoin:Array =[500,1000,2000,4000,6000,8000,10000,15000,20000,30000]; 

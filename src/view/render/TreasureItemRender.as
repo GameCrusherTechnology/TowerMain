@@ -63,18 +63,6 @@ package view.render
 			container.addChild(nameText);
 			nameText.y =  textSkin.y;
 			
-			var vipText:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.1,"×"+String(item.vip),0x000000);
-			vipText.autoSize = TextFieldAutoSize.HORIZONTAL;
-			container.addChild(vipText);
-			vipText.x = renderwidth*0.95 -vipText.width  ;
-			vipText.y = renderHeight*0.2;
-			
-			var vipIcon:Image = new Image(Game.assets.getTexture("vipIcon"));
-			vipIcon.width = vipIcon.height = renderHeight*0.1;
-			container.addChild(vipIcon);
-			vipIcon.x = vipText.x -  vipIcon.width;
-			vipIcon.y = renderHeight*0.2;
-			
 			
 			var icon:Image = new Image(Game.assets.getTexture(item.name));
 			var s:Number =  Math.min(renderwidth*0.5/icon.width,renderHeight*0.5/icon.height) ;
@@ -97,7 +85,6 @@ package view.render
 			shopBut.validate();
 			shopBut.x = renderwidth*0.5 - shopBut.width/2;
 			shopBut.y = renderHeight*0.95 - shopBut.height ;
-			shopBut.addEventListener(Event.TRIGGERED,onTriggedBuy);
 			
 			var countText:TextField = FieldController.createNoFontField(200,renderHeight*0.12,"×"+String(item.number),0x000000);
 			countText.autoSize = TextFieldAutoSize.HORIZONTAL;
@@ -107,10 +94,6 @@ package view.render
 			
 		}
 		
-		private function onTriggedBuy(e:Event):void
-		{
-			PlatForm.FormBuyItems(item.name);
-		}
 		private function get user():GameUser
 		{
 			return GameController.instance.localPlayer;

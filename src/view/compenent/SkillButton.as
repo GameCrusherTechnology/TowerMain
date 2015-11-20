@@ -1,5 +1,6 @@
 package view.compenent
 {
+	import controller.DialogController;
 	import controller.FieldController;
 	
 	import feathers.controls.Button;
@@ -11,6 +12,8 @@ package view.compenent
 	import starling.events.Event;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
+	
+	import view.panel.SkillPanel;
 	
 	public class SkillButton extends Sprite
 	{
@@ -45,7 +48,7 @@ package view.compenent
 		
 		private function onTriggerConfirm(e:Event):void
 		{
-			
+			DialogController.instance.showPanel( new SkillPanel());
 		}
 		
 	}

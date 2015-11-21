@@ -82,13 +82,6 @@ package controller
 			VoiceController.instance.playRack();
 			sceneLayer.addChild(curWorld);
 			
-//			if(!curUI){
-//				curUI = new UIScreen();
-//			}else{
-//				curUI.refresh();
-//			}
-//			curScene = curWorld;
-//			uiLayer.addChild(curUI);
 		}
 		
 		public var curBattleRule:BattleRule;

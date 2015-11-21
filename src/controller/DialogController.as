@@ -1,9 +1,15 @@
 package controller
 {
+	import flash.geom.Point;
+	
 	import feathers.controls.PanelScreen;
+	
+	import model.gameSpec.SkillItemSpec;
 	
 	import starling.display.DisplayObject;
 	import starling.display.Sprite;
+	
+	import view.panel.SkillInfoPanel;
 
 	public class DialogController
 	{
@@ -29,6 +35,20 @@ package controller
 			VoiceController.instance.playSound(VoiceController.NPC_TIPS);
 		}
 		
+		private var sPanel:SkillInfoPanel;
+		public function showSkillMPanel(spec:SkillItemSpec,pos:Point=null,exclusive:Boolean=false):void
+		{
+			if(exclusive){
+				destroy();
+			}
+			if(!sPanel){
+				sPanel = new SkillInfoPanel(spec,pos);
+			}else{
+				sPanel.reset(spec,pos);
+			}
+			layer.addChild(sPanel);
+			VoiceController.instance.playSound(VoiceController.NPC_TIPS);
+		}
 		
 		public function destroy():void
 		{

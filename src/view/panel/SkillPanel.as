@@ -11,6 +11,7 @@ package view.panel
 	import feathers.data.ListCollection;
 	import feathers.display.Scale9Image;
 	import feathers.events.FeathersEventType;
+	import feathers.layout.HorizontalLayout;
 	import feathers.layout.TiledRowsLayout;
 	import feathers.textures.Scale9Textures;
 	
@@ -21,10 +22,11 @@ package view.panel
 	import model.player.GameUser;
 	
 	import starling.display.Image;
+	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;
 	
-	import view.render.TreasureItemRender;
+	import view.render.SkillBigRender;
 	
 	public class SkillPanel extends PanelScreen
 	{
@@ -54,79 +56,62 @@ package view.panel
 			
 			var backSkin:Scale9Image = new Scale9Image(new Scale9Textures(Game.assets.getTexture("ListSkin"),new Rectangle(15,16,300,300)));
 			addChild(backSkin);
-			backSkin.width = panelwidth*0.8;
-			backSkin.height = panelheight*0.6;
-			backSkin.x = panelwidth*0.1;
-			backSkin.y = panelheight*0.2;
+			backSkin.width = panelwidth*0.9;
+			backSkin.height = panelheight;
+			backSkin.x = panelwidth*0.05;
+			backSkin.y = 0;
 			
 			var titleSkin:Scale9Image = new Scale9Image(Configrations.PanelTitleSkinTexture);
 			addChild(titleSkin);
-			titleSkin.width = panelwidth*0.8;
+			titleSkin.width = panelwidth*0.9;
 			titleSkin.height = panelheight*0.08;
-			titleSkin.x = panelwidth*0.1;
-			titleSkin.y = backSkin.y;
+			titleSkin.x = panelwidth*0.05;
+			titleSkin.y = 0;
 			
-			titleText = FieldController.createNoFontField(panelwidth,titleSkin.height,LanguageController.getInstance().getString("TreasureStore"),0xffffff,0,true);
+			titleText = FieldController.createNoFontField(panelwidth,titleSkin.height,LanguageController.getInstance().getString("skill"),0xffffff,0,true);
 			addChild(titleText);
 			titleText.y =  titleSkin.y;
 			
 			itemList = new List();
 			
-			const listLayout:TiledRowsLayout = new TiledRowsLayout();
+			const listLayout:HorizontalLayout = new HorizontalLayout();
 			listLayout.horizontalAlign = TiledRowsLayout.HORIZONTAL_ALIGN_CENTER;
 			listLayout.verticalAlign = TiledRowsLayout.VERTICAL_ALIGN_MIDDLE;
-			listLayout.verticalGap = panelheight *0.05;
-			listLayout.horizontalGap = panelwidth*0.01;
+			listLayout.gap= panelwidth *0.02;
 			
 			itemList.layout = listLayout;
-			itemList.dataProvider = listData;
-			itemList.itemRendererFactory =function tileListItemRendererFactory():TreasureItemRender
+			itemList.dataProvider = new ListCollection(["arrow","magic"]);
+			itemList.itemRendererFactory =function tileListItemRendererFactory():SkillBigRender
 			{
-				var renderer:TreasureItemRender = new TreasureItemRender();
-				renderer.defaultSkin = new Image(Game.assets.getTexture("SelectRenderSkin"));
-				renderer.width = panelwidth *0.2;
-				renderer.height = panelheight *0.25;
+				var renderer:SkillBigRender = new SkillBigRender();
+				renderer.defaultSkin = new Scale9Image(new Scale9Textures(Game.assets.getTexture("PanelRenderSkin"),new Rectangle(12,12,40,40)));
+				renderer.width = panelwidth *0.4;
+				renderer.height = panelheight *0.7;
 				return renderer;
 			}
-			itemList.width =  panelwidth*0.7;
-			itemList.height =  panelheight *0.4;
+			itemList.width =  panelwidth*0.84;
+			itemList.height =  panelheight *0.7;
 			itemList.scrollBarDisplayMode = List.SCROLL_BAR_DISPLAY_MODE_NONE;
-			itemList.horizontalScrollPolicy = List.SCROLL_POLICY_AUTO;
+			itemList.horizontalScrollPolicy = List.SCROLL_POLICY_OFF;
 			addChild(itemList);
-			itemList.x = panelwidth*0.15;
-			itemList.y = panelheight*0.3;
+			itemList.x = panelwidth*0.08;
+			itemList.y = panelheight*0.1;
 			itemList.selectedIndex = -1;
-			itemList.addEventListener(Event.CHANGE,onListChange);
 			
 			backBut = new Button();
 			backBut.defaultSkin = new Image(Game.assets.getTexture("CancelButtonIcon"));
 			backBut.width = backBut.height = panelheight*0.1;
 			addChild(backBut);
-			backBut.x = panelwidth*0.1 - panelheight*0.05;
-			backBut.y = panelheight*0.18;
+			backBut.x = panelwidth*0.05;
+			backBut.y = 0;
 			backBut.addEventListener(Event.TRIGGERED,onTriggerBack);
 			
 		}
-		private function get listData():ListCollection
-		{
-			var arr:Array = [];
-			for each(var object:TreasureItem in Configrations.treasures){
-				arr.push(object);
-			}
-			arr.sortOn("index",Array.NUMERIC);
-			return new ListCollection(arr);
-		}
+		
+		
 		private function onTriggerBack(e:Event):void
 		{
 			dispose();
-		}
-		private function onListChange(e:Event):void
-		{
-			var item:TreasureItem = itemList.selectedItem as TreasureItem;
-			if(item){
-				PlatForm.FormBuyItems(item.name);
-			}
-			itemList.selectedIndex = -1;
 		}
 		
 		private function get user():GameUser

@@ -61,13 +61,8 @@ package gameconfig
 			return int(Math.pow(grade,2)*10);
 		}
 		
-		private static const vipMaxLevel:int  = 9;
-		public static function expToVip(point:Number):int{
-			return Math.min(vipMaxLevel,  (Math.sqrt(point/10)));
-		}
-		public static function vipToExp(grade:int):int{
-			return int(Math.pow(grade,2)*10);
-		}
+		
+		public static const SKILL_MAX_LEVEL:int = 5;
 		
 		public static const INIT_USER:Object = {
 			"coin" : 1000,

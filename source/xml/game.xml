@@ -127,28 +127,29 @@
 	</Group>
 	
 	<Group id="Skill">
-		<Skill item_id="30000" name="attackBuff"   	type="all"			upCount="10,20,30,40,50,60,70,80,90"	recycle="600"	range="100"/>
-		<Skill item_id="30001" name="baoshe"   		type="sheshou"		upCount="10,20,30,40,50,60,70,80,90"	recycle="600"	range="200"/>
-		<Skill item_id="30002" name="xuanfengzhan" 	type="zhanshi"  	upCount="10,20,30,40,50,60,70,80,90"	recycle="300"	range="100"/>
-		<Skill item_id="30003" name="shujiguang"   	type="zhanshi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="900"	range="200"/>
-		<Skill item_id="30004" name="diyuhuo"  		type="zhanshi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="600"	range="20"/>
-		<Skill item_id="30005" name="fireball"  	type="fashi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="300"	range="400"/>
-		<Skill item_id="30006" name="liuxingyu"   	type="sheshou"		upCount="10,20,30,40,50,60,70,80,90"	recycle="900"	range="200"/>
-		<Skill item_id="30007" name="qiuyan"   		type="fashi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="300"	range="300"/>
-		<Skill item_id="30008" name="purpleball"   	type="all"			upCount="10,20,30,40,50,60,70,80,90"	recycle="600"	range="300"/>
-		<Skill item_id="30009" name="guangjian"   	type="zhanshi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="450"	range="400"		buffName="thunder"/>
-		<Skill item_id="30010" name="healthBuff"   	type="all"			upCount="10,20,30,40,50,60,70,80,90"	recycle="600"	range="100"/>
-		<Skill item_id="30011" name="huimielieyan"  type="fashi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="600"	range="200"/>
-		<Skill item_id="30012" name="huolian"   	type="all"			upCount="10,20,30,40,50,60,70,80,90"	recycle="450"	range="200"/>
-		<Skill item_id="30013" name="huoyanjian"   	type="sheshou"		upCount="10,20,30,40,50,60,70,80,90"	recycle="300"	range="400"		buffName="redBuff"/>
-		<Skill item_id="30014" name="zhiyu"   		type="all"			upCount="10,20,30,40,50,60,70,80,90"	recycle="600"	range="100"/>
-		<Skill item_id="30015" name="huoyu"   		type="fashi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="900"	range="400"/>
-		<Skill item_id="30016" name="longjuanfeng"  type="all" 			upCount="10,20,30,40,50,60,70,80,90"	recycle="750"	range="100"/>
-		<Skill item_id="30017" name="jiguangjian"  	type="sheshou" 		upCount="10,20,30,40,50,60,70,80,90"	recycle="450"	range="500"/>
-		<Skill item_id="30018" name="lanyan"   		type="all"			upCount="10,20,30,40,50,60,70,80,90"	recycle="750"	range="200"/>
-		<Skill item_id="30019" name="liehuozhan"   	type="zhanshi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="450"	range="100"/>
-		<Skill item_id="30020" name="zhangxinlei"   type="fashi"		upCount="10,20,30,40,50,60,70,80,90"	recycle="300"	range="400"/>
-		<Skill item_id="30021" name="lingjiaojian"  type="sheshou" 		upCount="10,20,30,40,50,60,70,80,90"	recycle="600"	range="500"/>
+		<Skill item_id="30000" name="attackBuff"   	type="arrow"			recycle="600"	range="100"/>
+		<Skill item_id="30001" name="baoshe"   		type="arrow"			recycle="600"	range="200"/>
+		<Skill item_id="30002" name="xuanfengzhan" 	type="arrow"  			recycle="300"	range="100"/>
+		<Skill item_id="30003" name="shujiguang"   	type="arrow"			recycle="900"	range="200"/>
+		<Skill item_id="30004" name="diyuhuo"  		type="arrow"			recycle="600"	range="20"/>
+		<Skill item_id="30005" name="fireball"  	type="arrow"			recycle="300"	range="400"/>
+		<Skill item_id="30006" name="liuxingyu"   	type="arrow"			recycle="900"	range="200"/>
+		<Skill item_id="30007" name="qiuyan"   		type="arrow"			recycle="300"	range="300"/>
+		<Skill item_id="30008" name="purpleball"   	type="arrow"			recycle="600"	range="300"/>
+		<!-- <Skill item_id="30009" name="guangjian"   	type="arrow"			recycle="450"	range="400"		buffName="thunder"/>
+		<Skill item_id="30010" name="healthBuff"   	type="arrow"			recycle="600"	range="100"/> -->
+		
+		<Skill item_id="30011" name="huimielieyan"  type="magic"			recycle="600"	range="200"/>
+		<Skill item_id="30012" name="huolian"   	type="magic"			recycle="450"	range="200"/>
+		<Skill item_id="30013" name="huoyanjian"   	type="magic"			recycle="300"	range="400"		buffName="redBuff"/>
+		<Skill item_id="30014" name="zhiyu"   		type="magic"			recycle="600"	range="100"/>
+		<Skill item_id="30015" name="huoyu"   		type="magic"			recycle="900"	range="400"/>
+		<Skill item_id="30016" name="longjuanfeng"  type="magic" 			recycle="750"	range="100"/>
+		<Skill item_id="30017" name="jiguangjian"  	type="magic" 			recycle="450"	range="500"/>
+		<Skill item_id="30018" name="lanyan"   		type="magic"			recycle="750"	range="200"/>
+		<Skill item_id="30019" name="liehuozhan"   	type="magic"			recycle="450"	range="100"/>
+		<!-- <Skill item_id="30020" name="zhangxinlei"   type="magic"			recycle="300"	range="400"/>
+		<Skill item_id="30021" name="lingjiaojian"  type="magic" 			recycle="600"	range="500"/> -->
 	</Group>
 	
 	<Group id="Map">

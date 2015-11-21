@@ -52,5 +52,39 @@ package model.item
 		public var moneyLevel:int = 0;
 		public var moneyBase:int = 100;
 		public var moneyUp:int = 5;
+		
+		//skill
+		private var skillItems:Array = [];
+		public function set items(obj:Object):void
+		{
+			skillItems = [];
+			for each(var ob:Object in obj){
+				skillItems.push(new OwnedItem(ob["id"],ob["count"]));
+			}
+		}
+		public function getItem(id:String):OwnedItem
+		{
+			var ownedItem:OwnedItem;
+			for each(ownedItem in skillItems){
+				if(ownedItem.item_id == id){
+					return ownedItem;
+				}
+			}
+			return new OwnedItem(id,0);
+		}
+		public function addItem(itemid:String,count:int):Boolean
+		{
+			var ownedItem :OwnedItem;
+			for each(ownedItem in skillItems){
+				if(ownedItem.item_id == itemid){
+					ownedItem.count += count;
+					return true;
+				}
+			}
+			skillItems.push(new OwnedItem(itemid,count));
+			return false;
+		}
+		
+		
 	}
 }

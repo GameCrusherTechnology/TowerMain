@@ -1,27 +1,25 @@
 package view.render
 {
-	import flash.geom.Rectangle;
-	
 	import controller.DialogController;
+	import controller.FieldController;
 	import controller.GameController;
 	import controller.SpecController;
 	
 	import feathers.controls.List;
 	import feathers.controls.renderers.DefaultListItemRenderer;
 	import feathers.data.ListCollection;
-	import feathers.display.Scale9Image;
 	import feathers.layout.TiledRowsLayout;
-	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
+	import gameconfig.LanguageController;
 	
 	import model.gameSpec.SkillItemSpec;
-	import model.item.TreasureItem;
 	import model.player.GameUser;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.text.TextField;
 
 	public class SkillBigRender extends DefaultListItemRenderer
 	{
@@ -57,14 +55,23 @@ package view.render
 			addChild(container);
 			
 			
+			var nameText:TextField = FieldController.createNoFontField(renderwidth,renderheight*0.1,LanguageController.getInstance().getString(type),0x000000,0,true);
+			container.addChild(nameText);
+
+			
+			var pointText:TextField = FieldController.createNoFontField(renderwidth,renderheight*0.06,LanguageController.getInstance().getString("userSkill")+":" + user.heroData.getSkillTypePoint(type),0x000000,0,true);
+			container.addChild(pointText);
+			pointText.y = renderheight*0.1;
+			
 			itemList = new List();
+			
 			
 			const listLayout:TiledRowsLayout = new TiledRowsLayout();
 			listLayout.horizontalAlign = TiledRowsLayout.HORIZONTAL_ALIGN_CENTER;
 			listLayout.verticalAlign = TiledRowsLayout.VERTICAL_ALIGN_TOP;
 			listLayout.horizontalGap = renderwidth * 0.025;
 			listLayout.verticalGap = renderheight * 0.025;
-			listLayout.paddingTop = renderheight * 0.2;
+			listLayout.paddingTop = renderheight * 0.16;
 			listLayout.useSquareTiles = false;
 			
 			itemList.layout = listLayout;

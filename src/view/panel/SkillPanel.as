@@ -19,6 +19,7 @@ package view.panel
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
 	
+	import model.item.HeroChangeEvent;
 	import model.item.HeroData;
 	import model.player.GameUser;
 	
@@ -83,7 +84,7 @@ package view.panel
 			backBut.y = 0;
 			backBut.addEventListener(Event.TRIGGERED,onTriggerBack);
 			
-			user.addEventListener(HeroData.HEROSKILLCHANGE,onSkillChange);
+			user.heroData.addEventListener(HeroChangeEvent.HEROSKILLCHANGE,onSkillChange);
 			
 		}
 		private function configList():void
@@ -119,7 +120,7 @@ package view.panel
 			itemList.selectedIndex = -1;
 		}
 		
-		private function onSkillChange(e:Event):void
+		private function onSkillChange(e:HeroChangeEvent):void
 		{
 			titleText.text = LanguageController.getInstance().getString("skill") + " ×"+user.heroData.skillPoints;
 			configList();
@@ -136,7 +137,7 @@ package view.panel
 		}
 		override public function dispose():void
 		{
-			user.removeEventListener(HeroData.HEROSKILLCHANGE,onSkillChange);
+			user.heroData.removeEventListener(HeroChangeEvent.HEROSKILLCHANGE,onSkillChange);
 			removeFromParent();
 			DialogController.instance.hideSkillMPanel();
 			super.dispose();

@@ -7,8 +7,6 @@ package model.item
 
 	public class HeroData extends EventDispatcher
 	{
-		public static const HEROSKILLCHANGE:String = "hero_skill_change";
-		
 		public function HeroData(data:Object)
 		{
 			for(var str:String in data){
@@ -26,7 +24,7 @@ package model.item
 		private var exp:int;
 		private var level:int;
 		
-		private var _skillPoints:int;
+		private var _skillPoints:int = 100;
 		public function get skillPoints():int
 		{
 			return _skillPoints;
@@ -110,14 +108,31 @@ package model.item
 			for each(ownedItem in skillItems){
 				if(ownedItem.item_id == itemid){
 					ownedItem.count += count;
+					userSkill();
 					return true;
 				}
 			}
 			skillItems.push(new OwnedItem(itemid,count));
-			dispatchEvent(new Event(HEROSKILLCHANGE));
+			userSkill();
 			return false;
 		}
-		
+		private function userSkill():void
+		{
+			skillPoints --;
+			dispatchEvent(new HeroChangeEvent(HeroChangeEvent.HEROSKILLCHANGE));
+		}
+		public function getSkillTypePoint(typr:String):int
+		{
+			var p:int;
+			var ownedItem :OwnedItem;
+			for each(ownedItem in skillItems){
+				if(ownedItem.itemSpec&&  ownedItem.itemSpec.type == typr){
+					 p += ownedItem.count;
+				}
+			}
+			return p;
+		}
+			
 		
 	}
 }

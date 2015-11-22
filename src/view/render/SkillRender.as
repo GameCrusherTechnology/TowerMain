@@ -7,7 +7,6 @@ package view.render
 	import gameconfig.Configrations;
 	
 	import model.gameSpec.SkillItemSpec;
-	import model.item.TreasureItem;
 	import model.player.GameUser;
 	
 	import starling.display.Image;

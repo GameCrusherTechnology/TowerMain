@@ -49,6 +49,12 @@ package controller
 			layer.addChild(sPanel);
 			VoiceController.instance.playSound(VoiceController.NPC_TIPS);
 		}
+		public function hideSkillMPanel():void
+		{
+			if(sPanel){
+				sPanel.removeFromParent();
+			}
+		}
 		
 		public function destroy():void
 		{

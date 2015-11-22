@@ -2,6 +2,7 @@ package view.panel
 {
 	import flash.geom.Rectangle;
 	
+	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
 	
@@ -18,11 +19,10 @@ package view.panel
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
 	
-	import model.item.TreasureItem;
+	import model.item.HeroData;
 	import model.player.GameUser;
 	
 	import starling.display.Image;
-	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;
 	
@@ -40,6 +40,7 @@ package view.panel
 		{
 			addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
 		}
+		
 		protected function initializeHandler(event:Event):void
 		{
 			removeEventListener(FeathersEventType.INITIALIZE, initializeHandler);
@@ -72,6 +73,25 @@ package view.panel
 			addChild(titleText);
 			titleText.y =  titleSkin.y;
 			
+			configList();
+			
+			backBut = new Button();
+			backBut.defaultSkin = new Image(Game.assets.getTexture("CancelButtonIcon"));
+			backBut.width = backBut.height = panelheight*0.1;
+			addChild(backBut);
+			backBut.x = panelwidth*0.05;
+			backBut.y = 0;
+			backBut.addEventListener(Event.TRIGGERED,onTriggerBack);
+			
+			user.addEventListener(HeroData.HEROSKILLCHANGE,onSkillChange);
+			
+		}
+		private function configList():void
+		{
+			if(itemList){
+				itemList.removeFromParent(true);
+				itemList = null;
+			}
 			itemList = new List();
 			
 			const listLayout:HorizontalLayout = new HorizontalLayout();
@@ -97,17 +117,13 @@ package view.panel
 			itemList.x = panelwidth*0.08;
 			itemList.y = panelheight*0.1;
 			itemList.selectedIndex = -1;
-			
-			backBut = new Button();
-			backBut.defaultSkin = new Image(Game.assets.getTexture("CancelButtonIcon"));
-			backBut.width = backBut.height = panelheight*0.1;
-			addChild(backBut);
-			backBut.x = panelwidth*0.05;
-			backBut.y = 0;
-			backBut.addEventListener(Event.TRIGGERED,onTriggerBack);
-			
 		}
 		
+		private function onSkillChange(e:Event):void
+		{
+			titleText.text = LanguageController.getInstance().getString("skill") + " ×"+user.heroData.skillPoints;
+			configList();
+		}
 		
 		private function onTriggerBack(e:Event):void
 		{
@@ -120,7 +136,9 @@ package view.panel
 		}
 		override public function dispose():void
 		{
+			user.removeEventListener(HeroData.HEROSKILLCHANGE,onSkillChange);
 			removeFromParent();
+			DialogController.instance.hideSkillMPanel();
 			super.dispose();
 		}
 	}

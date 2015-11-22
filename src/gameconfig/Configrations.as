@@ -47,11 +47,7 @@ package gameconfig
 		public static const  Battle_Normal:String = "normal";
 		public static const  Battle_Hard:String = "hard";
 		
-		//public AD
-		public static var AD_BANNER:Boolean = false;
 		
-		//power
-		public static const POWER_CYCLE:int = 300;
 		//等级 经验值 换算
 		
 		public static function expToGrade(exp:Number):int{
@@ -63,6 +59,7 @@ package gameconfig
 		
 		
 		public static const SKILL_MAX_LEVEL:int = 5;
+		
 		
 		public static const INIT_USER:Object = {
 			"coin" : 1000,

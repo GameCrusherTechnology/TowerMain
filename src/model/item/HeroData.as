@@ -1,7 +1,14 @@
 package model.item
 {
-	public class HeroData extends Object
+	import gameconfig.Configrations;
+	
+	import starling.events.Event;
+	import starling.events.EventDispatcher;
+
+	public class HeroData extends EventDispatcher
 	{
+		public static const HEROSKILLCHANGE:String = "hero_skill_change";
+		
 		public function HeroData(data:Object)
 		{
 			for(var str:String in data){
@@ -15,6 +22,31 @@ package model.item
 		
 		public var id:String;
 		public var name:String = "sheshou";
+		
+		private var exp:int;
+		private var level:int;
+		
+		private var _skillPoints:int;
+		public function get skillPoints():int
+		{
+			return _skillPoints;
+		}
+		public function set skillPoints(i:int):void
+		{
+			_skillPoints = i;
+		}
+		
+			
+		public function addExp(e:int):void
+		{
+			var oL:int = level;
+			exp += e;
+			level = Configrations.expToGrade(exp);
+			if(level> oL){
+				//upGrade
+				skillPoints++;
+			}
+		}
 		
 		public function get skills():Array
 		{
@@ -55,14 +87,14 @@ package model.item
 		
 		//skill
 		private var skillItems:Array = [];
-		public function set items(obj:Object):void
+		public function set sitems(obj:Object):void
 		{
 			skillItems = [];
 			for each(var ob:Object in obj){
 				skillItems.push(new OwnedItem(ob["id"],ob["count"]));
 			}
 		}
-		public function getItem(id:String):OwnedItem
+		public function getSkillItem(id:String):OwnedItem
 		{
 			var ownedItem:OwnedItem;
 			for each(ownedItem in skillItems){
@@ -72,7 +104,7 @@ package model.item
 			}
 			return new OwnedItem(id,0);
 		}
-		public function addItem(itemid:String,count:int):Boolean
+		public function addSkillItem(itemid:String,count:int):Boolean
 		{
 			var ownedItem :OwnedItem;
 			for each(ownedItem in skillItems){
@@ -82,6 +114,7 @@ package model.item
 				}
 			}
 			skillItems.push(new OwnedItem(itemid,count));
+			dispatchEvent(new Event(HEROSKILLCHANGE));
 			return false;
 		}
 		

@@ -13,12 +13,12 @@ package view.compenent
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
 	
-	import view.panel.HeroInfoPanel;
-
-	public class HeroButton extends Sprite
+	import view.panel.HeroPropertyPanel;
+	
+	public class HeroPropertyButton extends Sprite
 	{
 		private var side:Number = 100;
-		public function HeroButton(_side:Number)
+		public function HeroPropertyButton(_side:Number)
 		{
 			side = _side;
 			
@@ -27,12 +27,12 @@ package view.compenent
 			skin.width = skin.height = side;
 			container.addChild(skin);
 			
-			var icon:Image = new Image(Game.assets.getTexture("sheshouHeadIcon"));
+			var icon:Image = new Image(Game.assets.getTexture("PKHeroIcon"));
 			icon.width = icon.height = side*0.8;
 			container.addChild(icon);
 			icon.x = side*0.1;
 			
-			var label:TextField = FieldController.createNoFontField(300,side/4,LanguageController.getInstance().getString("hero"),0x000000,0,true);
+			var label:TextField = FieldController.createNoFontField(300,side/4,LanguageController.getInstance().getString("property"),0x000000,0,true);
 			label.autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
 			container.addChild(label);
 			label.x = side/2 - label.width/2;
@@ -48,9 +48,10 @@ package view.compenent
 		
 		private function onTriggerConfirm(e:Event):void
 		{
-			DialogController.instance.showPanel(new HeroInfoPanel());
-			
+			trace("trigger hero")
+			DialogController.instance.showPanel(new HeroPropertyPanel());
 		}
-			
+		
 	}
 }
+

@@ -136,7 +136,7 @@ package model.battle
 			var skillId:String;
 			var skillSpec:SkillItemSpec;
 			
-			textureArr.push(data.name);
+//			textureArr.push(data.name);
 			
 			for each(id in data.skills){
 				skillSpec = SpecController.instance.getItemSpec(id) as SkillItemSpec;

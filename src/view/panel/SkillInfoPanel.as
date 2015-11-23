@@ -77,6 +77,8 @@ package view.panel
 			blackSkin.width = panelwidth*0.9;
 			blackSkin.height = panelheight*0.3;
 			
+			var typeCount:int = player.heroData.getSkillTypePoint(itemspec.type);
+			
 			var icon:Image = new Image(itemspec.iconTexture);
 			icon.width = icon.height = panelheight*0.1;
 			container.addChild(icon);
@@ -119,38 +121,40 @@ package view.panel
 			mesText.x = nameText.x ;
 			mesText.y = typeText.y+typeText.height;
 			
-			if(curlevel < Configrations.SKILL_MAX_LEVEL){
-				var nextText:TextField = FieldController.createNoFontField(panelwidth,panelheight*0.05,LanguageController.getInstance().getString("nextLevel"),0xffffff,0,true);
-				nextText.autoSize = TextFieldAutoSize.HORIZONTAL;
-				container.addChild(nextText);
-				nextText.x = nameText.x ;
-				nextText.y = mesText.y+mesText.height;
+			if(typeCount >= itemspec.typeNeed){
 				
-				var nextmesText:TextField = FieldController.createNoFontField(panelwidth,panelheight*0.05,LanguageController.getInstance().getString(itemspec.name+"Mes"+(curlevel+1)),0xffffff,0,true);
-				nextmesText.autoSize = TextFieldAutoSize.HORIZONTAL;
-				container.addChild(nextmesText);
-				nextmesText.x = nameText.x ;
-				nextmesText.y = nextText.y+nextText.height;
-				
-				addBut = new Button;
-				
-				var butImg :Image = new Image(Game.assets.getTexture("AddIcon"));
-				butImg.width = butImg.height = panelheight *0.08;
-				addBut.defaultIcon = butImg;
-				addBut.defaultSkin = new Image(Game.assets.getTexture("PanelBackSkin"));
-				addBut.padding = panelheight *0.01;
-				container.addChild(addBut);
-				addBut.x = panelwidth*0.7;
-				addBut.y = icon.y;
-				if(leftPoint>0){
-					addBut.addEventListener(Event.TRIGGERED,onAdded);
-				}else{
-					addBut.touchable = false;
-					addBut.filter = Configrations.grayscaleFilter;
-					addBut.isEnabled = false;
+				if(curlevel < Configrations.SKILL_MAX_LEVEL){
+					var nextText:TextField = FieldController.createNoFontField(panelwidth,panelheight*0.05,LanguageController.getInstance().getString("nextLevel"),0xffffff,0,true);
+					nextText.autoSize = TextFieldAutoSize.HORIZONTAL;
+					container.addChild(nextText);
+					nextText.x = nameText.x ;
+					nextText.y = mesText.y+mesText.height;
+					
+					var nextmesText:TextField = FieldController.createNoFontField(panelwidth,panelheight*0.05,LanguageController.getInstance().getString(itemspec.name+"Mes"+(curlevel+1)),0xffffff,0,true);
+					nextmesText.autoSize = TextFieldAutoSize.HORIZONTAL;
+					container.addChild(nextmesText);
+					nextmesText.x = nameText.x ;
+					nextmesText.y = nextText.y+nextText.height;
+					
+					addBut = new Button;
+					
+					var butImg :Image = new Image(Game.assets.getTexture("AddIcon"));
+					butImg.width = butImg.height = panelheight *0.08;
+					addBut.defaultIcon = butImg;
+					addBut.defaultSkin = new Image(Game.assets.getTexture("PanelBackSkin"));
+					addBut.padding = panelheight *0.01;
+					container.addChild(addBut);
+					addBut.x = panelwidth*0.7;
+					addBut.y = icon.y;
+					if(leftPoint>0){
+						addBut.addEventListener(Event.TRIGGERED,onAdded);
+					}else{
+						addBut.touchable = false;
+						addBut.filter = Configrations.grayscaleFilter;
+						addBut.isEnabled = false;
+					}
 				}
 			}
-			
 			if(!posi){
 				posi = new Point(panelwidth*0.05,panelheight * 0.7);
 			}

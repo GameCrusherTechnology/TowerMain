@@ -79,8 +79,6 @@ package view.render
 			itemList.itemRendererFactory =function tileListItemRendererFactory():SkillRender
 			{
 				var renderer:SkillRender = new SkillRender();
-				renderer.defaultSkin = new Image(Game.assets.getTexture("BPanelSkin"));
-				renderer.defaultSelectedSkin = new Image(Game.assets.getTexture("DPanelSkin"));
 				renderer.height = renderer.width = renderwidth *0.25;
 				return renderer;
 			}

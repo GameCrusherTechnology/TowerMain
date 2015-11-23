@@ -23,6 +23,7 @@ package view.screen
 	import starling.textures.Texture;
 	
 	import view.compenent.HeroButton;
+	import view.compenent.HeroPropertyButton;
 	import view.compenent.SkillButton;
 	import view.panel.MapPanel;
 
@@ -186,6 +187,7 @@ package view.screen
 		}
 		
 		private var heroButton:HeroButton;
+		private var heroProButton:HeroPropertyButton;
 		private var skillButton:SkillButton;
 		private function configUI():void
 		{
@@ -194,9 +196,14 @@ package view.screen
 			heroButton.x = Configrations.ViewPortWidth *0.1;
 			heroButton.y = Configrations.ViewPortHeight*0.99 - Configrations.ViewPortWidth *0.1;
 			
+			heroProButton = new HeroPropertyButton(Configrations.ViewPortWidth *0.1);
+			uiLayer.addChild(heroProButton);
+			heroProButton.x = Configrations.ViewPortWidth *0.3;
+			heroProButton.y = Configrations.ViewPortHeight*0.99 - Configrations.ViewPortWidth *0.1;
+			
 			skillButton = new SkillButton(Configrations.ViewPortWidth *0.1);
 			uiLayer.addChild(skillButton);
-			skillButton.x = Configrations.ViewPortWidth *0.3;
+			skillButton.x = Configrations.ViewPortWidth *0.5;
 			skillButton.y = Configrations.ViewPortHeight*0.99 - Configrations.ViewPortWidth *0.1;
 		}
 		

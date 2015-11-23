@@ -21,8 +21,8 @@ package model.item
 		public var id:String;
 		public var name:String = "sheshou";
 		
-		private var exp:int;
-		private var level:int;
+		public var exp:int;
+		public var level:int;
 		
 		private var _skillPoints:int = 100;
 		public function get skillPoints():int
@@ -55,6 +55,10 @@ package model.item
 		public var healthLevel:int = 0;
 		public var healthBase:int = 200;
 		public var healthUp:int = 20;
+		public function get curHealth():int
+		{
+			return healthBase + healthUp*healthLevel;
+		}
 		
 		
 		public var powerLevel:int = 0;

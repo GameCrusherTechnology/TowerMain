@@ -16,7 +16,6 @@ package view.render
 	import model.gameSpec.SkillItemSpec;
 	import model.player.GameUser;
 	
-	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;

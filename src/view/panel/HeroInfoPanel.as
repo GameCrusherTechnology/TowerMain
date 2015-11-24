@@ -2,18 +2,13 @@ package view.panel
 {
 	import flash.geom.Rectangle;
 	
-	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
 	
 	import feathers.controls.Button;
-	import feathers.controls.List;
 	import feathers.controls.PanelScreen;
-	import feathers.data.ListCollection;
 	import feathers.display.Scale9Image;
 	import feathers.events.FeathersEventType;
-	import feathers.layout.TiledRowsLayout;
-	import feathers.text.BitmapFontTextFormat;
 	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
@@ -22,16 +17,13 @@ package view.panel
 	import model.item.HeroData;
 	import model.player.GameUser;
 	
-	import starling.core.Starling;
 	import starling.display.Image;
-	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
 	
 	import view.compenent.GreenProgressBar;
-	import view.render.PropertyRender;
 	
 	public class HeroInfoPanel extends PanelScreen
 	{
@@ -137,6 +129,24 @@ package view.panel
 			var attackPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
 			container.addChild(attackPart);
 			attackPart.x = panelwidth * 0.3;
+			
+			var attackSpeedPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
+			container.addChild(attackSpeedPart);
+			attackSpeedPart.y = panelheight *0.06;
+			
+			var attackRangePart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
+			container.addChild(attackRangePart);
+			attackRangePart.x = panelwidth * 0.3;
+			attackRangePart.y = panelheight *0.06;
+			
+			var critPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
+			container.addChild(critPart);
+			critPart.y = panelheight *0.12;
+			
+			var critHurtPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
+			container.addChild(critHurtPart);
+			critHurtPart.x = panelwidth * 0.3;
+			critHurtPart.y = panelheight *0.12;
 			
 		}
 		

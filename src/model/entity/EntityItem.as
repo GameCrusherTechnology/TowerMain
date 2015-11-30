@@ -62,7 +62,9 @@ package model.entity
 			return entitySpec.attackCycle;
 		}
 		
-		public var armClass:Class = Sword;
+		public function get armClass():Class {
+			return  Sword;
+		}
 		
 		private var _runRect:Rectangle;
 		public function getRect():Rectangle

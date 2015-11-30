@@ -12,16 +12,14 @@ package view.bullet
 		private var arrowSpeed:int;
 		private var range:int =600;
 		private var showFrame:int = 20;
-		private var rotate:Number;
 		private var sx:Number;
 		private var sy:Number;
-		public function HeroArrow(_fromPoint:Point,_hurtV:int,_rotate:Number = 0)
+		public function HeroArrow(_fromPoint:Point,_hurt:int,_rotate:Number = 0)
 		{
-			rotate = _rotate;
-			super(_fromPoint,_hurtV,1,true);
+			super(_fromPoint,_hurt,1,_rotate,true);
 			
 			armSurface = new Image(Game.assets.getTexture("SimpleArrow"));
-			armSurface.scaleX = rule.cScale*0.5;
+			armSurface.scaleX = rule.cScale*0.3;
 			armSurface.scaleY = rule.cScale;
 			
 			armSurface.rotation = _rotate;
@@ -50,7 +48,7 @@ package view.bullet
 			else if(showFrame<0){
 				move();
 				if(range > 0 ){
-					var vec:Vector.<MonsterEntity> = rule.monsterVec;
+					var vec:Array = rule.monsterVec;
 					var entity:MonsterEntity;
 					for each(entity in vec){
 						if(!entity.isDead && entity.beInRound(x,y)){

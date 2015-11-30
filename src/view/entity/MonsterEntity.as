@@ -85,8 +85,14 @@ package view.entity
 //				if(!curSkill){
 //					checkSkill();
 //				}
-			rule.addArm(new item.armClass(new Point(x,y - item.entitySpec.recty/2*Configrations.ViewScale),item.hurtPoint,1,isLeft));
+			rule.addArm(new item.armClass(attackPoint,item.hurtPoint,1,armDirection,isLeft));
 //			}
+		}
+		
+		private function get armDirection():Number
+		{
+			var tarPos:Point = rule.heroEntity.centerPoint;
+			return Math.atan2((tarPos.y - attackPoint.y),(tarPos.x-attackPoint.x));
 		}
 		override public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void
 		{
@@ -130,6 +136,12 @@ package view.entity
 		{
 			return item as MonsterItem;
 		}
+		
+		override public function get attackPoint():Point
+		{
+			return new Point(x-item.entitySpec.attackx*rule.cScale*0.8,y - item.entitySpec.recty/2*rule.cScale*0.8);
+		}
+		
 		
 		override protected function beDead():void
 		{

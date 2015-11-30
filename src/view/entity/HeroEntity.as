@@ -2,14 +2,14 @@ package view.entity
 {
 	import flash.geom.Point;
 	
-	import controller.GameController;
-	
-	import gameconfig.Configrations;
 	import gameconfig.EntityState;
 	
 	import model.entity.HeroItem;
 	
+	import starling.display.Image;
+	
 	import view.bullet.HeroArrow;
+	import view.bullet.arrow;
 
 	public class HeroEntity extends GameEntity
 	{
@@ -23,6 +23,8 @@ package view.entity
 		{
 			showState(GameEntity.ATTACK);
 			showSound();
+			
+			
 		}
 		
 		public var armDirection:Number = 0;
@@ -49,14 +51,15 @@ package view.entity
 			rule.addArm(new HeroArrow(attackPoint,item.hurtPoint,armDirection));
 		}
 		
-		private var _attackP:Point;
-		public function get attackPoint():Point
+		override public function get attackPoint():Point
 		{
-			if(!_attackP){
-				_attackP = new Point(x,y - item.entitySpec.recty/2*Configrations.ViewScale);
-			}
-			return _attackP;
+			return new Point(x+item.entitySpec.attackx*rule.cScale*0.7,y - item.entitySpec.recty/2*rule.cScale*0.7);
 		}
+		override public function get centerPoint():Point
+		{
+			return new Point(x ,y - item.entitySpec.recty/2*rule.cScale*0.7);
+		}
+		
 		override protected function beDead():void
 		{
 			super.beDead();

@@ -112,13 +112,15 @@ package view.panel
 			expLevel.y = expIcon.y;
 			
 			configPropertyPart();
+			
+			
 		}
 		
 		private function configPropertyPart():void
 		{
 			var container:Sprite = new Sprite;
 			addChild(container);
-			container.x = panelwidth * 0.2;
+			container.x = panelwidth * 0.25;
 			container.y = panelheight*0.35;
 			
 			var b:Number = 0;
@@ -126,27 +128,38 @@ package view.panel
 			var healPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
 			container.addChild(healPart);
 			
-			var attackPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
+			var attackPart:Sprite = creatPropertyP("powerIcon","power","" + player.heroData.curAttackPower);
 			container.addChild(attackPart);
 			attackPart.x = panelwidth * 0.3;
 			
-			var attackSpeedPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
+			var attackSpeedPart:Sprite = creatPropertyP("agilityIcon","agility","" + player.heroData.curAttackSpeed+"%");
 			container.addChild(attackSpeedPart);
 			attackSpeedPart.y = panelheight *0.06;
 			
-			var attackRangePart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
+			var attackRangePart:Sprite = creatPropertyP("agilityIcon","agility","" + player.heroData.curRange+"%");
 			container.addChild(attackRangePart);
 			attackRangePart.x = panelwidth * 0.3;
 			attackRangePart.y = panelheight *0.06;
 			
-			var critPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
+			var critPart:Sprite = creatPropertyP("critIcon","crit","" + player.heroData.curCritRate+"%");
 			container.addChild(critPart);
 			critPart.y = panelheight *0.12;
 			
-			var critHurtPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
+			var critHurtPart:Sprite = creatPropertyP("critIcon","crit","" + player.heroData.curCritHurt+"%");
 			container.addChild(critHurtPart);
 			critHurtPart.x = panelwidth * 0.3;
 			critHurtPart.y = panelheight *0.12;
+			
+			var defencePart:Sprite = creatPropertyP("defenseIcon","defense","" + player.heroData.curHealth);
+			container.addChild(defencePart);
+			defencePart.y = panelheight *0.18;
+			
+			var wisdomPart:Sprite = creatPropertyP("wisdomIcon","wisdom","" + player.heroData.curWisdomCD +"%");
+			container.addChild(wisdomPart);
+			wisdomPart.x = panelwidth * 0.3;
+			wisdomPart.y = panelheight *0.18;
+			
+			
 			
 		}
 		
@@ -158,12 +171,12 @@ package view.panel
 			icon.width = icon.height = panelheight*0.05;
 			container.addChild(icon);
 			
-			var nameText:TextField = FieldController.createNoFontField(panelwidth,panelheight*0.05,LanguageController.getInstance().getString(nameStr),0x000000);
+			var nameText:TextField = FieldController.createNoFontField(panelwidth,panelheight*0.05,LanguageController.getInstance().getString(nameStr)+":",0x000000);
 			nameText.autoSize = TextFieldAutoSize.HORIZONTAL;
 			container.addChild(nameText);
 			nameText.x = icon.width;
 			
-			var properText:TextField = FieldController.createNoFontField(panelwidth,panelheight*0.05," "+proper,0x000000);
+			var properText:TextField = FieldController.createNoFontField(panelwidth,panelheight*0.05," "+proper,0xBCEE68,panelheight*0.04,true);
 			properText.autoSize = TextFieldAutoSize.HORIZONTAL;
 			container.addChild(properText);
 			properText.x = icon.width + nameText.width;

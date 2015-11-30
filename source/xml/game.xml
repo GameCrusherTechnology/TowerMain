@@ -8,7 +8,7 @@
 	
 	<!-- 精英  120000 +100000  3600maxtime-->
 	<Group id="Battle">
-		<Battle item_id="20100" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50000:1:0.1|50000:1:0.2|50000:1:0.3|50000:1:0.4|50000:1:0.5;50000:1:1|50000:1:0.9|50000:1:0.8|50000:1:0.7|50000:1:0.6;50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5|50000:1:0.5"	/>
+		<Battle item_id="20100" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50012:1:1|50001:1:0"	/>
 		<Battle item_id="20101" name="DragonWhelp" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50001:1"								supTime = "5000"		supLevel = "3"		/>
 		<Battle item_id="20102" name="Minotaur" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50002:1"								supTime = "5000"		supLevel = "3"		/>
 		<Battle item_id="20103" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50000:1|50001:1"						supTime = "5000"		supLevel = "5"		/>
@@ -163,7 +163,7 @@
 	<Group id="Soldier">
 
 		<Soldier item_id="50000" name="Spider"   		sound="spider"			recycle="60" 	range="37" 		speed="1"	baseLife="30" 	lifeUp="2"	baseAttack="2"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30007"						runx="36"		runy="39"		attackx="37"	attacky="40"	standx="22"		standy="36"		rectw="73"		recty="52"	/>
-		<Soldier item_id="50001" name="DragonWhelp"   	sound="dragon"			recycle="60" 	range="60" 		speed="2"	baseLife="40" 	lifeUp="3"	baseAttack="4"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30005"						runx="60"		runy="86"		attackx="71"	attacky="92"	standx="60"		standy="64"		rectw="120"		recty="80"	/>
+		<Soldier item_id="50001" name="DragonWhelp"   	sound="dragon"			recycle="60" 	range="300" 		speed="2"	baseLife="40" 	lifeUp="3"	baseAttack="4"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30005"						runx="60"		runy="86"		attackx="71"	attacky="92"	standx="60"		standy="64"		rectw="120"		recty="80"	armCls="fireBullet"/>
 		<Soldier item_id="50002" name="Minotaur"   		sound="Bull"			recycle="90" 	range="93" 		speed="1.4"	baseLife="60" 	lifeUp="5"	baseAttack="5"	attackUp="2"	attackCycle="35"	upCount="10,20,40,80,160"	curSkill="3:30010"						runx="64"		runy="128"		attackx="133"	attacky="161"	standx="30"		standy="119"	rectw="157"		recty="146"	/>
 		<Soldier item_id="50003" name="PoisonousInsect" sound="Insect"			recycle="60" 	range="66" 		speed="1"	baseLife="40" 	lifeUp="3"	baseAttack="4"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30013"						runx="48"		runy="47"		attackx="58"	attacky="51"	standx="46"		standy="31"		rectw="114"		recty="50"	/>
 		<Soldier item_id="50004" name="Hound"   		sound="Hound"			recycle="90" 	range="100" 	speed="1.6"	baseLife="50" 	lifeUp="3"	baseAttack="5"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30002"						runx="89"		runy="142"		attackx="106"	attacky="177"	standx="93"		standy="127"	rectw="206"		recty="164"	/>

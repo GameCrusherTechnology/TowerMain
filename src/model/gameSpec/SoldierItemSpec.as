@@ -53,5 +53,7 @@ package model.gameSpec
 		{
 			return Game.assets.getTexture("standIcon/" + name+"_stand");
 		}
+		
+		public var armCls:String = "Sword";
 	}
 }

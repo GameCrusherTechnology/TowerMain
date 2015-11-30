@@ -1,7 +1,9 @@
 package model.battle
 {
 	import flash.filesystem.File;
+	import flash.geom.Point;
 	import flash.utils.Dictionary;
+	import flash.utils.getDefinitionByName;
 	
 	import controller.GameController;
 	import controller.SpecController;
@@ -37,8 +39,8 @@ package model.battle
 		{
 			battleSpec = battle;
 			curMode = mode;
-			monsterVec = new Vector.<MonsterEntity>;
-			armsArr = new Vector.<ArmObject>;
+			monsterVec = [];
+			armsArr = [];
 			curScene = new BattleScene(this);
 			GameController.instance.showBattle(curScene);
 			prepareBattle();
@@ -255,10 +257,22 @@ package model.battle
 		}
 		
 		public var heroEntity:HeroEntity;
-		public var monsterVec:Vector.<MonsterEntity>;
+		public var monsterVec:Array=[];
 		
 		//arm
-		private var armsArr:Vector.<ArmObject>;
+		public var skillItemSpec:SkillItemSpec; 
+		public function useSkill(touchPoint:Point):void
+		{
+			if(skillItemSpec){
+				var skillClss:Class = getDefinitionByName("view.bullet."+skillItemSpec.name) as Class;
+				var lv:int = player.heroData.getSkillItem(skillItemSpec.item_id).count;
+				addArm(new skillClss(touchPoint,lv,true));
+				
+				skillItemSpec = null;
+			}
+		}
+		
+		private var armsArr:Array=[];
 		public function initArms():void
 		{
 			clearArms();
@@ -284,7 +298,7 @@ package model.battle
 			for each(arm in armsArr){
 				arm.removeFromParent(true);
 			}
-			armsArr = new Vector.<ArmObject>;
+			armsArr = [];
 		}
 		
 		public function get player():GameUser

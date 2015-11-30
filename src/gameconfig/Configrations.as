@@ -12,11 +12,50 @@ package gameconfig
 	import starling.filters.ColorMatrixFilter;
 	import starling.textures.Texture;
 	
+	import view.bullet.Sword;
+	import view.bullet.arrow;
+	import view.bullet.baoshe;
+	import view.bullet.fireBullet;
 	import view.compenent.BattleLoadingScreen;
 	
 
 	public class Configrations
 	{
+		arrow;
+		Sword;
+//		attackBuff;
+//		healthBuff;
+//		zhiyu;
+//		
+//		
+//		purpleball;
+//		qiuyan;
+//		shield;
+//		longjuanfeng;
+//		lanyan;
+//		baoyan;
+//		
+//		
+//		xuanfengzhan;
+//		diyuhuo;
+//		guangjian;
+//		liehuozhan;
+//		shujiguang;
+//		
+//		
+		baoshe;
+//		huoyanjian;
+//		jiguangjian;
+//		lingjiaojian;
+//		liuxingyu;
+//		
+		fireBullet;
+//		fireball;
+//		zhangxinlei;
+//		huolian;
+//		huoyu;
+//		icebird;
+//		huimielieyan;
 		public function Configrations()
 		{
 		}

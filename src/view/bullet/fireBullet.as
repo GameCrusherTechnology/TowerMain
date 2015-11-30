@@ -7,58 +7,88 @@ package view.bullet
 	import starling.display.Image;
 	
 	import view.entity.GameEntity;
+	import view.entity.HeroEntity;
+	import view.entity.MonsterEntity;
 	
 	public class fireBullet extends ArmObject
 	{
-		private var arrowSpeed:int = 10*BattleRule.cScale;
-		private var range:int =500;
-		public function fireBullet(_rule:BattleRule,_fromPoint:Point,_hurtV:int,_level:int,_isleft:Boolean=true)
+		private var arrowSpeed:int ;
+		private var range:int =2000;
+		private var showFrame:int = 20;
+		private var sx:Number;
+		private var sy:Number;
+		public function fireBullet(_fromPoint:Point,_hurtV:int,_level:int,_rotate:Number,_isleft:Boolean=true)
 		{
+			super(_fromPoint,_hurtV,1,_rotate,_isleft);
+			
 			armSurface = new Image(Game.assets.getTexture("fireBullet"));
-			armSurface.scaleX = _isleft?BattleRule.cScale*0.3:-BattleRule.cScale*0.3;
-			armSurface.scaleY = BattleRule.cScale;
-			super(_rule,_fromPoint,_hurtV,_level,_isleft);
-			addChild(armSurface);
-			armSurface.x = _isleft?-armSurface.width/2:armSurface.width/2;
+			
+			armSurface.pivotX = armSurface.width;
+			armSurface.pivotY =  armSurface.height/2;
+			
+			armSurface.scaleX = rule.cScale*0.3;
+			armSurface.scaleY = rule.cScale*0.3;
+			
+			armSurface.rotation = _rotate;
+			
+			arrowSpeed = 10 *rule.cScale;
+			sx = arrowSpeed * Math.cos(rotate);
+			sy = arrowSpeed * Math.sin(rotate);
+			
 			
 		}
 		
 		private var curTarget:GameEntity;
 		override public function refresh():void
 		{
-			curTarget = isLeft?rule.monsterVec[0]:rule.soldierVec[0];
-			if(!curTarget){
-				curTarget = enemyCastle;
+			if(showFrame ==0){
+				addChild(armSurface);
+				showFrame -- ;
 			}
-			if(curTarget){
-				if(isLeft){
-					x += arrowSpeed;
-					if(x > (range*BattleRule.cScale + fromPoint.x))
-					{
-						dispose();
-					}else if(x > curTarget.x){
-						attack();
-					} 
+			else if(showFrame<0){
+				move();
+				if(range > 0 ){
+					findTarget();
 				}else{
-					x -= arrowSpeed;
-					if(x < (fromPoint.x - range*BattleRule.cScale))
-					{
-						dispose();
-					}else if(x < curTarget.x){
+					dispose();
+				}
+			}else{
+				showFrame -- ;
+			}
+		}
+		private function findTarget():void
+		{
+			if(isLeft){
+				var vec:Array = rule.monsterVec;
+				var entity:MonsterEntity;
+				for each(entity in vec){
+					if(!entity.isDead && entity.beInRound(x,y)){
+						curTarget = entity;
 						attack();
+						break;
 					}
 				}
 			}else{
-				dispose();
+				var heroEntity:HeroEntity = rule.heroEntity;
+				if(!heroEntity.isDead && heroEntity.beInRound(x,y)){
+					curTarget = heroEntity;
+					attack();
+				}
 			}
-			
+		}
+		private function move():void
+		{
+			x += sx;
+			y += sy;
+			range -= arrowSpeed;
 		}
 		
 		override public function attack():void
 		{
 			if(curTarget){
 				playSound();
-				curTarget.beAttacked(hurt,Game.assets.getTexture("skillIcon/fireBullet"),"attack");
+				var hurt:int = heroData.curAttackPoint;
+				curTarget.beAttacked(hurt,Game.assets.getTexture("skillIcon/arrow"),"attack");
 			}
 			dispose();
 		}
@@ -67,13 +97,11 @@ package view.bullet
 		{
 			return "baozha"
 		}
-		
 		override public function dispose():void
 		{
 			removeFromParent();
 			super.dispose();
 		}
-		
 	}
 }
 

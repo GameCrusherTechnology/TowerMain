@@ -1,12 +1,16 @@
 package view.compenent
 {
+	import controller.GameController;
+	
+	import feathers.controls.Button;
+	
+	import model.battle.BattleRule;
 	import model.gameSpec.SkillItemSpec;
+	import model.item.HeroData;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import starling.events.Touch;
-	import starling.events.TouchEvent;
-	import starling.events.TouchPhase;
+	import starling.events.Event;
 
 	public class HeroSkillButton extends Sprite
 	{
@@ -33,35 +37,28 @@ package view.compenent
 			addChild(icon);
 			icon.x = icon.y = side*0.1;
 			
-			touchable = false;
-			addEventListener(TouchEvent.TOUCH,onSkillTouched);
-		}
-		private var isBegin:Boolean = false;
-		private function onSkillTouched(e:TouchEvent):void
-		{
-			var touch:Touch = e.getTouch(this,TouchPhase.BEGAN);
-			if(touch){
-				isBegin = true;
-			}
 			
-			touch = e.getTouch(this,TouchPhase.ENDED);	
-			if(touch){
-				if(isBegin){
-					//do trigger
-					doSkill();
-				}
-			}
+			var but:Button = new Button();
+			var butSKin:Image = new Image(Game.assets.getTexture("BlackSkin"));
+			butSKin.width = butSKin.height = side;
+			butSKin.alpha = 0;
+			but.defaultSkin = butSKin;
+			addChild(but);
+			but.addEventListener(Event.TRIGGERED,onTriggerConfirm);
+			addEventListener(Event.ENTER_FRAME,onEnterFrame);
 			
 		}
 		
-		private function doSkill():void
+		private function onTriggerConfirm(e:Event):void
 		{
-			removeEvent();
+			GameController.instance.curBattleRule.skillItemSpec = skillspec;
 			skillCD = 0;
-			dispatchEvent(new HeroSkillTouchEvent(skillspec));
+			removeEvent();
 		}
 		
-		public function validate():void
+		
+		
+		public function onEnterFrame(e:Event):void
 		{
 			if(skillCD<=totalCD){
 				showcd();
@@ -79,6 +76,14 @@ package view.compenent
 		private function removeEvent():void
 		{
 			touchable = false;
+		}
+		private function get rule():BattleRule
+		{
+			return GameController.instance.curBattleRule;
+		}
+		private function get heroData():HeroData
+		{
+			return GameController.instance.localPlayer.heroData;
 		}
 		public function showcd():void
 		{

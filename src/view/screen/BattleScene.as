@@ -4,9 +4,12 @@ package view.screen
 	import flash.display.Shape;
 	import flash.geom.Point;
 	
+	import controller.SpecController;
+	
 	import gameconfig.Configrations;
 	
 	import model.battle.BattleRule;
+	import model.gameSpec.SkillItemSpec;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -18,6 +21,7 @@ package view.screen
 	
 	import view.bullet.ArmObject;
 	import view.compenent.BattleLoadingScreen;
+	import view.compenent.HeroSkillButton;
 	import view.entity.GameEntity;
 
 	public class BattleScene extends Sprite
@@ -102,37 +106,34 @@ package view.screen
 			scenebackSkin.y = scenebackSkin.height - Configrations.ViewPortHeight;
 			scenewidth = scenebackSkin.width;
 			sceneheight = Configrations.ViewPortHeight;
-			bottomLine = scenebackSkin.height *0.6;
+			bottomLine = scenebackSkin.height *0.65;
 			battleRule.cScale = backScale;
 		}
 		private var skillButs:Array = [];
 		private function configSkill():void
 		{
 			skillButs = [];
-//			var container:Sprite = new Sprite;
-//			var skills:Array = battleRule.player.heroData.skillList;
-//			var spec:SkillItemSpec;
-//			var curIndex:int = 0;
-//			var but:HeroSkillButton;
-//			var side:Number = Configrations.ViewPortWidth *0.1;
-//			var bottom:Number = Configrations.ViewPortHeight -  side - 20*Configrations.ViewScale;
-//			
-//			
-//			for each(var id:String in skills){
-//				spec = SpecController.instance.getItemSpec(id) as SkillItemSpec;
-//				if(spec){
-//					but = new HeroSkillButton(spec,side,spec.recycle);
-//					container.addChild(but);
-//					skillButs.push(but);
-//					but.addEventListener(HeroSkillTouchEvent.trigger,onSkillTriggered);
-//					but.x = curIndex*(side*1.3);
-//					curIndex++;
-//				}
-//			}
-//			container.addEventListener(Event.TRIGGERED,onSkillTriggered);
-//			uiLayer.addChild(container);
-//			container.x = Configrations.ViewPortWidth/2 - container.width/2;
-//			container.y = bottom;
+			var container:Sprite = new Sprite;
+			var skills:Array = battleRule.player.heroData.skills;
+			var spec:SkillItemSpec;
+			var curIndex:int = 0;
+			var but:HeroSkillButton;
+			var side:Number = Configrations.ViewPortWidth *0.1;
+			var bottom:Number = Configrations.ViewPortHeight*0.98 -  side ;
+			
+			for each(var id:String in skills){
+				spec = SpecController.instance.getItemSpec(id) as SkillItemSpec;
+				if(spec){
+					but = new HeroSkillButton(spec,side,spec.recycle);
+					container.addChild(but);
+					skillButs.push(but);
+					but.x = curIndex*(side*1.3);
+					curIndex++;
+				}
+			}
+			uiLayer.addChild(container);
+			container.x = Configrations.ViewPortWidth/2 - container.width/2;
+			container.y = bottom;
 		}
 		
 		
@@ -141,7 +142,11 @@ package view.screen
 			var beginTouch:Touch = evt.getTouch(this,TouchPhase.BEGAN);
 			if(beginTouch){
 				var p:Point = beginTouch.getLocation(bgLayer);
-				battleRule.heroEntity.setDirection(beginTouch.getLocation(bgLayer));
+				if(battleRule.skillItemSpec){
+					battleRule.useSkill(p);
+				}else{
+					battleRule.heroEntity.setDirection(beginTouch.getLocation(bgLayer));
+				}
 				
 			}else{
 				var touches:Vector.<Touch> = evt.getTouches(this, TouchPhase.HOVER);
@@ -156,8 +161,6 @@ package view.screen
 					}
 				}
 			}
-			
-			
 		}
 		private var entityVec:Vector.<GameEntity>;
 		public function addEntity(entity:GameEntity ,hN:Number, isLeft:Boolean = false):void
@@ -168,7 +171,7 @@ package view.screen
 				}else{
 					entity.x = scenewidth * 0.8;
 				}
-				entity.y = bottomLine + (hN - 0.5) * bottomLine /2;
+				entity.y = bottomLine + (hN - 0.5) * bottomLine*3 /4;
 				entityVec.push(entity);
 				entityLayer.addChild(entity);
 			}

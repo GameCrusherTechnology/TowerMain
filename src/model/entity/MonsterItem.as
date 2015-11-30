@@ -1,5 +1,7 @@
 package model.entity
 {
+	import flash.utils.getDefinitionByName;
+	
 	import model.item.MonsterData;
 
 	public class MonsterItem extends EntityItem
@@ -16,5 +18,9 @@ package model.entity
 			return entitySpec.speed;
 		}
 		
+		override public function get armClass():Class
+		{
+			return 	 getDefinitionByName("view.bullet."+entitySpec.armCls) as Class;
+		}
 	}
 }

@@ -2,72 +2,31 @@ package view.bullet
 {
 	import flash.geom.Point;
 	
-	import model.battle.BattleRule;
-	
-	import starling.core.Starling;
-	import starling.display.MovieClip;
 	import starling.events.Event;
-	
-	import view.entity.GameEntity;
 	
 	public class baoshe extends ArmObject
 	{
 		private const RANGE:int = 600;
-		public function baoshe(_rule:BattleRule,_fromPoint:Point,_hurtV:int,_level:int,_isleft:Boolean)
+		private const arrowRotate:Array = [[],[0,-0.3,0.3],[0,-0.2,-0.4,0.2,0.4],[0,-0.2,-0.4,-0.5,0.2,0.4,0.5],[0,-0.1,-0.2,-0.3,-0.4,0.1,0.2,0.3,0.4],[0,-0.1,-0.2,-0.3,-0.4,-0.5,0.1,0.2,0.3,0.4,0.5]];
+		public function baoshe(tPoint:Point,_level:int,_isleft:Boolean)
 		{
-			armSurface = new MovieClip(Game.assets.getTextures("baoshe"));
-			armSurface.scaleX = _isleft?BattleRule.cScale*0.6:-BattleRule.cScale*0.6;
-			armSurface.scaleY = BattleRule.cScale*0.6;
-			super(_rule,_fromPoint,_hurtV,_level,_isleft);
+			super(tPoint,hurt,_level,_isleft);
+			var rate:int = Math.round(Math.random()*4)+1;
+			var arrows:Array = arrowRotate[rate];
 			
-			addChild(armSurface);
-			armSurface.x = 0;
-			armSurface.y = -armSurface.height/2;
-			Starling.juggler.add(armSurface as MovieClip);
-			armSurface.addEventListener(Event.COMPLETE,onEnterComplete);
+			var bPoint:Point = rule.heroEntity.attackPoint;
+			var r:Number = Math.atan2((tPoint.y - bPoint.y),(tPoint.x-bPoint.x));
+			for each(var num:Number in arrows){
+				rule.addArm(new arrow(bPoint,hurt,_level,r+num,_isleft));
+			}
+			addEventListener(Event.ADDED_TO_STAGE,onAdd);
 		}
 		
-		private function onEnterComplete(e:Event):void
+		private function onAdd(e:Event):void
 		{
-			attack();
+			removeEventListener(Event.ADDED_TO_STAGE,onAdd);
+			dispose();
 		}
-		
-		private function inRange(entity:GameEntity):Boolean
-		{
-			if(Math.abs(fromPoint.x - entity.x)< RANGE*BattleRule.cScale){
-				return true
-			}
-			return false;
-		}
-		private function gethurt():int 
-		{
-			return Math.round(hurt*(1*level/10+1.5));
-		}
-		override protected function get soundName():String
-		{
-			return "baozha"
-		}
-		override public function attack():void
-		{
-			playSound();
-			var targetSoldier:GameEntity ;
-			var targets:Array;
-			if(!isLeft){
-				targets = rule.soldierVec;
-			}else{
-				targets = rule.monsterVec;
-			}
-			for each(targetSoldier in targets){
-				if(inRange(targetSoldier)){
-					targetSoldier.beAttacked(gethurt(),Game.assets.getTexture("skillIcon/baoshe"));
-				}
-			}
-			armSurface.removeEventListener(Event.COMPLETE,onEnterComplete);
-			removeFromParent();
-			Starling.juggler.remove(armSurface as MovieClip);
-			super.dispose();
-		}
-		
 	}
 }
 

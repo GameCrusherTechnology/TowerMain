@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:bd705d9439b3b9be61d7428756699e52$ -->
+<!-- $TexturePacker:SmartUpdate:ded5a0e1588babc3f38910dcb5b2b61c$ -->
 <TextureAtlas imagePath="TTscene.png">
-    <SubTexture name="15_b154_00181" x="2" y="334" width="46" height="46" frameX="-5" frameY="0" frameWidth="54" frameHeight="48"/>
     <SubTexture name="15_b155_00183" x="132" y="262" width="54" height="42" frameX="0" frameY="-3" frameWidth="54" frameHeight="48"/>
     <SubTexture name="15_b156_00185" x="46" y="429" width="40" height="48" frameX="-5" frameY="0" frameWidth="50" frameHeight="50"/>
     <SubTexture name="AddIcon" x="2" y="2" width="128" height="128"/>
     <SubTexture name="RoadLightIcon" x="2" y="248" width="74" height="84" frameX="-4" frameY="0" frameWidth="84" frameHeight="84"/>
-    <SubTexture name="agilityIcon" x="128" y="306" width="46" height="46" frameX="-1" frameY="-9" frameWidth="50" frameHeight="60"/>
+    <SubTexture name="agilityIcon" x="2" y="334" width="46" height="46" frameX="-1" frameY="-9" frameWidth="50" frameHeight="60"/>
     <SubTexture name="critIcon" x="78" y="293" width="48" height="47" frameX="-5" frameY="-4" frameWidth="58" frameHeight="61"/>
+    <SubTexture name="defenseIcon" x="128" y="306" width="46" height="46" frameX="-5" frameY="0" frameWidth="54" frameHeight="48"/>
     <SubTexture name="healthIcon" x="176" y="320" width="42" height="45" frameX="-10" frameY="0" frameWidth="52" frameHeight="45"/>
     <SubTexture name="lockIcon" x="132" y="132" width="100" height="128" frameX="-14" frameY="0" frameWidth="128" frameHeight="128"/>
     <SubTexture name="moneyIcon" x="78" y="248" width="52" height="43" frameX="0" frameY="-1" frameWidth="52" frameHeight="45"/>

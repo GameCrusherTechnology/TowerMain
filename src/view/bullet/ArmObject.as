@@ -6,6 +6,7 @@ package view.bullet
 	import controller.VoiceController;
 	
 	import model.battle.BattleRule;
+	import model.item.HeroData;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -13,18 +14,20 @@ package view.bullet
 	public class ArmObject extends Sprite
 	{
 		protected var armSurface:Image;
-		protected var hurt:int = 1;
 		protected var fromPoint:Point;
 		protected var isLeft:Boolean;
 		protected var rule:BattleRule;
 		protected var level:int;
-		public function ArmObject(_fromPoint:Point,_hurtV:int,_level:int,_isLeft:Boolean)
+		protected var hurt:int;
+		protected var rotate:Number;
+		public function ArmObject(_fromPoint:Point,_hurtV:int,_level:int,_rotate:Number = 0,_isLeft:Boolean = true)
 		{
 			rule = GameController.instance.curBattleRule;
 			level = _level;
-			fromPoint = _fromPoint;
 			hurt = _hurtV;
+			fromPoint = _fromPoint;
 			isLeft = _isLeft;
+			rotate = _rotate;
 			x = fromPoint.x;
 			y = fromPoint.y;
 		}
@@ -54,6 +57,10 @@ package view.bullet
 			return "sword"
 		}
 		
+		protected function get heroData():HeroData
+		{
+			return GameController.instance.localPlayer.heroData;
+		}
 		override public function dispose():void
 		{
 			rule.removeArm(this);

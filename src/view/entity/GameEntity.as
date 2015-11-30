@@ -6,6 +6,7 @@ package view.entity
 	import controller.GameController;
 	import controller.VoiceController;
 	
+	import gameconfig.Configrations;
 	import gameconfig.EntityState;
 	
 	import model.battle.BattleRule;
@@ -151,6 +152,20 @@ package view.entity
 		public function beInRound(posx:Number,posy:Number):Boolean{
 			var rect:Rectangle = item.getRect();
 			return rect.containsPoint(new Point((posx - x)/rule.cScale,(posy - y)/rule.cScale));
+		}
+		
+		public function get attackPoint():Point
+		{
+			if(isLeft){
+				return new Point(x+item.entitySpec.attackx*rule.cScale,y - item.entitySpec.recty/2*rule.cScale);
+			}else{
+				return new Point(x-item.entitySpec.attackx*rule.cScale,y - item.entitySpec.recty/2*rule.cScale);
+			}
+		}
+		
+		public function get centerPoint():Point
+		{
+			return new Point(x ,y - item.entitySpec.recty/2*rule.cScale);
 		}
 		
 		protected function showSound():void

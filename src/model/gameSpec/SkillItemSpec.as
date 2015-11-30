@@ -11,6 +11,7 @@ package model.gameSpec
 		
 		public var buffName:String;
 		public var typeNeed:int;
+		public var recycle:int;
 		override public function get iconTexture():Texture
 		{
 			return Game.assets.getTexture("skillIcon/" + name);

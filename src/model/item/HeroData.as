@@ -48,7 +48,7 @@ package model.item
 		
 		public function get skills():Array
 		{
-			return ["30001","30001"];
+			return ["30001","30021","30011","30016","30020","30003"];
 		}
 		
 		//property
@@ -172,6 +172,9 @@ package model.item
 			}
 			return p;
 		}
+		
+		//被动技能
+		
 			
 		
 	}

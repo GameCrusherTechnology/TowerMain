@@ -11,6 +11,7 @@ package view.entity
 	
 	import model.battle.BattleRule;
 	import model.entity.EntityItem;
+	import model.gameSpec.SoldierItemSpec;
 	import model.item.SkillData;
 	
 	import starling.core.Starling;
@@ -149,9 +150,11 @@ package view.entity
 			bar.y = -item.entitySpec.recty +(item.entitySpec.recty- item.entitySpec.runy) - bar.height - 10;
 		}
 		
-		public function beInRound(posx:Number,posy:Number):Boolean{
-			var rect:Rectangle = item.getRect();
-			return rect.containsPoint(new Point((posx - x)/rule.cScale,(posy - y)/rule.cScale));
+		public function beInRound(rectArm:Rectangle):Boolean{
+//			hitTest
+			var rect:Rectangle = getRect();
+			
+			return rect.intersects(rectArm);
 		}
 		
 		public function get attackPoint():Point
@@ -163,11 +166,28 @@ package view.entity
 			}
 		}
 		
+		private var _runRect:Rectangle;
+		public function getRect():Rectangle
+		{
+			var spec:SoldierItemSpec = item.entitySpec;
+			var s:Number = rule.cScale;
+			if(!_runRect){
+				_runRect = new Rectangle(x-spec.rectw/2*s,y-spec.recty*s,spec.rectw*s,spec.recty*s);
+			}else{
+				_runRect.x = x-spec.rectw/2*s;
+				_runRect.y = y-spec.recty*s;
+			}
+			return _runRect;
+		}
+		
 		public function get centerPoint():Point
 		{
 			return new Point(x ,y - item.entitySpec.recty/2*rule.cScale);
 		}
-		
+		public function get posPoint():Point
+		{
+			return new Point(x ,y);
+		}
 		protected function showSound():void
 		{
 			VoiceController.instance.playSound(item.entitySpec.sound);

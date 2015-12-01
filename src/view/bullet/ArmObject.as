@@ -1,6 +1,7 @@
 package view.bullet
 {
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	
 	import controller.GameController;
 	import controller.VoiceController;
@@ -19,15 +20,16 @@ package view.bullet
 		protected var rule:BattleRule;
 		protected var level:int;
 		protected var hurt:int;
-		protected var rotate:Number;
-		public function ArmObject(_fromPoint:Point,_hurtV:int,_level:int,_rotate:Number = 0,_isLeft:Boolean = true)
+		protected var rect:Rectangle;
+		protected var rectW:Number = 100;
+		protected var rectH:Number = 100;
+		public function ArmObject(_fromPoint:Point,_hurtV:int,_level:int,_isLeft:Boolean = true)
 		{
 			rule = GameController.instance.curBattleRule;
 			level = _level;
 			hurt = _hurtV;
 			fromPoint = _fromPoint;
 			isLeft = _isLeft;
-			rotate = _rotate;
 			x = fromPoint.x;
 			y = fromPoint.y;
 		}
@@ -56,7 +58,25 @@ package view.bullet
 		{
 			return "sword"
 		}
-		
+		protected function get curRect():Rectangle
+		{
+			if(!rect){
+				if(isLeft){
+					rect = new Rectangle(x-rectW,y-rectH/2,rectW,rectH);
+				}else{
+					rect = new Rectangle(x,y-rectH/2,rectW,rectH);
+				}
+			}else{
+				if(isLeft){
+					rect.x = x-rectW;
+					rect.y = y-rectH/2;
+				}else{
+					rect.x = x;
+					rect.y = y-rectH/2;
+				}
+			}
+			return rect;
+		}
 		protected function get heroData():HeroData
 		{
 			return GameController.instance.localPlayer.heroData;

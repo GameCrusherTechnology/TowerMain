@@ -19,7 +19,7 @@ package view.bullet
 		private var sy:Number;
 		public function fireBullet(_fromPoint:Point,_hurtV:int,_level:int,_rotate:Number,_isleft:Boolean=true)
 		{
-			super(_fromPoint,_hurtV,1,_rotate,_isleft);
+			super(_fromPoint,_hurtV,1,_isleft);
 			
 			armSurface = new Image(Game.assets.getTexture("fireBullet"));
 			
@@ -32,8 +32,8 @@ package view.bullet
 			armSurface.rotation = _rotate;
 			
 			arrowSpeed = 10 *rule.cScale;
-			sx = arrowSpeed * Math.cos(rotate);
-			sy = arrowSpeed * Math.sin(rotate);
+			sx = arrowSpeed * Math.cos(_rotate);
+			sy = arrowSpeed * Math.sin(_rotate);
 			
 			
 		}
@@ -62,7 +62,7 @@ package view.bullet
 				var vec:Array = rule.monsterVec;
 				var entity:MonsterEntity;
 				for each(entity in vec){
-					if(!entity.isDead && entity.beInRound(x,y)){
+					if(!entity.isDead && entity.beInRound(curRect)){
 						curTarget = entity;
 						attack();
 						break;
@@ -70,7 +70,7 @@ package view.bullet
 				}
 			}else{
 				var heroEntity:HeroEntity = rule.heroEntity;
-				if(!heroEntity.isDead && heroEntity.beInRound(x,y)){
+				if(!heroEntity.isDead && heroEntity.beInRound(curRect)){
 					curTarget = heroEntity;
 					attack();
 				}

@@ -16,6 +16,11 @@ package gameconfig
 	import view.bullet.arrow;
 	import view.bullet.baoshe;
 	import view.bullet.fireBullet;
+	import view.bullet.huimielieyan;
+	import view.bullet.lingjiaojian;
+	import view.bullet.longjuanfeng;
+	import view.bullet.shujiguang;
+	import view.bullet.zhangxinlei;
 	import view.compenent.BattleLoadingScreen;
 	
 
@@ -31,7 +36,7 @@ package gameconfig
 //		purpleball;
 //		qiuyan;
 //		shield;
-//		longjuanfeng;
+		longjuanfeng;
 //		lanyan;
 //		baoyan;
 //		
@@ -40,22 +45,22 @@ package gameconfig
 //		diyuhuo;
 //		guangjian;
 //		liehuozhan;
-//		shujiguang;
+		shujiguang;
 //		
 //		
 		baoshe;
 //		huoyanjian;
 //		jiguangjian;
-//		lingjiaojian;
+		lingjiaojian;
 //		liuxingyu;
 //		
 		fireBullet;
 //		fireball;
-//		zhangxinlei;
+		zhangxinlei;
 //		huolian;
 //		huoyu;
 //		icebird;
-//		huimielieyan;
+		huimielieyan;
 		public function Configrations()
 		{
 		}

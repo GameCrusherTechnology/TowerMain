@@ -66,14 +66,6 @@ package model.entity
 			return  Sword;
 		}
 		
-		private var _runRect:Rectangle;
-		public function getRect():Rectangle
-		{
-			if(!_runRect){
-				_runRect = new Rectangle(-entitySpec.rectw/2,-entitySpec.recty,entitySpec.rectw,entitySpec.recty);
-			}
-			return _runRect;
-		}
 		
 		public function get hurtPoint():int
 		{

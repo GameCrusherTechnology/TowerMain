@@ -1,6 +1,7 @@
 package view.bullet
 {
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	
 	import starling.display.Image;
 	
@@ -16,25 +17,32 @@ package view.bullet
 		private var sy:Number;
 		public function HeroArrow(_fromPoint:Point,_hurt:int,_rotate:Number = 0)
 		{
-			super(_fromPoint,_hurt,1,_rotate,true);
+			super(_fromPoint,_hurt,1,true);
 			
 			armSurface = new Image(Game.assets.getTexture("SimpleArrow"));
+			
+			armSurface.pivotX = armSurface.width;
+			armSurface.pivotY =  armSurface.height/2;
+			
 			armSurface.scaleX = rule.cScale*0.3;
 			armSurface.scaleY = rule.cScale;
 			
 			armSurface.rotation = _rotate;
 			
-			if(_rotate > 0){
-				armSurface.y =  -armSurface.height;
-			}else{
-				armSurface.y =  armSurface.height;
-			}
-			armSurface.x = - armSurface.width;
 			
+			arrowSpeed = 5 *rule.cScale;
+			sx = arrowSpeed * Math.cos(_rotate);
+			sy = arrowSpeed * Math.sin(_rotate);
 			
-			arrowSpeed = 20 *rule.cScale;
-			sx = arrowSpeed * Math.cos(rotate);
-			sy = arrowSpeed * Math.sin(rotate);
+			rectW = armSurface.width;
+			rectH = armSurface.height;
+			
+//			var image:Image= new Image(Game.assets.getTexture("PanelRenderSkin"));
+//			image.width = armSurface.width;
+//			image.height = armSurface.height;
+//			addChild(image);
+//			image.x = -image.width;
+//			image.y = -image.height/2;
 			
 		}
 		
@@ -51,7 +59,7 @@ package view.bullet
 					var vec:Array = rule.monsterVec;
 					var entity:MonsterEntity;
 					for each(entity in vec){
-						if(!entity.isDead && entity.beInRound(x,y)){
+						if(!entity.isDead && entity.beInRound(curRect)){
 							curTarget = entity;
 							attack();
 							break;

@@ -1,7 +1,5 @@
 package view.screen
 {
-	import flash.display.BitmapData;
-	import flash.display.Shape;
 	import flash.geom.Point;
 	
 	import controller.SpecController;
@@ -10,6 +8,7 @@ package view.screen
 	
 	import model.battle.BattleRule;
 	import model.gameSpec.SkillItemSpec;
+	import model.item.HeroData;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -17,11 +16,11 @@ package view.screen
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
-	import starling.textures.Texture;
 	
 	import view.bullet.ArmObject;
 	import view.compenent.BattleLoadingScreen;
 	import view.compenent.HeroSkillButton;
+	import view.compenent.HurtTip;
 	import view.entity.GameEntity;
 
 	public class BattleScene extends Sprite
@@ -114,17 +113,30 @@ package view.screen
 		{
 			skillButs = [];
 			var container:Sprite = new Sprite;
-			var skills:Array = battleRule.player.heroData.skills;
+			var heroData:HeroData = battleRule.player.heroData
+			var skills:Array = heroData.skills;
 			var spec:SkillItemSpec;
 			var curIndex:int = 0;
 			var but:HeroSkillButton;
 			var side:Number = Configrations.ViewPortWidth *0.1;
 			var bottom:Number = Configrations.ViewPortHeight*0.98 -  side ;
 			
+			var cL:int = heroData.getSkillItem("31006").count;
+			var coolCDMagic:Number = Configrations.skill31006Point[cL];
+			
+			var aL:int = heroData.getSkillItem("30006").count;
+			var coolCDArrow:Number = Configrations.skillP30006Point[aL];
+			
 			for each(var id:String in skills){
 				spec = SpecController.instance.getItemSpec(id) as SkillItemSpec;
 				if(spec){
-					but = new HeroSkillButton(spec,side,spec.recycle);
+					var newCycle:int ;
+					if(spec.type == "magic"){
+						newCycle = Math.floor(spec.recycle*(1-coolCDMagic));
+					}else{
+						newCycle = Math.floor(spec.recycle*(1-coolCDArrow));
+					}
+					but = new HeroSkillButton(spec,side,newCycle);
 					container.addChild(but);
 					skillButs.push(but);
 					but.x = curIndex*(side*1.3);
@@ -142,7 +154,7 @@ package view.screen
 			var beginTouch:Touch = evt.getTouch(this,TouchPhase.BEGAN);
 			if(beginTouch){
 				var p:Point = beginTouch.getLocation(bgLayer);
-				if(battleRule.skillItemSpec){
+				if(battleRule.curSkillBut){
 					battleRule.useSkill(p);
 				}else{
 					battleRule.heroEntity.setDirection(beginTouch.getLocation(bgLayer));
@@ -182,6 +194,10 @@ package view.screen
 				entityVec.splice(entityVec.indexOf(entity),1);
 			}
 			entity.removeFromParent(true);
+		}
+		public function addHurtBar(bar:HurtTip):void
+		{
+			uiLayer.addChild(bar);
 		}
 		
 		private var _heroPoint:Point;

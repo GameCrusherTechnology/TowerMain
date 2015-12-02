@@ -1,5 +1,9 @@
 package view.compenent
 {
+	import flash.geom.Point;
+	import flash.utils.getDefinitionByName;
+	
+	import controller.FieldController;
 	import controller.GameController;
 	
 	import feathers.controls.Button;
@@ -11,6 +15,7 @@ package view.compenent
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.text.TextField;
 
 	public class HeroSkillButton extends Sprite
 	{
@@ -37,6 +42,8 @@ package view.compenent
 			addChild(icon);
 			icon.x = icon.y = side*0.1;
 			
+			cdText = FieldController.createNoFontField(side,side/2,String(Math.floor(totalCD/30)),0x000000,0,true);
+			addChild(cdText);
 			
 			var but:Button = new Button();
 			var butSKin:Image = new Image(Game.assets.getTexture("BlackSkin"));
@@ -48,35 +55,58 @@ package view.compenent
 			addEventListener(Event.ENTER_FRAME,onEnterFrame);
 			
 		}
-		
+		private var cdText:TextField;
 		private function onTriggerConfirm(e:Event):void
 		{
-			GameController.instance.curBattleRule.skillItemSpec = skillspec;
-			skillCD = 0;
-			removeEvent();
+			var curSkillBut:HeroSkillButton = GameController.instance.curBattleRule.curSkillBut;
+			if(curSkillBut){
+				if(curSkillBut == this){
+					GameController.instance.curBattleRule.curSkillBut = null;
+					hideClick();
+				}else{
+					curSkillBut.hideClick();
+					if(canUse){
+						GameController.instance.curBattleRule.curSkillBut = this;
+						showClick();
+					}
+				}
+			}else{
+				if(canUse){
+					GameController.instance.curBattleRule.curSkillBut = this;
+					showClick();
+				}
+			}
+			
 		}
 		
-		
+		private function get canUse():Boolean
+		{
+			return skillCD >= totalCD;
+		}
+		public function showClick():void
+		{
+			
+		}
+		public function hideClick():void
+		{
+			
+		}
+		public function userSkill(p:Point):void
+		{
+			var skillClss:Class = getDefinitionByName("view.bullet."+skillspec.name) as Class;
+			var lv:int = heroData.getSkillItem(skillspec.item_id).count;
+			rule.addArm(new skillClss(p,lv,true));
+			skillCD = 0;
+		}
 		
 		public function onEnterFrame(e:Event):void
 		{
 			if(skillCD<=totalCD){
 				showcd();
-				if(skillCD == totalCD){
-					addEvenet(); 
-				}
 			}
 			skillCD++;
 		}
 		
-		private function addEvenet():void
-		{
-			touchable = true;
-		}
-		private function removeEvent():void
-		{
-			touchable = false;
-		}
 		private function get rule():BattleRule
 		{
 			return GameController.instance.curBattleRule;
@@ -89,6 +119,12 @@ package view.compenent
 		{
 			backmode.height = side*(skillCD/totalCD);
 			backmode.y = side - backmode.height;
+			
+			if(totalCD > skillCD){
+				cdText.text = String(Math.floor((totalCD -skillCD) /30));
+			}else{
+				cdText.text ="";
+			}
 		}
 		
 	}

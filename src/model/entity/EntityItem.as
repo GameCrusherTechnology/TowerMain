@@ -75,7 +75,14 @@ package model.entity
 		public function beAttack(p:int):void
 		{
 			curLife -=p;
+			curLife = Math.max(0,curLife);
 		}
+		
+		public function beHealth(p:int):void
+		{
+			curLife = Math.min(totalLife,curLife+p);
+		}
+			
 			
 		
 		public function get isDead():Boolean

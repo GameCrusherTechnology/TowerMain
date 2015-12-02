@@ -24,14 +24,12 @@ package view.entity
 		{
 			setSpeed();
 		}
-		private function setSpeed():void
+		override public function setSpeed(ra:Number = 1):void
 		{
 			var a:Number = Math.atan2(targetPoint.y - y,targetPoint.x - x);
-			sx = soldierItem.speed * Math.cos(a);
-			sy = soldierItem.speed * Math.sin(a);
+			sx = soldierItem.speed * Math.cos(a) *ra;
+			sy = soldierItem.speed * Math.sin(a) *ra;
 		}
-		private var sx:Number;
-		private var sy:Number;
 		protected function walk():void
 		{
 			showState(EntityState.WALK);
@@ -50,7 +48,7 @@ package view.entity
 			attackCD --;
 			if(curTarget || !curTarget.isDead ){
 				if(!inRange()){
-					if(canMove){
+					if(canMove()){
 						walk();
 					}
 				}else{
@@ -64,12 +62,9 @@ package view.entity
 				}
 				validateSkill();
 			}
+			super.validate();
 		}
 		
-		private function canMove():Boolean
-		{
-			return false;
-		}
 		private function canAttack():Boolean
 		{
 			return false;

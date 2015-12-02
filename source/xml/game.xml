@@ -127,7 +127,34 @@
 	</Group>
 	
 	<Group id="Skill">
-		<Skill item_id="30000" name="attackBuff"   	type="arrow"		typeNeed="0"		recycle="10"	range="100"/>
+		<Skill item_id="30001" name="baoshe"   		type="arrow"		typeNeed="0"		recycle="300"	/>
+		<Skill item_id="30002" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30003" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
+		
+		<Skill item_id="30004" name="lingjiaojian"  type="arrow" 		typeNeed="0"		recycle="600"	/>
+		<Skill item_id="30005" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30006" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
+		
+		<Skill item_id="30007" name="shujiguang"   	type="arrow"		typeNeed="0"		recycle="600"	/>
+		<Skill item_id="30008" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30009" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
+		
+		
+	 	<Skill item_id="31001" name="zhangxinlei"   type="magic"		typeNeed="0"		recycle="600"	/>
+	 	<Skill item_id="31002" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31003" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
+	 	
+	 	<Skill item_id="31004" name="huimielieyan"  type="magic"		typeNeed="0"		recycle="600"	/>
+	 	<Skill item_id="31005" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31006" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
+	 	
+	 	<Skill item_id="31007" name="longjuanfeng"  type="magic" 		typeNeed="0"		recycle="600"	/>
+	 	<Skill item_id="31008" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31009" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
+	
+	
+	
+		<!-- <Skill item_id="30000" name="attackBuff"   	type="arrow"		typeNeed="0"		recycle="10"	range="100"/>
 		<Skill item_id="30001" name="baoshe"   		type="arrow"		typeNeed="0"		recycle="10"	range="200"/>
 		<Skill item_id="30002" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"	recycle="10"	range="100"/>
 		<Skill item_id="30003" name="shujiguang"   	type="arrow"		typeNeed="10"	recycle="10"	range="200"/>
@@ -136,8 +163,8 @@
 		<Skill item_id="30006" name="liuxingyu"   	type="arrow"		typeNeed="20"	recycle="10"	range="200"/>
 		<Skill item_id="30007" name="qiuyan"   		type="arrow"		typeNeed="20"	recycle="10"	range="300"/>
 		<Skill item_id="30008" name="purpleball"   	type="arrow"		typeNeed="20"	recycle="10"	range="300"/>
-		<!-- <Skill item_id="30009" name="guangjian"   	type="arrow"			recycle="450"	range="400"		buffName="thunder"/>
-		<Skill item_id="30010" name="healthBuff"   	type="arrow"			recycle="600"	range="100"/> -->
+		<Skill item_id="30009" name="guangjian"   	type="arrow"			recycle="450"	range="400"		buffName="thunder"/>
+		<Skill item_id="30010" name="healthBuff"   	type="arrow"			recycle="600"	range="100"/> 
 		
 		<Skill item_id="30011" name="huimielieyan"  type="magic"		typeNeed="0"	recycle="10"	range="200"/>
 		<Skill item_id="30012" name="huolian"   	type="magic"		typeNeed="0"	recycle="10"	range="200"/>
@@ -149,7 +176,7 @@
 		<Skill item_id="30018" name="lanyan"   		type="magic"		typeNeed="20"	recycle="10"	range="200"/>
 		<Skill item_id="30019" name="liehuozhan"   	type="magic"		typeNeed="20"	recycle="10"	range="100"/>
 		 <Skill item_id="30020" name="zhangxinlei"   type="magic"			recycle="10"	range="400"/>
-		<Skill item_id="30021" name="lingjiaojian"  type="magic" 			recycle="10"	range="500"/>
+		<Skill item_id="30021" name="lingjiaojian"  type="magic" 			recycle="10"	range="500"/>-->
 	</Group>
 	
 	<Group id="Map">

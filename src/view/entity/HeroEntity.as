@@ -2,14 +2,16 @@ package view.entity
 {
 	import flash.geom.Point;
 	
+	import controller.GameController;
+	
 	import gameconfig.EntityState;
 	
 	import model.entity.HeroItem;
+	import model.item.HeroData;
 	
-	import starling.display.Image;
+	import starling.textures.Texture;
 	
 	import view.bullet.HeroArrow;
-	import view.bullet.arrow;
 
 	public class HeroEntity extends GameEntity
 	{
@@ -42,6 +44,7 @@ package view.entity
 			}else{
 				showState(EntityState.ATTACK,false);
 			}
+			super.validate();
 		}
 		
 		protected function attack():void
@@ -50,7 +53,11 @@ package view.entity
 			attackCD = item.attackCycle;
 			rule.addArm(new HeroArrow(attackPoint,item.hurtPoint,armDirection));
 		}
-		
+		override public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void
+		{
+			var curHurt:int = Math.floor(hurt*(1-heroData.curDefense));
+			super.beAttacked(curHurt,texture,type);
+		}
 		override public function get attackPoint():Point
 		{
 			return new Point(x+item.entitySpec.attackx*rule.cScale*0.7,y - item.entitySpec.recty/2*rule.cScale*0.7);

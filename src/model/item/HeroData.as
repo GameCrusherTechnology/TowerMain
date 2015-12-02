@@ -48,7 +48,7 @@ package model.item
 		
 		public function get skills():Array
 		{
-			return ["30001","30021","30011","30016","30020","30003"];
+			return ["30001","30004","30007","31001","31004","31007"];
 		}
 		
 		//property
@@ -173,9 +173,12 @@ package model.item
 			return p;
 		}
 		
-		//被动技能
+		public function get curDefense():Number
+		{
+			var dL:int = getSkillItem("30002").count;
+			return Configrations.skill30002Point[dL];
+		}
 		
-			
 		
 	}
 }

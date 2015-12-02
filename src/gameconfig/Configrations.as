@@ -266,9 +266,66 @@ package gameconfig
 			"largeCoin":new TreasureItem({name:"largeCoin",number:100000,price:25.99,isGem:false,index:3})
 		};
 		
+		//30001 多重箭
+		public static const hurt30001Arr:Array = [0,50,70,100,120,150];
+		public static const count30001Arr:Array = [0,3,5,7,9,11];
 		
-		public static var UpdateSkillCoin:Array =[500,1000,2000,4000,6000,8000,10000,15000,20000,30000]; 
-		public static var UpdateSoldierCoin:Array =[1000,5000,10000,20000,50000];
+		//30002 防御
+		public static const skill30002Point:Array = [0,0.04,0.08,0.12,0.16,0.2];
+		
+		//30003定身
+		public static const skillP30003Rate:Array = [0,4,8,12,16,20];
+		public static const skill30003Point:int = 60;
+		
+		//30004穿透箭
+		public static const hurt30004Arr:Array = [0,100,120,150,170,200];
+		
+		//30005 分裂
+		public static const skillP30005Point:Array = [0,0.3,0.35,0.4,0.45,0.5];
+		
+		//30006 cd
+		public static const skillP30006Point:Array = [0,0.05,0.1,0.15,0.2,0.25];
+		
+		//30007 激光
+		public static const hurt30007Arr:Array = [0,100,120,150,170,200];
+		
+		//30008 减速
+		public static const skillP30008Point:Array = [0,0.5,0.4,0.3,0.2,0.1];
+		public static const skill30008Point:int = 90;
+		
+		//30009 攻击吸血
+		public static const skillP30009Point:Array = [0,0.05,0.07,0.1,0.12,0.15];
+		public static const skill30009Point:int = 30;
+		
+		//31001 掌心雷
+		public static const hurt31001Arr:Array = [0,50,100,150,200,250];
+		
+		//31002 雷 范围伤害
+		public static const skill31002Point:Array = [0,0.2,0.3,0.4,0.5,0.6];
+		
+		//31003 雷 标记 
+		public static const skill31003Point:Array = [0,0.1,0.2,0.3,0.4,0.5];
+		public static const skill31003Add:int = 150;
+		
+		//31004 毁灭
+		public static const hurt31004Arr:Array = [0,100,120,150,170,200];
+		
+		//31005 燃烧
+		public static const skill31005Point:Array = [0,0.2,0.25,0.3,0.35,0.4];
+		
+		//31006 cd
+		public static const skill31006Point:Array = [0,0.05,0.1,0.15,0.2,0.25];
+		
+		//31007 旋风
+		public static const hurt31007Arr:Array = [0,100,150,200,250,300];
+		
+		//31008 旋风 后退
+		public static const skill31008Rate:Array = [0,0.2,0.4,0.6,0.8,1];
+		
+		//31009 雷霆之怒
+		public static const skill31009Point:Array = [0,0.3,0.35,0.4,0.45,0.5];
+		
+		
 		public static function InputTextFactory(target:TextInput , inputParameters:Object ):void
 		{
 			var editor:StageTextTextEditor = new StageTextTextEditor;

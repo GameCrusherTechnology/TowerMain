@@ -3,22 +3,19 @@ package view.bullet
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
-	import gameconfig.Configrations;
-	
+	import starling.animation.Tween;
 	import starling.core.Starling;
 	import starling.display.MovieClip;
 	import starling.events.Event;
 	
 	import view.entity.GameEntity;
 	
-	public class huimielieyan extends ArmObject
+	public class HealthBody extends ArmObject
 	{
-		private const range:int = 400;
-		
-		public function huimielieyan(tPoint:Point,_level:int,_isleft:Boolean)
+		private const RANGE:int = 250;
+		public function HealthBody(tar:GameEntity,add:int)
 		{
-			var curHurt:int = Configrations.hurt31004Arr[_level];
-			super(tPoint,curHurt,_level,_isleft);
+			super(tar.posPoint,add,1);
 			
 			armSurface = new MovieClip(Game.assets.getTextures("huimielieyan"));
 			armSurface.scaleX = rule.cScale;
@@ -42,6 +39,10 @@ package view.bullet
 			super.dispose();
 		}
 		
+		private function gethurt():int 
+		{
+			return Math.round(hurt*(1*level/10+1.5));
+		}
 		override protected function get soundName():String
 		{
 			return "lieyan"
@@ -50,32 +51,14 @@ package view.bullet
 		{
 			var targetSoldier:GameEntity ;
 			var targets:Array;
+			var tween:Tween;
 			playSound();
 			targets = rule.monsterVec;
-			
-			//燃烧
-			var sL:int = heroData.getSkillItem("31005").count;
-			var slRate:Number = Configrations.skill31005Point[sL];
-			var slHurt:int = Math.floor(slRate*hurt);
-			
-			
 			for each(targetSoldier in targets){
-				if(!targetSoldier.isDead && inRange(targetSoldier)){
-					targetSoldier.beAttacked(hurt,Game.assets.getTexture("skillIcon/huimielieyan"));
-					if(slHurt > 0){
-						targetSoldier.beBuffed("31005",slHurt);
-					}
+				if(!targetSoldier.isDead && targetSoldier.beInRound(curRect)){
+					targetSoldier.beAttacked(gethurt(),Game.assets.getTexture("skillIcon/huimielieyan"));
 				}
 			}
-		}
-		
-		private function inRange(entity:GameEntity):Boolean
-		{
-			var nP:Point = new Point(entity.x - x,entity.y-y);
-			if(nP.length< range*rule.cScale){
-				return true
-			}
-			return false;
 		}
 		
 		override protected function get curRect():Rectangle

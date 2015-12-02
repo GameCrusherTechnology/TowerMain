@@ -150,7 +150,7 @@ package view.panel
 			critHurtPart.x = panelwidth * 0.3;
 			critHurtPart.y = panelheight *0.12;
 			
-			var defencePart:Sprite = creatPropertyP("defenseIcon","defense","" + player.heroData.curHealth);
+			var defencePart:Sprite = creatPropertyP("defenseIcon","defense","" + player.heroData.curDefense*100 +"%");
 			container.addChild(defencePart);
 			defencePart.y = panelheight *0.18;
 			

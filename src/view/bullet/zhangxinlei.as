@@ -2,7 +2,7 @@ package view.bullet
 {
 	import flash.geom.Point;
 	
-	import model.battle.BattleRule;
+	import gameconfig.Configrations;
 	
 	import starling.core.Starling;
 	import starling.display.MovieClip;
@@ -13,14 +13,14 @@ package view.bullet
 
 	public class zhangxinlei extends ArmObject
 	{
-		private var range:int = 1000;
+		private var range:int = 400;
 		private var speed:int = 0;
 		private var sx:Number;
 		private var sy:Number;
 		public function zhangxinlei(tPoint:Point,_level:int,_isleft:Boolean)
 		{
-			
-			super(tPoint,1,_level,_isleft);
+			var curHurt:int = Configrations.hurt31001Arr[_level];
+			super(tPoint,curHurt,_level,_isleft);
 			
 			var bPoint:Point = rule.heroEntity.attackPoint;
 			var r:Number = Math.atan2((tPoint.y - bPoint.y),(tPoint.x-bPoint.x));
@@ -32,7 +32,7 @@ package view.bullet
 			armSurface.x = -armSurface.width/2;
 			armSurface.y = -armSurface.height/2;
 			
-			speed = 5 *rule.cScale;
+			speed = 10 *rule.cScale;
 			sx = speed * Math.cos(r);
 			sy = speed * Math.sin(r);
 			
@@ -76,21 +76,50 @@ package view.bullet
 			}
 		}
 		
+		private function inRange(entity:GameEntity):Boolean
+		{
+			var nP:Point = new Point(entity.x - x,entity.y-y);
+			if(nP.length< range*rule.cScale){
+				return true
+			}
+			return false;
+		}
+		
 		private function move():void
 		{
 			x += sx;
 			y += sy;
 			range -= speed;
 		}
-		private function gethurt():int 
-		{
-			return Math.round(hurt*(0.5*level/10+1.5));
-		}
+		
 		override public function attack():void
 		{
 			if(curTarget){
+				// 标记
+				var bL:int = heroData.getSkillItem("31003").count;
+				var blRate:Number = Configrations.skill31003Point[bL];
+				
 				playSound();
-				curTarget.beAttacked(gethurt(),Game.assets.getTexture("skillIcon/zhangxinlei"));
+				curTarget.beAttacked(hurt,Game.assets.getTexture("skillIcon/zhangxinlei"));
+				if(blRate >0){
+					curTarget.beBuffed("31003");
+				}
+				//范围 
+				var sL:int = heroData.getSkillItem("31002").count;
+				if(sL >=1){
+					var slRate:Number = Configrations.skill31002Point[sL];
+					var newH:int = Math.floor(slRate*hurt);
+					var vec:Array = rule.monsterVec;
+					
+					for each(var monster:GameEntity in vec){
+						if(!monster.isDead && inRange(monster) && monster != curTarget){
+							monster.beAttacked(newH,Game.assets.getTexture("skillIcon/huimielieyan"));
+							monster.beBuffed("31003");
+						}
+					}
+					
+				}
+				
 			}
 			dispose();
 		}

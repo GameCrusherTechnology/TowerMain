@@ -3,7 +3,6 @@ package model.battle
 	import flash.filesystem.File;
 	import flash.geom.Point;
 	import flash.utils.Dictionary;
-	import flash.utils.getDefinitionByName;
 	
 	import controller.GameController;
 	import controller.SpecController;
@@ -17,7 +16,6 @@ package model.battle
 	import model.gameSpec.SoldierItemSpec;
 	import model.item.HeroData;
 	import model.item.MonsterData;
-	import model.item.SkillData;
 	import model.player.GameUser;
 	
 	import starling.animation.Tween;
@@ -25,6 +23,8 @@ package model.battle
 	import starling.utils.AssetManager;
 	
 	import view.bullet.ArmObject;
+	import view.compenent.HeroSkillButton;
+	import view.compenent.HurtTip;
 	import view.entity.HeroEntity;
 	import view.entity.MonsterEntity;
 	import view.screen.BattleScene;
@@ -168,11 +168,11 @@ package model.battle
 				for each(var monsterData:MonsterData in arr){
 					soldierSpec = monsterData.monsterSpec
 					textureArr.push(soldierSpec.name);
-					var skills:Array = soldierSpec.skills;
-					for each(var data:SkillData in skills)
-					{
-						skillArr.push(data.skillItemSpec.name);
-					}
+//					var skills:Array = soldierSpec.skills;
+//					for each(var data:SkillData in skills)
+//					{
+//						skillArr.push(data.skillItemSpec.name);
+//					}
 				}
 			}
 			return {"soldier":textureArr,"skill":skillArr};
@@ -260,15 +260,14 @@ package model.battle
 		public var monsterVec:Array=[];
 		
 		//arm
-		public var skillItemSpec:SkillItemSpec; 
+//		public var skillItemSpec:SkillItemSpec; 
+		public var curSkillBut:HeroSkillButton;
+		
 		public function useSkill(touchPoint:Point):void
 		{
-			if(skillItemSpec){
-				var skillClss:Class = getDefinitionByName("view.bullet."+skillItemSpec.name) as Class;
-				var lv:int = player.heroData.getSkillItem(skillItemSpec.item_id).count;
-				addArm(new skillClss(touchPoint,lv,true));
-				
-				skillItemSpec = null;
+			if(curSkillBut){
+				curSkillBut.userSkill(touchPoint);
+				curSkillBut = null;
 			}
 		}
 		
@@ -300,6 +299,12 @@ package model.battle
 			}
 			armsArr = [];
 		}
+		
+		public function showHurtBar(bar:HurtTip):void
+		{
+			curScene.addHurtBar(bar);
+		}
+		
 		
 		public function get player():GameUser
 		{

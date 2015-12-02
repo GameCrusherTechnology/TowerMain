@@ -3,6 +3,10 @@ package view.bullet
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
+	import gameconfig.Configrations;
+	
+	import model.item.HeroData;
+	
 	import starling.display.Image;
 	
 	import view.entity.GameEntity;
@@ -85,6 +89,22 @@ package view.bullet
 			if(curTarget){
 				playSound();
 				curTarget.beAttacked(hurt,Game.assets.getTexture("skillIcon/arrow"),"attack");
+				//眩晕 
+				var sL:int = heroData.getSkillItem("30003").count;
+				var slRate:Number = Configrations.skillP30003Rate[sL];
+				var bool:Boolean = Math.random()<= slRate;
+				if(bool){
+					curTarget.beBuffed("30003");
+				}
+				
+				//吸血
+				var xL:int = heroData.getSkillItem("30009").count;
+				var xlRate:Number = Configrations.skillP30009Point[xL];
+				var n:int = Math.floor(xlRate * hurt);
+				if(n > 0){
+					rule.heroEntity.beBuffed("30009",n);
+				}
+				
 			}
 			dispose();
 		}

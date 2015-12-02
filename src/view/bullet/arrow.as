@@ -36,17 +36,17 @@ package view.bullet
 			rectW = armSurface.width;
 			rectH = armSurface.height;
 			
-			var image:Image= new Image(Game.assets.getTexture("PanelRenderSkin"));
-			image.width = armSurface.width;
-			image.height = armSurface.height;
-			addChild(image);
-			if(_isleft){
-				image.x = -image.width;
-				image.y = -image.height/2;
-			}else{
-				image.x = 0;
-				image.y = -image.height/2;
-			}
+//			var image:Image= new Image(Game.assets.getTexture("PanelRenderSkin"));
+//			image.width = armSurface.width;
+//			image.height = armSurface.height;
+//			addChild(image);
+//			if(_isleft){
+//				image.x = -image.width;
+//				image.y = -image.height/2;
+//			}else{
+//				image.x = 0;
+//				image.y = -image.height/2;
+//			}
 			
 		}
 		

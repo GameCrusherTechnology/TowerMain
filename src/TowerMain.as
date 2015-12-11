@@ -102,7 +102,7 @@ package
 				appDir.resolvePath(formatString("lan/{0}", language)),
 				appDir.resolvePath(formatString("font/{0}",fontStr)),
 				appDir.resolvePath("xml"),
-				appDir.resolvePath("textures")
+				appDir.resolvePath("textures/init")
 			);
 			
 			// While Stage3D is initializing, the screen will be blank. To avoid any flickering, 

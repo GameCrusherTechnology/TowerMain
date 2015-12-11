@@ -22,6 +22,7 @@ package model.item
 		public var name:String = "sheshou";
 		
 		public var exp:int;
+		
 		public var level:int;
 		
 		private var _skillPoints:int = 100;
@@ -72,18 +73,12 @@ package model.item
 		
 		public var agilityLevel:int = 0;
 		public var agilityBase:int = 100;
-		public var agilityUp:int = 5;
+		public var agilityUp:int = 10;
 		public function get curAttackSpeed():int
 		{
 			return agilityBase + agilityUp*agilityLevel;
 		}
 		
-		public var rangeBase:int = 100;
-		public var rangeUp:int = 10;
-		public function get curRange():int
-		{
-			return rangeBase + rangeUp*agilityLevel;
-		}
 		
 		public var wisdomLevel:int = 0;
 		public var wisdomBase:int = 0;
@@ -101,17 +96,15 @@ package model.item
 		{
 			return critBase + critUp*critLevel;
 		}
+		
+		public var critHurtLevel:int = 0;
 		public var critHurtBase:int = 200;
 		public var critHurtUp:int = 10;
 		public function get curCritHurt():int
 		{
-			return critHurtBase + critHurtUp*critLevel;
+			return critHurtBase + critHurtUp*critHurtLevel;
 		}
 		
-		
-		public var moneyLevel:int = 0;
-		public var moneyBase:int = 100;
-		public var moneyUp:int = 5;
 		
 		
 		public function get curAttackPoint():int
@@ -123,6 +116,39 @@ package model.item
 				return curAttackPower;
 			}
 		}
+		//items
+		private var owneditems:Array = [];
+		public function set items(obj:Object):void
+		{
+			owneditems = [];
+			for each(var ob:Object in obj){
+				owneditems.push(new OwnedItem(ob["id"],ob["count"]));
+			}
+		}
+		public function getItem(id:String):OwnedItem
+		{
+			var ownedItem:OwnedItem;
+			for each(ownedItem in owneditems){
+				if(ownedItem.item_id == id){
+					return ownedItem;
+				}
+			}
+			return new OwnedItem(id,0);
+		}
+		public function addItem(itemid:String,count:int):Boolean
+		{
+			var ownedItem :OwnedItem;
+			for each(ownedItem in owneditems){
+				if(ownedItem.item_id == itemid){
+					ownedItem.count += count;
+					return true;
+				}
+			}
+			skillItems.push(new OwnedItem(itemid,count));
+			return false;
+		}
+		
+		
 		//skill
 		private var skillItems:Array = [];
 		public function set sitems(obj:Object):void

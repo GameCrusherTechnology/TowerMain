@@ -24,26 +24,30 @@ package view.compenent
 		private var totalCD:int;
 		private var backmode:Image;
 		private var side:Number;
+		private var back:Image;
 		public function HeroSkillButton(skillSpec:SkillItemSpec,_side:Number,_totalCD:int)
 		{
 			side = _side;
 			skillspec = skillSpec;
 			totalCD = _totalCD;
-			var back:Image = new Image(Game.assets.getTexture("DPanelSkin"));
+			back = new Image(Game.assets.getTexture("BPanelSkin"));
 			back.width = back.height = side;
 			addChild(back);
 			
-			backmode = new Image(Game.assets.getTexture("BPanelSkin"));
-			backmode.width = backmode.height = side;
-			addChild(backmode);
 			
 			var icon:Image = new Image(skillSpec.iconTexture);
 			icon.width = icon.height = side*0.8;
 			addChild(icon);
 			icon.x = icon.y = side*0.1;
 			
-			cdText = FieldController.createNoFontField(side,side/2,String(Math.floor(totalCD/30)),0x000000,0,true);
+			backmode = new Image(Game.assets.getTexture("DPanelSkin"));
+			backmode.width = backmode.height = side;
+			backmode.alpha = 0.8;
+			addChild(backmode);
+			
+			cdText = FieldController.createNoFontField(side,side/2,String(Math.floor(totalCD/30)),0xffffff,0,true);
 			addChild(cdText);
+			cdText.y = side/2;
 			
 			var but:Button = new Button();
 			var butSKin:Image = new Image(Game.assets.getTexture("BlackSkin"));
@@ -68,6 +72,8 @@ package view.compenent
 					if(canUse){
 						GameController.instance.curBattleRule.curSkillBut = this;
 						showClick();
+					}else{
+						GameController.instance.curBattleRule.curSkillBut = null;
 					}
 				}
 			}else{
@@ -85,11 +91,11 @@ package view.compenent
 		}
 		public function showClick():void
 		{
-			
+			back.texture = Game.assets.getTexture("RPanelSkin");
 		}
 		public function hideClick():void
 		{
-			
+			back.texture = Game.assets.getTexture("BPanelSkin");
 		}
 		public function userSkill(p:Point):void
 		{
@@ -97,6 +103,8 @@ package view.compenent
 			var lv:int = heroData.getSkillItem(skillspec.item_id).count;
 			rule.addArm(new skillClss(p,lv,true));
 			skillCD = 0;
+			GameController.instance.curBattleRule.curSkillBut = null;
+			hideClick();
 		}
 		
 		public function onEnterFrame(e:Event):void
@@ -117,7 +125,7 @@ package view.compenent
 		}
 		public function showcd():void
 		{
-			backmode.height = side*(skillCD/totalCD);
+			backmode.height = side*(1 - skillCD/totalCD);
 			backmode.y = side - backmode.height;
 			
 			if(totalCD > skillCD){

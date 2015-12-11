@@ -136,10 +136,6 @@ package view.panel
 			container.addChild(attackSpeedPart);
 			attackSpeedPart.y = panelheight *0.06;
 			
-			var attackRangePart:Sprite = creatPropertyP("agilityIcon","agility","" + player.heroData.curRange+"%");
-			container.addChild(attackRangePart);
-			attackRangePart.x = panelwidth * 0.3;
-			attackRangePart.y = panelheight *0.06;
 			
 			var critPart:Sprite = creatPropertyP("critIcon","crit","" + player.heroData.curCritRate+"%");
 			container.addChild(critPart);

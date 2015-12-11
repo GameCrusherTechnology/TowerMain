@@ -29,7 +29,7 @@ package view.bullet
 			
 			armSurface.rotation = _rotate;
 			
-			arrowSpeed = 5 *rule.cScale;
+			arrowSpeed = 10 *rule.cScale;
 			sx = arrowSpeed * Math.cos(_rotate);
 			sy = arrowSpeed * Math.sin(_rotate);
 			

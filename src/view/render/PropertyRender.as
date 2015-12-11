@@ -118,8 +118,12 @@ package view.render
 					change1L = String(heroData.critBase +  currentLevel * heroData.critUp)+"%";
 					change1R = String(heroData.critBase + (currentLevel+1) * heroData.critUp)+"%";
 					
-					change2L = String(heroData.critHurtBase +  currentLevel * heroData.critHurtUp)+"%";
-					change2R = String(heroData.critHurtBase + (currentLevel+1) * heroData.critHurtUp)+"%";
+					break;
+				}
+				case "critHurt":
+				{
+					change1L = String(heroData.critHurtBase +  currentLevel * heroData.critHurtUp)+"%";
+					change1R = String(heroData.critHurtBase + (currentLevel+1) * heroData.critHurtUp)+"%";
 					break;
 				}
 				case "agility":
@@ -127,20 +131,12 @@ package view.render
 					change1L = String(heroData.agilityBase +  currentLevel * heroData.agilityUp)+"%";
 					change1R = String(heroData.agilityBase + (currentLevel+1) * heroData.agilityUp)+"%";
 					
-					change2L = String(heroData.rangeBase +  currentLevel * heroData.rangeUp)+"%";
-					change2R = String(heroData.rangeBase + (currentLevel+1) * heroData.rangeUp)+"%";
 					break;
 				}
 				case "wisdom":
 				{
 					change1L = String(heroData.wisdomBase +  currentLevel * heroData.wisdomUp)+"%";
 					change1R = String(heroData.wisdomBase + (currentLevel+1) * heroData.wisdomUp)+"%";
-					break;
-				}
-				case "money":
-				{
-					change1L = String(heroData.moneyBase +  currentLevel * heroData.moneyUp)+"%";
-					change1R = String(heroData.moneyBase + (currentLevel+1) * heroData.moneyUp)+"%";
 					break;
 				}
 			}
@@ -170,25 +166,6 @@ package view.render
 			changeText02.x = changeText01.x + changeText01.width;
 			changeText02.y = changename01.y;
 			
-			if(properName == "crit" || properName == "agility"){
-				var changename02:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15,LanguageController.getInstance().getString(properName),0x458B00,0,true);
-				changename02.autoSize = TextFieldAutoSize.HORIZONTAL;
-				container.addChild(changename02);
-				changename02.x = renderwidth *0.2;
-				changename02.y = renderHeight * 0.6;
-				
-				var changeText03:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15,": "+change2L,0x000000,0);
-				changeText03.autoSize = TextFieldAutoSize.HORIZONTAL;
-				container.addChild(changeText03);
-				changeText03.x = changename02.x + changename02.width;
-				changeText03.y = changename02.y;
-				
-				var changeText04:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15, change2R,0x00F5FF,0);
-				changeText04.autoSize = TextFieldAutoSize.HORIZONTAL;
-				container.addChild(changeText04);
-				changeText04.x = changeText03.x + changeText03.width;
-				changeText04.y = changename02.y;
-			}
 			
 			var coinBut:Button = new Button();
 			var coinIcon:Image = new Image(Game.assets.getTexture("CoinIcon"));

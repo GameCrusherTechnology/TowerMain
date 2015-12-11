@@ -20,6 +20,7 @@ package model.player
 		
 		public var gameuid:String;
 		public var coin:int;
+		public var gem:int;
 		
 		public var heroData:HeroData;
 		private function set localHero(obj:Object):void

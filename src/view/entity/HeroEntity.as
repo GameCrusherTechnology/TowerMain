@@ -2,12 +2,9 @@ package view.entity
 {
 	import flash.geom.Point;
 	
-	import controller.GameController;
-	
 	import gameconfig.EntityState;
 	
 	import model.entity.HeroItem;
-	import model.item.HeroData;
 	
 	import starling.textures.Texture;
 	
@@ -53,6 +50,7 @@ package view.entity
 			attackCD = item.attackCycle;
 			rule.addArm(new HeroArrow(attackPoint,item.hurtPoint,armDirection));
 		}
+		
 		override public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void
 		{
 			var curHurt:int = Math.floor(hurt*(1-heroData.curDefense));
@@ -70,6 +68,12 @@ package view.entity
 		override protected function beDead():void
 		{
 			super.beDead();
+			rule.loseGame();
+		}
+		
+		public function get heroItem():HeroItem
+		{
+			return item as HeroItem;
 		}
 		
 	}

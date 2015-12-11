@@ -5,7 +5,6 @@ package view.bullet
 	import gameconfig.Configrations;
 	
 	import starling.core.Starling;
-	import starling.display.Image;
 	import starling.display.MovieClip;
 	
 	import view.entity.GameEntity;

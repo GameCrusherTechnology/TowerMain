@@ -1,11 +1,8 @@
 package view.bullet
 {
 	import flash.geom.Point;
-	import flash.geom.Rectangle;
 	
 	import gameconfig.Configrations;
-	
-	import model.item.HeroData;
 	
 	import starling.display.Image;
 	
@@ -15,7 +12,7 @@ package view.bullet
 	public class HeroArrow extends ArmObject
 	{
 		private var arrowSpeed:int;
-		private var range:int =600;
+		private var range:int =2000;
 		private var showFrame:int = 20;
 		private var sx:Number;
 		private var sy:Number;
@@ -34,7 +31,7 @@ package view.bullet
 			armSurface.rotation = _rotate;
 			
 			
-			arrowSpeed = 5 *rule.cScale;
+			arrowSpeed = 15 *rule.cScale;
 			sx = arrowSpeed * Math.cos(_rotate);
 			sy = arrowSpeed * Math.sin(_rotate);
 			

@@ -329,8 +329,8 @@ package view.entity
 		public function showHurtBar(texture:Texture,hurt:int,type:String="skill"):void
 		{
 			var bar:HurtTip = new HurtTip(texture,hurt,isLeft,type);
-			bar.x = 0;
-			bar.y = -item.entitySpec.recty*rule.cScale +(item.entitySpec.recty- item.entitySpec.runy)*rule.cScale - bar.height - 10;
+			bar.x = x;
+			bar.y = y-item.entitySpec.recty*rule.cScale +(item.entitySpec.recty- item.entitySpec.runy)*rule.cScale - bar.height - 10;
 			rule.showHurtBar(bar);
 		}
 		

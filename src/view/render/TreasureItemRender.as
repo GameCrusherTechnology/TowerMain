@@ -15,7 +15,6 @@ package view.render
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import starling.events.Event;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
 	

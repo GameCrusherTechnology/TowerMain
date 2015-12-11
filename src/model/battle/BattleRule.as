@@ -4,15 +4,14 @@ package model.battle
 	import flash.geom.Point;
 	import flash.utils.Dictionary;
 	
+	import controller.DialogController;
 	import controller.GameController;
-	import controller.SpecController;
 	
 	import gameconfig.Configrations;
 	
 	import model.entity.HeroItem;
 	import model.entity.MonsterItem;
 	import model.gameSpec.BattleItemSpec;
-	import model.gameSpec.SkillItemSpec;
 	import model.gameSpec.SoldierItemSpec;
 	import model.item.HeroData;
 	import model.item.MonsterData;
@@ -27,6 +26,7 @@ package model.battle
 	import view.compenent.HurtTip;
 	import view.entity.HeroEntity;
 	import view.entity.MonsterEntity;
+	import view.panel.BattleResultPanel;
 	import view.screen.BattleScene;
 
 	public class BattleRule
@@ -41,14 +41,12 @@ package model.battle
 			curMode = mode;
 			monsterVec = [];
 			armsArr = [];
-			curScene = new BattleScene(this);
-			GameController.instance.showBattle(curScene);
-			prepareBattle();
 		}
 		
 		private var loadedTexturesAltas:Object;
-		private function prepareBattle():void
+		public function prepareBattle():void
 		{
+			curScene = GameController.instance.curBattleScene;
 			var appDir:File = File.applicationDirectory;
 			var assets:AssetManager = Game.assets;
 			
@@ -67,27 +65,14 @@ package model.battle
 				soldierArr.push(s);
 			}
 			
-			var skillArr:Array = loadedTexturesAltas['skill'];
-			dic = new Dictionary;
-			for(i = 0;i<skillArr.length;i++){
-				dic[skillArr[i]] = true;
-			}
-			skillArr = [];
-			for(s in dic){
-				skillArr.push(s);
-			}
-			
 			
 			var name:String;
 			for each(name in soldierArr){
-				assets.enqueue(
-					appDir.resolvePath("textures/role/"+name)
-				);
-			}
-			for each(name in skillArr){
-				assets.enqueue(
-					appDir.resolvePath("textures/skill/"+name)
-				);
+				if(!assets.getTextureAtlas(name)){
+					assets.enqueue(
+						appDir.resolvePath("textures/role/"+name)
+					);
+				}
 			}
 			assets.loadQueue(curScene.onPrepared);
 			
@@ -129,85 +114,59 @@ package model.battle
 		}
 		private function getTextureFromPlayer(data:HeroData):Object
 		{
-			var id:String;
-			var soldierSpec:SoldierItemSpec;
-			var soldierLevel:int;
-			var textureArr:Array = [];
-			var skillArr:Array = [];
-			var soldierSkillArr:Array = [];
-			var skillId:String;
-			var skillSpec:SkillItemSpec;
-			
-//			textureArr.push(data.name);
-			
-			for each(id in data.skills){
-				skillSpec = SpecController.instance.getItemSpec(id) as SkillItemSpec;
-				if(skillSpec){
-					skillArr.push(skillSpec.name);
-					if(skillSpec.buffName){
-						skillArr.push(skillSpec.buffName);
-					}
-				}
-			
-			}
-			return {"soldier":textureArr,"skill":skillArr};
+			return {"soldier":[data.name]};
 		}
 		
 		private function getTextureFromBattle(battleStep:BattleItemSpec):Object
 		{
 			var soldierSpec:SoldierItemSpec;
-			var soldierLevel:int;
 			var textureArr:Array = [];
-			var skillArr:Array = [];
-			var soldierSkillArr:Array = [];
-			var skillId:String;
-			var skillSpec:SkillItemSpec;
 			
 			var rouds:Array = battleStep.monsterRounds;
 			for each(var arr:Array in rouds){
 				for each(var monsterData:MonsterData in arr){
 					soldierSpec = monsterData.monsterSpec
 					textureArr.push(soldierSpec.name);
-//					var skills:Array = soldierSpec.skills;
-//					for each(var data:SkillData in skills)
-//					{
-//						skillArr.push(data.skillItemSpec.name);
-//					}
 				}
 			}
-			return {"soldier":textureArr,"skill":skillArr};
+			return {"soldier":textureArr};
 		}
 		public function beginBattle():void
 		{
 			heroEntity = new HeroEntity(new HeroItem(player.heroData));
 			curScene.addEntity(heroEntity,0.5,true);
 			roundEntities = battleSpec.monsterRounds;
+			totalRound = roundEntities.length;
 		}
 		
-		
+		private var beStopped:Boolean;
 		public function validate():void
 		{
-			heroEntity.validate();
+			if(!beStopped){
+				heroEntity.validate();
+				valiEntity();
+				
+				var armObject:ArmObject;
+				for each(armObject in armsArr)
+				{
+					armObject.refresh();
+				}
+			}
+		}
+		
+		public var totalRound:int;
+		public var roundEntities:Array = [] ;
+		private var curRound:Array = [];
+		
+		private var entityCD:int = 50;
+		private var roundCD:int = Configrations.WAVE_LOAD_TIME;
+		private function valiEntity():void
+		{
 			var entity:MonsterEntity;
 			for each(entity in monsterVec){
 				entity.validate();
 			}
-			valiEntity();
 			
-			var armObject:ArmObject;
-			for each(armObject in armsArr)
-			{
-				armObject.refresh();
-			}
-		}
-		
-		private var roundEntities:Array = [] ;
-		private var curRound:Array = [];
-		
-		private var entityCD:int = 50;
-		private var roundCD:int = 100;
-		private function valiEntity():void
-		{
 			if(curRound.length >0){
 				if(entityCD > 0){
 					entityCD --;
@@ -221,13 +180,33 @@ package model.battle
 					roundCD --;
 				}else{
 					curRound = roundEntities.shift();
-					roundCD = 90;
+					roundCD = Configrations.WAVE_LOAD_TIME;
+					passRound();
 				}
 			}else{
-			//win	
+			//	no more
+				if(monsterVec.length <=0){
+					//win
+					winGame();
+				}
 			}
 		}
 		
+		private function winGame():void
+		{
+			beStopped = true;
+			DialogController.instance.showPanel(new BattleResultPanel(battleSpec,curMode,true));
+		}
+		
+		public function loseGame():void
+		{
+			beStopped = true;
+			DialogController.instance.showPanel(new BattleResultPanel(battleSpec,curMode,false));
+		}
+		private function passRound():void
+		{
+			curScene.battleTop.configMonsterPart();
+		}
 		private function creatMonster(data:MonsterData):void
 		{
 			var entity:MonsterEntity = new MonsterEntity(new MonsterItem(data));
@@ -255,6 +234,7 @@ package model.battle
 				monsterVec.splice(monsterVec.indexOf(entity),1);
 			}
 		}
+		
 		
 		public var heroEntity:HeroEntity;
 		public var monsterVec:Array=[];

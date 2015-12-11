@@ -167,7 +167,6 @@ package view.panel
 		}
 		override public function dispose():void
 		{
-			GameController.instance.showWorldScene();
 			removeFromParent();
 			super.dispose();
 		}

@@ -134,7 +134,7 @@ package view.panel
 			
 			modeList = new List();
 			modeList.layout = listLayout1;
-			modeList.dataProvider = new ListCollection(["health","power","crit","agility","wisdom","money"]);
+			modeList.dataProvider = new ListCollection(["health","power","crit","critHurt","agility","wisdom"]);
 			modeList.itemRendererFactory =function tileListItemRendererFactory():PropertyRender
 			{
 				var renderer:PropertyRender = new PropertyRender();

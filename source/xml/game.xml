@@ -128,29 +128,29 @@
 	
 	<Group id="Skill">
 		<Skill item_id="30001" name="baoshe"   		type="arrow"		typeNeed="0"		recycle="300"	/>
-		<Skill item_id="30002" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
-		<Skill item_id="30003" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30002" name="defence" 		type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30003" name="stun" 	type="arrow"  		typeNeed="0"		/>
 		
 		<Skill item_id="30004" name="lingjiaojian"  type="arrow" 		typeNeed="0"		recycle="600"	/>
-		<Skill item_id="30005" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
-		<Skill item_id="30006" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30005" name="split" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30006" name="arrowcd" 	type="arrow"  		typeNeed="0"		/>
 		
 		<Skill item_id="30007" name="shujiguang"   	type="arrow"		typeNeed="0"		recycle="600"	/>
-		<Skill item_id="30008" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
-		<Skill item_id="30009" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30008" name="frozen" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30009" name="vampiric" 	type="arrow"  		typeNeed="0"		/>
 		
 		
 	 	<Skill item_id="31001" name="zhangxinlei"   type="magic"		typeNeed="0"		recycle="600"	/>
-	 	<Skill item_id="31002" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
-	 	<Skill item_id="31003" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31002" name="spread" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31003" name="marker" 	type="magic"  		typeNeed="0"		/>
 	 	
 	 	<Skill item_id="31004" name="huimielieyan"  type="magic"		typeNeed="0"		recycle="600"	/>
-	 	<Skill item_id="31005" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
-	 	<Skill item_id="31006" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31005" name="burning" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31006" name="magiccd" 	type="magic"  		typeNeed="0"		/>
 	 	
 	 	<Skill item_id="31007" name="longjuanfeng"  type="magic" 		typeNeed="0"		recycle="600"	/>
-	 	<Skill item_id="31008" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
-	 	<Skill item_id="31009" name="xuanfengzhan" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31008" name="typhoon" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31009" name="baoyan" 	type="magic"  		typeNeed="0"		/>
 	
 	
 	
@@ -180,12 +180,12 @@
 	</Group>
 	
 	<Group id="Map">
-		<Map item_id="40000" 	name="map00"   		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
-		<Map item_id="40001" 	name="map01"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
-		<Map item_id="40002" 	name="map02"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
-		<Map item_id="40003" 	name="map03"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
-		<Map item_id="40004" 	name="map04"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
-		<Map item_id="40005" 	name="map05"  		posiT="263|147,215|200,118|230,202|289,300|329,360|284,452|252,504|196,597|173,504|124,438|60,372|118,416|154,343|200,268|238"/>
+		<Map item_id="40000" 	name="map00"   		posiT="360|205,191|308,287|365,412|409,499|345,600|339,701|268,793|231,645|186,589|107,501|161,499|245,387|291"/>
+		<Map item_id="40001" 	name="map01"  		posiT="91|363,230|423,344|404,236|315,349|275,440|358,533|420,633|380,537|303,467|231,603|231,746|253,703|183,603|134,768|326,900|267"/>
+		<Map item_id="40002" 	name="map02"  		posiT="107|287,203|292,212|215,278|248,294|326,354|416,452|470,543|441,465|380,395|324,465|285,447|222,369|178,358|106,443|133,494|80,564|119,657|116,746|140,823|194,762|219,692|176,624|210,547|222,592|283,681|334,652|400,736|380,850|342,789|297,865|258,956|271"/>
+		<Map item_id="40003" 	name="map03"  		posiT="151|222,211|272,281|304,357|342,380|406,444|430,525|455,607|412,681|366,761|329,711|286,628|240,554|206,463|199,387|185,313|152,399|107,479|90,566|107,677|127,622|161,711|185,777|220,847|281,911|255,444|281,519|310"/>
+		<Map item_id="40004" 	name="map04"  		posiT="362|401,371|469,298|447,211|407,139|363,228|319,298|285,380|251,455|217,368|181,295|165,268|221,195|197,141|172,215|122,299|95,371|83,438|122,505|155,571|181,627|215,575|254,492|285,426|321,476|368,548|399,615|405,685|378,765|351,842|321,912|293,686|308,750|281"/>
+		<Map item_id="40005" 	name="map05"  		posiT="107|258,166|295,236|322,310|322,333|250,263|245,218|198,306|169,382|136,455|159,536|180,490|227,464|287,396|278,378|357,447|381,457|450,534|445,606|432,673|393,609|360,536|362,560|290,593|228,629|164,679|217,661|292,749|360,751|274,802|243,836|307,920|264,486|94,560|92"/>
 	</Group>
 	<Group id="Soldier">
 
@@ -218,13 +218,9 @@
 		<Soldier item_id="50026" name="xuesezhanshi"   	sound="ArmoredKnight"	recycle="150" 	range="180" 	speed="1.6"	baseLife="150" 	lifeUp="4"	baseAttack="12"	attackUp="6"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30011;5:30019;7:30002"		runx="82"		runy="197"		attackx="210"	attacky="278"	standx="87"		standy="193"	rectw="286"		recty="200"	/>
 	</Group>
 	<Group id="Item">
-		<Item item_id="80000" name="littleEnergyPotion"   	gem="10" coin="1000"	message="littleEnergyPotionMes"/>
-		<Item item_id="80001" name="largeEnergyPotion"   	gem="20" coin="2000"	message="largeEnergyPotionMes"/>
-		<Item item_id="80002" name="callHelpCard"   		gem="10" coin="1000"	message="callHelpCardMes"/>
-		<Item item_id="80003" name="quickPassCard"   		gem="10" coin="1000"	message="quickPassCardMes"/>
-		<Item item_id="80004" name="giftbox"   				gem="8" 				message="giftboxMes"/>
-		<Item item_id="80005" name="BigGift"   				gem="75" 				message="BigGiftMes"/>
-		<Item item_id="80006" name="BigGift"   				gem="10000" 			message="BigGiftMes"	showPanel="false"/>
-		<Item item_id="80007" name="PCrystal"   			gem="20" 				message="CrystalMes"/>
+		<Item item_id="80000" name="guangjian"   	gem="200" 		type="weapon"		message="guangjianMes"/>
+		<Item item_id="80001" name="fireball"   	gem="200" 		type="weapon"		message="fireballMes"/>
+		<Item item_id="80002" name="icebird"   		gem="500" 		type="weapon"		message="icebirdMes"/>
+		<Item item_id="80003" name="purpleball"   	gem="666" 		type="weapon"		message="purpleballMes"/>
 	</Group>
 </database>

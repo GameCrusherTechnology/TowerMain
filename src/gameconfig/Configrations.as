@@ -101,12 +101,11 @@ package gameconfig
 			return int(Math.pow(grade,2)*10);
 		}
 		
-		
 		public static const SKILL_MAX_LEVEL:int = 5;
 		
 		
 		public static const INIT_USER:Object = {
-			"coin" : 1000,
+			"coin" : 1000000,
 			"localHero":{
 				
 			}
@@ -173,22 +172,22 @@ package gameconfig
 			return _PanelTitleSkinTexture;
 		}
 		
-		[Embed(source="/textures/map00.jpg")]
+		[Embed(source="/textures/map/map00.png")]
 		private static var BattleMap00Cls:Class;
 		
-		[Embed(source="/textures/map01.jpg")]
+		[Embed(source="/textures/map/map01.png")]
 		private static var BattleMap01Cls:Class;
 		
-		[Embed(source="/textures/map02.jpg")]
+		[Embed(source="/textures/map/map02.png")]
 		private static var BattleMap02Cls:Class;
 		
-		[Embed(source="/textures/map03.jpg")]
+		[Embed(source="/textures/map/map03.png")]
 		private static var BattleMap03Cls:Class;
 		
-		[Embed(source="/textures/map04.jpg")]
+		[Embed(source="/textures/map/map04.png")]
 		private static var BattleMap04Cls:Class;
 		
-		[Embed(source="/textures/map05.jpg")]
+		[Embed(source="/textures/map/map05.png")]
 		private static var BattleMap05Cls:Class;
 		
 		
@@ -263,7 +262,11 @@ package gameconfig
 		public static const treasures:Object ={
 			"littleCoin":new TreasureItem({name:"littleCoin",number:20000,price:4.99,isGem:false,index:1}),
 			"middleCoin":new TreasureItem({name:"middleCoin",number:60000,price:14.99,isGem:false,index:2}),
-			"largeCoin":new TreasureItem({name:"largeCoin",number:100000,price:25.99,isGem:false,index:3})
+			"largeCoin":new TreasureItem({name:"largeCoin",number:100000,price:25.99,isGem:false,index:3}),
+			
+			"littleGem":new TreasureItem({name:"littleGem",number:200,price:4.99,isGem:true,index:4}),
+			"middleGem":new TreasureItem({name:"middleGem",number:600,price:14.99,isGem:true,index:5}),
+			"largeGem":new TreasureItem({name:"largeGem",number:1000,price:25.99,isGem:true,index:6})
 		};
 		
 		//30001 多重箭
@@ -325,6 +328,8 @@ package gameconfig
 		//31009 雷霆之怒
 		public static const skill31009Point:Array = [0,0.3,0.35,0.4,0.45,0.5];
 		
+		
+		public static const WAVE_LOAD_TIME:int = 100;
 		
 		public static function InputTextFactory(target:TextInput , inputParameters:Object ):void
 		{

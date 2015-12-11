@@ -2,8 +2,6 @@ package controller
 {
 	import flash.geom.Point;
 	
-	import feathers.controls.PanelScreen;
-	
 	import model.gameSpec.SkillItemSpec;
 	
 	import starling.display.DisplayObject;

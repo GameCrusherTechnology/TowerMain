@@ -19,6 +19,7 @@ package view.screen
 	
 	import view.bullet.ArmObject;
 	import view.compenent.BattleLoadingScreen;
+	import view.compenent.BattleTopPart;
 	import view.compenent.HeroSkillButton;
 	import view.compenent.HurtTip;
 	import view.entity.GameEntity;
@@ -39,9 +40,14 @@ package view.screen
 		{
 			battleRule = rule;
 			initialize();
+			addEventListener(Event.ADDED_TO_STAGE,onAddStage);
 			prepareBattle();
 		}
 		
+		private function onAddStage(e:Event):void
+		{
+			battleRule.prepareBattle();
+		}
 		private function initialize():void
 		{
 			initializeBack();
@@ -62,9 +68,9 @@ package view.screen
 			Configrations.BattleLoadingScene.validateLoading(progress);
 			if(progress >= 1){
 				Configrations.BattleLoadingScene.dispose();
+				battleRule.beginBattle();
 				initializeHandler();
 				addEventListener(Event.ENTER_FRAME,onEnterFrame);
-				battleRule.beginBattle();
 			}
 		}
 			
@@ -76,6 +82,7 @@ package view.screen
 		protected function initializeHandler():void
 		{
 			configSkill();
+			configTop();
 			bgLayer.addEventListener(TouchEvent.TOUCH,onTouch);
 		}
 		private function initializeBack():void
@@ -108,6 +115,16 @@ package view.screen
 			bottomLine = scenebackSkin.height *0.65;
 			battleRule.cScale = backScale;
 		}
+		
+		public var battleTop:BattleTopPart;
+		private function configTop():void
+		{
+			if(!battleTop){
+				battleTop = new BattleTopPart();
+			}
+			uiLayer.addChild(battleTop);
+		}
+		
 		private var skillButs:Array = [];
 		private function configSkill():void
 		{
@@ -121,6 +138,7 @@ package view.screen
 			var side:Number = Configrations.ViewPortWidth *0.1;
 			var bottom:Number = Configrations.ViewPortHeight*0.98 -  side ;
 			
+			var heroCool:Number = 1 - (heroData.curWisdomCD/100);
 			var cL:int = heroData.getSkillItem("31006").count;
 			var coolCDMagic:Number = Configrations.skill31006Point[cL];
 			
@@ -132,9 +150,9 @@ package view.screen
 				if(spec){
 					var newCycle:int ;
 					if(spec.type == "magic"){
-						newCycle = Math.floor(spec.recycle*(1-coolCDMagic));
+						newCycle = Math.floor(spec.recycle*(1-coolCDMagic) *heroCool);
 					}else{
-						newCycle = Math.floor(spec.recycle*(1-coolCDArrow));
+						newCycle = Math.floor(spec.recycle*(1-coolCDArrow) *heroCool);
 					}
 					but = new HeroSkillButton(spec,side,newCycle);
 					container.addChild(but);

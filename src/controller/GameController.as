@@ -2,6 +2,7 @@
 package controller
 {
 	import flash.desktop.NativeApplication;
+	import flash.filesystem.File;
 	
 	import gameconfig.LanguageController;
 	import gameconfig.LocalData;
@@ -10,6 +11,7 @@ package controller
 	import model.player.GameUser;
 	
 	import starling.display.Sprite;
+	import starling.utils.AssetManager;
 	
 	import view.panel.MessagePanel;
 	import view.panel.PanelConfirmEvent;
@@ -61,6 +63,21 @@ package controller
 			VoiceController.instance.init();
 			localPlayer = LocalData.instance.localPlayer;
 			showWorldScene();
+			initSource();
+		}
+		private function initSource():void
+		{
+			var appDir:File = File.applicationDirectory;
+			var assets:AssetManager = Game.assets;
+			assets.enqueue(
+				appDir.resolvePath("textures/skill/")
+			);
+			assets.loadQueue(onSourcePrepared);
+		}
+		public function onSourcePrepared(progress:Number):void
+		{
+			if(progress >= 1){
+			}
 		}
 		public function get layer():Sprite
 		{
@@ -85,20 +102,18 @@ package controller
 		}
 		
 		public var curBattleRule:BattleRule;
+		public var curBattleScene:BattleScene;
 		public function beginBattle(rule:BattleRule):void
 		{
+			DialogController.instance.destroy();
 			if(curWorld){
 				curWorld.removeFromParent();
 			}
-			if(!curBattleRule){
-//				curBattleRule
-			}
 			curBattleRule = rule;
 			
-		}
-		public function showBattle(scene:BattleScene):void
-		{
-			gameLayer.addChild(scene);
+			curBattleScene = new BattleScene(rule);
+			sceneLayer.addChild(curBattleScene);
+			
 		}
 		public function showAD():void
 		{

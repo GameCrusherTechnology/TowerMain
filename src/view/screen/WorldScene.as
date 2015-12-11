@@ -1,31 +1,24 @@
 package view.screen
 {
-	import flash.display.BitmapData;
-	import flash.display.Shape;
 	import flash.geom.Point;
 	
-	import controller.DialogController;
 	import controller.SpecController;
 	
-	import feathers.controls.Button;
 	import feathers.data.ListCollection;
 	
 	import gameconfig.Configrations;
 	
-	import model.gameSpec.MapItemSpec;
-	
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import starling.events.Event;
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
-	import starling.textures.Texture;
 	
 	import view.compenent.HeroButton;
 	import view.compenent.HeroPropertyButton;
+	import view.compenent.ShopButton;
 	import view.compenent.SkillButton;
-	import view.panel.MapPanel;
+	import view.compenent.WorldMapButton;
 
 	public class WorldScene extends Sprite
 	{
@@ -123,62 +116,29 @@ package view.screen
 			var skinContainer:Sprite = new Sprite;
 			bgLayer.addChild(skinContainer);
 			
-			var shape:Shape ;
-			var totalPoint:Array = [new Point(100,200),new Point(200,200),new Point(300,200),new Point(400,200),new Point(500,200),new Point(600,200),
-				new Point(700,200),new Point(700,500),new Point(700,600),new Point(700,700)];
+			var totalPoint:Array = [	new Point(scenewidth *0.22,sceneheight*0.62),
+										new Point(scenewidth *0.5,sceneheight*0.67),
+										new Point(scenewidth *0.62,sceneheight*0.5),
+										new Point(scenewidth *0.9,sceneheight*0.55),
+										new Point(scenewidth *0.75,sceneheight*0.3),
+										new Point(scenewidth *0.3,sceneheight*0.35)];
+			
+			
 			var point:Point;
+			var mapBut:WorldMapButton;
 			for(var p:int = 0 ; p<totalPoint.length; p++){
 				point = totalPoint[p];
-				creatTBut(p,skinContainer,point,bgScale);
+				mapBut = new WorldMapButton(scenewidth *0.06,p);
+				skinContainer.addChild( mapBut);
+				mapBut.x = point.x - mapBut.width/2;
+				mapBut.y = point.y - mapBut.height;
 				
-				if(!shape){
-					shape = new Shape();
-					shape.graphics.lineStyle(5,0xffffff,0.5);
-					shape.graphics.moveTo(point.x,point.y);
-				}else if(p < totalPoint.length -1){
-					var xc:Number = (point.x + totalPoint[p + 1].x) / 2;
-					var yc:Number = (point.y + totalPoint[p + 1].y) / 2;
-					shape.graphics.curveTo(point.x, point.y, xc, yc);
-				}else{
-					shape.graphics.lineTo(point.x, point.y);
-				}
 			}
-			shape.graphics.endFill();
 			
-			var bitmapData:BitmapData =new BitmapData(1200,650,true,0);
-			bitmapData.draw(shape);
-			var roadImage:Image = new Image(Texture.fromBitmapData(bitmapData));
-			skinContainer.addChildAt(roadImage,0);
 			
-			skinContainer.scaleX = skinContainer.scaleY = bgScale;
 			
 		}
 		
-		private function creatTBut(index:int,c:Sprite,pos:Point,s:Number):void
-		{
-			var but:Button = new Button();
-			var icon:Image = new Image(Game.assets.getTexture("RoadLightIcon"));
-			icon.width = Configrations.ViewPortWidth*0.05;
-			icon.scaleY = icon.scaleX;
-			but.defaultIcon = icon;
-			but.name = String(40000 + index);
-			but.addEventListener(Event.TRIGGERED,onTroggered);
-			c.addChild(but);
-			but.x = pos.x - icon.width/2;
-			but.y = pos.y - icon.height;
-		}
-		private function onTroggered(e:Event):void
-		{
-			var target:Button = e.target as Button;
-			if(target)
-			{
-				var mapSpec:MapItemSpec = SpecController.instance.getItemSpec(target.name) as MapItemSpec;
-				if(mapSpec)
-				{
-					DialogController.instance.showPanel(new MapPanel(mapSpec));
-				}
-			}
-		}
 		
 		private function getMapInfoListData():ListCollection
 		{
@@ -189,6 +149,7 @@ package view.screen
 		private var heroButton:HeroButton;
 		private var heroProButton:HeroPropertyButton;
 		private var skillButton:SkillButton;
+		private var treasureButton:ShopButton;
 		private function configUI():void
 		{
 			heroButton = new HeroButton(Configrations.ViewPortWidth *0.1);
@@ -205,6 +166,11 @@ package view.screen
 			uiLayer.addChild(skillButton);
 			skillButton.x = Configrations.ViewPortWidth *0.5;
 			skillButton.y = Configrations.ViewPortHeight*0.99 - Configrations.ViewPortWidth *0.1;
+			
+			treasureButton = new ShopButton(Configrations.ViewPortWidth *0.1);
+			uiLayer.addChild(treasureButton);
+			treasureButton.x = Configrations.ViewPortWidth *0.7;
+			treasureButton.y = Configrations.ViewPortHeight*0.99 - Configrations.ViewPortWidth *0.1;
 		}
 		
 		

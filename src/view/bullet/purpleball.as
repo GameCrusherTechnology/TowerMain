@@ -2,78 +2,117 @@ package view.bullet
 {
 	import flash.geom.Point;
 	
-	import model.battle.BattleRule;
+	import gameconfig.Configrations;
 	
 	import starling.core.Starling;
 	import starling.display.MovieClip;
 	
 	import view.entity.GameEntity;
-	import view.entity.SoldierEntity;
+	import view.entity.MonsterEntity;
 	
 	public class purpleball extends ArmObject
 	{
-		private var speed:int = 10*BattleRule.cScale;
-		private var Range:int = 100;
-		public function purpleball(_rule:BattleRule,_fromPoint:Point,_hurtV:int,_level:int,_isleft:Boolean)
+		private var arrowSpeed:int;
+		private var range:int =2000;
+		private var showFrame:int = 20;
+		private var sx:Number;
+		private var sy:Number;
+		public function purpleball(_fromPoint:Point,_hurt:int,_rotate:Number = 0)
 		{
-			armSurface = new MovieClip(Game.assets.getTextures("purpleball"));
-			armSurface.scaleX = _isleft?BattleRule.cScale*0.6:-BattleRule.cScale*0.8;
-			armSurface.scaleY = BattleRule.cScale*0.8;
-			super(_rule,_fromPoint,_hurtV,_level,_isleft);
+			super(_fromPoint,_hurt,1,true);
 			
-			addChild(armSurface);
-			armSurface.x = _isleft?-armSurface.width/2:armSurface.width/2;
-			armSurface.y = -armSurface.height/2;
+			armSurface = new MovieClip(Game.assets.getTextures("purpleball"));
+			
+			armSurface.pivotX = armSurface.width;
+			armSurface.pivotY =  armSurface.height/2;
+			
+			armSurface.scaleY = armSurface.scaleX = rule.cScale*0.3;
+			
+			armSurface.rotation = 0;
+			
+			
+			arrowSpeed = 15 *rule.cScale;
+			_rotate = 0;
+			rectW = armSurface.width;
+			rectH = armSurface.height;
+			
 			Starling.juggler.add(armSurface as MovieClip);
 		}
+		
+		
 		private var curTarget:GameEntity;
 		override public function refresh():void
 		{
-			curTarget = isLeft?rule.monsterVec[0]:rule.soldierVec[0];
-			if(curTarget){
-				if(isLeft){
-					x += speed;
-					if(x > curTarget.x){
-						attack();
+			if(showFrame ==0){
+				addChild(armSurface);
+				showFrame -- ;
+			}
+			else if(showFrame<0){
+				move();
+				if(range > 0 ){
+					var vec:Array = rule.monsterVec;
+					var entity:MonsterEntity;
+					for each(entity in vec){
+						if(!entity.isDead && entity.beInRound(curRect)){
+							curTarget = entity;
+							attack();
+							break;
+						}
 					}
 				}else{
-					x -= speed;
-					if(x < curTarget.x){
-						attack();
-					}
+					dispose();
 				}
 			}else{
-				dispose();
+				showFrame -- ;
 			}
-			
 		}
-		private function gethurt():int 
+		
+		private function findTarget():void
 		{
-			return Math.round(hurt*(1*level/10+1));
+			var entity:GameEntity = rule.monsterVec[0];
+			if(entity){
+				rotation = Math.atan2((entity.y - y),(entity.x-x));
+			}
+			sx = arrowSpeed * Math.cos(rotation);
+			sy = arrowSpeed * Math.sin(rotation);
 		}
+		private function move():void
+		{
+			findTarget();
+			x += sx;
+			y += sy;
+			range -= arrowSpeed;
+		}
+		
 		override public function attack():void
 		{
 			if(curTarget){
 				playSound();
-				curTarget.beAttacked(gethurt(),Game.assets.getTexture("skillIcon/purpleball"));
-				var secTarget:GameEntity = isLeft?rule.monsterVec[1]:rule.soldierVec[1];
-				if(secTarget is SoldierEntity && Math.abs(secTarget.x - curTarget.x)<Range*BattleRule.cScale){
-					curTarget = secTarget;
-					curTarget.beAttacked(gethurt(),Game.assets.getTexture("skillIcon/purpleball"));
-					secTarget = isLeft?rule.monsterVec[2]:rule.soldierVec[2];
-					if(secTarget is SoldierEntity && Math.abs(secTarget.x - curTarget.x)<Range*BattleRule.cScale){
-						curTarget.beAttacked(gethurt(),Game.assets.getTexture("skillIcon/purpleball"));
-					}
-					
+				curTarget.beAttacked(hurt,Game.assets.getTexture("skillIcon/arrow"),"attack");
+				//眩晕 
+				var sL:int = heroData.getSkillItem("30003").count;
+				var slRate:Number = Configrations.skillP30003Rate[sL];
+				var bool:Boolean = Math.random()<= slRate;
+				if(bool){
+					curTarget.beBuffed("30003");
 				}
+				
+				//吸血
+				var xL:int = heroData.getSkillItem("30009").count;
+				var xlRate:Number = Configrations.skillP30009Point[xL];
+				var n:int = Math.floor(xlRate * hurt);
+				if(n > 0){
+					rule.heroEntity.beBuffed("30009",n);
+				}
+				
 			}
 			dispose();
 		}
+		
 		override protected function get soundName():String
 		{
-			return "jiguang"
+			return "arrow"
 		}
-		
 		override public function dispose():void
 		{
 			Starling.juggler.remove(armSurface as MovieClip);

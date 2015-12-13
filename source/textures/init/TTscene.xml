@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:3df256d6adb3a935cd4c25783f988b0b$ -->
+<!-- $TexturePacker:SmartUpdate:144b7c436a59e7069b268651e184876f$ -->
 <TextureAtlas imagePath="TTscene.png">
     <SubTexture name="15_b155_00183" x="1846" y="1235" width="54" height="42" frameX="0" frameY="-3" frameWidth="54" frameHeight="48"/>
     <SubTexture name="15_b156_00185" x="2003" y="1600" width="40" height="48" frameX="-5" frameY="0" frameWidth="50" frameHeight="50"/>
@@ -12,7 +12,7 @@
     <SubTexture name="BattleStarIcon" x="309" y="1998" width="45" height="45" frameX="0" frameY="0" frameWidth="47" frameHeight="45"/>
     <SubTexture name="BlackPanelSkin" x="1486" y="294" width="138" height="85"/>
     <SubTexture name="BlackSkin" x="1204" y="1032" width="64" height="64"/>
-    <SubTexture name="BookIcon" x="442" y="1824" width="52" height="56" frameX="0" frameY="-8" frameWidth="64" frameHeight="64"/>
+    <SubTexture name="BookIcon" x="411" y="1747" width="52" height="56" frameX="0" frameY="-8" frameWidth="64" frameHeight="64"/>
     <SubTexture name="CancelButtonIcon" x="256" y="1968" width="51" height="57"/>
     <SubTexture name="ChestIcon" x="114" y="1657" width="112" height="94" frameX="-2" frameY="-15" frameWidth="116" frameHeight="116"/>
     <SubTexture name="ClanBigIcon" x="1964" y="2" width="82" height="84" frameX="-1" frameY="0" frameWidth="84" frameHeight="84"/>
@@ -25,7 +25,7 @@
     <SubTexture name="PanelBackSkin" x="1204" y="966" width="64" height="64"/>
     <SubTexture name="PanelRenderSkin" x="1204" y="900" width="64" height="64"/>
     <SubTexture name="PanelSkin" x="1606" y="807" width="155" height="159"/>
-    <SubTexture name="PanelTitle" x="459" y="1747" width="100" height="54"/>
+    <SubTexture name="PanelTitle" x="330" y="1657" width="100" height="54"/>
     <SubTexture name="ProgressStarIcon" x="330" y="1338" width="52" height="51"/>
     <SubTexture name="RPanelSkin" x="2" y="1657" width="110" height="100" frameX="0" frameY="0" frameWidth="110" frameHeight="102"/>
     <SubTexture name="R_button" x="1626" y="336" width="195" height="97"/>
@@ -70,13 +70,14 @@
     <SubTexture name="middleGem" x="166" y="1824" width="100" height="80"/>
     <SubTexture name="moneyIcon" x="356" y="1998" width="52" height="43" frameX="0" frameY="-1" frameWidth="52" frameHeight="45"/>
     <SubTexture name="musicIcon" x="1868" y="1607" width="118" height="128" frameX="-5" frameY="0" frameWidth="128" frameHeight="128"/>
-    <SubTexture name="powerIcon" x="411" y="1747" width="46" height="56" frameX="-3" frameY="-2" frameWidth="50" frameHeight="64"/>
+    <SubTexture name="powerIcon" x="465" y="1747" width="46" height="56" frameX="-3" frameY="-2" frameWidth="50" frameHeight="64"/>
     <SubTexture name="quickPassCardIcon" x="1964" y="88" width="78" height="84" frameX="-4" frameY="0" frameWidth="84" frameHeight="84"/>
     <SubTexture name="sheshouHeadIcon" x="1944" y="738" width="102" height="111" frameX="-2" frameY="-12" frameWidth="130" frameHeight="131"/>
     <SubTexture name="sheshouIcon" x="2" y="1824" width="48" height="118"/>
     <SubTexture name="shopIcon" x="2003" y="1500" width="42" height="51" frameX="-8" frameY="-7" frameWidth="58" frameHeight="61"/>
     <SubTexture name="simplePanelSkin" x="59" y="1772" width="50" height="50"/>
-    <SubTexture name="skillIcon" x="330" y="1391" width="44" height="51" frameX="-7" frameY="-5" frameWidth="58" frameHeight="61"/>
+    <SubTexture name="skillIcon" x="330" y="1713" width="44" height="51" frameX="-7" frameY="-5" frameWidth="58" frameHeight="61"/>
+    <SubTexture name="skillIcon/arrow" x="442" y="1824" width="56" height="56"/>
     <SubTexture name="skillIcon/arrowcd" x="422" y="1882" width="56" height="56"/>
     <SubTexture name="skillIcon/baoshe" x="367" y="1940" width="56" height="56"/>
     <SubTexture name="skillIcon/baoyan" x="384" y="1824" width="56" height="56"/>

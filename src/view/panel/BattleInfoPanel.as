@@ -27,6 +27,7 @@ package view.panel
 	import starling.text.TextField;
 	
 	import view.render.MapListRender;
+	import view.render.ModeListRender;
 	
 	public class BattleInfoPanel extends PanelScreen
 	{
@@ -106,9 +107,9 @@ package view.panel
 			modeList.backgroundSkin =listSkin;
 			modeList.layout = listLayout1;
 			modeList.dataProvider = new ListCollection(["easy","normal","hard"]);
-			modeList.itemRendererFactory =function tileListItemRendererFactory():MapListRender
+			modeList.itemRendererFactory =function tileListItemRendererFactory():ModeListRender
 			{
-				var renderer:MapListRender = new MapListRender();
+				var renderer:ModeListRender = new ModeListRender();
 				renderer.defaultSkin = new Image(Game.assets.getTexture("SelectRenderSkin"));
 				renderer.defaultSelectedSkin = new Image(Game.assets.getTexture("RPanelSkin"));
 				renderer.width =renderer.height =  panelwidth *0.15;
@@ -132,6 +133,8 @@ package view.panel
 			addChild(messText02);
 			messText02.x = panelwidth/2 - messText02.width/2;
 			messText02.y = panelheight*0.58;
+			
+			modeList.selectedIndex = 1;
 			
 		}
 		private var modeList:List;

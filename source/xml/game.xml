@@ -8,7 +8,7 @@
 	
 	<!-- 精英  120000 +100000  3600maxtime-->
 	<Group id="Battle">
-		<Battle item_id="20100" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50012:1:1|50001:1:0"	/>
+		<Battle item_id="20100" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0"	/>
 		<Battle item_id="20101" name="DragonWhelp" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50001:1"								supTime = "5000"		supLevel = "3"		/>
 		<Battle item_id="20102" name="Minotaur" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50002:1"								supTime = "5000"		supLevel = "3"		/>
 		<Battle item_id="20103" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50000:1|50001:1"						supTime = "5000"		supLevel = "5"		/>

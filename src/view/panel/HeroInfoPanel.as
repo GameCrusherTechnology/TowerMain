@@ -95,9 +95,10 @@ package view.panel
 			
 			var expBar:GreenProgressBar  = new GreenProgressBar(panelwidth*0.3,panelheight*0.05,2);
 			addChild(expBar);
+			var nextExp:int = Configrations.gradeToExp(player.heroData.level+1);
 			expBar.x = panelwidth *0.45;
 			expBar.y = panelheight*0.23;
-			expBar.comment = player.heroData.exp +"/";
+			expBar.comment = player.heroData.exp +"/" + nextExp;
 			
 			var expIcon:Image = new Image(Game.assets.getTexture("expIcon"));
 			expIcon.width = expIcon.height = panelheight *0.08;

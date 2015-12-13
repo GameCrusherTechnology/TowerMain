@@ -8,13 +8,9 @@ package view.panel
 	import controller.VoiceController;
 	
 	import feathers.controls.Button;
-	import feathers.controls.List;
 	import feathers.controls.PanelScreen;
-	import feathers.data.ListCollection;
 	import feathers.display.Scale9Image;
 	import feathers.events.FeathersEventType;
-	import feathers.layout.HorizontalLayout;
-	import feathers.layout.VerticalLayout;
 	import feathers.text.BitmapFontTextFormat;
 	import feathers.textures.Scale9Textures;
 	
@@ -34,7 +30,6 @@ package view.panel
 	
 	import view.compenent.GreenProgressBar;
 	import view.compenent.ThreeStarBar;
-	import view.render.RewardListRender;
 	
 	public class BattleResultPanel extends PanelScreen
 	{
@@ -182,7 +177,7 @@ package view.panel
 			container.addChild(coinBar);
 			coinBar.x = panelheight*0.3;
 			coinBar.y = panelheight*0.2;
-			coinBar.comment = player.coin +"/"+nextCoin;
+			coinBar.comment = player.coin +"";
 			coinBar.progress = player.coin / nextCoin;
 			
 			var coinIcon:Image = new Image(Game.assets.getTexture("CoinIcon"));
@@ -213,7 +208,7 @@ package view.panel
 				if(addCoin > 0){
 					addCoin -- ;
 					player.coin ++;
-					coinBar.comment = player.coin +"/"+nextCoin;
+					coinBar.comment = player.coin +"";
 					coinBar.progress = player.coin / nextCoin;
 				}
 				

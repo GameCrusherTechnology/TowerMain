@@ -2,65 +2,108 @@ package view.bullet
 {
 	import flash.geom.Point;
 	
-	import model.battle.BattleRule;
+	import gameconfig.Configrations;
 	
 	import starling.core.Starling;
 	import starling.display.MovieClip;
 	
 	import view.entity.GameEntity;
+	import view.entity.MonsterEntity;
 	
 	public class fireball extends ArmObject
 	{
-		private var speed:int = 12*BattleRule.cScale;
-		public function fireball(_rule:BattleRule,_fromPoint:Point,_hurtV:int,_level:int,_isleft:Boolean)
+		private var arrowSpeed:int;
+		private var range:int =2000;
+		private var showFrame:int = 20;
+		private var sx:Number;
+		private var sy:Number;
+		public function fireball(_fromPoint:Point,_hurt:int,_rotate:Number = 0)
 		{
+			super(_fromPoint,_hurt,1,true);
+			
 			armSurface = new MovieClip(Game.assets.getTextures("fireball"));
-			armSurface.scaleX = _isleft?BattleRule.cScale/3:-BattleRule.cScale/3;
-			armSurface.scaleY = BattleRule.cScale/3;
-			super(_rule,_fromPoint,_hurtV,_level,_isleft);
 			
-			addChild(armSurface);
-			armSurface.x = _isleft?-armSurface.width:armSurface.width;
+			armSurface.pivotX = armSurface.width;
+			armSurface.pivotY =  armSurface.height/2;
+			
+			armSurface.scaleY = armSurface.scaleX = rule.cScale*0.3;
+			
+			armSurface.rotation = _rotate;
+			
+			
+			arrowSpeed = 15 *rule.cScale;
+			sx = arrowSpeed * Math.cos(_rotate);
+			sy = arrowSpeed * Math.sin(_rotate);
+			
+			rectW = armSurface.width;
+			rectH = armSurface.height;
+			
 			Starling.juggler.add(armSurface as MovieClip);
-			
-			x = _isleft?(fromPoint.x + armSurface.width):(fromPoint.x - armSurface.width);
 		}
+		
+		
 		private var curTarget:GameEntity;
 		override public function refresh():void
 		{
-			curTarget = isLeft?rule.monsterVec[0]:rule.soldierVec[0];
-			if(curTarget){
-				if(isLeft){
-					x += speed;
-					if(x > curTarget.x){
-						attack();
+			if(showFrame ==0){
+				addChild(armSurface);
+				showFrame -- ;
+			}
+			else if(showFrame<0){
+				move();
+				if(range > 0 ){
+					var vec:Array = rule.monsterVec;
+					var entity:MonsterEntity;
+					for each(entity in vec){
+						if(!entity.isDead && entity.beInRound(curRect)){
+							curTarget = entity;
+							attack();
+							break;
+						}
 					}
 				}else{
-					x -= speed;
-					if(x < curTarget.x){
-						attack();
-					}
+					dispose();
 				}
 			}else{
-				dispose();
+				showFrame -- ;
 			}
-			
 		}
-		private function gethurt():int 
+		
+		private function move():void
 		{
-			return Math.round(hurt*(2*level/10+1));
+			x += sx;
+			y += sy;
+			range -= arrowSpeed;
 		}
+		
 		override public function attack():void
 		{
 			if(curTarget){
 				playSound();
-				curTarget.beAttacked(gethurt(),Game.assets.getTexture("skillIcon/fireball"));
+				curTarget.beAttacked(hurt,Game.assets.getTexture("skillIcon/arrow"),"attack");
+				//眩晕 
+				var sL:int = heroData.getSkillItem("30003").count;
+				var slRate:Number = Configrations.skillP30003Rate[sL];
+				var bool:Boolean = Math.random()<= slRate;
+				if(bool){
+					curTarget.beBuffed("30003");
+				}
+				
+				//吸血
+				var xL:int = heroData.getSkillItem("30009").count;
+				var xlRate:Number = Configrations.skillP30009Point[xL];
+				var n:int = Math.floor(xlRate * hurt);
+				if(n > 0){
+					rule.heroEntity.beBuffed("30009",n);
+				}
+				
 			}
 			dispose();
 		}
+		
 		override protected function get soundName():String
 		{
-			return "baozha"
+			return "arrow"
 		}
 		override public function dispose():void
 		{

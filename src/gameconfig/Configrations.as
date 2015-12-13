@@ -294,7 +294,7 @@ package gameconfig
 		
 		//30008 减速
 		public static const skillP30008Point:Array = [0,0.5,0.4,0.3,0.2,0.1];
-		public static const skill30008Point:int = 90;
+		public static const skill30008Point:int = 120;
 		
 		//30009 攻击吸血
 		public static const skillP30009Point:Array = [0,0.05,0.07,0.1,0.12,0.15];

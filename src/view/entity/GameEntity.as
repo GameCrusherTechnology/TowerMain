@@ -199,6 +199,17 @@ package view.entity
 					}
 					Starling.juggler.add(mc30008);
 					break;
+				
+				case "80002":
+					if(!mc30008){
+						mc30008 = creatBuffMC("bingfengjian");
+					}
+					addChild(mc30008);
+					slowCount = Configrations.skill30008Point;
+					setSpeed(0.5);
+					Starling.juggler.add(mc30008);
+					break;
+				
 				case "30009":
 					if(!mc30009){
 						mc30009 = creatBuffMC("healthBuff");
@@ -234,6 +245,7 @@ package view.entity
 					
 					Starling.juggler.add(mc31005);
 					break;
+				
 				default:
 				{
 					break;

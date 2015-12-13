@@ -2,7 +2,6 @@ package model.item
 {
 	import gameconfig.Configrations;
 	
-	import starling.events.Event;
 	import starling.events.EventDispatcher;
 
 	public class HeroData extends EventDispatcher
@@ -24,6 +23,8 @@ package model.item
 		public var exp:int;
 		
 		public var level:int;
+		
+		public var curWeapon:String ="80003";
 		
 		private var _skillPoints:int = 100;
 		public function get skillPoints():int
@@ -67,7 +68,13 @@ package model.item
 		public var powerUp:int = 2;
 		public function get curAttackPower():int
 		{
-			return powerBase + powerUp*powerLevel;
+			var p:int =  powerBase + powerUp*powerLevel;
+			if(curWeapon == "80000"){
+				p += 5;
+			}else if(curWeapon == "80003"){
+				p += 20;
+			}
+			return p;
 		}
 		
 		
@@ -76,7 +83,13 @@ package model.item
 		public var agilityUp:int = 10;
 		public function get curAttackSpeed():int
 		{
-			return agilityBase + agilityUp*agilityLevel;
+			var a:int =  agilityBase + agilityUp*agilityLevel;
+			if(curWeapon == "80000"){
+				a += 10;
+			}else if(curWeapon == "80003"){
+				a += 50;
+			}
+			return a;
 		}
 		
 		
@@ -94,7 +107,13 @@ package model.item
 		public var critUp:int = 1;
 		public function get curCritRate():int
 		{
-			return critBase + critUp*critLevel;
+			var c:int =  critBase + critUp*critLevel;
+			if(curWeapon == "80001"){
+				c += 5;
+			}else if(curWeapon == "80003"){
+				c += 10;
+			}
+			return c;
 		}
 		
 		public var critHurtLevel:int = 0;
@@ -102,7 +121,11 @@ package model.item
 		public var critHurtUp:int = 10;
 		public function get curCritHurt():int
 		{
-			return critHurtBase + critHurtUp*critHurtLevel;
+			var c:int =  critHurtBase + critHurtUp*critHurtLevel;
+			if(curWeapon == "80001"){
+				c += 50;
+			}
+			return c;
 		}
 		
 		

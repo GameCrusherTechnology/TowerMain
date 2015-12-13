@@ -2,11 +2,14 @@ package view.screen
 {
 	import flash.geom.Point;
 	
+	import controller.GameController;
 	import controller.SpecController;
 	
 	import feathers.data.ListCollection;
 	
 	import gameconfig.Configrations;
+	
+	import model.player.GameUser;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -14,10 +17,13 @@ package view.screen
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	
+	import view.compenent.GreenProgressBar;
 	import view.compenent.HeroButton;
 	import view.compenent.HeroPropertyButton;
+	import view.compenent.MusicButton;
 	import view.compenent.ShopButton;
 	import view.compenent.SkillButton;
+	import view.compenent.SoundButton;
 	import view.compenent.WorldMapButton;
 
 	public class WorldScene extends Sprite
@@ -171,8 +177,56 @@ package view.screen
 			uiLayer.addChild(treasureButton);
 			treasureButton.x = Configrations.ViewPortWidth *0.7;
 			treasureButton.y = Configrations.ViewPortHeight*0.99 - Configrations.ViewPortWidth *0.1;
+			
+			
+			var nextCoin:int = (int(player.coin /10000)+1)*10000;
+			var coinBar:GreenProgressBar  = new GreenProgressBar(Configrations.ViewPortWidth*0.3,Configrations.ViewPortHeight*0.05,2);
+			uiLayer.addChild(coinBar);
+			coinBar.comment = player.coin +"";
+			coinBar.progress = player.coin / nextCoin;
+			
+			var coinIcon:Image = new Image(Game.assets.getTexture("CoinIcon"));
+			coinIcon.width = coinIcon.height = Configrations.ViewPortHeight *0.08;
+			uiLayer.addChild(coinIcon);
+			coinIcon.x = Configrations.ViewPortWidth*0.01;
+			coinIcon.y = Configrations.ViewPortHeight*0.02;
+			
+			coinBar.x = coinIcon.x + coinIcon.width/2;
+			coinBar.y = coinIcon.y + coinIcon.height/2 - coinBar.height/2;
+			
+			
+			var nextGem:int = (int(player.gem /100)+1)*100;
+			var gemBar:GreenProgressBar  = new GreenProgressBar(Configrations.ViewPortWidth*0.25,Configrations.ViewPortHeight*0.05,2);
+			uiLayer.addChild(gemBar);
+			gemBar.comment = player.gem +"";
+			gemBar.progress = player.gem / nextGem;
+			
+			var gemIcon:Image = new Image(Game.assets.getTexture("GemIcon"));
+			gemIcon.width = gemIcon.height = Configrations.ViewPortHeight *0.08;
+			uiLayer.addChild(gemIcon);
+			gemIcon.x = Configrations.ViewPortWidth*0.01;
+			gemIcon.y = Configrations.ViewPortHeight*0.11;
+			
+			gemBar.x = gemIcon.x + gemIcon.width/2;
+			gemBar.y = gemIcon.y + gemIcon.height/2 - gemBar.height/2;
+			
+			
+			var soundBut:SoundButton = new SoundButton(Configrations.ViewPortHeight *0.08);
+			uiLayer.addChild(soundBut);
+			soundBut.x = Configrations.ViewPortWidth *0.98 - Configrations.ViewPortHeight *0.08 ;
+			soundBut.y = Configrations.ViewPortHeight*0.02 ;
+			
+			var musicBut:MusicButton = new MusicButton(Configrations.ViewPortHeight *0.08);
+			uiLayer.addChild(musicBut);
+			musicBut.x = soundBut.x - Configrations.ViewPortWidth *0.02 - Configrations.ViewPortHeight *0.08;
+			musicBut.y = Configrations.ViewPortHeight*0.02 ;
+			
 		}
 		
+		private function get player():GameUser
+		{
+			return GameController.instance.localPlayer;
+		}
 		
 	}
 }

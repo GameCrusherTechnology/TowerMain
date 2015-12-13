@@ -2,78 +2,118 @@ package view.bullet
 {
 	import flash.geom.Point;
 	
-	import model.battle.BattleRule;
+	import gameconfig.Configrations;
 	
 	import starling.core.Starling;
 	import starling.display.MovieClip;
 	
 	import view.entity.GameEntity;
+	import view.entity.MonsterEntity;
 	
 	public class guangjian extends ArmObject
 	{
-		private var arrowSpeed:int = 15*BattleRule.cScale;
-		private var thunderTime:int;
-		public function guangjian(_rule:BattleRule,_fromPoint:Point,_hurtV:int,_level:int,_isleft:Boolean)
+		private var arrowSpeed:int;
+		private var range:int =2000;
+		private var showFrame:int = 20;
+		private var sx:Number;
+		private var sy:Number;
+		public function guangjian(_fromPoint:Point,_hurt:int,_rotate:Number = 0)
 		{
-			armSurface = new MovieClip(Game.assets.getTextures("guangjian"));
-			armSurface.scaleX = _isleft?BattleRule.cScale*0.5:-BattleRule.cScale*0.5;
-			super(_rule,_fromPoint,_hurtV,_level,_isleft);
+			super(_fromPoint,_hurt,1,true);
 			
-			addChild(armSurface);
-			armSurface.x = _isleft?-armSurface.width/2:armSurface.width/2;
-			armSurface.y = -armSurface.height/2;
+			armSurface = new MovieClip(Game.assets.getTextures("guangjian"));
+			
+			armSurface.pivotX = armSurface.width;
+			armSurface.pivotY =  armSurface.height/2;
+			
+			armSurface.scaleY = armSurface.scaleX = rule.cScale*0.3;
+			
+			armSurface.rotation = _rotate;
+			
+			
+			arrowSpeed = 15 *rule.cScale;
+			sx = arrowSpeed * Math.cos(_rotate);
+			sy = arrowSpeed * Math.sin(_rotate);
+			
+			rectW = armSurface.width;
+			rectH = armSurface.height;
+			
 			Starling.juggler.add(armSurface as MovieClip);
 		}
+		
 		
 		private var curTarget:GameEntity;
 		override public function refresh():void
 		{
-			if(thunderTime>1){
-				thunderTime --;
-			}else if(thunderTime==1){
-				curTarget.removeBuffed("thunder");
-				dispose();
-			}else{
-				curTarget = isLeft?rule.monsterVec[0]:rule.soldierVec[0];
-				if(curTarget){
-					if(isLeft){
-						x += arrowSpeed;
-						if(x > curTarget.x){
+			if(showFrame ==0){
+				addChild(armSurface);
+				showFrame -- ;
+			}
+			else if(showFrame<0){
+				move();
+				if(range > 0 ){
+					var vec:Array = rule.monsterVec;
+					var entity:MonsterEntity;
+					for each(entity in vec){
+						if(!entity.isDead && entity.beInRound(curRect)){
+							curTarget = entity;
 							attack();
-						}
-					}else{
-						x -= arrowSpeed;
-						if(x < curTarget.x){
-							attack();
+							break;
 						}
 					}
+				}else{
+					dispose();
 				}
+			}else{
+				showFrame -- ;
 			}
-			
 		}
 		
-		private function gethurt():int 
+		private function move():void
 		{
-			return Math.round(hurt*(level/10+1));
+			x += sx;
+			y += sy;
+			range -= arrowSpeed;
 		}
-		private function get timeArr():Array 
-		{
-			return [100,100,100,120,120,120,150,150,150];
-		}
-		override protected function get soundName():String
-		{
-			return "jiguang"
-		}
+		
 		override public function attack():void
 		{
-			playSound();
-			curTarget.beAttacked(gethurt(),Game.assets.getTexture("skillIcon/guangjian"));
-			curTarget.beBuffed("thunder");
-			
-			thunderTime = timeArr[level];
+			if(curTarget){
+				playSound();
+				curTarget.beAttacked(hurt,Game.assets.getTexture("skillIcon/arrow"),"attack");
+				//眩晕 
+				var sL:int = heroData.getSkillItem("30003").count;
+				var slRate:Number = Configrations.skillP30003Rate[sL];
+				var bool:Boolean = Math.random()<= slRate;
+				if(bool){
+					curTarget.beBuffed("30003");
+				}
+				
+				//吸血
+				var xL:int = heroData.getSkillItem("30009").count;
+				var xlRate:Number = Configrations.skillP30009Point[xL];
+				var n:int = Math.floor(xlRate * hurt);
+				if(n > 0){
+					rule.heroEntity.beBuffed("30009",n);
+				}
+				
+			}
+			dispose();
+		}
+		
+		override protected function get soundName():String
+		{
+			return "arrow"
+		}
+		override public function dispose():void
+		{
 			Starling.juggler.remove(armSurface as MovieClip);
-			armSurface.removeFromParent(true);
+			removeFromParent();
+			super.dispose();
 		}
 		
 	}
 }
+
+
+

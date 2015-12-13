@@ -9,6 +9,10 @@ package view.entity
 	import starling.textures.Texture;
 	
 	import view.bullet.HeroArrow;
+	import view.bullet.fireball;
+	import view.bullet.guangjian;
+	import view.bullet.icebird;
+	import view.bullet.purpleball;
 
 	public class HeroEntity extends GameEntity
 	{
@@ -48,7 +52,41 @@ package view.entity
 		{
 			showState(EntityState.ATTACK);
 			attackCD = item.attackCycle;
-			rule.addArm(new HeroArrow(attackPoint,item.hurtPoint,armDirection));
+			rule.addArm(new getArrowClass(attackPoint,item.hurtPoint,armDirection));
+		}
+		
+		private function get getArrowClass():Class
+		{
+			var cls:Class = HeroArrow;
+			switch(heroData.curWeapon)
+			{
+				case "80000":
+				{
+					cls = guangjian;
+					break;
+				}
+				case "80001":
+				{
+					cls = fireball;
+					break;
+				}
+				case "80002":
+				{
+					cls = icebird;
+					break;
+				}
+				case "80003":
+				{
+					cls = purpleball;
+					break;
+				}
+				default:
+				{
+					cls = HeroArrow;
+					break;
+				}
+			}
+			return cls;
 		}
 		
 		override public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void

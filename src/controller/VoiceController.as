@@ -157,8 +157,10 @@ package controller
 		}
 		private function closeRack():void
 		{
-			backChannel.stop();
-			backChannel.removeEventListener(Event.SOUND_COMPLETE,onBackComplete);
+			if(backChannel){
+				backChannel.stop();
+				backChannel.removeEventListener(Event.SOUND_COMPLETE,onBackComplete);
+			}
 		}
 		private function onBackComplete(e:Event):void
 		{

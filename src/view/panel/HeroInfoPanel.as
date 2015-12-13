@@ -113,6 +113,7 @@ package view.panel
 			expLevel.y = expIcon.y;
 			
 			configPropertyPart();
+			configWeaponPart();
 			
 			
 		}
@@ -156,10 +157,24 @@ package view.panel
 			wisdomPart.x = panelwidth * 0.3;
 			wisdomPart.y = panelheight *0.18;
 			
+		}
+		
+		private var weaponContainer:Sprite;
+		private function configWeaponPart():void
+		{
+			weaponContainer = new Sprite;
+			addChild(weaponContainer);
+			weaponContainer.x = panelwidth*0.2;
+			weaponContainer.y = panelheight *0.6;
+			
+			var skin:Scale9Image = new Scale9Image(new Scale9Textures(Game.assets.getTexture("BPanelSkin"),new Rectangle(10,10,70,70)));
+			skin.width = panelwidth*0.25;
+			skin.height = panelheight*0.25;
+			weaponContainer.addChild(skin);
+			
 			
 			
 		}
-		
 		private function creatPropertyP(iconcls:String,nameStr:String,proper:String):Sprite
 		{
 			var container:Sprite = new Sprite;

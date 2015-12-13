@@ -26,7 +26,6 @@ package view.panel
 	import starling.events.Event;
 	import starling.text.TextField;
 	
-	import view.render.MapListRender;
 	import view.render.ModeListRender;
 	
 	public class BattleInfoPanel extends PanelScreen

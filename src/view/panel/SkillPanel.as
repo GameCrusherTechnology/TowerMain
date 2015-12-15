@@ -14,18 +14,20 @@ package view.panel
 	import feathers.events.FeathersEventType;
 	import feathers.layout.HorizontalLayout;
 	import feathers.layout.TiledRowsLayout;
+	import feathers.text.BitmapFontTextFormat;
 	import feathers.textures.Scale9Textures;
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
+	import gameconfig.LocalData;
 	
 	import model.item.HeroChangeEvent;
-	import model.item.HeroData;
 	import model.player.GameUser;
 	
 	import starling.display.Image;
 	import starling.events.Event;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	
 	import view.render.SkillBigRender;
 	
@@ -70,18 +72,39 @@ package view.panel
 			titleSkin.x = panelwidth*0.05;
 			titleSkin.y = 0;
 			
-			titleText = FieldController.createNoFontField(panelwidth,titleSkin.height,LanguageController.getInstance().getString("skill"),0xffffff,0,true);
+			titleText = FieldController.createNoFontField(panelwidth,titleSkin.height,LanguageController.getInstance().getString("skill")+" ×"+user.heroData.skillPoints,0x000000,0,true);
 			addChild(titleText);
 			titleText.y =  titleSkin.y;
 			
 			configList();
 			
+			var gemBut:Button = new Button();
+			gemBut.defaultSkin = new Image(Game.assets.getTexture("blueButtonSkin"));
+			gemBut.label = "×"+Configrations.SkillResetCost;
+			var iconM:Image = new Image(Game.assets.getTexture("GemIcon"));
+			iconM.width = iconM.height = panelheight*0.05;
+			gemBut.defaultIcon = iconM;
+			gemBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, panelheight*0.05, 0x000000);
+			gemBut.paddingLeft =gemBut.paddingRight =  20*panelScale;
+			gemBut.paddingTop =gemBut.paddingBottom =  5*panelScale;
+			addChild(gemBut);
+			gemBut.validate();
+			gemBut.addEventListener(Event.TRIGGERED,onTriggedReset);
+			gemBut.x = panelwidth*0.5 - gemBut.width/2;
+			gemBut.y = panelheight*0.85;
+			
+			var resetText:TextField = FieldController.createNoFontField(panelwidth,gemBut.height,LanguageController.getInstance().getString("resetskill")+": ",0x000000,0,true);
+			resetText.autoSize = TextFieldAutoSize.HORIZONTAL;
+			addChild(resetText);
+			resetText.x = gemBut.x - resetText.width;
+			resetText.y = gemBut.y;
+			
 			backBut = new Button();
 			backBut.defaultSkin = new Image(Game.assets.getTexture("CancelButtonIcon"));
 			backBut.width = backBut.height = panelheight*0.1;
 			addChild(backBut);
-			backBut.x = panelwidth*0.05;
-			backBut.y = 0;
+			backBut.x = panelwidth*0.05 -backBut.width/2;
+			backBut.y = -panelheight*0.02;
 			backBut.addEventListener(Event.TRIGGERED,onTriggerBack);
 			
 			user.heroData.addEventListener(HeroChangeEvent.HEROSKILLCHANGE,onSkillChange);
@@ -128,8 +151,21 @@ package view.panel
 		
 		private function onTriggerBack(e:Event):void
 		{
+			LocalData.instance.savePlayer();
 			dispose();
 		}
+		private function onTriggedReset(e:Event):void
+		{
+			if(user.gem >= Configrations.SkillResetCost){
+				user.addGem(-Configrations.SkillResetCost);
+				user.heroData.resetSkill();
+				titleText.text = LanguageController.getInstance().getString("skill") + " ×"+user.heroData.skillPoints;
+				configList();
+			}else{
+				DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("warningGemTip")));
+			}
+		}
+			
 		
 		private function get user():GameUser
 		{

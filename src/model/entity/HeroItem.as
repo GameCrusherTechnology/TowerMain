@@ -31,7 +31,10 @@ package model.entity
 		{
 			return heroData.curHealth;
 		}
-		
+		public function revive():void
+		{
+			curLife = totalLife;
+		}
 		override public function get hurtPoint():int
 		{
 			var basep:int =  heroData.curAttackPower;

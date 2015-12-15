@@ -106,11 +106,14 @@ package gameconfig
 		
 		public static const INIT_USER:Object = {
 			"coin" : 1000000,
+			"gem" : 1000000,
 			"localHero":{
 				
 			}
-			
 		};
+		
+		public static const resaveCost:int = 20;
+		public static const SkillResetCost:int = 20;
 		
 		public static function get isLocalTest():Boolean
 		{

@@ -5,6 +5,8 @@ package view.compenent
 	
 	import feathers.controls.Button;
 	
+	import gameconfig.Configrations;
+	
 	import model.gameSpec.MapItemSpec;
 	
 	import starling.display.Image;
@@ -16,7 +18,7 @@ package view.compenent
 	public class WorldMapButton extends Sprite
 	{
 		public var id:String;
-		public function WorldMapButton(side:Number,index:int)
+		public function WorldMapButton(side:Number,index:int,isOpen:Boolean)
 		{
 			id = String(40000 + index);
 			var icon:Image = new Image(Game.assets.getTexture("ClanBigIcon"));
@@ -30,7 +32,11 @@ package view.compenent
 			butSKin.alpha = 0;
 			but.defaultSkin = butSKin;
 			addChild(but);
-			but.addEventListener(Event.TRIGGERED,onTroggered);
+			if(isOpen){
+				but.addEventListener(Event.TRIGGERED,onTroggered);
+			}else{
+				filter = Configrations.grayscaleFilter;
+			}
 		}
 		
 		private function onTroggered(e:Event):void

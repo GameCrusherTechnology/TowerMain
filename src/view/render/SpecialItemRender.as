@@ -35,10 +35,10 @@ package view.render
 		private function canUseArr(id:String):Boolean
 		{
 //			= ["80000","80001","80002","80003","80004"];
-			var i:int = Math.round(int(id)/10000);
-			if(i == 8){
-				return true;
-			}
+//			var i:int = Math.round(int(id)/10000);
+//			if(i == 8){
+//				return true;
+//			}
 			return false;
 		}
 		public function SpecialItemRender()
@@ -113,7 +113,19 @@ package view.render
 						useBut.validate();
 						useBut.x =  renderwidth/2 - useBut.width/2;
 						useBut.y =	renderHeight*0.95 - useBut.height;
-						useBut.addEventListener(Event.TRIGGERED,onTriggedUse);
+					}else{
+						var boughtBut:Button = new Button();
+						boughtBut.defaultSkin = new Image(Game.assets.getTexture("Y_button"));
+						boughtBut.label = LanguageController.getInstance().getString("Bought");
+						boughtBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, renderHeight*0.08, 0x000000);
+						boughtBut.paddingLeft =boughtBut.paddingRight =  20;
+						boughtBut.paddingTop = boughtBut.paddingBottom =  5;
+						container.addChild(boughtBut);
+						boughtBut.validate();
+						boughtBut.x =  renderwidth/2 - boughtBut.width/2;
+						boughtBut.y =	renderHeight*0.95 - boughtBut.height;
+						boughtBut.filter = Configrations.grayscaleFilter;
+						boughtBut.touchable = false;
 					}
 				}else{
 				
@@ -157,24 +169,23 @@ package view.render
 				}
 			}
 		}
-		private function onTriggedUse(e:Event):void
-		{
-			if(!isCommanding){
-			}
-		}
 		
 		
 		private function onUsed():void
 		{
-			isCommanding = false;
 			refreshData();
 		}
-		private var isCommanding:Boolean;
 		private function onTriggedBuyCoin(e:Event):void
 		{
 			if(hero.coin >= itemspec.coin){
-				if(!isCommanding){
+				hero.addGem(-itemspec.coin);
+				hero.heroData.addItem(itemspec.item_id,1);
+				if(itemspec.type == "weapon"){
+					hero.heroData.curWeapon = itemspec.item_id;
+				}else if(itemspec.type == "defence"){
+					hero.heroData.curDefence = itemspec.item_id;
 				}
+				refreshData();
 			}else{
 				DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("warningCoinTip")));
 			}
@@ -183,9 +194,14 @@ package view.render
 		private function onTriggedBuyGem(e:Event):void
 		{
 			if(hero.gem >= itemspec.gem){
-				if(!isCommanding){
-					isCommanding = true;
+				hero.addGem(-itemspec.gem);
+				hero.heroData.addItem(itemspec.item_id,1);
+				if(itemspec.type == "weapon"){
+					hero.heroData.curWeapon = itemspec.item_id;
+				}else if(itemspec.type == "defence"){
+					hero.heroData.curDefence = itemspec.item_id;
 				}
+				refreshData();
 			}else{
 				DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("warningGemTip")));
 			}

@@ -179,6 +179,7 @@ package view.render
 			container.addChild(coinBut);
 			coinBut.x = renderwidth*0.2 ;
 			coinBut.y = renderHeight * 0.75;
+			coinBut.touchable = false;
 		}
 		
 		private function get heroData():HeroData

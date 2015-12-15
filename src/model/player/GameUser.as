@@ -18,9 +18,20 @@ package model.player
 			}
 		}
 		
-		public var gameuid:String;
+		public var uid:String;
 		public var coin:int;
+		public function addCoin(c:int):void
+		{
+			coin+= c;
+			dispatchEvent(new PlayerEvent(PlayerEvent.CoinChange));
+		}
+			
 		public var gem:int;
+		public function addGem(g:int):void
+		{
+			gem += g;
+			dispatchEvent(new PlayerEvent(PlayerEvent.GemChange));
+		}
 		
 		public var heroData:HeroData;
 		private function set localHero(obj:Object):void
@@ -28,6 +39,15 @@ package model.player
 			heroData = new HeroData(obj);
 		}
 		
+		public function getSaveData():Object
+		{
+			return {
+				uid:uid,
+				coin:coin,
+				gem:gem,
+				localHero:heroData.getSaveData()
+			};
+		}
 		
 	}
 }

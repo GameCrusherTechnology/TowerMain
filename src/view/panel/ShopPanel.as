@@ -2,7 +2,6 @@ package view.panel
 {
 	import flash.geom.Rectangle;
 	
-	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
 	import controller.SpecController;
@@ -21,6 +20,7 @@ package view.panel
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
+	import gameconfig.LocalData;
 	
 	import model.gameSpec.ItemSpec;
 	import model.item.TreasureItem;
@@ -136,7 +136,7 @@ package view.panel
 				
 			}
 			
-			if(currentTabIndex == 0){
+			if(currentTabIndex == 1){
 				
 				itemList.dataProvider = proplistData;
 				itemList.itemRendererFactory =function tileListItemRendererFactory():SpecialItemRender
@@ -148,7 +148,7 @@ package view.panel
 					renderer.height = panelheight *0.6;
 					return renderer;
 				}
-			}else if(currentTabIndex == 1){
+			}else if(currentTabIndex == 0){
 				
 				itemList.dataProvider = treasurelistData;
 				itemList.itemRendererFactory =function tileListItemRendererFactory():TreasureItemRender
@@ -194,30 +194,13 @@ package view.panel
 		}
 		
 		
-		private function checkMoney(cost:int,isGem:Boolean):Boolean
-		{
-			if(isGem){
-				if(cost > user.gem){
-					DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("warningGemTip")));
-					return false;
-				}else{
-					return true;
-				}
-			}else{
-				if(cost > user.coin){
-					DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("warningCoinTip")));
-					return false;
-				}else{
-					return true;
-				}
-			}
-		}
 		public function get user():GameUser
 		{
 			return GameController.instance.localPlayer;
 		}
 		private function onTriggerBack(e:Event):void
 		{
+			LocalData.instance.savePlayer();
 			dispose();
 		}
 		

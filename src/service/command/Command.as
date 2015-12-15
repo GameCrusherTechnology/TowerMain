@@ -77,9 +77,6 @@
 			}
 			params["commandName"] = cmd;
 			params["uid"] = Configrations.userID;
-			if(GameController.instance.localPlayer){
-				params["gameuid"] = GameController.instance.localPlayer.gameuid;
-			}
 			
 			RemotingOperation.TIMEOUT = 30000;
 			var operation:RemotingOperation = new RemotingOperation(gateway,callback,callback);

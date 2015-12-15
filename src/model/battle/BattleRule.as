@@ -203,6 +203,11 @@ package model.battle
 			beStopped = true;
 			DialogController.instance.showPanel(new BattleResultPanel(battleSpec,curMode,false));
 		}
+		public function revive():void
+		{
+			beStopped = false;
+			heroEntity.revive();
+		}
 		private function passRound():void
 		{
 			curScene.battleTop.configMonsterPart();

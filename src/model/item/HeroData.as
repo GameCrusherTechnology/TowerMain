@@ -17,14 +17,16 @@ package model.item
 			}
 		}
 		
-		public var id:String;
 		public var name:String = "sheshou";
+		
+		public var curmap:int = 5;
 		
 		public var exp:int;
 		
 		public var level:int;
 		
-		public var curWeapon:String ="80003";
+		public var curWeapon:String ;
+		public var curDefence:String ;
 		
 		private var _skillPoints:int = 100;
 		public function get skillPoints():int
@@ -139,13 +141,46 @@ package model.item
 				return curAttackPower;
 			}
 		}
+		
+		//map
+		private var passedMaps:Array = [];
+		public function set maps(obj:Object):void
+		{
+			passedMaps = [];
+			for each(var ob:Object in obj){
+				passedMaps.push(new OwnedItem(ob["item_id"],ob["count"]));
+			}
+		}
+		public function getMap(id:String):OwnedItem
+		{
+			var ownedItem:OwnedItem;
+			for each(ownedItem in passedMaps){
+				if(ownedItem.item_id == id){
+					return ownedItem;
+				}
+			}
+			return new OwnedItem(id,0);
+		}
+		public function addMap(itemid:String,count:int):Boolean
+		{
+			var ownedItem :OwnedItem;
+			for each(ownedItem in passedMaps){
+				if(ownedItem.item_id == itemid){
+					ownedItem.count += count;
+					return true;
+				}
+			}
+			passedMaps.push(new OwnedItem(itemid,count));
+			return false;
+		}
+		
 		//items
-		private var owneditems:Array = [];
+		public var owneditems:Array = [];
 		public function set items(obj:Object):void
 		{
 			owneditems = [];
 			for each(var ob:Object in obj){
-				owneditems.push(new OwnedItem(ob["id"],ob["count"]));
+				owneditems.push(new OwnedItem(ob["item_id"],ob["count"]));
 			}
 		}
 		public function getItem(id:String):OwnedItem
@@ -167,18 +202,26 @@ package model.item
 					return true;
 				}
 			}
-			skillItems.push(new OwnedItem(itemid,count));
+			owneditems.push(new OwnedItem(itemid,count));
 			return false;
 		}
 		
 		
 		//skill
+		public function resetSkill():void
+		{
+			var ownedItem:OwnedItem;
+			for each(ownedItem in skillItems){
+				skillPoints += ownedItem.count;
+			}
+			skillItems = [];
+		}
 		private var skillItems:Array = [];
 		public function set sitems(obj:Object):void
 		{
 			skillItems = [];
 			for each(var ob:Object in obj){
-				skillItems.push(new OwnedItem(ob["id"],ob["count"]));
+				skillItems.push(new OwnedItem(ob["item_id"],ob["count"]));
 			}
 		}
 		public function getSkillItem(id:String):OwnedItem
@@ -228,6 +271,28 @@ package model.item
 			return Configrations.skill30002Point[dL];
 		}
 		
-		
+		public function getSaveData():Object
+		{
+			return {
+				curmap:curmap,
+				exp:exp,
+				level:level,
+				curWeapon:curWeapon,
+				curDefence:curDefence,
+				skillPoints:skillPoints,
+				
+				//property
+				healthLevel:healthLevel,
+				powerLevel:powerLevel,
+				agilityLevel:agilityLevel,
+				wisdomLevel:wisdomLevel,
+				critLevel:critLevel,
+				critHurtLevel:critHurtLevel,
+				
+				maps:passedMaps,
+				items:owneditems,
+				sitems:skillItems
+			};
+		}
 	}
 }

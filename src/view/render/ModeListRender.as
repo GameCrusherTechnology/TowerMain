@@ -45,7 +45,7 @@ package view.render
 			addChild(container);
 			
 			
-			var title:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15,LanguageController.getInstance().getString(type),0xffffff,0,true);
+			var title:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.25,LanguageController.getInstance().getString(type),0x000000,0,true);
 			container.addChild(title);
 			
 			var icon:Image = new Image(Game.assets.getTexture("BattleScoreIcon"));

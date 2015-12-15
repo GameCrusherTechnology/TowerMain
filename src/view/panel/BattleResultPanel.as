@@ -16,8 +16,10 @@ package view.panel
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
+	import gameconfig.LocalData;
 	
 	import model.gameSpec.BattleItemSpec;
+	import model.item.OwnedItem;
 	import model.player.GameUser;
 	
 	import starling.animation.Tween;
@@ -96,6 +98,12 @@ package view.panel
 			}else{
 				stars = 3;
 			}
+			
+			var item:OwnedItem = player.heroData.getMap(battleSpec.item_id);
+			if(item.count< stars){
+				player.heroData.addMap(battleSpec.item_id,stars-item.count);
+			}
+			
 			var bar:ThreeStarBar = new ThreeStarBar(stars,panelheight*0.18);
 			addChild(bar);
 			bar.x = panelwidth/2 - bar.width/2;
@@ -107,17 +115,6 @@ package view.panel
 				configDefeatContainer();
 			}
 			
-			var confirmBut:Button = new Button();
-			confirmBut.defaultSkin = new Image(Game.assets.getTexture("Y_button"));
-			confirmBut.label = LanguageController.getInstance().getString("confirm");
-			confirmBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, panelheight*0.04, 0x000000);
-			confirmBut.paddingLeft = confirmBut.paddingRight = 20*panelScale;
-			confirmBut.height = panelheight*0.08;
-			addChild(confirmBut);
-			confirmBut.validate();
-			confirmBut.addEventListener(Event.TRIGGERED,onTriggerConfirm);
-			confirmBut.x = panelwidth/2 - confirmBut.width/2;
-			confirmBut.y = panelheight*0.65;
 			
 		}
 		private var addExp:int;
@@ -219,6 +216,18 @@ package view.panel
 			}
 			Starling.juggler.add(tween);
 			
+			var confirmBut:Button = new Button();
+			confirmBut.defaultSkin = new Image(Game.assets.getTexture("Y_button"));
+			confirmBut.label = LanguageController.getInstance().getString("confirm");
+			confirmBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, panelheight*0.04, 0x000000);
+			confirmBut.paddingLeft = confirmBut.paddingRight = 20*panelScale;
+			confirmBut.height = panelheight*0.08;
+			container.addChild(confirmBut);
+			confirmBut.validate();
+			confirmBut.addEventListener(Event.TRIGGERED,onTriggerConfirm);
+			confirmBut.x = panelwidth*0.3 - confirmBut.width/2;
+			confirmBut.y = panelheight*0.35;
+			
 		}
 		
 		private function configDefeatContainer():void
@@ -315,9 +324,50 @@ package view.panel
 			weaponBut.x = skin2.x ;
 			weaponBut.y = skin2.y;
 			
+			var gemBut:Button = new Button();
+			gemBut.defaultSkin = new Image(Game.assets.getTexture("blueButtonSkin"));
+			gemBut.label = "×"+Configrations.resaveCost;
+			var iconM:Image = new Image(Game.assets.getTexture("GemIcon"));
+			iconM.width = iconM.height = panelheight*0.05;
+			gemBut.defaultIcon = iconM;
+			gemBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, panelheight*0.05, 0x000000);
+			gemBut.paddingLeft =gemBut.paddingRight =  20*panelScale;
+			gemBut.paddingTop =gemBut.paddingBottom =  5*panelScale;
+			container.addChild(gemBut);
+			gemBut.validate();
+			gemBut.addEventListener(Event.TRIGGERED,onTriggedResave);
+			gemBut.x = panelwidth*0.3 - gemBut.width/2;
+			gemBut.y = panelheight*0.35;
+			
+			var reviveText:TextField = FieldController.createNoFontField(panelwidth,gemBut.height,LanguageController.getInstance().getString("revive")+": ",0x000000,0,true);
+			reviveText.autoSize = TextFieldAutoSize.HORIZONTAL;
+			container.addChild(reviveText);
+			reviveText.x = gemBut.x - reviveText.width;
+			reviveText.y = gemBut.y;
+			
+			var confirmBut:Button = new Button();
+			confirmBut.defaultSkin = new Image(Game.assets.getTexture("Y_button"));
+			confirmBut.label = LanguageController.getInstance().getString("back");
+			confirmBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, panelheight*0.05, 0x000000);
+			confirmBut.paddingLeft = confirmBut.paddingRight = 20*panelScale;
+			confirmBut.paddingTop =	confirmBut.paddingBottom =  5*panelScale;
+			container.addChild(confirmBut);
+			confirmBut.validate();
+			confirmBut.addEventListener(Event.TRIGGERED,onTriggerOut);
+			confirmBut.x = gemBut.x + gemBut.width + panelwidth*0.05;
+			confirmBut.y = gemBut.y;
 		}
 		
-		
+		private function onTriggedResave(e:Event):void
+		{
+			if(player.gem >= Configrations.resaveCost){
+				player.addGem(-Configrations.resaveCost);
+				GameController.instance.curBattleRule.revive();
+				dispose();
+			}else{
+				DialogController.instance.showPanel(new WarnnigTipPanel(LanguageController.getInstance().getString("warningGemTip")));
+			}
+		}
 		
 		private function onTriggerConfirm(e:Event):void
 		{
@@ -327,25 +377,35 @@ package view.panel
 			if(addExp > 0){
 				player.heroData.addExp(addExp);
 			}
-			dispose();
+			
+			LocalData.instance.savePlayer();
+			outToWorld();
+		}
+		private function onTriggerOut(e:Event):void
+		{
+			outToWorld();
 		}
 		private function onTriggerCheck(e:Event):void
 		{
 			DialogController.instance.showPanel(new HeroPropertyPanel());
-			dispose();
+			outToWorld();
 		}
 		private function onTriggerUpdate(e:Event):void
 		{
 			DialogController.instance.showPanel(new TreasurePanel());
-			dispose();
+			outToWorld();
 		}
 		private function get player():GameUser
 		{
 			return GameController.instance.localPlayer;
 		}
-		override public function dispose():void
+		private function outToWorld():void
 		{
 			GameController.instance.showWorldScene();
+			dispose();
+		}
+		override public function dispose():void
+		{
 			removeFromParent();
 			super.dispose();
 		}

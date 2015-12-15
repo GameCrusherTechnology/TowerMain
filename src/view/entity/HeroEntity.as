@@ -88,7 +88,13 @@ package view.entity
 			}
 			return cls;
 		}
-		
+		public function revive():void
+		{
+			(item as HeroItem).revive();
+			isDead = false;
+			showLife();
+		}
+			
 		override public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void
 		{
 			var curHurt:int = Math.floor(hurt*(1-heroData.curDefense));

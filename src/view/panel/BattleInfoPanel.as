@@ -89,7 +89,7 @@ package view.panel
 			backBut.width = backBut.height = panelheight*0.1;
 			addChild(backBut);
 			backBut.x = panelwidth*0.15 - panelheight*0.05;
-			backBut.y = panelheight*0.1;
+			backBut.y = panelheight*0.08;
 			backBut.addEventListener(Event.TRIGGERED,onTriggerOut);
 			
 		}

@@ -18,6 +18,7 @@ package view.panel
 	
 	import gameconfig.Configrations;
 	import gameconfig.LanguageController;
+	import gameconfig.LocalData;
 	
 	import model.item.HeroData;
 	import model.player.GameUser;
@@ -25,7 +26,6 @@ package view.panel
 	import starling.display.Image;
 	import starling.events.Event;
 	import starling.text.TextField;
-	import starling.text.TextFieldAutoSize;
 	
 	import view.render.PropertyRender;
 	
@@ -164,7 +164,7 @@ package view.panel
 				if(curLevel < 10){
 					var coinCost:int = Configrations.heroPropertyCoin(curLevel+1);
 					if(player.coin >= coinCost){
-						player.coin -= coinCost;
+						player.addCoin( - coinCost);
 						player.heroData[type+"Level"] +=1;
 						
 						configModeContainer();
@@ -177,16 +177,19 @@ package view.panel
 		
 		private function onTriggerShop(e:Event):void
 		{
-			DialogController.instance.showPanel(new TreasurePanel());
+			DialogController.instance.showPanel(new ShopPanel());
+			LocalData.instance.savePlayer();
 			dispose();
 		}
 		
 		private function onTriggerConfirm(e:Event):void
 		{
+			LocalData.instance.savePlayer();
 			dispose();
 		}
 		private function onTriggerOut(e:Event):void
 		{
+			LocalData.instance.savePlayer();
 			dispose();
 		}
 		private function get player():GameUser

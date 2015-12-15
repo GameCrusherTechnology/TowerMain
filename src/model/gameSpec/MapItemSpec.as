@@ -23,5 +23,6 @@ package model.gameSpec
 			return vec;
 		}
 		
+		
 	}
 }

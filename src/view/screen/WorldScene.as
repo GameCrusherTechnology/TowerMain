@@ -10,6 +10,7 @@ package view.screen
 	import gameconfig.Configrations;
 	
 	import model.player.GameUser;
+	import model.player.PlayerEvent;
 	
 	import starling.display.Image;
 	import starling.display.Sprite;
@@ -132,17 +133,19 @@ package view.screen
 			
 			var point:Point;
 			var mapBut:WorldMapButton;
+			var curM:int = player.heroData.curmap;
 			for(var p:int = 0 ; p<totalPoint.length; p++){
 				point = totalPoint[p];
-				mapBut = new WorldMapButton(scenewidth *0.06,p);
+				if(p <= curM){
+					mapBut = new WorldMapButton(scenewidth *0.06,p,true);
+				}else{
+					mapBut = new WorldMapButton(scenewidth *0.06,p,false);
+				}
 				skinContainer.addChild( mapBut);
 				mapBut.x = point.x - mapBut.width/2;
 				mapBut.y = point.y - mapBut.height;
 				
 			}
-			
-			
-			
 		}
 		
 		
@@ -184,6 +187,11 @@ package view.screen
 			uiLayer.addChild(coinBar);
 			coinBar.comment = player.coin +"";
 			coinBar.progress = player.coin / nextCoin;
+			player.addEventListener(PlayerEvent.CoinChange,function():void{
+				var nextCoin:int = (int(player.coin /100)+1)*100;
+				coinBar.comment = player.coin +"";
+				coinBar.progress = player.coin / nextCoin;}
+			);
 			
 			var coinIcon:Image = new Image(Game.assets.getTexture("CoinIcon"));
 			coinIcon.width = coinIcon.height = Configrations.ViewPortHeight *0.08;
@@ -200,6 +208,11 @@ package view.screen
 			uiLayer.addChild(gemBar);
 			gemBar.comment = player.gem +"";
 			gemBar.progress = player.gem / nextGem;
+			player.addEventListener(PlayerEvent.GemChange,function():void{
+				var nextGem:int = (int(player.gem /100)+1)*100;
+				gemBar.comment = player.gem +"";
+				gemBar.progress = player.gem / nextGem;}
+			);
 			
 			var gemIcon:Image = new Image(Game.assets.getTexture("GemIcon"));
 			gemIcon.width = gemIcon.height = Configrations.ViewPortHeight *0.08;

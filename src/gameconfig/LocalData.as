@@ -5,6 +5,8 @@ package gameconfig
 	import flash.filesystem.FileStream;
 	import flash.utils.ByteArray;
 	
+	import controller.GameController;
+	
 	import model.player.GameUser;
 
 	public class LocalData
@@ -35,13 +37,13 @@ package gameconfig
 		{
 			var user:GameUser;
 			var info:Object;
-//			if(heroFile.exists){
-//				fileStream.open(heroFile,FileMode.READ);
-//				var readfilebyte:ByteArray=new ByteArray();
-//				fileStream.readBytes(readfilebyte);
-//				info = readfilebyte.readObject();
-//				fileStream.close();
-//			}
+			if(heroFile.exists){
+				fileStream.open(heroFile,FileMode.READ);
+				var readfilebyte:ByteArray=new ByteArray();
+				fileStream.readBytes(readfilebyte);
+				info = readfilebyte.readObject();
+				fileStream.close();
+			}
 			
 			if(!info){
 				info = Configrations.INIT_USER;
@@ -57,6 +59,15 @@ package gameconfig
 			return user;
 		}
 		
+		public function savePlayer():void
+		{
+			var curData:Object = GameController.instance.localPlayer.getSaveData();
+			var filebyte:ByteArray=new ByteArray();
+			filebyte.writeObject(curData);
+			fileStream.open(heroFile,FileMode.WRITE);
+			fileStream.writeBytes(filebyte,0,filebyte.length);
+			fileStream.close();
+		}
 	
 	}
 }

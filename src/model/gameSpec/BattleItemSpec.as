@@ -8,7 +8,8 @@ package model.gameSpec
 		{
 			super(data);
 		}
-		
+		public var rewardCoin:int;		
+		public var rewardExp:int;	
 		public var baseMonster:String;
 		public function get monsterRounds():Array
 		{
@@ -32,7 +33,7 @@ package model.gameSpec
 		{
 			var monsterData:MonsterData;
 			var arr:Array = str.split(":");
-			monsterData = new MonsterData(arr[0],arr[1],arr[2]);
+			monsterData = new MonsterData(arr[0],arr[1],arr[2],arr[3]);
 			return monsterData;
 		}
 	}

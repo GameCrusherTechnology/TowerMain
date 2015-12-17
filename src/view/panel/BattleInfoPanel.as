@@ -66,7 +66,7 @@ package view.panel
 			titleSkin.x =backSkin.x;
 			titleSkin.y = panelheight*0.1;
 			
-			var titleText:TextField = FieldController.createNoFontField(panelwidth,titleSkin.height,LanguageController.getInstance().getString("select")+" "+LanguageController.getInstance().getString("mode"),0x000000,titleSkin.height*0.6,true);
+			var titleText:TextField = FieldController.createNoFontField(panelwidth,titleSkin.height,LanguageController.getInstance().getString("selectmode"),0x000000,titleSkin.height*0.6,true);
 			addChild(titleText);
 			titleText.y =  panelheight*0.1;
 			
@@ -74,7 +74,7 @@ package view.panel
 			
 			var confirmBut:Button = new Button();
 			confirmBut.defaultSkin = new Image(Game.assets.getTexture("Y_button"));
-			confirmBut.label = LanguageController.getInstance().getString("confirm");
+			confirmBut.label = LanguageController.getInstance().getString("begin");
 			confirmBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, panelheight*0.04, 0x000000);
 			confirmBut.paddingLeft = confirmBut.paddingRight = 20*panelScale;
 			confirmBut.height = panelheight*0.08;
@@ -123,12 +123,12 @@ package view.panel
 			modeList.y = panelheight*0.2;
 			modeList.addEventListener(Event.CHANGE,onModeChange);
 			
-			messText01 = FieldController.createNoFontField(panelwidth,panelheight*0.08,LanguageController.getInstance().getString("hurt")+":" + "100%",0x000000,0,true);
+			messText01 = FieldController.createNoFontField(panelwidth,panelheight*0.06,LanguageController.getInstance().getString("hurt")+":" + "100%",0x000000,0,true);
 			addChild(messText01);
 			messText01.x = panelwidth/2 - messText01.width/2;
 			messText01.y = panelheight*0.5;
 			
-			messText02 = FieldController.createNoFontField(panelwidth,panelheight*0.08,LanguageController.getInstance().getString("health")+":" + "100%",0x000000,0,true);
+			messText02 = FieldController.createNoFontField(panelwidth,panelheight*0.06,LanguageController.getInstance().getString("health")+":" + "100%",0x000000,0,true);
 			addChild(messText02);
 			messText02.x = panelwidth/2 - messText02.width/2;
 			messText02.y = panelheight*0.58;
@@ -144,14 +144,14 @@ package view.panel
 			var itemStr:String = String(modeList.selectedItem);
 			if(itemStr){
 				if(itemStr == "easy"){
-					messText01.text =  LanguageController.getInstance().getString("hurt")+":" + "80%";
-					messText02.text =  LanguageController.getInstance().getString("health")+":" + "80%";
+					messText01.text =  LanguageController.getInstance().getString("mhurt")+": " + "80%";
+					messText02.text =  LanguageController.getInstance().getString("mhealth")+": " + "80%";
 				}else if(itemStr == "normal"){
-					messText01.text =  LanguageController.getInstance().getString("hurt")+":" + "100%";
-					messText02.text =  LanguageController.getInstance().getString("health")+":" + "100%";
+					messText01.text =  LanguageController.getInstance().getString("mhurt")+": " + "100%";
+					messText02.text =  LanguageController.getInstance().getString("mhealth")+": " + "100%";
 				}else{
-					messText01.text =  LanguageController.getInstance().getString("hurt")+":" + "120%";
-					messText02.text =  LanguageController.getInstance().getString("health")+":" + "120%";
+					messText01.text =  LanguageController.getInstance().getString("mhurt")+": " + "120%";
+					messText02.text =  LanguageController.getInstance().getString("mhealth")+": " + "120%";
 				}
 			}
 		}

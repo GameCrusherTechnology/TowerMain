@@ -129,43 +129,49 @@ package view.panel
 			
 		}
 		
+		private var propertyContainer:Sprite;
 		private function configPropertyPart():void
 		{
-			var container:Sprite = new Sprite;
-			addChild(container);
-			container.x = panelwidth * 0.25;
-			container.y = panelheight*0.35;
+			if(propertyContainer){
+				propertyContainer.removeFromParent(true);
+				propertyContainer = null;
+			}
+			propertyContainer = new Sprite;
+			addChild(propertyContainer);
+			propertyContainer.x = panelwidth * 0.25;
+			propertyContainer.y = panelheight*0.35;
 			
 			var b:Number = 0;
 			
 			var healPart:Sprite = creatPropertyP("healthIcon","health","" + player.heroData.curHealth);
-			container.addChild(healPart);
+			propertyContainer.addChild(healPart);
+			
+			var defencePart:Sprite = creatPropertyP("defenseIcon","defense","" + player.heroData.curDefense +"%");
+			propertyContainer.addChild(defencePart);
+			defencePart.x = panelwidth * 0.3;
 			
 			var attackPart:Sprite = creatPropertyP("powerIcon","power","" + player.heroData.curAttackPower);
-			container.addChild(attackPart);
-			attackPart.x = panelwidth * 0.3;
+			propertyContainer.addChild(attackPart);
+			attackPart.y = panelheight *0.06;
 			
 			var attackSpeedPart:Sprite = creatPropertyP("agilityIcon","agility","" + player.heroData.curAttackSpeed+"%");
-			container.addChild(attackSpeedPart);
-			attackSpeedPart.y = panelheight *0.06;
+			propertyContainer.addChild(attackSpeedPart);
+			attackSpeedPart.y = panelheight *0.12;
 			
 			
 			var critPart:Sprite = creatPropertyP("critIcon","crit","" + player.heroData.curCritRate+"%");
-			container.addChild(critPart);
-			critPart.y = panelheight *0.12;
+			propertyContainer.addChild(critPart);
+			critPart.x = panelwidth * 0.3;
+			critPart.y = panelheight *0.06;
 			
-			var critHurtPart:Sprite = creatPropertyP("critIcon","crit","" + player.heroData.curCritHurt+"%");
-			container.addChild(critHurtPart);
+			var critHurtPart:Sprite = creatPropertyP("critHurtIcon","critHurt","" + player.heroData.curCritHurt+"%");
+			propertyContainer.addChild(critHurtPart);
 			critHurtPart.x = panelwidth * 0.3;
 			critHurtPart.y = panelheight *0.12;
 			
-			var defencePart:Sprite = creatPropertyP("defenseIcon","defense","" + player.heroData.curDefense*100 +"%");
-			container.addChild(defencePart);
-			defencePart.y = panelheight *0.18;
 			
 			var wisdomPart:Sprite = creatPropertyP("wisdomIcon","wisdom","" + player.heroData.curWisdomCD +"%");
-			container.addChild(wisdomPart);
-			wisdomPart.x = panelwidth * 0.3;
+			propertyContainer.addChild(wisdomPart);
 			wisdomPart.y = panelheight *0.18;
 			
 		}
@@ -272,8 +278,15 @@ package view.panel
 			if(itemList){
 				var item:OwnedItem = itemList.selectedItem as OwnedItem;
 				if(item && item.count >0){
-					player.heroData.curWeapon = item.item_id;
-					configWeaponPart();
+					if(item.itemSpec.type == "weapon"){
+						player.heroData.curWeapon = item.item_id;
+						configWeaponPart();
+					}else{
+						player.heroData.curDefence = item.item_id;
+						configDefencePart();
+					}
+					
+					configPropertyPart();
 				}
 				itemList.removeFromParent(true);
 				itemList.removeEventListener(Event.CHANGE,onListChanged);
@@ -314,8 +327,8 @@ package view.panel
 				var defenceSpec:ItemSpec = SpecController.instance.getItemSpec(player.heroData.curDefence);
 				if(defenceSpec){
 					var defenceicon:Image = new Image(Game.assets.getTexture(defenceSpec.name));
-					defenceicon.width  = panelwidth *0.2;
-					defenceicon.scaleY = defenceicon.scaleX ;
+					defenceicon.height  = panelheight *0.1;
+					defenceicon.scaleX = defenceicon.scaleY ;
 					defenceContainer.addChild(defenceicon);
 					defenceicon.x = skin.width*0.5 - defenceicon.width/2;
 					defenceicon.y = skin.height*0.5 - defenceicon.height/2;
@@ -334,8 +347,12 @@ package view.panel
 			skin1.alpha = 0;
 			weaponBut.defaultSkin = skin1;
 			defenceContainer.addChild(weaponBut);
-			weaponBut.addEventListener(Event.TRIGGERED,onTriggerWeapon);
+			weaponBut.addEventListener(Event.TRIGGERED,onTriggerDefence);
 			
+		}
+		private function onTriggerDefence(e:Event):void
+		{
+			showList("defence");
 		}
 		private function creatPropertyP(iconcls:String,nameStr:String,proper:String):Sprite
 		{

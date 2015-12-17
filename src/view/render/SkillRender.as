@@ -67,6 +67,10 @@ package view.render
 			icon.x = renderwidth*0.1;
 			icon.y = renderheight*0.1;
 			
+			if(typeCount < item.typeNeed){
+				icon.filter = Configrations.grayscaleFilter;
+			}
+			
 			if(oitem.count >0){
 				var oText:TextField = FieldController.createNoFontField(renderwidth,renderheight*0.3,"("+oitem.count+"/"+Configrations.SKILL_MAX_LEVEL+")",0xFF3030,0,true);
 				oText.autoSize = TextFieldAutoSize.HORIZONTAL;

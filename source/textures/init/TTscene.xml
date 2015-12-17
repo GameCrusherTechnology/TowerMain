@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:144b7c436a59e7069b268651e184876f$ -->
+<!-- $TexturePacker:SmartUpdate:660be4244c994e670a0a330b407e8cab$ -->
 <TextureAtlas imagePath="TTscene.png">
     <SubTexture name="15_b155_00183" x="1846" y="1235" width="54" height="42" frameX="0" frameY="-3" frameWidth="54" frameHeight="48"/>
-    <SubTexture name="15_b156_00185" x="2003" y="1600" width="40" height="48" frameX="-5" frameY="0" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="15_b156_00185" x="2003" y="1559" width="40" height="48" frameX="-5" frameY="0" frameWidth="50" frameHeight="50"/>
     <SubTexture name="AddIcon" x="1680" y="1491" width="128" height="128"/>
-    <SubTexture name="AttackSpeedIcon" x="163" y="1772" width="48" height="48" frameX="-3" frameY="-6" frameWidth="56" frameHeight="56"/>
-    <SubTexture name="AttackTipIcon" x="263" y="1772" width="50" height="46" frameX="-3" frameY="-7" frameWidth="56" frameHeight="56"/>
-    <SubTexture name="BPanelSkin" x="52" y="1824" width="112" height="99" frameX="0" frameY="-1" frameWidth="112" frameHeight="101"/>
+    <SubTexture name="AttackSpeedIcon" x="214" y="1853" width="48" height="48" frameX="-3" frameY="-6" frameWidth="56" frameHeight="56"/>
+    <SubTexture name="AttackTipIcon" x="114" y="1805" width="50" height="46" frameX="-3" frameY="-7" frameWidth="56" frameHeight="56"/>
+    <SubTexture name="BPanelSkin" x="1858" y="1752" width="112" height="99" frameX="0" frameY="-1" frameWidth="112" frameHeight="101"/>
     <SubTexture name="BattleScoreIcon" x="1964" y="174" width="78" height="78" frameX="-3" frameY="-6" frameWidth="84" frameHeight="84"/>
-    <SubTexture name="BattleStarIcon" x="309" y="1998" width="45" height="45" frameX="0" frameY="0" frameWidth="47" frameHeight="45"/>
+    <SubTexture name="BattleStarIcon" x="262" y="1805" width="45" height="45" frameX="0" frameY="0" frameWidth="47" frameHeight="45"/>
     <SubTexture name="BlackPanelSkin" x="1486" y="294" width="138" height="85"/>
     <SubTexture name="BlackSkin" x="1204" y="1032" width="64" height="64"/>
-    <SubTexture name="BookIcon" x="411" y="1747" width="52" height="56" frameX="0" frameY="-8" frameWidth="64" frameHeight="64"/>
-    <SubTexture name="CancelButtonIcon" x="256" y="1968" width="51" height="57"/>
-    <SubTexture name="ChestIcon" x="114" y="1657" width="112" height="94" frameX="-2" frameY="-15" frameWidth="116" frameHeight="116"/>
+    <SubTexture name="BookIcon" x="959" y="1903" width="52" height="56" frameX="0" frameY="-8" frameWidth="64" frameHeight="64"/>
+    <SubTexture name="CancelButtonIcon" x="690" y="1844" width="51" height="57"/>
+    <SubTexture name="ChestIcon" x="2" y="1648" width="112" height="94" frameX="-2" frameY="-15" frameWidth="116" frameHeight="116"/>
     <SubTexture name="ClanBigIcon" x="1964" y="2" width="82" height="84" frameX="-1" frameY="0" frameWidth="84" frameHeight="84"/>
     <SubTexture name="CoinIcon" x="1204" y="1295" width="57" height="57"/>
+    <SubTexture name="Crystal0001" x="110" y="1853" width="102" height="192" frameX="-7" frameY="-3" frameWidth="110" frameHeight="200"/>
+    <SubTexture name="Crystal0002" x="2" y="1853" width="106" height="192" frameX="-4" frameY="-3" frameWidth="110" frameHeight="200"/>
+    <SubTexture name="Crystal0003" x="1944" y="738" width="102" height="200" frameX="-8" frameY="0" frameWidth="110" frameHeight="200"/>
+    <SubTexture name="Crystal0004" x="586" y="1844" width="102" height="194" frameX="-7" frameY="-4" frameWidth="110" frameHeight="200"/>
+    <SubTexture name="Crystal0005" x="585" y="1648" width="106" height="194" frameX="-2" frameY="-4" frameWidth="110" frameHeight="200"/>
+    <SubTexture name="Crystal0006" x="478" y="1848" width="106" height="194" frameX="-4" frameY="-4" frameWidth="110" frameHeight="200"/>
+    <SubTexture name="Crystal0007" x="475" y="1648" width="108" height="198" frameX="-2" frameY="-1" frameWidth="110" frameHeight="200"/>
+    <SubTexture name="Crystal0008" x="366" y="1848" width="110" height="198" frameX="0" frameY="-1" frameWidth="110" frameHeight="200"/>
+    <SubTexture name="Crystal0009" x="363" y="1648" width="110" height="198" frameX="0" frameY="-1" frameWidth="110" frameHeight="200"/>
     <SubTexture name="DPanelSkin" x="1516" y="193" width="112" height="99" frameX="0" frameY="-1" frameWidth="112" frameHeight="101"/>
     <SubTexture name="DemonIcon" x="1846" y="1279" width="52" height="60" frameX="-6" frameY="-1" frameWidth="64" frameHeight="64"/>
     <SubTexture name="GemIcon" x="1204" y="1098" width="62" height="59"/>
@@ -25,80 +34,83 @@
     <SubTexture name="PanelBackSkin" x="1204" y="966" width="64" height="64"/>
     <SubTexture name="PanelRenderSkin" x="1204" y="900" width="64" height="64"/>
     <SubTexture name="PanelSkin" x="1606" y="807" width="155" height="159"/>
-    <SubTexture name="PanelTitle" x="330" y="1657" width="100" height="54"/>
-    <SubTexture name="ProgressStarIcon" x="330" y="1338" width="52" height="51"/>
-    <SubTexture name="RPanelSkin" x="2" y="1657" width="110" height="100" frameX="0" frameY="0" frameWidth="110" frameHeight="102"/>
+    <SubTexture name="PanelTitle" x="1527" y="1622" width="100" height="54"/>
+    <SubTexture name="ProgressStarIcon" x="114" y="1751" width="52" height="51"/>
+    <SubTexture name="RPanelSkin" x="2" y="1751" width="110" height="100" frameX="0" frameY="0" frameWidth="110" frameHeight="102"/>
     <SubTexture name="R_button" x="1626" y="336" width="195" height="97"/>
     <SubTexture name="RankIcon" x="1204" y="1159" width="62" height="52" frameX="-2" frameY="-8" frameWidth="64" frameHeight="64"/>
     <SubTexture name="ResultPanelSkin" x="1284" y="104" width="330" height="87"/>
     <SubTexture name="RoadLightIcon" x="1964" y="254" width="74" height="84" frameX="-4" frameY="0" frameWidth="84" frameHeight="84"/>
     <SubTexture name="SceneMap" x="2" y="686" width="1200" height="650"/>
     <SubTexture name="SelectRenderSkin" x="1486" y="381" width="134" height="262"/>
-    <SubTexture name="SimpleArrow" x="2" y="1648" width="100" height="6"/>
-    <SubTexture name="SkillButtonEffect" x="109" y="1925" width="93" height="92" frameX="-6" frameY="-6" frameWidth="105" frameHeight="104"/>
-    <SubTexture name="TabButtonSelectedSkin" x="228" y="1657" width="100" height="78" frameX="0" frameY="0" frameWidth="100" frameHeight="80"/>
-    <SubTexture name="TabButtonSkin" x="204" y="1906" width="100" height="60" frameX="0" frameY="0" frameWidth="100" frameHeight="80"/>
+    <SubTexture name="SimpleArrow" x="116" y="1742" width="100" height="6"/>
+    <SubTexture name="SkillButtonEffect" x="116" y="1648" width="93" height="92" frameX="-6" frameY="-6" frameWidth="105" frameHeight="104"/>
+    <SubTexture name="TabButtonSelectedSkin" x="693" y="1751" width="100" height="78" frameX="0" frameY="0" frameWidth="100" frameHeight="80"/>
+    <SubTexture name="TabButtonSkin" x="743" y="1831" width="100" height="60" frameX="0" frameY="0" frameWidth="100" frameHeight="80"/>
     <SubTexture name="TitleTextSkin" x="1948" y="525" width="97" height="21"/>
     <SubTexture name="TreasureIcon" x="1763" y="858" width="150" height="150"/>
-    <SubTexture name="VSIcon" x="204" y="1968" width="50" height="60" frameX="-8" frameY="0" frameWidth="64" frameHeight="64"/>
-    <SubTexture name="WarningIcon" x="1445" y="623" width="34" height="34" frameX="-8" frameY="-9" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="VSIcon" x="795" y="1751" width="50" height="60" frameX="-8" frameY="0" frameWidth="64" frameHeight="64"/>
+    <SubTexture name="WarningIcon" x="1445" y="660" width="34" height="34" frameX="-8" frameY="-9" frameWidth="50" frameHeight="50"/>
     <SubTexture name="WhiteSkin" x="1204" y="833" width="65" height="65"/>
     <SubTexture name="Y_button" x="1284" y="2" width="346" height="100"/>
-    <SubTexture name="agilityIcon" x="363" y="1772" width="46" height="46" frameX="-1" frameY="-9" frameWidth="50" frameHeight="60"/>
+    <SubTexture name="agilityIcon" x="214" y="1805" width="46" height="46" frameX="-1" frameY="-9" frameWidth="50" frameHeight="60"/>
     <SubTexture name="arryBG" x="2" y="2" width="1280" height="682"/>
-    <SubTexture name="blueButtonSkin" x="1527" y="1622" width="118" height="33" frameX="-1" frameY="-1" frameWidth="120" frameHeight="35"/>
+    <SubTexture name="blueButtonSkin" x="1858" y="1717" width="118" height="33" frameX="-1" frameY="-1" frameWidth="120" frameHeight="35"/>
+    <SubTexture name="closeButtonIcon" x="1445" y="623" width="35" height="35"/>
     <SubTexture name="critHurtIcon" x="1846" y="1183" width="54" height="50" frameX="-5" frameY="-7" frameWidth="64" frameHeight="64"/>
-    <SubTexture name="critIcon" x="213" y="1772" width="48" height="47" frameX="-5" frameY="-4" frameWidth="58" frameHeight="61"/>
-    <SubTexture name="defenseIcon" x="315" y="1772" width="46" height="46" frameX="-5" frameY="0" frameWidth="54" frameHeight="48"/>
+    <SubTexture name="critIcon" x="264" y="1853" width="48" height="47" frameX="-5" frameY="-4" frameWidth="58" frameHeight="61"/>
+    <SubTexture name="defenseIcon" x="166" y="1805" width="46" height="46" frameX="-5" frameY="0" frameWidth="54" frameHeight="48"/>
     <SubTexture name="effect_loading0001" x="1622" y="570" width="191" height="31" frameX="-5" frameY="-6" frameWidth="205" frameHeight="45"/>
     <SubTexture name="effect_loading0002" x="1284" y="578" width="195" height="43" frameX="-1" frameY="0" frameWidth="205" frameHeight="45"/>
     <SubTexture name="effect_loading0003" x="1622" y="525" width="191" height="43" frameX="-5" frameY="0" frameWidth="205" frameHeight="45"/>
     <SubTexture name="effect_loading0004" x="1622" y="480" width="191" height="43" frameX="-5" frameY="0" frameWidth="205" frameHeight="45"/>
     <SubTexture name="effect_loading0005" x="1622" y="435" width="191" height="43" frameX="-5" frameY="0" frameWidth="205" frameHeight="45"/>
     <SubTexture name="effect_loading0006" x="1284" y="533" width="195" height="43" frameX="-6" frameY="0" frameWidth="205" frameHeight="45"/>
-    <SubTexture name="expIcon" x="111" y="1772" width="50" height="50"/>
+    <SubTexture name="expIcon" x="314" y="1850" width="50" height="50"/>
     <SubTexture name="fireBullet" x="1284" y="193" width="230" height="42" frameX="-2" frameY="0" frameWidth="232" frameHeight="46"/>
-    <SubTexture name="greenButtonSkin" x="1868" y="1737" width="118" height="33" frameX="-1" frameY="-1" frameWidth="120" frameHeight="35"/>
-    <SubTexture name="healthIcon" x="2003" y="1553" width="42" height="45" frameX="-10" frameY="0" frameWidth="52" frameHeight="45"/>
-    <SubTexture name="largeCoin" x="2" y="1944" width="105" height="102"/>
+    <SubTexture name="greenBuff" x="925" y="1678" width="56" height="56"/>
+    <SubTexture name="greenButtonSkin" x="1858" y="1682" width="118" height="33" frameX="-1" frameY="-1" frameWidth="120" frameHeight="35"/>
+    <SubTexture name="healthIcon" x="2003" y="1512" width="42" height="45" frameX="-10" frameY="0" frameWidth="52" frameHeight="45"/>
+    <SubTexture name="largeCoin" x="794" y="1903" width="105" height="102"/>
     <SubTexture name="largeGem" x="1948" y="548" width="96" height="94"/>
-    <SubTexture name="letterIcon" x="2" y="1772" width="55" height="50"/>
+    <SubTexture name="letterIcon" x="214" y="1751" width="55" height="50"/>
     <SubTexture name="littleCoin" x="1204" y="1213" width="58" height="80" frameX="0" frameY="-2" frameWidth="58" frameHeight="82"/>
     <SubTexture name="littleGem" x="1204" y="768" width="73" height="63" frameX="0" frameY="-5" frameWidth="77" frameHeight="69"/>
-    <SubTexture name="lockIcon" x="1944" y="851" width="100" height="128" frameX="-14" frameY="0" frameWidth="128" frameHeight="128"/>
+    <SubTexture name="lockIcon" x="214" y="1903" width="100" height="128" frameX="-14" frameY="0" frameWidth="128" frameHeight="128"/>
     <SubTexture name="middleCoin" x="1956" y="340" width="86" height="97" frameX="0" frameY="-2" frameWidth="86" frameHeight="99"/>
-    <SubTexture name="middleGem" x="166" y="1824" width="100" height="80"/>
-    <SubTexture name="moneyIcon" x="356" y="1998" width="52" height="43" frameX="0" frameY="-1" frameWidth="52" frameHeight="45"/>
-    <SubTexture name="musicIcon" x="1868" y="1607" width="118" height="128" frameX="-5" frameY="0" frameWidth="128" frameHeight="128"/>
-    <SubTexture name="powerIcon" x="465" y="1747" width="46" height="56" frameX="-3" frameY="-2" frameWidth="50" frameHeight="64"/>
+    <SubTexture name="middleGem" x="211" y="1648" width="100" height="80"/>
+    <SubTexture name="moneyIcon" x="309" y="1805" width="52" height="43" frameX="0" frameY="-1" frameWidth="52" frameHeight="45"/>
+    <SubTexture name="musicIcon" x="1680" y="1621" width="118" height="128" frameX="-5" frameY="0" frameWidth="128" frameHeight="128"/>
+    <SubTexture name="powerIcon" x="316" y="1902" width="46" height="56" frameX="-3" frameY="-2" frameWidth="50" frameHeight="64"/>
     <SubTexture name="quickPassCardIcon" x="1964" y="88" width="78" height="84" frameX="-4" frameY="0" frameWidth="84" frameHeight="84"/>
-    <SubTexture name="sheshouHeadIcon" x="1944" y="738" width="102" height="111" frameX="-2" frameY="-12" frameWidth="130" frameHeight="131"/>
-    <SubTexture name="sheshouIcon" x="2" y="1824" width="48" height="118"/>
-    <SubTexture name="shopIcon" x="2003" y="1500" width="42" height="51" frameX="-8" frameY="-7" frameWidth="58" frameHeight="61"/>
-    <SubTexture name="simplePanelSkin" x="59" y="1772" width="50" height="50"/>
-    <SubTexture name="skillIcon" x="330" y="1713" width="44" height="51" frameX="-7" frameY="-5" frameWidth="58" frameHeight="61"/>
-    <SubTexture name="skillIcon/arrow" x="442" y="1824" width="56" height="56"/>
-    <SubTexture name="skillIcon/arrowcd" x="422" y="1882" width="56" height="56"/>
-    <SubTexture name="skillIcon/baoshe" x="367" y="1940" width="56" height="56"/>
-    <SubTexture name="skillIcon/baoyan" x="384" y="1824" width="56" height="56"/>
-    <SubTexture name="skillIcon/burning" x="364" y="1882" width="56" height="56"/>
-    <SubTexture name="skillIcon/defence" x="309" y="1940" width="56" height="56"/>
-    <SubTexture name="skillIcon/frozen" x="326" y="1824" width="56" height="56"/>
-    <SubTexture name="skillIcon/huimielieyan" x="306" y="1882" width="56" height="56"/>
-    <SubTexture name="skillIcon/lingjiaojian" x="268" y="1824" width="56" height="56"/>
-    <SubTexture name="skillIcon/longjuanfeng" x="1988" y="1766" width="56" height="56"/>
-    <SubTexture name="skillIcon/magiccd" x="1988" y="1708" width="56" height="56"/>
-    <SubTexture name="skillIcon/marker" x="1988" y="1650" width="56" height="56"/>
-    <SubTexture name="skillIcon/shujiguang" x="1810" y="1689" width="56" height="56"/>
-    <SubTexture name="skillIcon/split" x="1810" y="1631" width="56" height="56"/>
-    <SubTexture name="skillIcon/spread" x="1810" y="1573" width="56" height="56"/>
-    <SubTexture name="skillIcon/stun" x="1810" y="1515" width="56" height="56"/>
-    <SubTexture name="skillIcon/typhoon" x="1813" y="1457" width="56" height="56"/>
-    <SubTexture name="skillIcon/vampiric" x="1813" y="1399" width="56" height="56"/>
-    <SubTexture name="skillIcon/zhangxinlei" x="1813" y="1341" width="56" height="56"/>
+    <SubTexture name="sheshouHeadIcon" x="690" y="1903" width="102" height="111" frameX="-2" frameY="-12" frameWidth="130" frameHeight="131"/>
+    <SubTexture name="sheshouIcon" x="1998" y="1609" width="48" height="118"/>
+    <SubTexture name="shield" x="905" y="1751" width="56" height="56"/>
+    <SubTexture name="shopIcon" x="2003" y="1459" width="42" height="51" frameX="-8" frameY="-7" frameWidth="58" frameHeight="61"/>
+    <SubTexture name="simplePanelSkin" x="271" y="1751" width="50" height="50"/>
+    <SubTexture name="skillIcon" x="168" y="1751" width="44" height="51" frameX="-7" frameY="-5" frameWidth="58" frameHeight="61"/>
+    <SubTexture name="skillIcon/arrow" x="903" y="1809" width="56" height="56"/>
+    <SubTexture name="skillIcon/arrowcd" x="901" y="1961" width="56" height="56"/>
+    <SubTexture name="skillIcon/baoshe" x="901" y="1903" width="56" height="56"/>
+    <SubTexture name="skillIcon/baoyan" x="867" y="1648" width="56" height="56"/>
+    <SubTexture name="skillIcon/burning" x="809" y="1648" width="56" height="56"/>
+    <SubTexture name="skillIcon/defence" x="751" y="1648" width="56" height="56"/>
+    <SubTexture name="skillIcon/frozen" x="693" y="1648" width="56" height="56"/>
+    <SubTexture name="skillIcon/huimielieyan" x="847" y="1751" width="56" height="56"/>
+    <SubTexture name="skillIcon/lingjiaojian" x="845" y="1813" width="56" height="56"/>
+    <SubTexture name="skillIcon/longjuanfeng" x="1972" y="1845" width="56" height="56"/>
+    <SubTexture name="skillIcon/magiccd" x="1972" y="1787" width="56" height="56"/>
+    <SubTexture name="skillIcon/marker" x="1978" y="1729" width="56" height="56"/>
+    <SubTexture name="skillIcon/shujiguang" x="1800" y="1747" width="56" height="56"/>
+    <SubTexture name="skillIcon/split" x="1800" y="1689" width="56" height="56"/>
+    <SubTexture name="skillIcon/spread" x="1800" y="1631" width="56" height="56"/>
+    <SubTexture name="skillIcon/stun" x="1810" y="1573" width="56" height="56"/>
+    <SubTexture name="skillIcon/typhoon" x="1810" y="1515" width="56" height="56"/>
+    <SubTexture name="skillIcon/vampiric" x="1813" y="1457" width="56" height="56"/>
+    <SubTexture name="skillIcon/zhangxinlei" x="1813" y="1399" width="56" height="56"/>
     <SubTexture name="soldierIcon/Assassin" x="1445" y="804" width="159" height="202"/>
     <SubTexture name="soldierIcon/BlackMinotaur" x="1566" y="1141" width="146" height="171"/>
-    <SubTexture name="soldierIcon/Cyclop" x="1871" y="1453" width="130" height="152"/>
+    <SubTexture name="soldierIcon/Cyclop" x="1871" y="1412" width="130" height="152"/>
     <SubTexture name="soldierIcon/DarkKnight" x="1395" y="1494" width="130" height="152"/>
     <SubTexture name="soldierIcon/DevilGordon" x="1284" y="237" width="200" height="294"/>
     <SubTexture name="soldierIcon/DragonWhelp" x="1268" y="1173" width="146" height="171"/>
@@ -113,18 +125,19 @@
     <SubTexture name="soldierIcon/SkeletonWarrior" x="1549" y="1314" width="130" height="152"/>
     <SubTexture name="soldierIcon/SnowInsect" x="1284" y="623" width="159" height="202"/>
     <SubTexture name="soldierIcon/Spider" x="1606" y="968" width="146" height="171"/>
-    <SubTexture name="soldierIcon/ToxicMinotaur" x="1900" y="1299" width="130" height="152"/>
+    <SubTexture name="soldierIcon/ToxicMinotaur" x="1902" y="1258" width="130" height="152"/>
     <SubTexture name="soldierIcon/dunzhanshi" x="1416" y="1181" width="131" height="157"/>
-    <SubTexture name="soldierIcon/gulingshou" x="1902" y="1140" width="131" height="157"/>
-    <SubTexture name="soldierIcon/gulingwushi" x="1915" y="981" width="131" height="157"/>
-    <SubTexture name="soldierIcon/gulingzhanshi" x="1481" y="645" width="131" height="157"/>
+    <SubTexture name="soldierIcon/gulingshou" x="1902" y="1099" width="131" height="157"/>
+    <SubTexture name="soldierIcon/gulingwushi" x="1915" y="940" width="131" height="157"/>
+    <SubTexture name="soldierIcon/gulingzhanshi" x="1482" y="645" width="131" height="157"/>
     <SubTexture name="soldierIcon/heianwushi" x="1714" y="1183" width="130" height="152"/>
     <SubTexture name="soldierIcon/huangjinsheshou" x="1815" y="495" width="131" height="157"/>
     <SubTexture name="soldierIcon/lanmoguai" x="1783" y="654" width="159" height="202"/>
     <SubTexture name="soldierIcon/xuerenwang" x="1622" y="603" width="159" height="202"/>
     <SubTexture name="soldierIcon/xuesezhanshi" x="1823" y="336" width="131" height="157"/>
-    <SubTexture name="soundIcon" x="1680" y="1621" width="128" height="114" frameX="0" frameY="-7" frameWidth="128" frameHeight="128"/>
+    <SubTexture name="soundIcon" x="1868" y="1566" width="128" height="114" frameX="0" frameY="-7" frameWidth="128" frameHeight="128"/>
     <SubTexture name="toolsStateSkin" x="1948" y="644" width="94" height="92" frameX="-4" frameY="-4" frameWidth="100" frameHeight="100"/>
+    <SubTexture name="trackingIcon" x="1813" y="1341" width="56" height="56"/>
     <SubTexture name="vipIcon" x="1956" y="439" width="84" height="84"/>
-    <SubTexture name="wisdomIcon" x="2003" y="1453" width="43" height="45"/>
+    <SubTexture name="wisdomIcon" x="2003" y="1412" width="43" height="45"/>
 </TextureAtlas>

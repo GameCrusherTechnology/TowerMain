@@ -118,17 +118,22 @@ package view.screen
 			}
 		}
 		
-		private function configMapList():void
+		private var mapListContainer:Sprite;
+		public function configMapList():void
 		{
-			var skinContainer:Sprite = new Sprite;
-			bgLayer.addChild(skinContainer);
+			if(mapListContainer){
+				mapListContainer.removeFromParent(true);
+				mapListContainer = null;
+			}
+			mapListContainer = new Sprite;
+			bgLayer.addChild(mapListContainer);
 			
-			var totalPoint:Array = [	new Point(scenewidth *0.22,sceneheight*0.62),
-										new Point(scenewidth *0.5,sceneheight*0.67),
-										new Point(scenewidth *0.62,sceneheight*0.5),
-										new Point(scenewidth *0.9,sceneheight*0.55),
-										new Point(scenewidth *0.75,sceneheight*0.3),
-										new Point(scenewidth *0.3,sceneheight*0.35)];
+			var totalPoint:Array = [	new Point(scenewidth *0.215,sceneheight*0.39),
+										new Point(scenewidth *0.5,sceneheight*0.47),
+										new Point(scenewidth *0.62,sceneheight*0.2),
+										new Point(scenewidth *0.85,sceneheight*0.3),
+										new Point(scenewidth *0.75,sceneheight*0.1),
+										new Point(scenewidth *0.3,sceneheight*0.13)];
 			
 			
 			var point:Point;
@@ -138,13 +143,10 @@ package view.screen
 				point = totalPoint[p];
 				if(p <= curM){
 					mapBut = new WorldMapButton(scenewidth *0.06,p,true);
-				}else{
-					mapBut = new WorldMapButton(scenewidth *0.06,p,false);
+					mapListContainer.addChild( mapBut);
+					mapBut.x = point.x  - scenewidth *0.03;
+					mapBut.y = point.y  +scenewidth *0.06;
 				}
-				skinContainer.addChild( mapBut);
-				mapBut.x = point.x - mapBut.width/2;
-				mapBut.y = point.y - mapBut.height;
-				
 			}
 		}
 		
@@ -182,7 +184,7 @@ package view.screen
 			treasureButton.y = Configrations.ViewPortHeight*0.99 - Configrations.ViewPortWidth *0.1;
 			
 			
-			var nextCoin:int = (int(player.coin /10000)+1)*10000;
+			var nextCoin:int = (int(player.coin /10000)+1)*1000;
 			var coinBar:GreenProgressBar  = new GreenProgressBar(Configrations.ViewPortWidth*0.3,Configrations.ViewPortHeight*0.05,2);
 			uiLayer.addChild(coinBar);
 			coinBar.comment = player.coin +"";
@@ -203,7 +205,7 @@ package view.screen
 			coinBar.y = coinIcon.y + coinIcon.height/2 - coinBar.height/2;
 			
 			
-			var nextGem:int = (int(player.gem /100)+1)*100;
+			var nextGem:int = (int(player.gem /100)+1)*50;
 			var gemBar:GreenProgressBar  = new GreenProgressBar(Configrations.ViewPortWidth*0.25,Configrations.ViewPortHeight*0.05,2);
 			uiLayer.addChild(gemBar);
 			gemBar.comment = player.gem +"";

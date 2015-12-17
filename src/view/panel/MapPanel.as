@@ -1,7 +1,5 @@
 package view.panel
 {
-	import flash.display.BitmapData;
-	import flash.display.Shape;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
@@ -176,8 +174,19 @@ package view.panel
 			title.x = skinContainer.x + panelwidth *0.05;
 			title.y = skinContainer.y;
 			
+			var outBut:Button = new Button;
+			outBut.defaultSkin = new Image(Game.assets.getTexture("WarningIcon"));
+			outBut.width = outBut.height = panelheight *0.05;
+			addChild(outBut);
+			outBut.x = skinContainer.x + skinContainer.width - outBut.width - panelwidth*0.02;
+			outBut.y = skinContainer.y + panelheight*0.02;
+			outBut.addEventListener(Event.TRIGGERED,onTrigged);
 		}
-		
+		private function onTrigged(e:Event):void
+		{
+			dispose();
+		}
+			
 		private function creatTBut(index:String,star:int,c:Sprite,pos:Point,s:Number,isOpen:Boolean = false):void
 		{
 			var but:Button = new Button();

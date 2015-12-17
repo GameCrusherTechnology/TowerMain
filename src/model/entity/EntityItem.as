@@ -4,14 +4,18 @@ package model.entity
 	
 	import controller.SpecController;
 	
+	import gameconfig.Configrations;
+	
 	import model.gameSpec.SoldierItemSpec;
 	
 	import view.bullet.Sword;
 
 	public class EntityItem
 	{
-		public function EntityItem(data:Object)
+		protected var curMode:String;
+		public function EntityItem(data:Object,mode:String = Configrations.Battle_Normal)
 		{
+			curMode = mode;
 			for(var str:String in data){
 				try{
 					this[str] = data[str];
@@ -19,7 +23,6 @@ package model.entity
 					trace("FIELD DOSE NOT EXIST in EntityItem: EntityItem["+str+"]="+data[str]);
 				}
 			}
-			
 			init();
 			
 		}
@@ -44,7 +47,13 @@ package model.entity
 		public var curLife:int;
 		public function get totalLife():int
 		{
-			return entitySpec.baseLife + level * entitySpec.lifeUp;
+			var l:int = entitySpec.baseLife + level * entitySpec.lifeUp;;
+			if(curMode == Configrations.Battle_Easy){
+				l = Math.floor(l*0.8);
+			}else if(curMode == Configrations.Battle_Hard){
+				l = Math.floor(l*1.2);
+			}
+			return l;
 		}
 		
 		public function get texturecls():String
@@ -69,7 +78,13 @@ package model.entity
 		
 		public function get hurtPoint():int
 		{
-			return entitySpec.baseAttack + level * entitySpec.attackUp;
+			var h:int =  entitySpec.baseAttack + level * entitySpec.attackUp;
+			if(curMode == Configrations.Battle_Easy){
+				h = Math.floor(h*0.8);
+			}else if(curMode == Configrations.Battle_Hard){
+				h = Math.floor(h*1.2);
+			}
+			return h;
 		}
 		
 		public function beAttack(p:int):void

@@ -165,6 +165,7 @@ package view.entity
 		
 		private var mc30009:MovieClip;
 		private var healthCount:int;
+		private var greenHealthCount:int = -1;
 		
 		private var mc31003:MovieClip;
 		private var biaojiCount:int;
@@ -224,6 +225,21 @@ package view.entity
 					
 					Starling.juggler.add(mc30009);
 					break;
+				case "80005":
+					if(!mc30009){
+						mc30009 = creatBuffMC("healthBuff");
+					}
+					addChild(mc30009);
+					greenHealthCount = Configrations.skill80005Point;
+					
+					var heal:int = int(item.totalLife * 0.1);
+					item.beHealth(heal);
+					showLife();
+					showHurtBar(Game.assets.getTexture("skillIcon/vampiric"),heal);
+					
+					Starling.juggler.add(mc30009);
+					break;
+				
 				case "31003":
 					if(!mc31003){
 						mc31003 = creatBuffMC("thunder");
@@ -281,6 +297,12 @@ package view.entity
 					Starling.juggler.remove(mc30009);
 					mc30009.removeFromParent();
 				}
+			}
+			
+			if(greenHealthCount>0){
+				greenHealthCount--;
+			}else if(greenHealthCount == 0){
+				beBuffed("80005");
 			}
 			
 			if(biaojiCount>0){
@@ -405,6 +427,9 @@ package view.entity
 				mc30003.removeFromParent(true);
 				Starling.juggler.remove(mc30003);
 				mc30003 = null;
+			}
+			if(surface){
+				Starling.juggler.remove(surface as MovieClip);
 			}
 			super.dispose();
 		}

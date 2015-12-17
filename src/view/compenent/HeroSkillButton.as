@@ -45,18 +45,21 @@ package view.compenent
 			backmode.alpha = 0.8;
 			addChild(backmode);
 			
-			cdText = FieldController.createNoFontField(side,side/2,String(Math.floor(totalCD/30)),0xffffff,0,true);
-			addChild(cdText);
-			cdText.y = side/2;
-			
-			var but:Button = new Button();
-			var butSKin:Image = new Image(Game.assets.getTexture("BlackSkin"));
-			butSKin.width = butSKin.height = side;
-			butSKin.alpha = 0;
-			but.defaultSkin = butSKin;
-			addChild(but);
-			but.addEventListener(Event.TRIGGERED,onTriggerConfirm);
-			addEventListener(Event.ENTER_FRAME,onEnterFrame);
+			var lv:int = heroData.getSkillItem(skillspec.item_id).count;
+			if(lv > 0){
+				cdText = FieldController.createNoFontField(side,side/2,String(Math.floor(totalCD/30)),0xffffff,0,true);
+				addChild(cdText);
+				cdText.y = side/2;
+				
+				var but:Button = new Button();
+				var butSKin:Image = new Image(Game.assets.getTexture("BlackSkin"));
+				butSKin.width = butSKin.height = side;
+				butSKin.alpha = 0;
+				but.defaultSkin = butSKin;
+				addChild(but);
+				but.addEventListener(Event.TRIGGERED,onTriggerConfirm);
+				addEventListener(Event.ENTER_FRAME,onEnterFrame);
+			}
 			
 		}
 		private var cdText:TextField;

@@ -20,6 +20,9 @@ package view.entity
 		{
 			super(heroItem);
 			scaleY = scaleX = 0.7*rule.cScale;
+			if(heroData.curDefence == "80005"){
+				beBuffed("80005");
+			}
 		}
 		
 		override protected function initFace():void
@@ -45,6 +48,8 @@ package view.entity
 			}else{
 				showState(EntityState.ATTACK,false);
 			}
+			
+			
 			super.validate();
 		}
 		
@@ -97,7 +102,7 @@ package view.entity
 			
 		override public function beAttacked(hurt:Number, texture:Texture, type:String="skill"):void
 		{
-			var curHurt:int = Math.floor(hurt*(1-heroData.curDefense));
+			var curHurt:int = Math.floor(hurt*(1-heroData.curDefense/100));
 			super.beAttacked(curHurt,texture,type);
 		}
 		override public function get attackPoint():Point

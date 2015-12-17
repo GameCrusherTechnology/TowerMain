@@ -2,7 +2,6 @@ package view.entity
 {
 	import flash.geom.Point;
 	
-	import gameconfig.Configrations;
 	import gameconfig.EntityState;
 	
 	import model.entity.MonsterItem;

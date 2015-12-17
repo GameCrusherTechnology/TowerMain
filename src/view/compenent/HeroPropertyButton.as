@@ -48,7 +48,6 @@ package view.compenent
 		
 		private function onTriggerConfirm(e:Event):void
 		{
-			trace("trigger hero")
 			DialogController.instance.showPanel(new HeroPropertyPanel());
 		}
 		

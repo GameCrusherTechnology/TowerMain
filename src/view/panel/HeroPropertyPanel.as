@@ -26,6 +26,7 @@ package view.panel
 	import starling.display.Image;
 	import starling.events.Event;
 	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	
 	import view.render.PropertyRender;
 	
@@ -76,7 +77,10 @@ package view.panel
 			addChild(titleText);
 			titleText.y =  0;
 			
+			
 			configModeContainer();
+			
+			
 			
 			coinBut = new Button;
 			var iconSkin:Scale9Image = new Scale9Image(new Scale9Textures(Game.assets.getTexture("simplePanelSkin"),new Rectangle(10,10,30,30)));

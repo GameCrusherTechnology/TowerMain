@@ -44,7 +44,6 @@ package gameconfig
 				info = readfilebyte.readObject();
 				fileStream.close();
 			}
-			
 			if(!info){
 				info = Configrations.INIT_USER;
 				

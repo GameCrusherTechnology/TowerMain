@@ -22,6 +22,7 @@ package view.render
 	import starling.events.Event;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
+	import starling.utils.HAlign;
 	
 	import view.panel.WarnnigTipPanel;
 	
@@ -70,7 +71,7 @@ package view.render
 			configContainer();
 		}
 		
-		private var icon:MovieClip;
+		private var icon:Image;
 		private function configContainer():void
 		{
 			container = new Sprite;
@@ -85,21 +86,25 @@ package view.render
 				container.addChild(nameText);
 				nameText.y =  5*scale;
 				
-				
-				icon = new MovieClip(Game.assets.getTextures(itemspec.name));
-				icon.width  = renderwidth *0.8;
-				icon.scaleY = icon.scaleX ;
-				container.addChild(icon);
-				icon.x = renderwidth*0.5 - icon.width/2;
-				icon.y = renderHeight*0.3 - icon.height/2;
-				Starling.juggler.add(icon);
-				
-				
-				if(itemspec.message){
-					var mesText:TextField = FieldController.createNoFontField(renderwidth*0.9,renderHeight*0.1,LanguageController.getInstance().getString(itemspec.message),0x8B5742);
-					container.addChild(mesText);
-					mesText.y =   renderHeight*0.5 ;
+				if(itemspec.type == "weapon"){
+					icon = new MovieClip(Game.assets.getTextures(itemspec.name));
+					icon.width  = renderwidth *0.8;
+					icon.scaleY = icon.scaleX ;
+					container.addChild(icon);
+					icon.x = renderwidth*0.5 - icon.width/2;
+					icon.y = renderHeight*0.3 - icon.height/2;
+					Starling.juggler.add(icon as MovieClip);
+				}else{
+					icon = new Image(Game.assets.getTexture(itemspec.name));
+					icon.width  = renderwidth *0.5;
+					icon.scaleY = icon.scaleX ;
+					container.addChild(icon);
+					icon.x = renderwidth*0.5 - icon.width/2;
+					icon.y = renderHeight*0.3 - icon.height/2;
 				}
+				
+				
+				configMes();
 					
 				if(ownedItem.count > 0){
 					if(canUseArr(ownedItem.item_id)){
@@ -116,7 +121,7 @@ package view.render
 					}else{
 						var boughtBut:Button = new Button();
 						boughtBut.defaultSkin = new Image(Game.assets.getTexture("Y_button"));
-						boughtBut.label = LanguageController.getInstance().getString("Bought");
+						boughtBut.label = LanguageController.getInstance().getString("Bought").toUpperCase();
 						boughtBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, renderHeight*0.08, 0x000000);
 						boughtBut.paddingLeft =boughtBut.paddingRight =  20;
 						boughtBut.paddingTop = boughtBut.paddingBottom =  5;
@@ -169,8 +174,132 @@ package view.render
 				}
 			}
 		}
-		
-		
+		private function configMes():void
+		{
+			var tip:Sprite;
+			var deep:Number = renderHeight*0.5 ;
+			switch(itemspec.item_id)
+			{
+				case "80000":
+				{
+					creatTip(container,deep,"powerIcon","power1"," 5");
+					deep += renderHeight*0.08;
+					creatTip(container,deep,"agilityIcon","agility1"," 10%");
+					break;
+				}
+				case "80001":
+				{
+					creatTip(container,deep,"critIcon","crit1"," 5%");
+					deep += renderHeight*0.08;
+					creatTip(container,deep,"critHurtIcon","critHurt1"," 50%");
+					break;
+				}
+				case "80002":
+				{
+					tip =  creatMesTip("skillIcon/frozen","icebirdMes");
+					container.addChild( tip);
+					tip.x = renderwidth*0.05;
+					tip.y = deep;
+					deep += tip.height + renderHeight*0.05;
+					
+					tip = creatMesTip("skillIcon/lingjiaojian","icebirdMes1");
+					container.addChild( tip);
+					tip.x = renderwidth*0.05;
+					tip.y = deep;
+					deep += tip.height;
+					break;
+				}
+				case "80003":
+				{
+					tip =  creatMesTip("trackingIcon","purpleballMes");
+					container.addChild( tip);
+					tip.x = renderwidth*0.05;
+					tip.y = deep;
+					deep += tip.height + renderHeight*0.01;
+					
+					creatTip(container,deep,"powerIcon","power1"," 20");
+					deep += renderHeight*0.08;
+					creatTip(container,deep,"agilityIcon","agility1"," 50%");
+					deep += renderHeight*0.08;
+					creatTip(container,deep,"critIcon","crit1"," 10%");
+					break;
+				}
+				case "80004":
+				{
+					creatTip(container,deep,"defenseIcon","defense"," 20%");
+					break;
+				}
+				case "80005":
+				{
+					tip =  creatMesTip("skillIcon/vampiric","greenBuffMes");
+					container.addChild( tip);
+					tip.x = renderwidth*0.05;
+					tip.y = deep;
+					deep += tip.height + renderHeight*0.01;
+					
+					creatTip(container,deep,"healthIcon","health1"," 100");
+					deep += renderHeight*0.08;
+					creatTip(container,deep,"defenseIcon","defense"," 10%");
+					break;
+				}
+					
+					
+				default:
+				{
+					break;
+				}
+			}
+		}
+		private function creatTip(c:Sprite,deep:Number,iconName:String,typeName:String,value:String ):void
+		{
+			var tipcontainer:Sprite = new Sprite;
+			
+			var icon:Image = new Image(Game.assets.getTexture(iconName));
+			icon.width = icon.height = renderHeight*0.08;
+			tipcontainer.addChild(icon);
+			
+			var nameText:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.08,LanguageController.getInstance().getString(typeName)+":",0x000000);
+			nameText.autoSize = TextFieldAutoSize.HORIZONTAL;
+			tipcontainer.addChild(nameText);
+			nameText.x = icon.width;
+			
+			var properText:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.08,value,0xBCEE68,0,true);
+			properText.autoSize = TextFieldAutoSize.HORIZONTAL;
+			tipcontainer.addChild(properText);
+			properText.x = icon.width + nameText.width;
+			
+			if(tipcontainer.width > renderwidth *0.9){
+				tipcontainer.width = renderwidth *0.9;
+				tipcontainer.scaleY = tipcontainer.scaleX;
+			}
+			c.addChild(tipcontainer);
+			tipcontainer.x = renderwidth *0.05;
+			tipcontainer.y = deep;
+		}
+		private function creatMesTip(iconName:String,typeName:String):Sprite
+		{
+			var tipcontainer:Sprite = new Sprite;
+			
+			var icon:Image = new Image(Game.assets.getTexture(iconName));
+			icon.width = icon.height = renderHeight*0.08;
+			tipcontainer.addChild(icon);
+			
+			var nameText:TextField = FieldController.createNoFontField(renderwidth*0.9 - renderHeight*0.08,renderHeight,LanguageController.getInstance().getString(typeName),0x000000,renderHeight*0.05);
+			nameText.autoSize = TextFieldAutoSize.VERTICAL;
+			nameText.hAlign = HAlign.LEFT;
+			tipcontainer.addChild(nameText);
+			nameText.x = icon.width;
+			
+			if(nameText.height > icon.height){
+				icon.y = nameText.height/2 - icon.height/2;
+				nameText.y = 0;
+			}else{
+				icon.y = 0;
+				nameText.y = icon.height/2 - nameText.height/2;
+			}
+			
+			return tipcontainer;
+		}
 		private function onUsed():void
 		{
 			refreshData();
@@ -178,7 +307,7 @@ package view.render
 		private function onTriggedBuyCoin(e:Event):void
 		{
 			if(hero.coin >= itemspec.coin){
-				hero.addGem(-itemspec.coin);
+				hero.addCoin(-itemspec.coin);
 				hero.heroData.addItem(itemspec.item_id,1);
 				if(itemspec.type == "weapon"){
 					hero.heroData.curWeapon = itemspec.item_id;
@@ -208,7 +337,9 @@ package view.render
 		}
 		override public function dispose():void
 		{
-			Starling.juggler.remove(icon);
+			if(icon && icon is MovieClip){
+				Starling.juggler.remove(icon as MovieClip);
+			}
 			if(container){
 				container.removeFromParent(true);
 				container = null;

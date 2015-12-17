@@ -61,7 +61,7 @@ package view.render
 			var currentLevel:int = heroData[properName+"Level"];
 			
 			
-			var nameText:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.2,LanguageController.getInstance().getString(properName),0x000000,0,true);
+			var nameText:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.2,LanguageController.getInstance().getString(properName).toUpperCase(),0x000000,0,true);
 			nameText.autoSize = TextFieldAutoSize.HORIZONTAL;
 			container.addChild(nameText);
 			nameText.x = renderwidth *0.1;
@@ -89,7 +89,7 @@ package view.render
 			icon.x = renderwidth*0.02;
 			icon.y = renderHeight * 0.35;
 			
-			var mesText:TextField = FieldController.createNoFontField(renderwidth*0.8,renderHeight*0.1,LanguageController.getInstance().getString(properName + "Mes"),0x000000,0);
+			var mesText:TextField = FieldController.createNoFontField(renderwidth*0.8,renderHeight*0.1,LanguageController.getInstance().getString(properName + "Mes"),0x000000,renderHeight*0.08);
 			mesText.autoSize = TextFieldAutoSize.HORIZONTAL;
 			container.addChild(mesText);
 			mesText.x = renderwidth*0.2;
@@ -142,44 +142,46 @@ package view.render
 			}
 			
 			if(currentLevel >= 10){
-				change2R =  change1R = "Max";
+				change2R =  change1R = " Max";
 			}else{
 				change2R =  " -> " + change2R;
 				change1R =  " -> " + change1R;
 			}
 			
-			var changename01:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15,LanguageController.getInstance().getString(properName),0x458B00,0,true);
+			var changename01:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15,LanguageController.getInstance().getString(properName+1)+ ": ",0x458B00,renderHeight*0.12,true);
 			changename01.autoSize = TextFieldAutoSize.HORIZONTAL;
 			container.addChild(changename01);
 			changename01.x = renderwidth *0.2;
 			changename01.y = renderHeight * 0.45;
 				 
-			var changeText01:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15, ": "+change1L,0x000000,0);
+			
+			var changeText01:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15, change1L,0x000000,renderHeight*0.12);
 			changeText01.autoSize = TextFieldAutoSize.HORIZONTAL;
 			container.addChild(changeText01);
-			changeText01.x = changename01.x + changename01.width;
-			changeText01.y = changename01.y;
+			changeText01.x = changename01.x + renderwidth *0.2;
+			changeText01.y = changename01.y + changename01.height;
 			
-			var changeText02:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15, change1R,0x00F5FF,0);
+			var changeText02:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15, change1R,0x00F5FF,renderHeight*0.12);
 			changeText02.autoSize = TextFieldAutoSize.HORIZONTAL;
 			container.addChild(changeText02);
 			changeText02.x = changeText01.x + changeText01.width;
-			changeText02.y = changename01.y;
+			changeText02.y = changeText01.y;
 			
-			
-			var coinBut:Button = new Button();
-			var coinIcon:Image = new Image(Game.assets.getTexture("CoinIcon"));
-			coinIcon.width = coinIcon.height = renderHeight*0.2;
-			coinBut.defaultIcon = coinIcon;
-			coinBut.defaultSkin = new Image(Game.assets.getTexture("blueButtonSkin"));
-			coinBut.label = String(Configrations.heroPropertyCoin(currentLevel+1));
-			coinBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, renderHeight*0.2, 0x000000);
-			coinBut.paddingLeft = coinBut.paddingRight = renderwidth*0.05;
-			coinBut.paddingTop = coinBut.paddingBottom = renderHeight*0.01;
-			container.addChild(coinBut);
-			coinBut.x = renderwidth*0.2 ;
-			coinBut.y = renderHeight * 0.75;
-			coinBut.touchable = false;
+			if(currentLevel < 10){
+				var coinBut:Button = new Button();
+				var coinIcon:Image = new Image(Game.assets.getTexture("CoinIcon"));
+				coinIcon.width = coinIcon.height = renderHeight*0.2;
+				coinBut.defaultIcon = coinIcon;
+				coinBut.defaultSkin = new Image(Game.assets.getTexture("blueButtonSkin"));
+				coinBut.label = String(Configrations.heroPropertyCoin(currentLevel+1));
+				coinBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, renderHeight*0.2, 0x000000);
+				coinBut.paddingLeft = coinBut.paddingRight = renderwidth*0.05;
+				coinBut.paddingTop = coinBut.paddingBottom = renderHeight*0.01;
+				container.addChild(coinBut);
+				coinBut.x = renderwidth*0.2 ;
+				coinBut.y = renderHeight * 0.75;
+				coinBut.touchable = false;
+			}
 		}
 		
 		private function get heroData():HeroData

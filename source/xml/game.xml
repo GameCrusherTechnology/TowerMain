@@ -8,122 +8,122 @@
 	
 	<!-- 精英  120000 +100000  3600maxtime-->
 	<Group id="Battle">
-		<Battle item_id="20100" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0"	/>
-		<Battle item_id="20101" name="DragonWhelp" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50001:1"								supTime = "5000"		supLevel = "3"		/>
-		<Battle item_id="20102" name="Minotaur" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50002:1"								supTime = "5000"		supLevel = "3"		/>
-		<Battle item_id="20103" name="Spider" 				mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50000:1|50001:1"						supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20104" name="DragonWhelp" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50001:1|50002:1"						supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20105" name="Minotaur" 			mapId="40000"	level="0"	rewardCoin="6"		rewardExp="5"		baseMonster="50000:1|50002:1"						supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20106" name="Spider" 				mapId="40000"	level="0"	rewardCoin="10"		rewardExp="6"		baseMonster="50000:1|50003:1"						supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20107" name="PoisonousInsect" 		mapId="40000"	level="0"	rewardCoin="10"		rewardExp="6"		baseMonster="50001:1|50003:1"						supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20108" name="PoisonousInsect" 		mapId="40000"	level="0"	rewardCoin="10"		rewardExp="6"		baseMonster="50002:1|50003:1"						supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20109" name="DragonWhelp" 			mapId="40000"	level="0"	rewardCoin="10"		rewardExp="6"		baseMonster="50000:1|50001:1|50002:1"				supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20110" name="PoisonousInsect" 		mapId="40000"	level="0"	rewardCoin="10"		rewardExp="6"		baseMonster="50000:1|50001:1|50003:1"				supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20111" name="Minotaur" 			mapId="40000"	level="0"	rewardCoin="10"		rewardExp="6"		baseMonster="50001:1|50002:1|50003:2"				supTime = "5000"		supLevel = "5"		/>
+		<Battle item_id="20100" name="Spider" 						rewardCoin="6"		rewardExp="5"		baseMonster="50000:1:0.5:0|50000:1:0.7:30|50000:1:0.9:60|50000:1:0.1:90"	/>
+		<Battle item_id="20101" name="DragonWhelp" 					rewardCoin="6"		rewardExp="5"		baseMonster="50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0;50012:1:1|50001:1:0"								/>
+		<Battle item_id="20102" name="Minotaur" 					rewardCoin="6"		rewardExp="5"		baseMonster="50002:1"								/>
+		<Battle item_id="20103" name="Spider" 						rewardCoin="6"		rewardExp="5"		baseMonster="50000:1|50001:1"						/>
+		<Battle item_id="20104" name="DragonWhelp" 					rewardCoin="6"		rewardExp="5"		baseMonster="50001:1|50002:1"						/>
+		<Battle item_id="20105" name="Minotaur" 					rewardCoin="6"		rewardExp="5"		baseMonster="50000:1|50002:1"						/>
+		<Battle item_id="20106" name="Spider" 						rewardCoin="10"		rewardExp="6"		baseMonster="50000:1|50003:1"						/>
+		<Battle item_id="20107" name="PoisonousInsect" 				rewardCoin="10"		rewardExp="6"		baseMonster="50001:1|50003:1"						/>
+		<Battle item_id="20108" name="PoisonousInsect" 				rewardCoin="10"		rewardExp="6"		baseMonster="50002:1|50003:1"						/>
+		<Battle item_id="20109" name="DragonWhelp" 					rewardCoin="10"		rewardExp="6"		baseMonster="50000:1|50001:1|50002:1"				/>
+		<Battle item_id="20110" name="PoisonousInsect" 				rewardCoin="10"		rewardExp="6"		baseMonster="50000:1|50001:1|50003:1"				/>
+		<Battle item_id="20111" name="Minotaur" 					rewardCoin="10"		rewardExp="6"		baseMonster="50001:1|50002:1|50003:2"				/>
 		
-		<Battle item_id="20200" name="Minotaur" 			mapId="40000"	level="0"	rewardCoin="14"		rewardExp="7"		baseMonster="50000:1|50001:1|50002:2"				supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20201" name="PoisonousInsect" 		mapId="40000"	level="0"	rewardCoin="14"		rewardExp="7"		baseMonster="50000:1|50002:1|50003:2"				supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20202" name="PoisonousInsect" 		mapId="40000"	level="0"	rewardCoin="14"		rewardExp="7"		baseMonster="50001:1|50002:1|50003:2"				supTime = "5000"		supLevel = "5"		/>
-		<Battle item_id="20203" name="Hound" 				mapId="40000"	level="0"	rewardCoin="14"		rewardExp="7"		baseMonster="50000:1|50002:1|50004:2"				supTime = "5000"		supLevel = "6"		/>
-		<Battle item_id="20204" name="Hound" 				mapId="40000"	level="0"	rewardCoin="14"		rewardExp="7"		baseMonster="50000:1|50003:1|50004:2"				supTime = "5000"		supLevel = "6"		/>
-		<Battle item_id="20205" name="Hound" 				mapId="40000"	level="0"	rewardCoin="14"		rewardExp="7"		baseMonster="50001:1|50002:1|50004:2"				supTime = "5000"		supLevel = "6"		/>
-		<Battle item_id="20206" name="Hound" 				mapId="40000"	level="0"	rewardCoin="18"		rewardExp="8"		baseMonster="50001:1|50003:2|50004:2"				supTime = "5000"		supLevel = "6"		/>
-		<Battle item_id="20207" name="Hound" 				mapId="40000"	level="0"	rewardCoin="18"		rewardExp="8"		baseMonster="50002:1|50003:2|50004:2"				supTime = "5000"		supLevel = "6"		/>
-		<Battle item_id="20208" name="BlackMinotaur" 		mapId="40000"	level="0"	rewardCoin="18"		rewardExp="8"		baseMonster="50001:1|50002:1|50005:3"				supTime = "5000"		supLevel = "6"		/>
-		<Battle item_id="20209" name="BlackMinotaur" 		mapId="40000"	level="0"	rewardCoin="18"		rewardExp="8"		baseMonster="50001:2|50002:2|50005:2"				supTime = "5000"		supLevel = "6"		/>
-		<Battle item_id="20210" name="BlackMinotaur" 		mapId="40000"	level="0"	rewardCoin="18"		rewardExp="8"		baseMonster="50002:2|50003:2|50005:3"				supTime = "5000"		supLevel = "6"		/>
-		<Battle item_id="20211" name="BlackMinotaur" 		mapId="40000"	level="0"	rewardCoin="18"		rewardExp="8"		baseMonster="50003:3|50004:3|50005:3"				supTime = "5000"		supLevel = "6"		/>
+		<Battle item_id="20200" name="Minotaur" 					rewardCoin="14"		rewardExp="7"		baseMonster="50000:1|50001:1|50002:2"				/>
+		<Battle item_id="20201" name="PoisonousInsect" 				rewardCoin="14"		rewardExp="7"		baseMonster="50000:1|50002:1|50003:2"				/>
+		<Battle item_id="20202" name="PoisonousInsect" 				rewardCoin="14"		rewardExp="7"		baseMonster="50001:1|50002:1|50003:2"				/>
+		<Battle item_id="20203" name="Hound" 						rewardCoin="14"		rewardExp="7"		baseMonster="50000:1|50002:1|50004:2"				supTime = "5000"		supLevel = "6"		/>
+		<Battle item_id="20204" name="Hound" 						rewardCoin="14"		rewardExp="7"		baseMonster="50000:1|50003:1|50004:2"				supTime = "5000"		supLevel = "6"		/>
+		<Battle item_id="20205" name="Hound" 						rewardCoin="14"		rewardExp="7"		baseMonster="50001:1|50002:1|50004:2"				supTime = "5000"		supLevel = "6"		/>
+		<Battle item_id="20206" name="Hound" 						rewardCoin="18"		rewardExp="8"		baseMonster="50001:1|50003:2|50004:2"				supTime = "5000"		supLevel = "6"		/>
+		<Battle item_id="20207" name="Hound" 						rewardCoin="18"		rewardExp="8"		baseMonster="50002:1|50003:2|50004:2"				supTime = "5000"		supLevel = "6"		/>
+		<Battle item_id="20208" name="BlackMinotaur" 				rewardCoin="18"		rewardExp="8"		baseMonster="50001:1|50002:1|50005:3"				supTime = "5000"		supLevel = "6"		/>
+		<Battle item_id="20209" name="BlackMinotaur" 				rewardCoin="18"		rewardExp="8"		baseMonster="50001:2|50002:2|50005:2"				supTime = "5000"		supLevel = "6"		/>
+		<Battle item_id="20210" name="BlackMinotaur" 				rewardCoin="18"		rewardExp="8"		baseMonster="50002:2|50003:2|50005:3"				supTime = "5000"		supLevel = "6"		/>
+		<Battle item_id="20211" name="BlackMinotaur" 				rewardCoin="18"		rewardExp="8"		baseMonster="50003:3|50004:3|50005:3"				supTime = "5000"		supLevel = "6"		/>
 		
-		<Battle item_id="20300" name="Hound" 				mapId="40000"	level="0"	rewardCoin="22"		rewardExp="10"		baseMonster="50000:1|50001:2|50004:2"				supTime = "4000"		supLevel = "6"		/>
-		<Battle item_id="20301" name="Hound" 				mapId="40000"	level="0"	rewardCoin="22"		rewardExp="10"		baseMonster="50001:1|50002:2|50004:3"				supTime = "4000"		supLevel = "6"		/>
-		<Battle item_id="20302" name="BlackMinotaur" 		mapId="40000"	level="0"	rewardCoin="22"		rewardExp="10"		baseMonster="50002:2|50003:2|50005:3"				supTime = "4000"		supLevel = "6"		/>
-		<Battle item_id="20303" name="BlackMinotaur" 		mapId="40000"	level="0"	rewardCoin="22"		rewardExp="10"		baseMonster="50003:2|50004:3|50005:3"				supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20304" name="BlackMinotaur" 		mapId="40000"	level="0"	rewardCoin="22"		rewardExp="10"		baseMonster="50002:1|50004:2|50005:3"				supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20305" name="heianwushi" 			mapId="40000"	level="0"	rewardCoin="22"		rewardExp="10"		baseMonster="50002:2|50005:2|50006:3"				supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20306" name="heianwushi" 			mapId="40000"	level="0"	rewardCoin="26"		rewardExp="12"		baseMonster="50003:1|50005:3|50006:3"				supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20307" name="heianwushi" 			mapId="40000"	level="0"	rewardCoin="26"		rewardExp="12"		baseMonster="50004:2|50005:3|50006:3"				supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20308" name="Giant" 				mapId="40000"	level="0"	rewardCoin="26"		rewardExp="12"		baseMonster="50003:3|50006:3|50007:3"				supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20309" name="Giant" 				mapId="40000"	level="0"	rewardCoin="26"		rewardExp="12"		baseMonster="50004:1|50005:2|50007:4"				supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20310" name="Giant" 				mapId="40000"	level="0"	rewardCoin="26"		rewardExp="12"		baseMonster="50004:1|50006:4|50007:4"				supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20311" name="Giant" 				mapId="40000"	level="0"	rewardCoin="26"		rewardExp="12"		baseMonster="50005:4|50006:4|50007:4"				supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20300" name="Hound" 						rewardCoin="22"		rewardExp="10"		baseMonster="50000:1|50001:2|50004:2"				supTime = "4000"		supLevel = "6"		/>
+		<Battle item_id="20301" name="Hound" 						rewardCoin="22"		rewardExp="10"		baseMonster="50001:1|50002:2|50004:3"				supTime = "4000"		supLevel = "6"		/>
+		<Battle item_id="20302" name="BlackMinotaur" 				rewardCoin="22"		rewardExp="10"		baseMonster="50002:2|50003:2|50005:3"				supTime = "4000"		supLevel = "6"		/>
+		<Battle item_id="20303" name="BlackMinotaur" 				rewardCoin="22"		rewardExp="10"		baseMonster="50003:2|50004:3|50005:3"				supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20304" name="BlackMinotaur" 				rewardCoin="22"		rewardExp="10"		baseMonster="50002:1|50004:2|50005:3"				supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20305" name="heianwushi" 					rewardCoin="22"		rewardExp="10"		baseMonster="50002:2|50005:2|50006:3"				supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20306" name="heianwushi" 					rewardCoin="26"		rewardExp="12"		baseMonster="50003:1|50005:3|50006:3"				supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20307" name="heianwushi" 					rewardCoin="26"		rewardExp="12"		baseMonster="50004:2|50005:3|50006:3"				supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20308" name="Giant" 						rewardCoin="26"		rewardExp="12"		baseMonster="50003:3|50006:3|50007:3"				supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20309" name="Giant" 						rewardCoin="26"		rewardExp="12"		baseMonster="50004:1|50005:2|50007:4"				supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20310" name="Giant" 						rewardCoin="26"		rewardExp="12"		baseMonster="50004:1|50006:4|50007:4"				supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20311" name="Giant" 						rewardCoin="26"		rewardExp="12"		baseMonster="50005:4|50006:4|50007:4"				supTime = "4000"		supLevel = "7"		/>
 		
-		<Battle item_id="20400" name="heianwushi" 			mapId="40000"	level="0"	rewardCoin="30"		rewardExp="14"		baseMonster="50000:1|50003:3|50004:3|50006:3"		supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20401" name="heianwushi" 			mapId="40000"	level="0"	rewardCoin="30"		rewardExp="14"		baseMonster="50001:1|50004:1|50005:2|50006:4"		supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20402" name="Giant" 				mapId="40000"	level="0"	rewardCoin="30"		rewardExp="14"		baseMonster="50002:1|50003:1|50004:3|50007:4"		supTime = "4000"		supLevel = "7"		/>
-		<Battle item_id="20403" name="Giant" 				mapId="40000"	level="0"	rewardCoin="30"		rewardExp="14"		baseMonster="50000:1|50004:2|50005:3|50007:4"		supTime = "4000"		supLevel = "8"		/>
-		<Battle item_id="20404" name="Giant" 				mapId="40000"	level="0"	rewardCoin="30"		rewardExp="14"		baseMonster="50001:1|50005:2|50006:4|50007:4"		supTime = "4000"		supLevel = "8"		/>
-		<Battle item_id="20405" name="Skeleton" 			mapId="40000"	level="0"	rewardCoin="30"		rewardExp="14"		baseMonster="50002:1|50004:1|50005:4|50008:4"		supTime = "4000"		supLevel = "8"		/>
-		<Battle item_id="20406" name="Skeleton" 			mapId="40000"	level="0"	rewardCoin="34"		rewardExp="14"		baseMonster="50003:1|50005:2|50006:4|50008:4"		supTime = "4000"		supLevel = "8"		/>
-		<Battle item_id="20407" name="Skeleton" 			mapId="40000"	level="0"	rewardCoin="34"		rewardExp="14"		baseMonster="50004:1|50006:3|50007:4|50008:4"		supTime = "4000"		supLevel = "8"		/>
-		<Battle item_id="20408" name="lanmoguai" 			mapId="40000"	level="0"	rewardCoin="34"		rewardExp="14"		baseMonster="50000:1|50005:4|50007:4|50009:4"		supTime = "4000"		supLevel = "8"		/>
-		<Battle item_id="20409" name="lanmoguai" 			mapId="40000"	level="0"	rewardCoin="34"		rewardExp="14"		baseMonster="50001:1|50006:2|50007:3|50009:5"		supTime = "4000"		supLevel = "8"		/>
-		<Battle item_id="20410" name="lanmoguai" 			mapId="40000"	level="0"	rewardCoin="34"		rewardExp="14"		baseMonster="50002:2|50006:3|50008:4|50009:5"		supTime = "4000"		supLevel = "8"		/>
-		<Battle item_id="20411" name="lanmoguai" 			mapId="40000"	level="0"	rewardCoin="34"		rewardExp="14"		baseMonster="50003:3|50007:4|50008:5|50009:5"		supTime = "4000"		supLevel = "8"		/>
+		<Battle item_id="20400" name="heianwushi" 					rewardCoin="30"		rewardExp="14"		baseMonster="50000:1|50003:3|50004:3|50006:3"		supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20401" name="heianwushi" 					rewardCoin="30"		rewardExp="14"		baseMonster="50001:1|50004:1|50005:2|50006:4"		supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20402" name="Giant" 						rewardCoin="30"		rewardExp="14"		baseMonster="50002:1|50003:1|50004:3|50007:4"		supTime = "4000"		supLevel = "7"		/>
+		<Battle item_id="20403" name="Giant" 						rewardCoin="30"		rewardExp="14"		baseMonster="50000:1|50004:2|50005:3|50007:4"		supTime = "4000"		supLevel = "8"		/>
+		<Battle item_id="20404" name="Giant" 						rewardCoin="30"		rewardExp="14"		baseMonster="50001:1|50005:2|50006:4|50007:4"		supTime = "4000"		supLevel = "8"		/>
+		<Battle item_id="20405" name="Skeleton" 					rewardCoin="30"		rewardExp="14"		baseMonster="50002:1|50004:1|50005:4|50008:4"		supTime = "4000"		supLevel = "8"		/>
+		<Battle item_id="20406" name="Skeleton" 					rewardCoin="34"		rewardExp="14"		baseMonster="50003:1|50005:2|50006:4|50008:4"		supTime = "4000"		supLevel = "8"		/>
+		<Battle item_id="20407" name="Skeleton" 					rewardCoin="34"		rewardExp="14"		baseMonster="50004:1|50006:3|50007:4|50008:4"		supTime = "4000"		supLevel = "8"		/>
+		<Battle item_id="20408" name="lanmoguai" 				rewardCoin="34"		rewardExp="14"		baseMonster="50000:1|50005:4|50007:4|50009:4"		supTime = "4000"		supLevel = "8"		/>
+		<Battle item_id="20409" name="lanmoguai" 				rewardCoin="34"		rewardExp="14"		baseMonster="50001:1|50006:2|50007:3|50009:5"		supTime = "4000"		supLevel = "8"		/>
+		<Battle item_id="20410" name="lanmoguai" 				rewardCoin="34"		rewardExp="14"		baseMonster="50002:2|50006:3|50008:4|50009:5"		supTime = "4000"		supLevel = "8"		/>
+		<Battle item_id="20411" name="lanmoguai" 				rewardCoin="34"		rewardExp="14"		baseMonster="50003:3|50007:4|50008:5|50009:5"		supTime = "4000"		supLevel = "8"		/>
 		
-		<Battle item_id="20500" name="Skeleton" 			mapId="40000"	level="0"	rewardCoin="38"		rewardExp="16"		baseMonster="50004:2|50005:3|50006:3|50008:4"		supTime = "3000"		supLevel = "8"		/>
-		<Battle item_id="20501" name="Skeleton" 			mapId="40000"	level="0"	rewardCoin="38"		rewardExp="16"		baseMonster="50005:1|50006:2|50007:2|50008:5"		supTime = "3000"		supLevel = "8"		/>
-		<Battle item_id="20502" name="lanmoguai" 			mapId="40000"	level="0"	rewardCoin="38"		rewardExp="16"		baseMonster="50004:1|50005:2|50006:3|50009:5"		supTime = "3000"		supLevel = "8"		/>
-		<Battle item_id="20503" name="lanmoguai" 			mapId="40000"	level="0"	rewardCoin="38"		rewardExp="16"		baseMonster="50005:1|50006:2|50007:4|50009:5"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20504" name="lanmoguai" 			mapId="40000"	level="0"	rewardCoin="38"		rewardExp="16"		baseMonster="50006:2|50007:3|50008:3|50009:5"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20505" name="Assassin" 			mapId="40000"	level="0"	rewardCoin="38"		rewardExp="16"		baseMonster="50005:2|50006:3|50007:4|50010:5"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20506" name="Assassin" 			mapId="40000"	level="0"	rewardCoin="42"		rewardExp="18"		baseMonster="50006:1|50007:2|50008:5|50010:5"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20507" name="Assassin" 			mapId="40000"	level="0"	rewardCoin="42"		rewardExp="18"		baseMonster="50007:2|50008:3|50009:5|50010:5"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20508" name="Cyclop" 				mapId="40000"	level="0"	rewardCoin="42"		rewardExp="18"		baseMonster="50006:3|50007:4|50008:5|50011:5"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20509" name="Cyclop" 				mapId="40000"	level="0"	rewardCoin="42"		rewardExp="18"		baseMonster="50006:2|50007:3|50009:5|50011:6"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20510" name="Cyclop" 				mapId="40000"	level="0"	rewardCoin="42"		rewardExp="18"		baseMonster="50007:3|50008:4|50009:5|50011:6"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20511" name="Cyclop" 				mapId="40000"	level="0"	rewardCoin="42"		rewardExp="18"		baseMonster="50008:4|50009:5|50010:6|50011:6"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20500" name="Skeleton" 				rewardCoin="38"		rewardExp="16"		baseMonster="50004:2|50005:3|50006:3|50008:4"		supTime = "3000"		supLevel = "8"		/>
+		<Battle item_id="20501" name="Skeleton" 				rewardCoin="38"		rewardExp="16"		baseMonster="50005:1|50006:2|50007:2|50008:5"		supTime = "3000"		supLevel = "8"		/>
+		<Battle item_id="20502" name="lanmoguai" 				rewardCoin="38"		rewardExp="16"		baseMonster="50004:1|50005:2|50006:3|50009:5"		supTime = "3000"		supLevel = "8"		/>
+		<Battle item_id="20503" name="lanmoguai" 				rewardCoin="38"		rewardExp="16"		baseMonster="50005:1|50006:2|50007:4|50009:5"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20504" name="lanmoguai" 				rewardCoin="38"		rewardExp="16"		baseMonster="50006:2|50007:3|50008:3|50009:5"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20505" name="Assassin" 				rewardCoin="38"		rewardExp="16"		baseMonster="50005:2|50006:3|50007:4|50010:5"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20506" name="Assassin" 				rewardCoin="42"		rewardExp="18"		baseMonster="50006:1|50007:2|50008:5|50010:5"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20507" name="Assassin" 				rewardCoin="42"		rewardExp="18"		baseMonster="50007:2|50008:3|50009:5|50010:5"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20508" name="Cyclop" 					rewardCoin="42"		rewardExp="18"		baseMonster="50006:3|50007:4|50008:5|50011:5"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20509" name="Cyclop" 					rewardCoin="42"		rewardExp="18"		baseMonster="50006:2|50007:3|50009:5|50011:6"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20510" name="Cyclop" 					rewardCoin="42"		rewardExp="18"		baseMonster="50007:3|50008:4|50009:5|50011:6"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20511" name="Cyclop" 					rewardCoin="42"		rewardExp="18"		baseMonster="50008:4|50009:5|50010:6|50011:6"		supTime = "3000"		supLevel = "9"		/>
 		
-		<Battle item_id="20600" name="Assassin" 			mapId="40000"	level="0"	rewardCoin="46"		rewardExp="20"		baseMonster="50006:3|50007:4|50009:4|50010:5"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20601" name="Assassin" 			mapId="40000"	level="0"	rewardCoin="46"		rewardExp="20"		baseMonster="50008:2|50009:3|50009:4|50010:6"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20602" name="Cyclop" 				mapId="40000"	level="0"	rewardCoin="46"		rewardExp="20"		baseMonster="50007:2|50008:3|50009:5|50011:6"		supTime = "3000"		supLevel = "9"		/>
-		<Battle item_id="20603" name="Cyclop" 				mapId="40000"	level="0"	rewardCoin="46"		rewardExp="20"		baseMonster="50007:3|50008:4|50010:5|50011:6"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20604" name="Cyclop" 				mapId="40000"	level="0"	rewardCoin="46"		rewardExp="20"		baseMonster="50008:1|50009:2|50010:6|50011:6"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20605" name="SkeletonArcher" 		mapId="40000"	level="0"	rewardCoin="46"		rewardExp="20"		baseMonster="50007:2|50008:3|50009:6|50012:6"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20606" name="SkeletonArcher" 		mapId="40000"	level="0"	rewardCoin="50"		rewardExp="22"		baseMonster="50008:3|50009:4|50010:6|50012:6"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20607" name="SkeletonArcher" 		mapId="40000"	level="0"	rewardCoin="50"		rewardExp="22"		baseMonster="50009:4|50010:5|50011:6|50012:6"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20608" name="HellHound" 			mapId="40000"	level="0"	rewardCoin="50"		rewardExp="22"		baseMonster="50007:5|50008:6|50009:6|50013:6"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20609" name="HellHound" 			mapId="40000"	level="0"	rewardCoin="50"		rewardExp="22"		baseMonster="50008:3|50009:4|50010:5|50013:7"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20610" name="HellHound" 			mapId="40000"	level="0"	rewardCoin="50"		rewardExp="22"		baseMonster="50009:4|50010:5|50011:6|50013:7"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20611" name="HellHound" 			mapId="40000"	level="0"	rewardCoin="50"		rewardExp="22"		baseMonster="50010:5|50011:6|50012:7|50013:7"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20600" name="Assassin" 				rewardCoin="46"		rewardExp="20"		baseMonster="50006:3|50007:4|50009:4|50010:5"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20601" name="Assassin" 				rewardCoin="46"		rewardExp="20"		baseMonster="50008:2|50009:3|50009:4|50010:6"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20602" name="Cyclop" 					rewardCoin="46"		rewardExp="20"		baseMonster="50007:2|50008:3|50009:5|50011:6"		supTime = "3000"		supLevel = "9"		/>
+		<Battle item_id="20603" name="Cyclop" 					rewardCoin="46"		rewardExp="20"		baseMonster="50007:3|50008:4|50010:5|50011:6"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20604" name="Cyclop" 					rewardCoin="46"		rewardExp="20"		baseMonster="50008:1|50009:2|50010:6|50011:6"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20605" name="SkeletonArcher" 			rewardCoin="46"		rewardExp="20"		baseMonster="50007:2|50008:3|50009:6|50012:6"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20606" name="SkeletonArcher" 			rewardCoin="50"		rewardExp="22"		baseMonster="50008:3|50009:4|50010:6|50012:6"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20607" name="SkeletonArcher" 			rewardCoin="50"		rewardExp="22"		baseMonster="50009:4|50010:5|50011:6|50012:6"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20608" name="HellHound" 				rewardCoin="50"		rewardExp="22"		baseMonster="50007:5|50008:6|50009:6|50013:6"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20609" name="HellHound" 				rewardCoin="50"		rewardExp="22"		baseMonster="50008:3|50009:4|50010:5|50013:7"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20610" name="HellHound" 				rewardCoin="50"		rewardExp="22"		baseMonster="50009:4|50010:5|50011:6|50013:7"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20611" name="HellHound" 				rewardCoin="50"		rewardExp="22"		baseMonster="50010:5|50011:6|50012:7|50013:7"		supTime = "3000"		supLevel = "10"		/>
 		
-		<Battle item_id="20700" name="SkeletonArcher" 		mapId="40000"	level="0"	rewardCoin="54"		rewardExp="24"		baseMonster="50008:4|50009:5|50011:5|50012:6"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20701" name="SkeletonArcher" 		mapId="40000"	level="0"	rewardCoin="54"		rewardExp="24"		baseMonster="50009:3|50010:4|50011:5|50012:7"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20702" name="HellHound" 			mapId="40000"	level="0"	rewardCoin="54"		rewardExp="24"		baseMonster="50009:3|50010:4|50011:6|50013:7"		supTime = "3000"		supLevel = "10"		/>
-		<Battle item_id="20703" name="HellHound" 			mapId="40000"	level="0"	rewardCoin="54"		rewardExp="24"		baseMonster="50009:4|50010:5|50012:6|50013:7"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20704" name="HellHound" 			mapId="40000"	level="0"	rewardCoin="54"		rewardExp="24"		baseMonster="50010:2|50011:3|50012:7|50013:7"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20705" name="HellSpider" 			mapId="40000"	level="0"	rewardCoin="54"		rewardExp="24"		baseMonster="50009:3|50010:4|50011:7|50014:7"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20706" name="HellSpider" 			mapId="40000"	level="0"	rewardCoin="58"		rewardExp="26"		baseMonster="50010:4|50011:5|50012:7|50014:7"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20707" name="HellSpider" 			mapId="40000"	level="0"	rewardCoin="58"		rewardExp="26"		baseMonster="50011:5|50012:6|50013:7|50014:7"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20708" name="SkeletonWarrior" 		mapId="40000"	level="0"	rewardCoin="58"		rewardExp="26"		baseMonster="50009:6|50010:7|50011:7|50015:7"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20709" name="SkeletonWarrior" 		mapId="40000"	level="0"	rewardCoin="58"		rewardExp="26"		baseMonster="50010:4|50011:5|50012:6|50015:8"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20710" name="SkeletonWarrior" 		mapId="40000"	level="0"	rewardCoin="58"		rewardExp="26"		baseMonster="50011:5|50012:6|50013:7|50015:8"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20711" name="SkeletonWarrior" 		mapId="40000"	level="0"	rewardCoin="58"		rewardExp="26"		baseMonster="50012:6|50013:7|50014:8|50015:8"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20700" name="SkeletonArcher" 			rewardCoin="54"		rewardExp="24"		baseMonster="50008:4|50009:5|50011:5|50012:6"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20701" name="SkeletonArcher" 			rewardCoin="54"		rewardExp="24"		baseMonster="50009:3|50010:4|50011:5|50012:7"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20702" name="HellHound" 				rewardCoin="54"		rewardExp="24"		baseMonster="50009:3|50010:4|50011:6|50013:7"		supTime = "3000"		supLevel = "10"		/>
+		<Battle item_id="20703" name="HellHound" 				rewardCoin="54"		rewardExp="24"		baseMonster="50009:4|50010:5|50012:6|50013:7"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20704" name="HellHound" 				rewardCoin="54"		rewardExp="24"		baseMonster="50010:2|50011:3|50012:7|50013:7"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20705" name="HellSpider" 				rewardCoin="54"		rewardExp="24"		baseMonster="50009:3|50010:4|50011:7|50014:7"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20706" name="HellSpider" 				rewardCoin="58"		rewardExp="26"		baseMonster="50010:4|50011:5|50012:7|50014:7"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20707" name="HellSpider" 				rewardCoin="58"		rewardExp="26"		baseMonster="50011:5|50012:6|50013:7|50014:7"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20708" name="SkeletonWarrior" 			rewardCoin="58"		rewardExp="26"		baseMonster="50009:6|50010:7|50011:7|50015:7"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20709" name="SkeletonWarrior" 			rewardCoin="58"		rewardExp="26"		baseMonster="50010:4|50011:5|50012:6|50015:8"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20710" name="SkeletonWarrior" 			rewardCoin="58"		rewardExp="26"		baseMonster="50011:5|50012:6|50013:7|50015:8"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20711" name="SkeletonWarrior" 			rewardCoin="58"		rewardExp="26"		baseMonster="50012:6|50013:7|50014:8|50015:8"		supTime = "3000"		supLevel = "11"		/>
 		
-		<Battle item_id="20800" name="HellSpider" 			mapId="40000"	level="0"	rewardCoin="62"		rewardExp="28"		baseMonster="50010:5|50011:6|50013:6|50014:7"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20801" name="HellSpider" 			mapId="40000"	level="0"	rewardCoin="62"		rewardExp="28"		baseMonster="50011:4|50012:5|50013:6|50014:8"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20802" name="SkeletonWarrior" 		mapId="40000"	level="0"	rewardCoin="62"		rewardExp="28"		baseMonster="50011:4|50012:5|50013:7|50015:8"		supTime = "3000"		supLevel = "11"		/>
-		<Battle item_id="20803" name="SkeletonWarrior" 		mapId="40000"	level="0"	rewardCoin="62"		rewardExp="28"		baseMonster="50011:5|50012:6|50014:7|50015:8"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20804" name="SkeletonWarrior" 		mapId="40000"	level="0"	rewardCoin="62"		rewardExp="28"		baseMonster="50012:3|50013:4|50014:8|50015:8"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20805" name="ToxicMinotaur" 		mapId="40000"	level="0"	rewardCoin="62"		rewardExp="28"		baseMonster="50011:4|50012:5|50013:8|50016:8"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20806" name="ToxicMinotaur" 		mapId="40000"	level="0"	rewardCoin="66"		rewardExp="30"		baseMonster="50012:5|50013:6|50014:8|50016:8"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20807" name="ToxicMinotaur" 		mapId="40000"	level="0"	rewardCoin="66"		rewardExp="30"		baseMonster="50013:6|50014:7|50015:8|50016:8"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20808" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="66"		rewardExp="30"		baseMonster="50011:7|50012:8|50013:8|50017:8"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20809" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="66"		rewardExp="30"		baseMonster="50012:5|50013:6|50014:7|50017:9"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20810" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="66"		rewardExp="30"		baseMonster="50013:6|50014:7|50015:8|50017:9"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20811" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="66"		rewardExp="30"		baseMonster="50014:7|50015:8|50016:9|50017:9"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20800" name="HellSpider" 				rewardCoin="62"		rewardExp="28"		baseMonster="50010:5|50011:6|50013:6|50014:7"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20801" name="HellSpider" 				rewardCoin="62"		rewardExp="28"		baseMonster="50011:4|50012:5|50013:6|50014:8"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20802" name="SkeletonWarrior" 			rewardCoin="62"		rewardExp="28"		baseMonster="50011:4|50012:5|50013:7|50015:8"		supTime = "3000"		supLevel = "11"		/>
+		<Battle item_id="20803" name="SkeletonWarrior" 			rewardCoin="62"		rewardExp="28"		baseMonster="50011:5|50012:6|50014:7|50015:8"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20804" name="SkeletonWarrior" 			rewardCoin="62"		rewardExp="28"		baseMonster="50012:3|50013:4|50014:8|50015:8"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20805" name="ToxicMinotaur" 			rewardCoin="62"		rewardExp="28"		baseMonster="50011:4|50012:5|50013:8|50016:8"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20806" name="ToxicMinotaur" 			rewardCoin="66"		rewardExp="30"		baseMonster="50012:5|50013:6|50014:8|50016:8"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20807" name="ToxicMinotaur" 			rewardCoin="66"		rewardExp="30"		baseMonster="50013:6|50014:7|50015:8|50016:8"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20808" name="DarkKnight" 				rewardCoin="66"		rewardExp="30"		baseMonster="50011:7|50012:8|50013:8|50017:8"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20809" name="DarkKnight" 				rewardCoin="66"		rewardExp="30"		baseMonster="50012:5|50013:6|50014:7|50017:9"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20810" name="DarkKnight" 				rewardCoin="66"		rewardExp="30"		baseMonster="50013:6|50014:7|50015:8|50017:9"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20811" name="DarkKnight" 				rewardCoin="66"		rewardExp="30"		baseMonster="50014:7|50015:8|50016:9|50017:9"		supTime = "3000"		supLevel = "12"		/>
 		
-		<Battle item_id="20900" name="HellSpider" 			mapId="40000"	level="0"	rewardCoin="70"		rewardExp="32"		baseMonster="50010:6|50011:7|50013:7|50014:8"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20901" name="HellSpider" 			mapId="40000"	level="0"	rewardCoin="70"		rewardExp="32"		baseMonster="50011:5|50012:6|50013:7|50014:9"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20902" name="SkeletonWarrior" 		mapId="40000"	level="0"	rewardCoin="70"		rewardExp="32"		baseMonster="50011:5|50012:6|50014:8|50015:9"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20903" name="SkeletonWarrior" 		mapId="40000"	level="0"	rewardCoin="70"		rewardExp="32"		baseMonster="50012:6|50013:7|50014:8|50015:9"		supTime = "3000"		supLevel = "12"		/>
-		<Battle item_id="20904" name="ToxicMinotaur" 		mapId="40000"	level="0"	rewardCoin="70"		rewardExp="32"		baseMonster="50012:4|50013:5|50014:9|50016:9"		supTime = "3000"		supLevel = "13"		/>
-		<Battle item_id="20905" name="ToxicMinotaur" 		mapId="40000"	level="0"	rewardCoin="70"		rewardExp="32"		baseMonster="50012:5|50013:6|50015:9|50016:9"		supTime = "3000"		supLevel = "13"		/>
-		<Battle item_id="20906" name="ToxicMinotaur" 		mapId="40000"	level="0"	rewardCoin="74"		rewardExp="34"		baseMonster="50013:6|50014:7|50015:9|50016:9"		supTime = "3000"		supLevel = "13"		/>
-		<Battle item_id="20907" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="74"		rewardExp="34"		baseMonster="50012:7|50013:8|50015:9|50017:9"		supTime = "3000"		supLevel = "14"		/>
-		<Battle item_id="20908" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="74"		rewardExp="34"		baseMonster="50013:8|50014:9|50015:9|50017:9"		supTime = "3000"		supLevel = "14"		/>
-		<Battle item_id="20909" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="78"		rewardExp="34"		baseMonster="50013:6|50014:7|50016:8|50017:10"		supTime = "3000"		supLevel = "14"		/>
-		<Battle item_id="20910" name="DarkKnight" 			mapId="40000"	level="0"	rewardCoin="78"		rewardExp="34"		baseMonster="50014:7|50015:8|50016:9|50017:10"		supTime = "3000"		supLevel = "15"		/>
-		<Battle item_id="20911" name="DevilGordon" 			mapId="40000"	level="0"	rewardCoin="80"		rewardExp="40"		baseMonster="50016:8|50017:9|50018:10|50018:10"		supTime = "3000"		supLevel = "20"		/>
+		<Battle item_id="20900" name="HellSpider" 				rewardCoin="70"		rewardExp="32"		baseMonster="50010:6|50011:7|50013:7|50014:8"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20901" name="HellSpider" 				rewardCoin="70"		rewardExp="32"		baseMonster="50011:5|50012:6|50013:7|50014:9"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20902" name="SkeletonWarrior" 			rewardCoin="70"		rewardExp="32"		baseMonster="50011:5|50012:6|50014:8|50015:9"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20903" name="SkeletonWarrior" 			rewardCoin="70"		rewardExp="32"		baseMonster="50012:6|50013:7|50014:8|50015:9"		supTime = "3000"		supLevel = "12"		/>
+		<Battle item_id="20904" name="ToxicMinotaur" 			rewardCoin="70"		rewardExp="32"		baseMonster="50012:4|50013:5|50014:9|50016:9"		supTime = "3000"		supLevel = "13"		/>
+		<Battle item_id="20905" name="ToxicMinotaur" 			rewardCoin="70"		rewardExp="32"		baseMonster="50012:5|50013:6|50015:9|50016:9"		supTime = "3000"		supLevel = "13"		/>
+		<Battle item_id="20906" name="ToxicMinotaur" 			rewardCoin="74"		rewardExp="34"		baseMonster="50013:6|50014:7|50015:9|50016:9"		supTime = "3000"		supLevel = "13"		/>
+		<Battle item_id="20907" name="DarkKnight" 				rewardCoin="74"		rewardExp="34"		baseMonster="50012:7|50013:8|50015:9|50017:9"		supTime = "3000"		supLevel = "14"		/>
+		<Battle item_id="20908" name="DarkKnight" 				rewardCoin="74"		rewardExp="34"		baseMonster="50013:8|50014:9|50015:9|50017:9"		supTime = "3000"		supLevel = "14"		/>
+		<Battle item_id="20909" name="DarkKnight" 				rewardCoin="78"		rewardExp="34"		baseMonster="50013:6|50014:7|50016:8|50017:10"		supTime = "3000"		supLevel = "14"		/>
+		<Battle item_id="20910" name="DarkKnight" 				rewardCoin="78"		rewardExp="34"		baseMonster="50014:7|50015:8|50016:9|50017:10"		supTime = "3000"		supLevel = "15"		/>
+		<Battle item_id="20911" name="DevilGordon" 				rewardCoin="80"		rewardExp="40"		baseMonster="50016:8|50017:9|50018:10|50018:10"		supTime = "3000"		supLevel = "20"		/>
 	</Group>
 	
 	<Group id="Skill">
@@ -131,52 +131,28 @@
 		<Skill item_id="30002" name="defence" 		type="arrow"  		typeNeed="0"		/>
 		<Skill item_id="30003" name="stun" 	type="arrow"  		typeNeed="0"		/>
 		
-		<Skill item_id="30004" name="lingjiaojian"  type="arrow" 		typeNeed="0"		recycle="600"	/>
-		<Skill item_id="30005" name="split" 	type="arrow"  		typeNeed="0"		/>
-		<Skill item_id="30006" name="arrowcd" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30004" name="lingjiaojian"  type="arrow" 		typeNeed="10"		recycle="600"	/>
+		<Skill item_id="30005" name="split" 	type="arrow"  		typeNeed="10"		/>
+		<Skill item_id="30006" name="arrowcd" 	type="arrow"  		typeNeed="10"		/>
 		
-		<Skill item_id="30007" name="shujiguang"   	type="arrow"		typeNeed="0"		recycle="600"	/>
-		<Skill item_id="30008" name="frozen" 	type="arrow"  		typeNeed="0"		/>
-		<Skill item_id="30009" name="vampiric" 	type="arrow"  		typeNeed="0"		/>
+		<Skill item_id="30007" name="shujiguang"   	type="arrow"		typeNeed="20"		recycle="600"	/>
+		<Skill item_id="30008" name="frozen" 	type="arrow"  		typeNeed="20"		/>
+		<Skill item_id="30009" name="vampiric" 	type="arrow"  		typeNeed="20"		/>
 		
 		
 	 	<Skill item_id="31001" name="zhangxinlei"   type="magic"		typeNeed="0"		recycle="600"	/>
 	 	<Skill item_id="31002" name="spread" 	type="magic"  		typeNeed="0"		/>
 	 	<Skill item_id="31003" name="marker" 	type="magic"  		typeNeed="0"		/>
 	 	
-	 	<Skill item_id="31004" name="huimielieyan"  type="magic"		typeNeed="0"		recycle="600"	/>
-	 	<Skill item_id="31005" name="burning" 	type="magic"  		typeNeed="0"		/>
-	 	<Skill item_id="31006" name="magiccd" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31004" name="huimielieyan"  type="magic"		typeNeed="10"		recycle="600"	/>
+	 	<Skill item_id="31005" name="burning" 	type="magic"  		typeNeed="10"		/>
+	 	<Skill item_id="31006" name="magiccd" 	type="magic"  		typeNeed="10"		/>
 	 	
-	 	<Skill item_id="31007" name="longjuanfeng"  type="magic" 		typeNeed="0"		recycle="600"	/>
-	 	<Skill item_id="31008" name="typhoon" 	type="magic"  		typeNeed="0"		/>
-	 	<Skill item_id="31009" name="baoyan" 	type="magic"  		typeNeed="0"		/>
+	 	<Skill item_id="31007" name="longjuanfeng"  type="magic" 		typeNeed="20"		recycle="600"	/>
+	 	<Skill item_id="31008" name="typhoon" 	type="magic"  		typeNeed="20"		/>
+	 	<Skill item_id="31009" name="baoyan" 	type="magic"  		typeNeed="20"		/>
 	
 	
-	
-		<!-- <Skill item_id="30000" name="attackBuff"   	type="arrow"		typeNeed="0"		recycle="10"	range="100"/>
-		<Skill item_id="30001" name="baoshe"   		type="arrow"		typeNeed="0"		recycle="10"	range="200"/>
-		<Skill item_id="30002" name="xuanfengzhan" 	type="arrow"  		typeNeed="0"	recycle="10"	range="100"/>
-		<Skill item_id="30003" name="shujiguang"   	type="arrow"		typeNeed="10"	recycle="10"	range="200"/>
-		<Skill item_id="30004" name="diyuhuo"  		type="arrow"		typeNeed="10"	recycle="10"	range="20"/>
-		<Skill item_id="30005" name="fireball"  	type="arrow"		typeNeed="10"	recycle="10"	range="400"/>
-		<Skill item_id="30006" name="liuxingyu"   	type="arrow"		typeNeed="20"	recycle="10"	range="200"/>
-		<Skill item_id="30007" name="qiuyan"   		type="arrow"		typeNeed="20"	recycle="10"	range="300"/>
-		<Skill item_id="30008" name="purpleball"   	type="arrow"		typeNeed="20"	recycle="10"	range="300"/>
-		<Skill item_id="30009" name="guangjian"   	type="arrow"			recycle="450"	range="400"		buffName="thunder"/>
-		<Skill item_id="30010" name="healthBuff"   	type="arrow"			recycle="600"	range="100"/> 
-		
-		<Skill item_id="30011" name="huimielieyan"  type="magic"		typeNeed="0"	recycle="10"	range="200"/>
-		<Skill item_id="30012" name="huolian"   	type="magic"		typeNeed="0"	recycle="10"	range="200"/>
-		<Skill item_id="30013" name="huoyanjian"   	type="magic"		typeNeed="0"	recycle="10"	range="400"		buffName="redBuff"/>
-		<Skill item_id="30014" name="zhiyu"   		type="magic"		typeNeed="10"	recycle="10"	range="100"/>
-		<Skill item_id="30015" name="huoyu"   		type="magic"		typeNeed="10"	recycle="10"	range="400"/>
-		<Skill item_id="30016" name="longjuanfeng"  type="magic" 		typeNeed="10"	recycle="10"	range="100"/>
-		<Skill item_id="30017" name="jiguangjian"  	type="magic" 		typeNeed="20"	recycle="10"	range="500"/>
-		<Skill item_id="30018" name="lanyan"   		type="magic"		typeNeed="20"	recycle="10"	range="200"/>
-		<Skill item_id="30019" name="liehuozhan"   	type="magic"		typeNeed="20"	recycle="10"	range="100"/>
-		 <Skill item_id="30020" name="zhangxinlei"   type="magic"			recycle="10"	range="400"/>
-		<Skill item_id="30021" name="lingjiaojian"  type="magic" 			recycle="10"	range="500"/>-->
 	</Group>
 	
 	<Group id="Map">
@@ -189,40 +165,40 @@
 	</Group>
 	<Group id="Soldier">
 
-		<Soldier item_id="50000" name="Spider"   		sound="spider"			recycle="60" 	range="37" 		speed="1"	baseLife="30" 	lifeUp="2"	baseAttack="2"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30007"						runx="36"		runy="39"		attackx="37"	attacky="40"	standx="22"		standy="36"		rectw="73"		recty="52"	/>
-		<Soldier item_id="50001" name="DragonWhelp"   	sound="dragon"			recycle="60" 	range="300" 		speed="2"	baseLife="40" 	lifeUp="3"	baseAttack="4"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30005"						runx="60"		runy="86"		attackx="71"	attacky="92"	standx="60"		standy="64"		rectw="120"		recty="80"	armCls="fireBullet"/>
-		<Soldier item_id="50002" name="Minotaur"   		sound="Bull"			recycle="90" 	range="93" 		speed="1.4"	baseLife="60" 	lifeUp="5"	baseAttack="5"	attackUp="2"	attackCycle="35"	upCount="10,20,40,80,160"	curSkill="3:30010"						runx="64"		runy="128"		attackx="133"	attacky="161"	standx="30"		standy="119"	rectw="157"		recty="146"	/>
-		<Soldier item_id="50003" name="PoisonousInsect" sound="Insect"			recycle="60" 	range="66" 		speed="1"	baseLife="40" 	lifeUp="3"	baseAttack="4"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30013"						runx="48"		runy="47"		attackx="58"	attacky="51"	standx="46"		standy="31"		rectw="114"		recty="50"	/>
-		<Soldier item_id="50004" name="Hound"   		sound="Hound"			recycle="90" 	range="100" 	speed="1.6"	baseLife="50" 	lifeUp="3"	baseAttack="5"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30002"						runx="89"		runy="142"		attackx="106"	attacky="177"	standx="93"		standy="127"	rectw="206"		recty="164"	/>
-		<Soldier item_id="50005" name="BlackMinotaur"   sound="Bull"			recycle="90" 	range="120" 	speed="1.4"	baseLife="100" 	lifeUp="5"	baseAttack="6"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30000"						runx="135"		runy="128"		attackx="157"	attacky="216"	standx="31"		standy="177"	rectw="305"		recty="158"	/>
-		<Soldier item_id="50006" name="heianwushi"   	sound="Ghost"			recycle="90" 	range="400" 	speed="1.6"	baseLife="30" 	lifeUp="3"	baseAttack="10"	attackUp="3"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30020"						runx="80"		runy="131"		attackx="78"	attacky="219"	standx="53"		standy="134"	rectw="212"		recty="148"		armCls="fireBullet"/>
-		<Soldier item_id="50007" name="Giant"   		sound="Giant"			recycle="90" 	range="100" 	speed="1.6"	baseLife="80" 	lifeUp="4"	baseAttack="8"	attackUp="3"	attackCycle="35"	upCount="10,20,40,80,160"	curSkill="3:30002;5:30016"				runx="110"		runy="148"		attackx="180"	attacky="303"	standx="68"		standy="143"	rectw="250"		recty="183"	/>
-		<Soldier item_id="50008" name="Skeleton"   		sound="Bone"			recycle="90" 	range="100" 	speed="1.5"	baseLife="80" 	lifeUp="4"	baseAttack="10"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30009"						runx="46"		runy="103"		attackx="100"	attacky="144"	standx="26"		standy="109"	rectw="106"		recty="120"	/>
-		<Soldier item_id="50009" name="lanmoguai"   	sound="BlueMonster"		recycle="90" 	range="101" 	speed="1.2"	baseLife="70" 	lifeUp="3"	baseAttack="10"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30001"						runx="56"		runy="141"		attackx="131"	attacky="190"	standx="38"		standy="133"	rectw="157"		recty="140"	/>
-		<Soldier item_id="50010" name="Assassin"   		sound="Assassin"		recycle="60" 	range="80" 		speed="2.2"	baseLife="50" 	lifeUp="3"	baseAttack="9"	attackUp="5"	attackCycle="20"	upCount="10,20,40,80,160"	curSkill="3:30019"						runx="80"		runy="99"		attackx="123"	attacky="123"	standx="110"	standy="84"		rectw="119"		recty="144"	/>
-		<Soldier item_id="50011" name="Cyclop"   		sound="ArmoredMonster"	recycle="90" 	range="117" 	speed="1.8"	baseLife="80" 	lifeUp="4"	baseAttack="10"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30012"						runx="56"		runy="169"		attackx="167"	attacky="192"	standx="36"		standy="168"	rectw="173"		recty="186"	/>
-		<Soldier item_id="50012" name="SkeletonArcher"  sound="Bone"			recycle="90" 	range="450" 	speed="1.2"	baseLife="50" 	lifeUp="4"	baseAttack="10"	attackUp="4"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30017"						runx="33"		runy="144"		attackx="64"	attacky="144"	standx="23"		standy="143"	rectw="125"		recty="140"		armCls="arrow"/>
-		<Soldier item_id="50013" name="HellHound"   	sound="Hound"			recycle="90" 	range="147" 	speed="1.4"	baseLife="80" 	lifeUp="4"	baseAttack="12"	attackUp="4"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30003"						runx="67"		runy="150"		attackx="116"	attacky="171"	standx="66"		standy="144"	rectw="214"		recty="169"	/>
-		<Soldier item_id="50014" name="HellSpider"   	sound="HellSpider"		recycle="120" 	range="250" 	speed="1.6"	baseLife="60" 	lifeUp="3"	baseAttack="12"	attackUp="4"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30008"						runx="81"		runy="176"		attackx="89"	attacky="216"	standx="84"		standy="172"	rectw="183"		recty="200"		armCls="fireBullet"/>
-		<Soldier item_id="50015" name="SkeletonWarrior" sound="Bone"			recycle="150" 	range="152" 	speed="1.2"	baseLife="100" 	lifeUp="5"	baseAttack="15"	attackUp="5"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30016"						runx="55"		runy="132"		attackx="117"	attacky="263"	standx="37"		standy="143"	rectw="207"		recty="155"	/>
-		<Soldier item_id="50016" name="ToxicMinotaur"   sound="Bull"			recycle="150" 	range="121" 	speed="1.8"	baseLife="120" 	lifeUp="6"	baseAttack="18"	attackUp="5"	attackCycle="35"	upCount="10,20,40,80,160"	curSkill="3:30000;5:30010"				runx="120"		runy="140"		attackx="130"	attacky="224"	standx="33"		standy="172"	rectw="241"		recty="149"	/>
-		<Soldier item_id="50017" name="DarkKnight"   	sound="DeathKnight"		recycle="150" 	range="74" 		speed="2"	baseLife="100" 	lifeUp="4"	baseAttack="15"	attackUp="6"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30018"						runx="68"		runy="118"		attackx="131"	attacky="181"	standx="78"		standy="98"		rectw="142"		recty="184"	/>
-		<Soldier item_id="50018" name="DevilGordon"   	sound="Gorgon"			recycle="180" 	range="120" 	speed="1.5"	baseLife="150" 	lifeUp="5"	baseAttack="20"	attackUp="8"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30004;5:30019;7:30014"		runx="58"		runy="167"		attackx="97"	attacky="198"	standx="47"		standy="164"	rectw="187"		recty="166"	/>
-		<Soldier item_id="50019" name="SnowInsect"   	sound="Insect"			recycle="60" 	range="53" 		speed="1"	baseLife="40" 	lifeUp="3"	baseAttack="5"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30007"						runx="49"		runy="61"		attackx="53"	attacky="69"	standx="41"		standy="63"		rectw="102"		recty="57"	/>
-		<Soldier item_id="50020" name="xuerenwang"   	sound="SnowmanKing"		recycle="120" 	range="97" 		speed="1.4"	baseLife="80" 	lifeUp="4"	baseAttack="8"	attackUp="5"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30006"						runx="62"		runy="174"		attackx="141"	attacky="181"	standx="38"		standy="160"	rectw="159"		recty="185"	/>
-		<Soldier item_id="50021" name="dunzhanshi"   	sound="Kamen"			recycle="60" 	range="100" 	speed="1.6"	baseLife="100" 	lifeUp="4"	baseAttack="6"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30004"						runx="39"		runy="117"		attackx="78"	attacky="168"	standx="46"		standy="117"	rectw="139"		recty="128"	/>
-		<Soldier item_id="50022" name="huangjinsheshou" sound="Kamen"			recycle="60" 	range="350" 	speed="1.5"	baseLife="80" 	lifeUp="3"	baseAttack="7"	attackUp="4"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30021"						runx="46"		runy="125"		attackx="54"	attacky="127"	standx="20"		standy="127"	rectw="117"		recty="138"		armCls="arrow"/>
-		<Soldier item_id="50023" name="gulingzhanshi"  	sound="ArmoredWarrior"	recycle="120" 	range="150" 	speed="1.6"	baseLife="120" 	lifeUp="4"	baseAttack="8"	attackUp="5"	attackCycle="20"	upCount="10,20,40,80,160"	curSkill="3:30009;5:30000"				runx="65"		runy="240"		attackx="183"	attacky="255"	standx="40"		standy="223"	rectw="127"		recty="252"	/>
-		<Soldier item_id="50024" name="gulingshou"  	sound="ArmoredMonster"	recycle="120" 	range="135" 	speed="2"	baseLife="150" 	lifeUp="5"	baseAttack="9"	attackUp="5"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30014;5:30008"				runx="116"		runy="175"		attackx="90"	attacky="227"	standx="63"		standy="137"	rectw="251"		recty="210"	/>
-		<Soldier item_id="50025" name="gulingwushi"   	sound="ArmoredWizard"	recycle="150" 	range="400" 	speed="1.6"	baseLife="100" 	lifeUp="4"	baseAttack="10"	attackUp="6"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30015;5:30020"				runx="83"		runy="177"		attackx="73"	attacky="184"	standx="53"		standy="166"	rectw="151"		recty="180"		armCls="fireBullet"/>
-		<Soldier item_id="50026" name="xuesezhanshi"   	sound="ArmoredKnight"	recycle="150" 	range="180" 	speed="1.6"	baseLife="150" 	lifeUp="4"	baseAttack="12"	attackUp="6"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30011;5:30019;7:30002"		runx="82"		runy="197"		attackx="210"	attacky="278"	standx="87"		standy="193"	rectw="286"		recty="200"	/>
+		<Soldier item_id="50000" name="Spider"   		sound="spider"			recycle="60" 	range="37" 		speed="1"	baseLife="70" 	lifeUp="2"	baseAttack="2"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30007"						runx="36"		runy="39"		attackx="37"	attacky="40"	standx="22"		standy="36"		rectw="73"		recty="52"	/>
+		<Soldier item_id="50001" name="DragonWhelp"   	sound="dragon"			recycle="60" 	range="300" 	speed="2"	baseLife="80" 	lifeUp="3"	baseAttack="4"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30005"						runx="60"		runy="86"		attackx="71"	attacky="92"	standx="60"		standy="64"		rectw="120"		recty="80"	armCls="fireBullet"/>
+		<Soldier item_id="50002" name="Minotaur"   		sound="Bull"			recycle="90" 	range="93" 		speed="1.4"	baseLife="150" 	lifeUp="5"	baseAttack="5"	attackUp="2"	attackCycle="35"	upCount="10,20,40,80,160"	curSkill="3:30010"						runx="64"		runy="128"		attackx="133"	attacky="161"	standx="30"		standy="119"	rectw="157"		recty="146"	/>
+		<Soldier item_id="50003" name="PoisonousInsect" sound="Insect"			recycle="60" 	range="66" 		speed="1"	baseLife="100" 	lifeUp="3"	baseAttack="4"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30013"						runx="48"		runy="47"		attackx="58"	attacky="51"	standx="46"		standy="31"		rectw="114"		recty="50"	/>
+		<Soldier item_id="50004" name="Hound"   		sound="Hound"			recycle="90" 	range="100" 	speed="1.6"	baseLife="120" 	lifeUp="3"	baseAttack="5"	attackUp="2"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30002"						runx="89"		runy="142"		attackx="106"	attacky="177"	standx="93"		standy="127"	rectw="206"		recty="164"	/>
+		<Soldier item_id="50005" name="BlackMinotaur"   sound="Bull"			recycle="90" 	range="120" 	speed="1.4"	baseLife="180" 	lifeUp="5"	baseAttack="6"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30000"						runx="135"		runy="128"		attackx="157"	attacky="216"	standx="31"		standy="177"	rectw="305"		recty="158"	/>
+		<Soldier item_id="50006" name="heianwushi"   	sound="Ghost"			recycle="90" 	range="400" 	speed="1.6"	baseLife="110" 	lifeUp="3"	baseAttack="10"	attackUp="3"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30020"						runx="80"		runy="131"		attackx="78"	attacky="219"	standx="53"		standy="134"	rectw="212"		recty="148"		armCls="fireBullet"/>
+		<Soldier item_id="50007" name="Giant"   		sound="Giant"			recycle="90" 	range="100" 	speed="1.6"	baseLife="150" 	lifeUp="4"	baseAttack="8"	attackUp="3"	attackCycle="35"	upCount="10,20,40,80,160"	curSkill="3:30002;5:30016"				runx="110"		runy="148"		attackx="180"	attacky="303"	standx="68"		standy="143"	rectw="250"		recty="183"	/>
+		<Soldier item_id="50008" name="Skeleton"   		sound="Bone"			recycle="90" 	range="100" 	speed="1.5"	baseLife="120" 	lifeUp="4"	baseAttack="10"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30009"						runx="46"		runy="103"		attackx="100"	attacky="144"	standx="26"		standy="109"	rectw="106"		recty="120"	/>
+		<Soldier item_id="50009" name="lanmoguai"   	sound="BlueMonster"		recycle="90" 	range="101" 	speed="1.2"	baseLife="130" 	lifeUp="3"	baseAttack="10"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30001"						runx="56"		runy="141"		attackx="131"	attacky="190"	standx="38"		standy="133"	rectw="157"		recty="140"	/>
+		<Soldier item_id="50010" name="Assassin"   		sound="Assassin"		recycle="60" 	range="80" 		speed="2.2"	baseLife="100" 	lifeUp="3"	baseAttack="9"	attackUp="5"	attackCycle="20"	upCount="10,20,40,80,160"	curSkill="3:30019"						runx="80"		runy="99"		attackx="123"	attacky="123"	standx="110"	standy="84"		rectw="119"		recty="144"	/>
+		<Soldier item_id="50011" name="Cyclop"   		sound="ArmoredMonster"	recycle="90" 	range="117" 	speed="1.8"	baseLife="160" 	lifeUp="4"	baseAttack="10"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30012"						runx="56"		runy="169"		attackx="167"	attacky="192"	standx="36"		standy="168"	rectw="173"		recty="186"	/>
+		<Soldier item_id="50012" name="SkeletonArcher"  sound="Bone"			recycle="90" 	range="450" 	speed="1.2"	baseLife="110" 	lifeUp="4"	baseAttack="10"	attackUp="4"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30017"						runx="33"		runy="144"		attackx="64"	attacky="144"	standx="23"		standy="143"	rectw="125"		recty="140"		armCls="arrow"/>
+		<Soldier item_id="50013" name="HellHound"   	sound="Hound"			recycle="90" 	range="147" 	speed="1.4"	baseLife="170" 	lifeUp="4"	baseAttack="12"	attackUp="4"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30003"						runx="67"		runy="150"		attackx="116"	attacky="171"	standx="66"		standy="144"	rectw="214"		recty="169"	/>
+		<Soldier item_id="50014" name="HellSpider"   	sound="HellSpider"		recycle="120" 	range="250" 	speed="1.6"	baseLife="160" 	lifeUp="3"	baseAttack="12"	attackUp="4"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30008"						runx="81"		runy="176"		attackx="89"	attacky="216"	standx="84"		standy="172"	rectw="183"		recty="200"		armCls="fireBullet"/>
+		<Soldier item_id="50015" name="SkeletonWarrior" sound="Bone"			recycle="150" 	range="152" 	speed="1.2"	baseLife="200" 	lifeUp="5"	baseAttack="15"	attackUp="5"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30016"						runx="55"		runy="132"		attackx="117"	attacky="263"	standx="37"		standy="143"	rectw="207"		recty="155"	/>
+		<Soldier item_id="50016" name="ToxicMinotaur"   sound="Bull"			recycle="150" 	range="121" 	speed="1.8"	baseLife="260" 	lifeUp="6"	baseAttack="18"	attackUp="5"	attackCycle="35"	upCount="10,20,40,80,160"	curSkill="3:30000;5:30010"				runx="120"		runy="140"		attackx="130"	attacky="224"	standx="33"		standy="172"	rectw="241"		recty="149"	/>
+		<Soldier item_id="50017" name="DarkKnight"   	sound="DeathKnight"		recycle="150" 	range="74" 		speed="2"	baseLife="210" 	lifeUp="4"	baseAttack="15"	attackUp="6"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30018"						runx="68"		runy="118"		attackx="131"	attacky="181"	standx="78"		standy="98"		rectw="142"		recty="184"	/>
+		<Soldier item_id="50018" name="DevilGordon"   	sound="Gorgon"			recycle="180" 	range="120" 	speed="1.5"	baseLife="250" 	lifeUp="5"	baseAttack="20"	attackUp="8"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30004;5:30019;7:30014"		runx="58"		runy="167"		attackx="97"	attacky="198"	standx="47"		standy="164"	rectw="187"		recty="166"	/>
+		<Soldier item_id="50019" name="SnowInsect"   	sound="Insect"			recycle="60" 	range="53" 		speed="1"	baseLife="100" 	lifeUp="3"	baseAttack="5"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30007"						runx="49"		runy="61"		attackx="53"	attacky="69"	standx="41"		standy="63"		rectw="102"		recty="57"	/>
+		<Soldier item_id="50020" name="xuerenwang"   	sound="SnowmanKing"		recycle="120" 	range="97" 		speed="1.4"	baseLife="220" 	lifeUp="4"	baseAttack="8"	attackUp="5"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30006"						runx="62"		runy="174"		attackx="141"	attacky="181"	standx="38"		standy="160"	rectw="159"		recty="185"	/>
+		<Soldier item_id="50021" name="dunzhanshi"   	sound="Kamen"			recycle="60" 	range="100" 	speed="1.6"	baseLife="180" 	lifeUp="4"	baseAttack="6"	attackUp="3"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30004"						runx="39"		runy="117"		attackx="78"	attacky="168"	standx="46"		standy="117"	rectw="139"		recty="128"	/>
+		<Soldier item_id="50022" name="huangjinsheshou" sound="Kamen"			recycle="60" 	range="350" 	speed="1.5"	baseLife="160" 	lifeUp="3"	baseAttack="7"	attackUp="4"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30021"						runx="46"		runy="125"		attackx="54"	attacky="127"	standx="20"		standy="127"	rectw="117"		recty="138"		armCls="arrow"/>
+		<Soldier item_id="50023" name="gulingzhanshi"  	sound="ArmoredWarrior"	recycle="120" 	range="150" 	speed="1.6"	baseLife="200" 	lifeUp="4"	baseAttack="8"	attackUp="5"	attackCycle="20"	upCount="10,20,40,80,160"	curSkill="3:30009;5:30000"				runx="65"		runy="240"		attackx="183"	attacky="255"	standx="40"		standy="223"	rectw="127"		recty="252"	/>
+		<Soldier item_id="50024" name="gulingshou"  	sound="ArmoredMonster"	recycle="120" 	range="135" 	speed="2"	baseLife="240" 	lifeUp="5"	baseAttack="9"	attackUp="5"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30014;5:30008"				runx="116"		runy="175"		attackx="90"	attacky="227"	standx="63"		standy="137"	rectw="251"		recty="210"	/>
+		<Soldier item_id="50025" name="gulingwushi"   	sound="ArmoredWizard"	recycle="150" 	range="400" 	speed="1.6"	baseLife="200" 	lifeUp="4"	baseAttack="10"	attackUp="6"	attackCycle="45"	upCount="10,20,40,80,160"	curSkill="3:30015;5:30020"				runx="83"		runy="177"		attackx="73"	attacky="184"	standx="53"		standy="166"	rectw="151"		recty="180"		armCls="fireBullet"/>
+		<Soldier item_id="50026" name="xuesezhanshi"   	sound="ArmoredKnight"	recycle="150" 	range="180" 	speed="1.6"	baseLife="230" 	lifeUp="4"	baseAttack="12"	attackUp="6"	attackCycle="30"	upCount="10,20,40,80,160"	curSkill="3:30011;5:30019;7:30002"		runx="82"		runy="197"		attackx="210"	attacky="278"	standx="87"		standy="193"	rectw="286"		recty="200"	/>
 	</Group>
 	<Group id="Item">
-		<Item item_id="80000" name="guangjian"   	gem="200" 		type="weapon"		message="guangjianMes"/>
+		<Item item_id="80000" name="guangjian"   	coin="30000" 	type="weapon"		message="guangjianMes"/>
 		<Item item_id="80001" name="fireball"   	gem="200" 		type="weapon"		message="fireballMes"/>
 		<Item item_id="80002" name="icebird"   		gem="500" 		type="weapon"		message="icebirdMes"/>
 		<Item item_id="80003" name="purpleball"   	gem="666" 		type="weapon"		message="purpleballMes"/>
-		<Item item_id="80004" name="icebird"   		gem="500" 		type="defence"		message="icebirdMes"/>
-		<Item item_id="80005" name="purpleball"   	gem="666" 		type="defence"		message="purpleballMes"/>
+		<Item item_id="80004" name="shield"   		coin="30000" 	type="defence"		message="icebirdMes"/>
+		<Item item_id="80005" name="greenBuff"   	gem="500" 		type="defence"		message="purpleballMes"/>
 	</Group>
 </database>

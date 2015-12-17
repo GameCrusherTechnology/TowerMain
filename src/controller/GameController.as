@@ -92,6 +92,10 @@ package controller
 		}
 		
 		public function showWorldScene():void{
+			if(curBattleScene){
+				curBattleScene.removeFromParent(true);
+				curBattleScene= null;
+			}
 			
 			if(!curWorld){
 				curWorld = new WorldScene();
@@ -108,6 +112,10 @@ package controller
 			DialogController.instance.destroy();
 			if(curWorld){
 				curWorld.removeFromParent();
+			}
+			if(curBattleScene){
+				curBattleScene.removeFromParent(true);
+				curBattleScene= null;
 			}
 			curBattleRule = rule;
 			

@@ -1,5 +1,143 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <language>
+	<resourceName key="hero" value="HERO"/>
+	<resourceName key="health" value="Vatality"/>
+	<resourceName key="health1" value="Maximum HP"/>
+	<resourceName key="healthMes" value="Increases Maximum HP."/>
+	<resourceName key="power" value="Strength"/>
+	<resourceName key="power1" value="Arrow Damage"/>
+	<resourceName key="powerMes" value="Increases Arrow Damage."/>
+	<resourceName key="agility" value="Dexterity"/>
+	<resourceName key="agility1" value="Arrow Speed"/>
+	<resourceName key="agilityMes" value="Increases Arrow Speed."/>
+	<resourceName key="crit" value="Accuracy"/>
+	<resourceName key="crit1" value="Crit chance"/>
+	<resourceName key="critMes" value="Increases Crit chance."/>
+	<resourceName key="critHurt" value="Crit"/>
+	<resourceName key="critHurt1" value="Crit Damage"/>
+	<resourceName key="critHurtMes" value="Increase Crit Damage."/>
+	<resourceName key="wisdom" value="Wisdom"/>
+	<resourceName key="wisdom1" value="Cooldown reduction"/>
+	<resourceName key="wisdomMes" value="Reduces all spell cooldowns."/>
+	<resourceName key="weapon" value="Weapon"/>
+	<resourceName key="defense" value="Defense"/>
+	<resourceName key="property" value="PERKS"/>
+	<resourceName key="Shop" value="SHOP"/>
+	<resourceName key="confirm" value="CONFIRM"/>
+	<resourceName key="skill" value="SKILL"/>
+	<resourceName key="arrow" value="Arrow"/>
+	<resourceName key="magic" value="Magic"/>
+	<resourceName key="userSkill" value="used points"/>
+	<resourceName key="resetskill" value="Reset Skill Points"/>
+	
+	<resourceName key="selectmode" value="SELECT DIFFICULTY"/>
+	<resourceName key="easy" value="EASY"/>
+	<resourceName key="normal" value="NORMAL"/>
+	<resourceName key="hard" value="HARD"/>
+	<resourceName key="mhurt" value="MONSTERS' DAMAGE"/>
+	<resourceName key="mhealth" value="MONSTERS' HEALTH"/>
+	<resourceName key="begin" value="BEGIN"/>
+	
+	<resourceName key="treasure" value="Treasure"/>
+	<resourceName key="Bought" value="Bought"/>
+	<resourceName key="warningCoinTip" value="Not enough Coin!"/>
+	<resourceName key="warningGemTip" value="Not enough Gem!"/>
+	<resourceName key="nextWave" value="Next Wave"/>
+	<resourceName key="defeat" value="Defeat"/>
+	<resourceName key="improveself" value="attention points"/>
+	<resourceName key="Propertyinfo" value="Hero Perks"/>
+	<resourceName key="check" value="Check"/>
+	<resourceName key="Weaponinfo" value="Weapon and Armor"/>
+	<resourceName key="buy" value="Buy"/>
+	<resourceName key="goto" value="Goto"/>
+	<resourceName key="revive" value="Revive"/>
+	<resourceName key="back" value="Return"/>
+	<resourceName key="victory" value="Victory"/>
+	<!-- map -->
+	<resourceName key="map00" value="Arena"/>
+	<resourceName key="map01" value="Death Shoal"/>
+	<resourceName key="map02" value="Hero Tower"/>
+	<resourceName key="map03" value="Damnation"/>
+	<resourceName key="map04" value="Hell Gate"/>
+	<resourceName key="map05" value="Demon Castle"/>
+	<!-- ITEM -->
+	<resourceName key="guangjian" value="Light Arrow"/>
+	<resourceName key="fireball" value="Fire Arrow"/>
+	<resourceName key="icebird" value="Ice Arrow"/>
+	<resourceName key="icebirdMes" value="slow down 50% movement speed for 4 seconds"/>
+	<resourceName key="icebirdMes1" value="an additional target"/>
+	<resourceName key="purpleball" value="Track Arrow"/>
+	<resourceName key="purpleballMes" value="automatic tracking"/>
+	<resourceName key="shield" value="Steel Shield"/>
+	<resourceName key="greenBuff" value="Life Shield"/>
+	<resourceName key="greenBuffMes" value="heal 10% Maximum HP per 3 seconds"/>
+	
+	<!-- skill -->
+	<resourceName key="passiveskill" value="Passive"/>
+	<resourceName key="activeskill" value="Active"/>
+	<resourceName key="nextLevel" value="Next Level"/>
+	<resourceName key="cooldown" value="Cooldown"/>
+	<resourceName key="tree" value="Tree"/>
+	<resourceName key="skillNeed" value="Requires {0} points in {1} Tree to unlock"/>
+	
+	<resourceName key="baoshe" value="Volley"/>
+	<resourceName key="baosheMes" value="Fires a {0}-arrow spread that deals {1} damage each"/>
+	
+	<resourceName key="defence" value="Armored Vest"/>
+	<resourceName key="defenceMes" value="Reduces all incoming damage by {0}%"/>
+	
+	<resourceName key="stun" value="Impair"/>
+	<resourceName key="stunMes" value="Arrows have a {0}% chance to stun enemy for 2 seconds"/>
+	
+	<resourceName key="lingjiaojian" value="Piercing Bolt"/>
+	<resourceName key="lingjiaojianMes" value="Fires a bolt that deals {0} damage to all enemies in its path"/>
+	
+	<resourceName key="split" value="Division"/>
+	<resourceName key="splitMes" value="After each attack Piercing Bolt will split into two additional ones deal {0}% of base damage"/>
+	
+	<resourceName key="arrowcd" value="Quick Draw"/>
+	<resourceName key="arrowcdMes" value="Reduces cooldowns of all active {0} skills by {1}%"/>
+	
+	<resourceName key="shujiguang" value="Thunderstorm"/>
+	<resourceName key="shujiguangMes" value="Creates a storm that deals {0} damager at a target area"/>
+	
+	<resourceName key="frozen" value="Frozen"/>
+	<resourceName key="frozenMes" value="Targets who had been hurt by Thunderstorm lose {0}% of their movements speed"/>
+	
+	<resourceName key="vampiric" value="Life Steal"/>
+	<resourceName key="vampiricMes" value="Returns {0}% of base damage dealt by arrows as HP"/>
+	
+	<resourceName key="zhangxinlei" value="Fulmination"/>
+	<resourceName key="zhangxinleiMes" value="Instantly deals {0} damage to first target"/>
+	
+	<resourceName key="spread" value="Overcharge"/>
+	<resourceName key="spreadMes" value="Fulmination will deals {0}% of its base damage in a big area"/>
+	
+	<resourceName key="marker" value="Burn Mark"/>
+	<resourceName key="markerMes" value="Fulmination sets a mark causing the next arrow to deal an additional {0}% damage for 5 seconds"/>
+	
+	<resourceName key="huimielieyan" value="Ignite"/>
+	<resourceName key="huimielieyanMes" value="Creates an asteroid that deals {0} damage in area"/>
+	
+	<resourceName key="burning" value="Combustion"/>
+	<resourceName key="burningMes" value="Ignite gets a combustion effect that deals an additional {0}% damage per second for 3 seconds"/>
+	
+	<resourceName key="magiccd" value="Sorcery"/>
+	<resourceName key="magiccdMes" value="Reduces cooldowns of all active {0} skills by {1}%"/>
+	
+	<resourceName key="longjuanfeng" value="Tornado"/>
+	<resourceName key="longjuanfengMes" value="Creates a Tornado that deals {0} damage to all enemies in its path"/>
+	
+	<resourceName key="typhoon" value="Force Wave"/>
+	<resourceName key="typhoonMes" value="Targets who had been hurt by Tornado have {0}% chance to be picked up"/>
+	
+	<resourceName key="baoyan" value="Lightning"/>
+	<resourceName key="baoyanMes" value="Tornado creats a Lightning per second that deals {0}% of base damage"/>
+	
+	
+	
+	
+
 	<resourceName key="TreasureStore" value="Treasure Store"/>
 	<resourceName key="littleCoin" value="A pile of Coins"/>
 	<resourceName key="middleCoin" value="A bag of Coins"/>

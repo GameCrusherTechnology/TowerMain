@@ -104,7 +104,7 @@ package view.panel
 			backBut.width = backBut.height = panelheight*0.1;
 			addChild(backBut);
 			backBut.x = panelwidth*0.05 -backBut.width/2;
-			backBut.y = -panelheight*0.02;
+			backBut.y = 0;
 			backBut.addEventListener(Event.TRIGGERED,onTriggerBack);
 			
 			user.heroData.addEventListener(HeroChangeEvent.HEROSKILLCHANGE,onSkillChange);

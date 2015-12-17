@@ -7,10 +7,10 @@ package model.entity
 	public class MonsterItem extends EntityItem
 	{
 		private var data:MonsterData;
-		public function MonsterItem(_data:MonsterData)
+		public function MonsterItem(_data:MonsterData,mode:String)
 		{
 			data = _data;
-			super({id:data.id});
+			super({id:data.id},mode);
 		}
 		
 		public function get speed():int

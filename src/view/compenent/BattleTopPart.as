@@ -91,6 +91,7 @@ package view.compenent
 		private var monsterPart:Sprite;
 		private var waveText:TextField;
 		private var waveTime:int;
+		private var bar:GreenProgressBar;
 		public function configMonsterPart():void
 		{
 			if(waveText){
@@ -105,11 +106,13 @@ package view.compenent
 			addChild(monsterPart);
 			monsterPart.x = pWidth *0.6;
 			
-			var bar:GreenProgressBar = new GreenProgressBar(pWidth*0.35,pHeight*0.25,0,0xB8860B,0xEEDC82);
+			if(!bar){
+				bar = new GreenProgressBar(pWidth*0.35,pHeight*0.25,0,0xB8860B,0xEEDC82);
+				bar.progress = 0;
+				bar.x = 0;
+				bar.y = pHeight *0.6 ;
+			}
 			monsterPart.addChild(bar );
-			bar.progress = 1;
-			bar.x = 0;
-			bar.y = pHeight *0.6 ;
 			
 			var rounds:Array = rule.roundEntities;
 			var l:int = rule.totalRound;
@@ -120,6 +123,7 @@ package view.compenent
 			
 			if(l==1){
 				le = pWidth*0.35;
+				bar.progress = 1;
 				mIcon = new Image(Game.assets.getTexture("DemonIcon"));
 				mIcon.height = pHeight*0.5;
 				mIcon.scaleX = mIcon.scaleY;
@@ -129,7 +133,6 @@ package view.compenent
 				
 			}else{
 				le = pWidth*0.35/(l-1);
-				bar.progress = curL/(l-1);
 				for (var i:int = 0;i<l;i++){
 					mIcon = new Image(Game.assets.getTexture("DemonIcon"));
 					mIcon.height = pHeight*0.5;
@@ -145,7 +148,7 @@ package view.compenent
 				}
 			}
 			waveTime = Configrations.WAVE_LOAD_TIME;
-			waveText = FieldController.createNoFontField(bar.width,pHeight*0.5,LanguageController.getInstance().getString("nextWave")+": "+int(waveTime/30)+"s",0xffffff,0,true);
+			waveText = FieldController.createNoFontField(bar.width,pHeight*0.5,LanguageController.getInstance().getString("nextWave")+": "+int(waveTime/30)+"s",0xFF3030,0,true);
 			monsterPart.addChild(waveText);
 			
 		}
@@ -165,6 +168,12 @@ package view.compenent
 					waveText.removeFromParent(true);
 					waveText = null;
 				}
+				var rounds:Array = rule.roundEntities;
+				var l:int = rule.totalRound;
+				var curL:int = l - rounds.length;
+
+				bar.progress = curL/(l-1);
+				waveTime--;
 			}
 		}
 		

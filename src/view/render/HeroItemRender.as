@@ -1,15 +1,11 @@
 package view.render
 {
-	import controller.DialogController;
 	import controller.FieldController;
 	import controller.GameController;
 	
-	import feathers.controls.Button;
 	import feathers.controls.renderers.DefaultListItemRenderer;
-	import feathers.text.BitmapFontTextFormat;
 	
 	import gameconfig.Configrations;
-	import gameconfig.LanguageController;
 	
 	import model.gameSpec.ItemSpec;
 	import model.item.OwnedItem;
@@ -20,11 +16,8 @@ package view.render
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
-	import starling.events.Event;
 	import starling.text.TextField;
 	import starling.text.TextFieldAutoSize;
-	
-	import view.panel.WarnnigTipPanel;
 	
 	public class HeroItemRender extends DefaultListItemRenderer
 	{
@@ -70,10 +63,6 @@ package view.render
 			itemspec = ownedItem.itemSpec;
 			if(itemspec){
 				
-				var nameText:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15,itemspec.cname,0x000000,0,true);
-				nameText.autoSize = TextFieldAutoSize.VERTICAL;
-				container.addChild(nameText);
-				nameText.y =  5*scale;
 				
 				if(itemspec.type == "weapon"){
 					icon = new MovieClip(Game.assets.getTextures(itemspec.name));
@@ -83,7 +72,20 @@ package view.render
 					icon.x = renderwidth*0.5 - icon.width/2;
 					icon.y = renderHeight*0.5 - icon.height/2;
 					Starling.juggler.add(icon as MovieClip);
+				}else if(itemspec.type == "defence"){
+					icon = new Image(Game.assets.getTexture(itemspec.name));
+					icon.height = renderHeight*0.6;
+					icon.scaleX = icon.scaleY ;
+					container.addChild(icon);
+					icon.x = renderwidth*0.5 - icon.width/2;
+					icon.y = renderHeight*0.5 - icon.height/2;
+					Starling.juggler.add(icon as MovieClip);
 				}
+				
+				var nameText:TextField = FieldController.createNoFontField(renderwidth,renderHeight*0.15,itemspec.cname,0x000000,0,true);
+				nameText.autoSize = TextFieldAutoSize.VERTICAL;
+				container.addChild(nameText);
+				nameText.y =  5*scale;
 				
 			}
 		}

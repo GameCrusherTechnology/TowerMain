@@ -257,5 +257,15 @@ package view.screen
 				return 0;
 			}
 		}
+		override public function dispose():void
+		{
+			if(battleTop){
+				battleTop.removeFromParent(true);
+				battleTop = null;
+			}
+			bgLayer.removeEventListener(TouchEvent.TOUCH,onTouch);
+			removeEventListener(Event.ENTER_FRAME,onEnterFrame);
+			super.dispose();
+		}
 	}
 }

@@ -157,9 +157,8 @@ package model.battle
 		public var totalRound:int;
 		public var roundEntities:Array = [] ;
 		private var curRound:Array = [];
-		
-		private var entityCD:int = 50;
-		private var roundCD:int = Configrations.WAVE_LOAD_TIME;
+		private var curMonster:MonsterData;
+		private var roundCD:int = 0;
 		private function valiEntity():void
 		{
 			var entity:MonsterEntity;
@@ -167,27 +166,32 @@ package model.battle
 				entity.validate();
 			}
 			
-			if(curRound.length >0){
-				if(entityCD > 0){
-					entityCD --;
+			if(curMonster){
+				if(curMonster.timeCount > 0){
+					curMonster.timeCount--;
 				}else{
-					var mdata:MonsterData = curRound.shift();
-					creatMonster(mdata);
-					entityCD = 50;
-				}
-			}else if(roundEntities.length>0){
-				if(roundCD > 0){
-					roundCD --;
-				}else{
-					curRound = roundEntities.shift();
-					roundCD = Configrations.WAVE_LOAD_TIME;
-					passRound();
+					creatMonster(curMonster);
+					curMonster = null;
 				}
 			}else{
-			//	no more
-				if(monsterVec.length <=0){
-					//win
-					winGame();
+				if(curRound.length >0){
+					curMonster = curRound.shift();
+					if(curRound.length ==0 && roundEntities.length>0){
+						roundCD = Configrations.WAVE_LOAD_TIME;
+						passRound();
+					}
+				}else if(roundEntities.length>0){
+					if(roundCD > 0){
+						roundCD --;
+					}else{
+						curRound = roundEntities.shift();
+					}
+				}else{
+					//	no more
+					if(monsterVec.length <=0){
+						//win
+						winGame();
+					}
 				}
 			}
 		}
@@ -214,7 +218,7 @@ package model.battle
 		}
 		private function creatMonster(data:MonsterData):void
 		{
-			var entity:MonsterEntity = new MonsterEntity(new MonsterItem(data));
+			var entity:MonsterEntity = new MonsterEntity(new MonsterItem(data,curMode));
 			curScene.addEntity(entity,data.pos);
 			monsterVec.push(entity);
 		}

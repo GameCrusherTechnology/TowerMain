@@ -54,11 +54,13 @@ package view.render
 			addChild(container);
 			
 			
-			var nameText:TextField = FieldController.createNoFontField(renderwidth,renderheight*0.1,LanguageController.getInstance().getString(type),0x000000,0,true);
+			var str:String = LanguageController.getInstance().getString(type) +" "+ LanguageController.getInstance().getString("tree");
+			str = str.toUpperCase();
+			var nameText:TextField = FieldController.createNoFontField(renderwidth,renderheight*0.1,str,0x000000,0,true);
 			container.addChild(nameText);
 
 			
-			var pointText:TextField = FieldController.createNoFontField(renderwidth,renderheight*0.06,LanguageController.getInstance().getString("userSkill")+":" + user.heroData.getSkillTypePoint(type),0x000000,0,true);
+			var pointText:TextField = FieldController.createNoFontField(renderwidth,renderheight*0.06,LanguageController.getInstance().getString("userSkill")+":" + user.heroData.getSkillTypePoint(type),0x00CED1,0);
 			container.addChild(pointText);
 			pointText.y = renderheight*0.1;
 			
@@ -111,6 +113,7 @@ package view.render
 			var item:SkillItemSpec = itemList.selectedItem as SkillItemSpec;
 			if(item){
 				DialogController.instance.showSkillMPanel(item);
+				itemList.selectedIndex = -1;
 			}
 		}
 		

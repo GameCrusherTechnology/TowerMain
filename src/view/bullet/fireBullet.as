@@ -87,7 +87,6 @@ package view.bullet
 		{
 			if(curTarget){
 				playSound();
-				var hurt:int = heroData.curAttackPoint;
 				curTarget.beAttacked(hurt,Game.assets.getTexture("skillIcon/arrow"),"attack");
 			}
 			dispose();

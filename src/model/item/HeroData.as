@@ -28,7 +28,7 @@ package model.item
 		public var curWeapon:String ;
 		public var curDefence:String ;
 		
-		private var _skillPoints:int = 100;
+		private var _skillPoints:int ;
 		public function get skillPoints():int
 		{
 			return _skillPoints;
@@ -45,8 +45,7 @@ package model.item
 			exp += e;
 			level = Configrations.expToGrade(exp);
 			if(level> oL){
-				//upGrade
-				skillPoints++;
+				skillPoints += (level-oL) ;
 			}
 		}
 		
@@ -61,7 +60,14 @@ package model.item
 		public var healthUp:int = 20;
 		public function get curHealth():int
 		{
-			return healthBase + healthUp*healthLevel;
+			
+			var h:int =  healthBase + healthUp*healthLevel;
+			
+			if(curDefence == "80005"){
+				h += 100;
+			}
+			
+			return h;
 		}
 		
 		
@@ -174,6 +180,17 @@ package model.item
 			return false;
 		}
 		
+		public function getThreeMaps(index:int):int{
+			var arr:Array = [];
+			var ownedItem :OwnedItem;
+			for each(ownedItem in passedMaps){
+				if(ownedItem.count >= 3 &&  int((int(ownedItem.item_id) - 20000)/100) == (index+1)){
+					arr.push(ownedItem);
+				}
+			}
+			return arr.length;
+		}
+		
 		//items
 		public var owneditems:Array = [];
 		public function set items(obj:Object):void
@@ -265,10 +282,16 @@ package model.item
 			return p;
 		}
 		
-		public function get curDefense():Number
+		public function get curDefense():int
 		{
 			var dL:int = getSkillItem("30002").count;
-			return Configrations.skill30002Point[dL];
+			var rate:Number =  Configrations.skill30002Point[dL];
+			if(curDefence == "80004"){
+				rate += 0.3;
+			}else if(curDefence == "80005"){
+				rate += 0.1;
+			}
+			return int(rate*100);
 		}
 		
 		public function getSaveData():Object

@@ -76,8 +76,9 @@ package view.panel
 			tabBar = new TabBar();
 			var tabList:ListCollection =new ListCollection(
 				[
-					{ label: LanguageController.getInstance().getString("treasure")},
-					{ label: LanguageController.getInstance().getString("prop")} 
+					{ label: LanguageController.getInstance().getString("treasure").toUpperCase()},
+					{ label: LanguageController.getInstance().getString("weapon").toUpperCase()},
+					{ label: LanguageController.getInstance().getString("defense").toUpperCase()} 
 				]);
 			tabBar.dataProvider = tabList;
 			tabBar.addEventListener(Event.CHANGE, tabBar_changeHandler);
@@ -159,6 +160,18 @@ package view.panel
 					renderer.height = panelheight *0.3;
 					return renderer;
 				}
+			}else if(currentTabIndex == 2){
+				
+				itemList.dataProvider = proplistData;
+				itemList.itemRendererFactory =function tileListItemRendererFactory():SpecialItemRender
+				{
+					var renderer:SpecialItemRender = new SpecialItemRender();
+					var skin:Scale9Image = new Scale9Image(new Scale9Textures(Game.assets.getTexture("BPanelSkin"),new Rectangle(10,10,70,70)));
+					renderer.defaultSkin = skin;
+					renderer.width = panelwidth *0.3;
+					renderer.height = panelheight *0.6;
+					return renderer;
+				}
 			}
 			itemList.validate();
 		}
@@ -168,8 +181,14 @@ package view.panel
 			var dicArr:Array = [];
 			var groupDic : Object = SpecController.instance.getGroup("Item");
 			for each(spec in groupDic){
-				if(spec.showPanel){
-					dicArr.push(spec.item_id);
+				if(currentTabIndex == 1){
+					if(spec.type == "weapon"){
+						dicArr.push(spec.item_id);
+					}
+				}else{
+					if(spec.type == "defence"){
+						dicArr.push(spec.item_id);
+					}
 				}
 			}
 			

@@ -47,6 +47,18 @@ package view.panel
 			battleSpec = _spec;
 			isWin = _isWin;
 			this.addEventListener(FeathersEventType.INITIALIZE, initializeHandler);
+			if(isWin){
+				if(battleMode == Configrations.Battle_Easy){
+					addCoin = battleSpec.rewardCoin;
+					addExp = battleSpec.rewardExp;
+				}else if(battleMode == Configrations.Battle_Normal){
+					addCoin = Math.round(battleSpec.rewardCoin*1.5);
+					addExp = Math.round(battleSpec.rewardExp*1.5);
+				}else{
+					addCoin = Math.round(battleSpec.rewardCoin*2);
+					addExp = Math.round(battleSpec.rewardExp*2);
+				}
+			}
 		}
 		
 		protected function initializeHandler(event:Event):void
@@ -82,9 +94,9 @@ package view.panel
 			
 			var str:String ;
 			if(!isWin){
-				str = LanguageController.getInstance().getString("defeat");
+				str = LanguageController.getInstance().getString("defeat").toUpperCase();
 			}else{
-				str = LanguageController.getInstance().getString("victory");
+				str = LanguageController.getInstance().getString("victory").toUpperCase();
 			}
 			var titleText:TextField = FieldController.createNoFontField(panelwidth,titleSkin.height,str,0x000000,titleSkin.height*0.6,true);
 			addChild(titleText);
@@ -139,7 +151,6 @@ package view.panel
 			icon.x = skin.x + panelheight*0.02;
 			icon.y = skin.y + panelheight*0.02;
 			
-			addExp = 100;
 			var nextExp:int = Configrations.gradeToExp(player.heroData.level+1);
 			
 			var expBar:GreenProgressBar  = new GreenProgressBar(panelwidth*0.3,panelheight*0.05,2);
@@ -168,8 +179,7 @@ package view.panel
 			addExpText.y = expBar.y ;
 			
 			
-			addCoin = 100;
-			var nextCoin:int = (int(player.coin /10000)+1)*10000;
+			var nextCoin:int = (int(player.coin /10000)+1)*1000;
 			var coinBar:GreenProgressBar  = new GreenProgressBar(panelwidth*0.3,panelheight*0.05,2);
 			container.addChild(coinBar);
 			coinBar.x = panelheight*0.3;
@@ -190,7 +200,7 @@ package view.panel
 			addCoinText.x = coinBar.x + coinBar.width + panelwidth *0.02;;
 			addCoinText.y = coinBar.y ;
 			
-			var tween:Tween = new Tween(container,100);
+			tween = new Tween(container,100);
 			tween.onUpdate = function():void{
 				if(addExp > 0 ){
 					addExp --;
@@ -204,7 +214,7 @@ package view.panel
 				}
 				if(addCoin > 0){
 					addCoin -- ;
-					player.coin ++;
+					player.addCoin(1);
 					coinBar.comment = player.coin +"";
 					coinBar.progress = player.coin / nextCoin;
 				}
@@ -229,7 +239,7 @@ package view.panel
 			confirmBut.y = panelheight*0.35;
 			
 		}
-		
+		private var tween:Tween;
 		private function configDefeatContainer():void
 		{
 			var container:Sprite = new Sprite;
@@ -261,10 +271,11 @@ package view.panel
 			skin1.x = panelwidth*0.02;
 			skin1.y = panelheight*0.08;
 			
-			var text1:TextField = FieldController.createNoFontField(panelwidth*0.25,panelheight*0.15,LanguageController.getInstance().getString("Propertyinfo"),0x000000,panelheight*0.04);
+			var text1:TextField = FieldController.createNoFontField(panelwidth*0.2,panelheight*0.2,LanguageController.getInstance().getString("Propertyinfo"),0x000000,panelheight*0.04);
+			text1.autoSize = TextFieldAutoSize.VERTICAL;
 			container.addChild(text1);
-			text1.x = skin1.x;
-			text1.y = skin1.y;
+			text1.x = skin1.x + skin1.width/2 - text1.width/2;
+			text1.y = skin1.y + panelheight*0.22/2 - text1.height/2;
 			
 			var checkVipBut:Button = new Button();
 			checkVipBut.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
@@ -297,14 +308,16 @@ package view.panel
 			skin2.y = panelheight*0.08;
 			
 			
-			var text2:TextField = FieldController.createNoFontField(panelwidth*0.25,panelheight*0.15,LanguageController.getInstance().getString("Weaponinfo"),0x000000,panelheight*0.04);
+			var text2:TextField = FieldController.createNoFontField(panelwidth*0.2,panelheight*0.2,LanguageController.getInstance().getString("Weaponinfo"),0x000000,panelheight*0.04);
+			text2.autoSize = TextFieldAutoSize.VERTICAL;
 			container.addChild(text2);
-			text2.x = skin2.x;
-			text2.y = skin2.y;
+			text2.x = skin2.x + skin2.width/2 - text2.width/2;
+			text2.y = skin2.y + panelheight*0.22/2 - text2.height/2;
+			
 			
 			var updateBut:Button = new Button();
 			updateBut.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
-			updateBut.label = LanguageController.getInstance().getString("buy");
+			updateBut.label = LanguageController.getInstance().getString("goto");
 			updateBut.defaultLabelProperties.textFormat = new BitmapFontTextFormat(FieldController.FONT_FAMILY, panelheight*0.03, 0x000000);
 			updateBut.paddingLeft = updateBut.paddingRight = 10*panelScale;
 			updateBut.height = panelheight*0.05;
@@ -372,7 +385,7 @@ package view.panel
 		private function onTriggerConfirm(e:Event):void
 		{
 			if(addCoin>0){
-				player.coin += addCoin;
+				player.addCoin(addCoin);
 			}
 			if(addExp > 0){
 				player.heroData.addExp(addExp);
@@ -380,6 +393,7 @@ package view.panel
 			
 			LocalData.instance.savePlayer();
 			outToWorld();
+			GameController.instance.curWorldScene.configMapList();
 		}
 		private function onTriggerOut(e:Event):void
 		{
@@ -401,6 +415,10 @@ package view.panel
 		}
 		private function outToWorld():void
 		{
+			if(tween){
+				Starling.juggler.remove(tween);
+				tween = null;
+			}
 			GameController.instance.showWorldScene();
 			dispose();
 		}

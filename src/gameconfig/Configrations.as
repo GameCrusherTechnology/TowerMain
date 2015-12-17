@@ -105,8 +105,8 @@ package gameconfig
 		
 		
 		public static const INIT_USER:Object = {
-			"coin" : 1000000,
-			"gem" : 1000000,
+			"coin" : 500,
+			"gem" : 20,
 			"localHero":{
 				
 			}
@@ -114,7 +114,7 @@ package gameconfig
 		
 		public static const resaveCost:int = 20;
 		public static const SkillResetCost:int = 20;
-		
+		public static const PerksResetCostCoin:int = 2000;
 		public static function get isLocalTest():Boolean
 		{
 			return GATEWAY =="http://localhost/HeroTowerServer/data/gateway.php";
@@ -302,6 +302,8 @@ package gameconfig
 		//30009 攻击吸血
 		public static const skillP30009Point:Array = [0,0.05,0.07,0.1,0.12,0.15];
 		public static const skill30009Point:int = 30;
+		
+		public static const skill80005Point:int = 90;
 		
 		//31001 掌心雷
 		public static const hurt31001Arr:Array = [0,50,100,150,200,250];

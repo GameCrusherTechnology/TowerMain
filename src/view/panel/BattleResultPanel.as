@@ -275,7 +275,7 @@ package view.panel
 			text1.autoSize = TextFieldAutoSize.VERTICAL;
 			container.addChild(text1);
 			text1.x = skin1.x + skin1.width/2 - text1.width/2;
-			text1.y = skin1.y + panelheight*0.22/2 - text1.height/2;
+			text1.y = skin1.y + panelheight*0.02;
 			
 			var checkVipBut:Button = new Button();
 			checkVipBut.defaultSkin = new Image(Game.assets.getTexture("greenButtonSkin"));
@@ -312,7 +312,7 @@ package view.panel
 			text2.autoSize = TextFieldAutoSize.VERTICAL;
 			container.addChild(text2);
 			text2.x = skin2.x + skin2.width/2 - text2.width/2;
-			text2.y = skin2.y + panelheight*0.22/2 - text2.height/2;
+			text2.y = skin2.y + panelheight*0.02;
 			
 			
 			var updateBut:Button = new Button();
@@ -406,7 +406,7 @@ package view.panel
 		}
 		private function onTriggerUpdate(e:Event):void
 		{
-			DialogController.instance.showPanel(new TreasurePanel());
+			DialogController.instance.showPanel(new ShopPanel());
 			outToWorld();
 		}
 		private function get player():GameUser

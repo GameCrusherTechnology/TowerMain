@@ -233,7 +233,7 @@ package model.item
 			}
 			skillItems = [];
 		}
-		private var skillItems:Array = [];
+		public var skillItems:Array = [];
 		public function set sitems(obj:Object):void
 		{
 			skillItems = [];

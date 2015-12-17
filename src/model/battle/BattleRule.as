@@ -6,15 +6,19 @@ package model.battle
 	
 	import controller.DialogController;
 	import controller.GameController;
+	import controller.SpecController;
 	
 	import gameconfig.Configrations;
 	
 	import model.entity.HeroItem;
 	import model.entity.MonsterItem;
 	import model.gameSpec.BattleItemSpec;
+	import model.gameSpec.ItemSpec;
+	import model.gameSpec.SkillItemSpec;
 	import model.gameSpec.SoldierItemSpec;
 	import model.item.HeroData;
 	import model.item.MonsterData;
+	import model.item.OwnedItem;
 	import model.player.GameUser;
 	
 	import starling.animation.Tween;
@@ -65,12 +69,31 @@ package model.battle
 				soldierArr.push(s);
 			}
 			
+			var skillArr:Array = loadedTexturesAltas['skill'];
+			i = 0;
+			dic = new Dictionary;
+			for(i = 0;i<skillArr.length;i++){
+				dic[skillArr[i]] = true;
+			}
+			skillArr = [];
+			for(s in dic){
+				skillArr.push(s);
+			}
+			
 			
 			var name:String;
 			for each(name in soldierArr){
 				if(!assets.getTextureAtlas(name)){
 					assets.enqueue(
 						appDir.resolvePath("textures/role/"+name)
+					);
+				}
+			}
+			
+			for each(name in skillArr){
+				if(!assets.getTextureAtlas(name)){
+					assets.enqueue(
+						appDir.resolvePath("textures/skill/"+name)
 					);
 				}
 			}
@@ -114,7 +137,39 @@ package model.battle
 		}
 		private function getTextureFromPlayer(data:HeroData):Object
 		{
-			return {"soldier":[data.name]};
+			var arr:Array = player.heroData.skillItems;
+			var skillVec:Array = [];
+			var spec:SkillItemSpec;
+			for each(var item:OwnedItem in arr){
+				spec = item.itemSpec as SkillItemSpec;
+				if(spec.recycle > 0){
+					skillVec.push(spec.name);
+				}
+				if(spec.buffName){
+					skillVec.push(spec.buffName);
+				}
+			}
+			
+			var arrowId:String = player.heroData.curWeapon;
+			if(arrowId){
+				var arrowSpec:ItemSpec = SpecController.instance.getItemSpec(arrowId);
+				skillVec.push(arrowSpec.name);
+				
+				if(arrowSpec.buffName){
+					skillVec.push(arrowSpec.buffName);
+				}
+			}
+			
+			var defenceId:String = player.heroData.curDefence;
+			if(defenceId){
+				var defenSpec:ItemSpec = SpecController.instance.getItemSpec(defenceId);
+				
+				if(defenSpec.buffName){
+					skillVec.push(defenSpec.buffName);
+				}
+			}
+			
+			return {"soldier":[data.name],"skill":skillVec};
 		}
 		
 		private function getTextureFromBattle(battleStep:BattleItemSpec):Object

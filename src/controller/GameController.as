@@ -67,12 +67,12 @@ package controller
 		}
 		private function initSource():void
 		{
-			var appDir:File = File.applicationDirectory;
-			var assets:AssetManager = Game.assets;
-			assets.enqueue(
-				appDir.resolvePath("textures/skill/")
-			);
-			assets.loadQueue(onSourcePrepared);
+//			var appDir:File = File.applicationDirectory;
+//			var assets:AssetManager = Game.assets;
+//			assets.enqueue(
+//				appDir.resolvePath("textures/skill/")
+//			);
+//			assets.loadQueue(onSourcePrepared);
 		}
 		public function onSourcePrepared(progress:Number):void
 		{

@@ -24,6 +24,7 @@ package model.gameSpec
 		public var gem:int  ;
 		public var level:int;
 		
+		public var buffName:String;
 		public var message:String;
 		public var showPanel:Boolean = true;
 		public function get cname():String
